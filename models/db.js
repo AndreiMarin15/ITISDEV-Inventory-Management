@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
+const test = "test";
+const official = "inventory-management";
 
-const url = ""; // insert connection string to database
+const url = `mongodb+srv://itisdev:00000000@inventory-management.ngqejrn.mongodb.net/${test}`; // insert connection string to database
 
 const options = {
     useUnifiedTopology: true,
@@ -8,7 +10,7 @@ const options = {
 };
 // everything will only be used sa ___Controller.js these will be the replacement of usual functions because marami tayo controllers and marami rin models
 const db = {
-    connect: () => {
+    connect: function () {
         mongoose.connect(url, options, (err) => {
             if (err) throw err;
             console.log("Connected to: " + url);
