@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const UnitConversionSchema = new mongoose.Schema({
     unitID:{
@@ -14,4 +14,6 @@ const UnitConversionSchema = new mongoose.Schema({
     }
 });
 
-export default mongoose.model("UnitConversion", UnitConversionSchema);
+const UnitConversion = mongoose.model("UnitConversion", UnitConversionSchema);
+
+module.exports = UnitConversion;

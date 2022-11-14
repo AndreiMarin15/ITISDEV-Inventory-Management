@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const RecipeSchema = new mongoose.Schema({
     recipeID:{
@@ -15,4 +15,6 @@ const RecipeSchema = new mongoose.Schema({
     },
 });
 
-export default mongoose.model("Recipe", RecipeSchema);
+const Recipe = mongoose.model("Recipe", RecipeSchema);
+
+module.exports = Recipe;

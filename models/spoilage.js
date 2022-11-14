@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const SpoilageSchema = new mongoose.Schema({
     caseID:{
@@ -20,4 +20,6 @@ const SpoilageSchema = new mongoose.Schema({
     },
 });
 
-export default mongoose.model("Spoilage", SpoilageSchema);
+const Spoilage = mongoose.model("Spoilage", SpoilageSchema);
+
+module.exports = Spoilage;

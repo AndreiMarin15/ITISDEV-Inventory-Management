@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const POSSchema = new mongoose.Schema({
     POSIDno:{
@@ -16,4 +16,6 @@ const POSSchema = new mongoose.Schema({
     },
 });
 
-export default mongoose.model("POS", POSSchema);
+const POS = mongoose.model("POS", POSSchema);
+
+module.exports = POS;

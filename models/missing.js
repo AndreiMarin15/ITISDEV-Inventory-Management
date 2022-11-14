@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const MissingSchema = new mongoose.Schema({
     caseID:{
@@ -20,4 +20,6 @@ const MissingSchema = new mongoose.Schema({
     },
 });
 
-export default mongoose.model("Missing", MissingSchema);
+const  Missing = mongoose.model("Missing", MissingSchema);
+
+module.exports =  Missing;
