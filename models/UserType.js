@@ -1,14 +1,10 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const UserTypeSchema = new mongoose.Schema({
-    userID:{
-        type: Number,
-        required: true,
-        unique: true,
-    },
-    userTypeDesc: {
-        type: String,
-    },
+    userID: Number,
+    userTypeDesc: String,
 });
 
-export default mongoose.model("UserType", UserTypeSchema);
+const UserType = mongoose.model("UserType", UserTypeSchema);
+
+module.exports = UserType;
