@@ -1,6 +1,6 @@
 const dotenv = require("dotenv");
 const express = require("express");
-const hbc = require("hbs");
+const hbs = require("hbs");
 const bodyparser = require("body-parser");
 
 const db = require("./models/db.js");

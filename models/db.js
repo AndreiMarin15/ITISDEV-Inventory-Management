@@ -6,7 +6,7 @@ const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
 };
-
+// everything will only be used sa ___Controller.js these will be the replacement of usual functions because marami tayo controllers and marami rin models
 const db = {
     connect: () => {
         mongoose.connect(url, options, (err) => {
