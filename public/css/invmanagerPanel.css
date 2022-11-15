@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+* {
+	box-sizing: border-box;
+}
+
+hr{
+    max-width: 110%;
+    width: 50vw;
+}
+
+.panel-container {
+	background-color: #1a7968;
+	position: relative;
+	overflow: hidden;
+	width: 110px;
+	max-width: 100%;
+	min-height: 900px;
+}
+
+.user-icon-container {
+	position: absolute;
+    margin-left: 16px;
+    margin-top: 20px;
+    width: 70%;
+	height: 8%;
+    background-color: #ffffff;
+    border: 1px solid;
+}
+
+.line-separator{
+    margin-left: -3px;
+    margin-top: 80px;
+}
+
+.create-icon-container {
+	position: absolute;
+    margin-left: 0px;
+    margin-top: 5px;
+    width: 103%;
+	height: 103%;
+    background-color: #ced4db;
+    border: 1px solid;
+}
+
+.add-icon-container {
+	position: absolute;
+    margin-left: 0px;
+    margin-top: 85px;
+    width: 103%;
+	height: 105%;
+    background-color: #ffffff;
+    border: 1px solid;
+}
+
+.inv-icon-container {
+	position: absolute;
+    margin-left: -1px;
+    margin-top: 90px;
+    width: 103%;
+	height: 105%;
+    background-color: #ffffff;
+    border: 1px solid;
+}
+
+.menu-icon-container {
+	position: absolute;
+    margin-left: -1px;
+    margin-top: 90px;
+    width: 103%;
+	height: 105%;
+    background-color: #ffffff;
+    border: 1px solid;
+}
