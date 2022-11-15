@@ -16,8 +16,7 @@ body{
     flex-direction:row;
     margin: 0;
     padding: 0;
-    font-family: var(--font-type);
-    background-color:var(--clr-white);
+    background-color:var(--clr-gray);
 }
 
 .panel-container{
@@ -26,15 +25,15 @@ body{
     align-items:center;
     background-color: var(--clr-green);
     max-width:150px;
-    height:100vw;
-    padding-top:10px;
+    width:100%;
+    height:100vh;
     gap: 2px;
 }
 .content-container{
     display:flex;
     flex-direction:column;
     gap: 2px;
-    background-color: var(--clr-green);
+    background-color: var(--clr-gray);
 }   
 
 .panel-box {
@@ -42,6 +41,7 @@ body{
     flex-direction:column;
     align-items:center;
     justify-content:center;
+    text-align:center;
     gap:5px;
     width: 100px;
     max-width:200px;
@@ -51,8 +51,6 @@ body{
     border-radius:15%;
     margin:15px;
 }
-
-
 
 .line-separator{
     max-width: 110%;
@@ -67,4 +65,13 @@ body{
 .panel-text{
     font-family: var(--font-family);
     color: var(--clr-green);
+}
+
+.logout-button{
+    margin-top:auto;
+    margin-right:auto;
+    color: var(--clr-white);
+    margin-left:15px;
+    margin-bottom:15px;
+    font-size:20px;
 }
