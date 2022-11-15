@@ -43,11 +43,12 @@ body{
     justify-content:center;
     text-align:center;
     gap:5px;
-    /* width: 65px;
-    max-width:100px;
-	height: 65px; */
     width:5vw;
     height:10vh;
+    min-width:100px;
+    max-width:125px;
+    min-height:100px;
+    max-height:125px;
     background-color: var(--clr-white);
     border: 1px solid var(--clr-gray);
     border-radius:15%;
@@ -67,7 +68,7 @@ body{
 .panel-text{
     font-family: var(--font-family);
     color: var(--clr-green);
-    font-size:0.6em;
+    font-size:1em;
 }
 
 .logout-button{
