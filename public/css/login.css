@@ -3,7 +3,7 @@
 }
 
 body {
-	background: #ffffff;
+	background: var(--clr-white);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -43,9 +43,9 @@ a {
 
 button {
 	border-radius: 20px;
-	border: 1px solid #1a7968;
-	background-color: #1a7968;
-	color: #FFFFFF;
+	border: 1px solid var(--clr-green);
+	background-color: var(--clr-green);
+	color: var(--clr-white);
 	font-size: 12px;
 	font-weight: bold;
 	padding: 12px 45px;
@@ -62,7 +62,7 @@ button:focus {
 
 button.ghost {
 	background-color: transparent;
-	border-color: #FFFFFF;
+	border-color: var(--clr-white);
 }
 
 form {
@@ -85,7 +85,7 @@ input {
 }
 
 .container {
-	background-color: #1a7968;
+	background-color: var(--clr-green);
 	position: relative;
 	overflow: hidden;
 	width: 1500px;
@@ -106,7 +106,7 @@ input {
 }
 
 .sign-in-container {
-	background: #ffffff;
+	background: var(--clr-white);
 	right: 0;
 	width: 50%;
 	z-index: 2;
