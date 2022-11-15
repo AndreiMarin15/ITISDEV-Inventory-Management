@@ -60,14 +60,14 @@ body{
 }
 
 .panel-icons{
-    width: 5vw;
-    height:5vh;
+    width: 4vw;
+    height:4vh;
     color: var(--clr-green);
 }
 .panel-text{
     font-family: var(--font-family);
     color: var(--clr-green);
-    font-size:1rem;
+    font-size:0.6em;
 }
 
 .logout-button{
