@@ -1,7 +1,18 @@
+.summary-table th{
+    padding:15px;
+    text-align: left;
+}
+
+.summary-table td{
+    padding:15px;
+    text-align: right;
+}
+
 th{
     padding:15px;
     border-bottom:1px solid black;
 }
+
 td{
     border-bottom:1px solid black;
     padding:20px;
@@ -12,31 +23,34 @@ td{
     flex-direction: column;
     min-width:60vw;
     min-height:100vh;
-    background-color: goldenrod;
+    background-color: var(--clr-peach);
 }
 
 .category-box{
     display:flex;
     flex-direction: row;
     min-width:5vw;
-    border: 1px solid black;
-    background-color: burlywood;
+    background-color: var(--clr-peach);
     gap: 5px;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    border: 1px solid var(--clr-green);
+    padding: 10px;
+    margin: 30px;
 }
 
 .category-item{
     min-width:1vw;
     min-height:2.5vh;
-    /* border: 1px solid black; */
-    /* background-color: royalblue; */
     padding: 15px;
+    border-color: var(--clr-green);
+    border-radius: 15%;
 }
 
 .category-text{
     font-size:1em;
     font-family: var(--font-family);
+    color: var(--clr-green)
 }
 
 .menu-text{
@@ -52,10 +66,14 @@ td{
 
 .checkout-container{
     display:flex;
-    flex-direction: column;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
     min-width:28vw;
     min-height:100vh;
-    background-color: rebeccapurple;
+    background-color: var(--clr-green);
+    vertical-align: middle;
 }
 
 .menu-box{
@@ -63,18 +81,24 @@ td{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    min-width:25vw;
+    min-width:5vw;
     min-height:15vw;
-    padding:5px;
+    padding:10px;
     gap:25px;
-    margin-top:20px;
     text-align:center;
+    border: 1px solid var(--clr-green);
+    padding: 10px;
+    margin: 30px;
+    margin-top: 0px;
 }
 
 .menuitem{
     min-width:10vw;
     min-height:10vw;
     padding: 10px;
+    border: 1px solid var(--clr-green);
+    border-radius: 15%;
+    color: var(--clr-green);
 }
 
 .checkout-container{
@@ -103,4 +127,9 @@ td{
     justify-content:space-evenly;
     text-align:center;
     vertical-align:middle;
+    margin-top: 50px;
+}
+
+.summary-table{
+    border-spacing: 60px 0px;
 }
