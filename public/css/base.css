@@ -31,9 +31,11 @@ body{
 
 .content-container{
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
     gap: 2px;
     background-color: var(--clr-gray);
+    padding-top: 10px;
+    padding-bottom: 10px;
 }   
 
 .panel-box {
