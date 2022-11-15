@@ -14,7 +14,22 @@ app.use(express.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 
 app.set("view engine", "hbs");
+
+
+hbs.registerHelper("ifEquals", function (arg1, arg2, options) {
+    return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+});
+
+hbs.registerHelper("ifIn", function (elem, list, options) {
+    if (list.indexOf(elem) > -1) {
+        return options.fn(this);
+    }
+    return options.inverse(this);
+});
+
+app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials");
+
 
 dotenv.config();
 port = process.env.PORT;

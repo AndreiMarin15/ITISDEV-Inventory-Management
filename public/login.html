@@ -1,41 +1,32 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Login</title>
-		<link rel="stylesheet" href="css/login.css">
-		<script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="../css/login.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+    </head>
 
-	</head>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <img src="../images/design/logo.png" />
+                <h1 style="font-size: 30px; color: white">Inventory Management System</h1>
+            </form>
+        </div>
 
-<div class="container" id="container">
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1 style="margin: 15px">Sign in</h1>
 
+                <input type="text" placeholder="Username" required />
+                <input type="password" placeholder="Password" required />
 
-	<div class="form-container sign-up-container">
-		<form action="#">
-			<img src="images/design/logo.png">
-			<h1 style = "font-size: 30px; color: white;">Inventory Management System</h1>
-		
-		</form>
-	</div>
+                <!-- <input type="checkbox" name="remember" style="padding-top: 20px"> Remember me  -->
 
-	<div class="form-container sign-in-container">
-		<form action="#">
-			<h1 style="margin: 15px">Sign in</h1>
-			
-			<input type="text" placeholder="Username" required />
-			<input type="password" placeholder="Password" required />
+                <a href="#"><u>Forgot your password?</u></a>
 
-				
-				
-			<!-- <input type="checkbox" name="remember" style="padding-top: 20px"> Remember me  -->
-				
-		
-			
-			<a href="#"><u>Forgot your password?</u></a>
-			
-			<button>LOGIN</button>
-		</form>
-	</div>
-</div>
-
+                <button>LOGIN</button>
+            </form>
+        </div>
+    </div>
 </html>
