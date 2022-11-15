@@ -1,0 +1,12 @@
+:root{
+    /*colors to be used in application 
+    Example on how to use: color: var(--clr-white);*/
+    --clr-white: white;
+    --clr-gray: #ced4db;
+    --clr-black: black;
+    --clr-green: #1a7968;
+
+     /*font to be used in application 
+    Example on how to use: font-family: var(--font-type2);*/
+    --font-type: 'Helvetica', 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
