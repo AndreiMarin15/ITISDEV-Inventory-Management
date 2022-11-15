@@ -8,5 +8,61 @@
 
      /*font to be used in application 
     Example on how to use: font-family: var(--font-type2);*/
-    --font-type: 'Helvetica', 'Segoe UI', Tahoma, Verdana, sans-serif;
+    --font-family: Verdana, Arial;
+}
+
+body{
+    display: flex;
+    flex-direction:row;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-type);
+    background-color:var(--clr-white);
+}
+
+.panel-container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background-color: var(--clr-green);
+    max-width:150px;
+    height:100vw;
+    padding-top:10px;
+    gap: 2px;
+}
+.content-container{
+    display:flex;
+    flex-direction:column;
+    gap: 2px;
+    background-color: var(--clr-green);
+}   
+
+.panel-box {
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    width: 100px;
+    max-width:200px;
+	height: 100px;
+    background-color: var(--clr-white);
+    border: 1px solid var(--clr-gray);
+    border-radius:15%;
+    margin:15px;
+    align-items:center;
+    justify-content:center;
+}
+
+.line-separator{
+    max-width: 110%;
+    width: 100px;
+}
+
+.panel-icons{
+    width: 50px;
+    height:50px;
+    color: var(--clr-green);
+}
+.panel-text{
+    font-family: var(--font-family);
+    color: var(--clr-green);
 }
