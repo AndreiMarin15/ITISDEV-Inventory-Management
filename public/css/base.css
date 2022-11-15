@@ -24,7 +24,7 @@ body{
     flex-direction:column;
     align-items:center;
     background-color: var(--clr-green);
-    min-width:8vw;
+    min-width:10vw;
     min-height: 100vh;
     gap: 2px;
 }
@@ -45,9 +45,9 @@ body{
     gap:5px;
     width:5vw;
     height:10vh;
-    min-width:100px;
+    min-width:80px;
     max-width:125px;
-    min-height:100px;
+    min-height:80px;
     max-height:125px;
     background-color: var(--clr-white);
     border: 1px solid var(--clr-gray);
@@ -61,14 +61,14 @@ body{
 }
 
 .panel-icons{
-    width: 4vw;
-    height:4vh;
+    width: 6vw;
+    height:6vh;
     color: var(--clr-green);
 }
 .panel-text{
     font-family: var(--font-family);
     color: var(--clr-green);
-    font-size:1em;
+    font-size:0.7em;
 }
 
 .logout-button{
