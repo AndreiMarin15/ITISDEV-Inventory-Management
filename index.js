@@ -12,7 +12,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(bodyparser.urlencoded({ extended: false }));
-
 app.set("view engine", "hbs");
 
 
@@ -36,7 +35,7 @@ port = process.env.PORT;
 hostname = process.env.HOSTNAME;
 
 app.use(express.static(`public`));
-app.use(`/`, routes);
+app.use(routes);
 
 db.connect();
 

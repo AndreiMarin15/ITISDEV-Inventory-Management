@@ -1,37 +1,31 @@
-<html>
-    <head>
-        <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="../public/css/login.css" />
-        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
-    </head>
-
+<main>
     <div class="container" id="container">
-        <div class="form-container sign-up-container">
-            <form action="#">
-                <img src="../public/images/design/logo.png" />
-                <h1 style="font-size: 30px; color: white">Inventory Management System</h1>
-            </form>
-        </div>
+            <div class="form-container sign-up-container">
+                <form action="#">
+                    <img src="/images/design/logo.png" />
+                    <h1 style="font-size: 30px; color: white">Inventory Management System</h1>
+                </form>
+            </div>
 
-        <div class="form-container sign-in-container">
-            <form method="post" action="/login">
-                <h1 style="margin: 15px">Sign in</h1>
+            <div class="form-container sign-in-container">
+                <form method="post" action="/login">
+                    <h1 style="margin: 15px">Sign in</h1>
 
-                <input type="text" id="username" name="username" placeholder="Username" required />
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Password"
-                    required
-                />
+                    <input type="text" id="username" name="username" placeholder="Username" required />
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Password"
+                        required
+                    />
 
-                <!-- <input type="checkbox" name="remember" style="padding-top: 20px"> Remember me  -->
+                    <!-- <input type="checkbox" name="remember" style="padding-top: 20px"> Remember me  -->
 
-                <a href="#"><u>Forgot your password?</u></a>
+                    <a href="#"><u>Forgot your password?</u></a>
 
-                <input type="submit" value="login" />
-            </form>
-        </div>
+                    <input type="submit" value="login" />
+                </form>
+            </div>
     </div>
-</html>
+</main>
