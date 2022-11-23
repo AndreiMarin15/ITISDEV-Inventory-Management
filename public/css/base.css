@@ -115,7 +115,7 @@ body{
 }
 
 .button-primary{
-    border: none;
+    border: 1px solid var(--clr-black);
     border-radius: 5px;
     background-color:var(--clr-white);
     font-family: var(--font-type2);
