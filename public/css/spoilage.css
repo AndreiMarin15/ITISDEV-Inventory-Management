@@ -1,4 +1,4 @@
-.add-inventory-container{
+.spoilage-container{
     display:flex;
     flex-direction: column;
     min-width:100vw;
@@ -31,7 +31,7 @@
     font-size: 20px;
 }
 
-.quantity-box{
+.amount-box{
     margin-top: -30px;
     min-height:3.5vh;
     min-width:15vw;
@@ -41,7 +41,7 @@
     align-self: left;
 }
 
-.quantity-item{
+.amount-item{
     min-width:1vw;
     min-height:2.5vh;
     border: 1px solid #1a7968;
@@ -49,7 +49,32 @@
     padding: 5px;
 }
 
-.quantity-text{
+.amount-text{
+    margin-top: 50px;
+    margin-left: 50px;
+    color: #1a7968;
+    font-size: 20px;
+}
+
+.description-box{
+    margin-top: -30px;
+    min-height:3.5vh;
+    min-width:15vw;
+    border: 1px solid #1a7968;
+    margin-right: auto;
+    margin-left: 200px;
+    align-self: left;
+}
+
+.description-item{
+    min-width:1vw;
+    min-height:2.5vh;
+    border: 1px solid #1a7968;
+    background-color: white;
+    padding: 5px;
+}
+
+.description-text{
     margin-top: 50px;
     margin-left: 50px;
     color: #1a7968;
