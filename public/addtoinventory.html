@@ -41,27 +41,33 @@
         </div>
     </div>
 
-    <div class="add-inventory-container">
-        <h1 style="font-size: 30px; color: var(--clr-green) ">Add to Inventory / New Transaction</h1>
-        <span class="search-item-text">Search Item</span>
-        <div class="search-item-box">
-            <div class="dropdown">
-                <span class="search-item-box"></span>
-                <div class="dropdown-content">
-                    <p>Item 1</p>
+    <div class="content-container">
+        <div class="createnew-box">
+            <span class="header-font">Add to Inventory / New Transaction</span>
+            <div class="field-box">
+                <div>
+                    <label for="search-item" class = "field-font">Search Item:</label>
+                </div>
+                <div>
+                    <input type="text" class="textbox-long" id="itemname" name="itemname">
                 </div>
             </div>
-        </div>
-        <span class="quantity-text">Quantity</span>
-        <div class="quantity-box">
-            <div class="dropdown">
-                <span class="quantity-box"></span>
-                <div class="dropdown-content">
-                    <p>Quantity 1</p>
+            <div class="field-box">
+                <div>
+                    <label for="quantity-item" class = "field-font">Quantity:</label>
                 </div>
+                <div>
+                    <input type="number" class="textbox-short" id="quantity" name="quantity">
+                </div>
+            </div>
+            <div>
+                <button class="button-green">Add to Inventory</button>
             </div>
         </div>
     </div>
+    
+
+
 </div>
 </body>
 </html>
