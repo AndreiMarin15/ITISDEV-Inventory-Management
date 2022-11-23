@@ -1,0 +1,37 @@
+.page-container{
+    display:flex;
+    flex-direction:column;
+    min-width:85vw;
+    padding:50px;
+    gap:10px;
+}
+ 
+.search-filters{
+    display:flex;
+    flex-direction:row;
+}
+
+.filters{
+    display:flex;
+    flex-direction:row;
+    margin-left: auto;
+    gap:20px;
+}
+
+.inventory-container{
+    background-color:var(--clr-white);
+}
+
+.inventory-table, th, td{
+    width:100%;
+    border: 3px solid var(--clr-green);
+    border-collapse:collapse;
+    padding:10px;
+    text-align:center;
+    table-layout:fixed;
+}
+
+thead th{
+    text-align:center;
+}
+
