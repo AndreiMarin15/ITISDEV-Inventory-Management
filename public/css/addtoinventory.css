@@ -56,31 +56,6 @@
     font-size: 20px;
 }
 
-.exp-date-box{
-    margin-top: -30px;
-    min-height:3.5vh;
-    min-width:15vw;
-    border: 1px solid #1a7968;
-    margin-right: auto;
-    margin-left: 200px;
-    align-self: left;
-}
-
-.exp-date-item{
-    min-width:1vw;
-    min-height:2.5vh;
-    border: 1px solid #1a7968;
-    background-color: white;
-    padding: 5px;
-}
-
-.exp-date-text{
-    margin-top: 50px;
-    margin-left: 50px;
-    color: #1a7968;
-    font-size: 20px;
-}
-
 .dropdown {
   position: relative;
   display: inline-block;
