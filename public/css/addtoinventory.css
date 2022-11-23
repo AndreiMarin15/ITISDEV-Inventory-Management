@@ -99,3 +99,8 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+h1 {
+	font-weight: bold;
+	margin-top: 50px;
+}
