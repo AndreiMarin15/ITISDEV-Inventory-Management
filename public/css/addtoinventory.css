@@ -1,4 +1,4 @@
-.create-inventory-container{
+.add-inventory-container{
     display:flex;
     flex-direction: column;
     min-width:100vw;
@@ -6,7 +6,7 @@
     background-color: white;
 }
 
-.brand-name-box{
+.search-item-box{
     margin-top: -30px;
     min-height:3.5vh;
     min-width:15vw;
@@ -16,7 +16,7 @@
     align-self: left;
 }
 
-.brand-name-item{
+.search-item-item{
     min-width:1vw;
     min-height:2.5vh;
     border: 1px solid #1a7968;
@@ -24,14 +24,14 @@
     padding: 5px;
 }
 
-.brand-name-text{
+.search-item-text{
     margin-top: 300px;
     margin-left: 50px;
     color: #1a7968;
     font-size: 20px;
 }
 
-.category-box{
+.quantity-box{
     margin-top: -30px;
     min-height:3.5vh;
     min-width:15vw;
@@ -41,7 +41,7 @@
     align-self: left;
 }
 
-.category-item{
+.quantity-item{
     min-width:1vw;
     min-height:2.5vh;
     border: 1px solid #1a7968;
@@ -49,14 +49,14 @@
     padding: 5px;
 }
 
-.category-text{
+.quantity-text{
     margin-top: 50px;
     margin-left: 50px;
     color: #1a7968;
     font-size: 20px;
 }
 
-.net-weight-box{
+.exp-date-box{
     margin-top: -30px;
     min-height:3.5vh;
     min-width:15vw;
@@ -66,7 +66,7 @@
     align-self: left;
 }
 
-.net-weight-item{
+.exp-date-item{
     min-width:1vw;
     min-height:2.5vh;
     border: 1px solid #1a7968;
@@ -74,21 +74,11 @@
     padding: 5px;
 }
 
-.net-weight-text{
+.exp-date-text{
     margin-top: 50px;
     margin-left: 50px;
     color: #1a7968;
     font-size: 20px;
-}
-
-.unit-measure-box{
-    margin-top: 20px;
-    min-height:2.5vh;
-    min-width:5vw;
-    border: 1px solid #1a7968;
-    margin-right: auto;
-    margin-left: 200px;
-    align-self: left;
 }
 
 .dropdown {
