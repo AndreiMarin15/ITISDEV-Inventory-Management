@@ -1,3 +1,16 @@
+@font-face {
+    font-family: 'Omnes';
+    src: url('font/Omnes.eot') format('embedded-opentype'), /* IE6-IE8 */
+         url('font/Omnes.woff') format('woff'),
+         url('font/Omnes.woff2') format('woff2'), /* Modern Browsers */
+         url('font/Omnes.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: 'Omnes Medium';
+    src: url('font/Omnes Medium.otf') format('opentype');
+}
+
 :root{
     /*colors to be used in application 
     Example on how to use: color: var(--clr-white);*/
@@ -10,7 +23,8 @@
 
      /*font to be used in application 
     Example on how to use: font-family: var(--font-type2);*/
-    --font-family: Verdana, Arial;
+    --font-type: 'Omnes', Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-type2: 'Omnes Medium', var(--font-type);
 }
 
 body{
@@ -19,6 +33,7 @@ body{
     margin: 0;
     padding: 0;
     background-color:var(--clr-peach);
+    font-family: var(--font-type2);
 }
 
 .header-font{
@@ -91,15 +106,24 @@ body{
     font-size:15px;
 }
 
+.dropdown{
+    padding: 7px 5px;
+    border-radius: 5px;
+    border: 1px solid var(--clr-green);
+    width:8vw;
+    font-weight: bold;
+}
+
 .button-primary{
     border: none;
     border-radius: 5px;
     background-color:var(--clr-white);
-    border: 2px solid var(--clr-darkgreen);
+    font-family: var(--font-type2);
+    font-size: 14px;
+    width:50%;
     color:var(--clr-green);
-    width:60%;
-    height:5%;
     padding: 10px; 
     box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+    cursor: pointer;
     text-align: center;
 }

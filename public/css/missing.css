@@ -5,7 +5,7 @@
     padding:50px;
     gap:10px;
 }
-
+ 
 .search-filters{
     display:flex;
     flex-direction:row;
@@ -38,4 +38,15 @@ thead th{
     font-size:1.5rem;
 }
 
+.submit-button{
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
 
+.button-submit{
+    color:var(--clr-white);
+    min-width:30%;
+    min-height:25%;
+    background-color:var(--clr-green);
+}
