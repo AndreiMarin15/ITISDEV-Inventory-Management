@@ -18,7 +18,12 @@ body{
     flex-direction:row;
     margin: 0;
     padding: 0;
-    background-color:var(--clr-gray);
+    background-color:var(--clr-peach);
+}
+
+.header-font{
+    color:var(--clr-green);
+    font-size: 4em;
 }
 
 .panel-container{
