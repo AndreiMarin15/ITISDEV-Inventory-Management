@@ -101,3 +101,5 @@ dist
 
 # DynamoDB Local files
 .dynamodb/
+routes/routes.js
+*.js
