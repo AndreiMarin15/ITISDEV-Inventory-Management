@@ -50,3 +50,27 @@ thead th{
     min-height:25%;
     background-color:var(--clr-green);
 }
+
+.category-box{
+    display:flex;
+    flex-direction: row;
+    min-width:5vw;
+    background-color: var(--clr-peach);
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 30px;
+}
+
+.category-item{
+    min-width:1vw;
+    min-height:2.5vh;
+    padding: 15px;
+    border-color: var(--clr-green);
+    border-radius: 15%;
+}
+
+.category-text{
+    font-size:1em;
+    font-family: var(--font-family);
+    color: var(--clr-green)
+}
