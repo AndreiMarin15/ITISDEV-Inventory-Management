@@ -41,22 +41,60 @@
         </div>
     </div>
 
-    <div class="spoilage-container">
-        <h1 style="font-size: 30px; color: var(--clr-green) ">Inventory Item Spoilage</h1>
-        <span class="search-item-text">Search Item</span>
-        <div class="search-item-box">
-            <div class="dropdown">
-                <span class="search-item-box"></span>
-                <div class="dropdown-content">
-                    <p>Item 1</p>
+    <div class="page-container">
+        <div><span class="header-font">Inventory Item Spoilage</span></div>
+
+    <div class="category-box">
+                <div>
+                    <button class="category-item"><span class="category-text">Dairy</span></button>
+                </div>
+                <div>
+                    <button class="category-item"><span class="category-text">Drinks</span></button>
+                </div>
+                <div>
+                    <button class="category-item"><span class="category-text">Fruits</span></button>
+                </div>
+                <div>
+                    <button class="category-item"><span class="category-text">Meat</span></button>
+                </div>
+                <div>
+                    <button class="category-item"><span class="category-text">Poultry</span></button>
+                </div>
+                <div>
+                    <button class="category-item"><span class="category-text">Vegetables</span></button>
                 </div>
             </div>
+
+            <div class="inventory-container">
+                <table class="inventory-table">
+                    <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Physical Count</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td rowspan="3"> Coke </td>
+                        <td> Sakto </td>
+                        <td><input type="number">  </td>
+                        
+                    </tr>
+                    <tr>
+                        <td> Litro </td>
+                        <td><input type="number">  </td>
+                    </tr>
+                    <tr>
+                        <td> Mismo </td>
+                        <td><input type="number">  </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="submit-button">
+            <button class="button-submit">Submit</button>
+            </div>
         </div>
-        <span class="amount-text">Amount</span>
-        <div class="amount-box"></div>
-        <span class="description-text">Description <br>(Optional)</span>
-        <div class="description-box"></div>
-    </div>
-</div>
 </body>
 </html>
