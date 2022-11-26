@@ -73,7 +73,7 @@
                 </div>
 
                 <div>
-                    <button class="button-green">Create New Category</button>
+                    <button class="button-submit">Create New Category</button>
                 </div>
             </div>
         
@@ -105,10 +105,16 @@
                     </select>
                 </div>
             </div>
-
-            <div>
-                <button class="button-green">Create Item</button>
-            </div>
+			<button class="button-green popup" onclick="myFunction()">Create Item
+				<span class="popuptext" id="myPopup">Inventory Item Created!</span>
+			</button>
+			<script>
+				// When the user clicks on <div>, open the popup
+				function myFunction() {
+				  var popup = document.getElementById("myPopup");
+				  popup.classList.toggle("show");
+				}
+			</script>
 
         </div>
     </div>

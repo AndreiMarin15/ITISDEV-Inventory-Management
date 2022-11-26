@@ -142,7 +142,16 @@
 					</table>
 				</div>
 			</div>
-			<button class="button-submit">Confirm</button>
+			<button class="button-submit popup" onclick="myFunction()">Confirm
+				<span class="popuptext" id="myPopup">Successful Transaction!</span>
+			</button>
+			<script>
+				// When the user clicks on <div>, open the popup
+				function myFunction() {
+				  var popup = document.getElementById("myPopup");
+				  popup.classList.toggle("show");
+				}
+			</script>
 		</div>
 		
 		</div>
