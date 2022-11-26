@@ -17,6 +17,7 @@
     --clr-white: white;
     --clr-gray: hsl(210, 15%, 74%);
     --clr-gray-100: hsl(0, 0%, 90%);
+    --clr-gray-200: hsl(0, 2%, 74%);
     --clr-gray-500: hsl(210, 13%, 65%);
     --clr-gray-600: hsl(203, 10%, 60%);
 
@@ -92,12 +93,13 @@ body{
 }
 
 .selected-box{
-    background-color: var(--clr-white);
+    background-color: var(--clr-darkgreen);
+    color:var(--clr-white);
+    font-weight:bold;
 }
 
 .line-separator{
-    max-width: 70%;
-    width: 100px;
+    min-width: 70%;
 }
 
 .panel-icons{
@@ -165,6 +167,7 @@ body{
     min-width:10vw;
     min-height:5vh;
     background-color:var(--clr-green);
+    border-radius: 10%;
 }
 
 .textbox-long{
@@ -210,4 +213,13 @@ body{
     text-align: left;
     min-width:20vw;
     min-height:5vh;
+}
+
+button:hover{
+    color:white;
+    background-color: var(--clr-darkgreen);
+    border-color:var(--clr-green);
+    border-style:solid;
+    border-radius: 10%;
+    transition:0.5s;
 }

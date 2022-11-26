@@ -33,37 +33,40 @@
     gap: 15px;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    border: 1px solid var(--clr-green);
     padding: 10px;
     margin: 30px;
+    margin-bottom:10px;
 }
 
 .category-item{
     min-width:1vw;
     min-height:2.5vh;
     padding: 15px;
-    border-color: var(--clr-green);
-    border-radius: 15%;
+    /* border:1px solid var(--clr-green); */
+    border-color:var(--clr-green);
+    border-style:solid;
+    border-radius: 10%;
 }
 
 .category-text{
     font-size:1em;
     font-family: var(--font-family);
-    color: var(--clr-green)
+    font-weight:bold;
+    color: var(--clr-black)
 }
 
 .menu-text{
     font-size:2em;
     font-family: var(--font-family);
     font-weight: bold;    
-    color: #000;
+    /* color: #000; */
 }
 
 .price-text{
     font-size:1.5em;
     font-family: var(--font-family);  
     font-weight: bold; 
-    color: var(--clr-green);
+    /* color: var(--clr-green); */
 }
 
 .search-box{
@@ -90,26 +93,26 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     min-width:7vw;
-    min-height:15vw;
+    min-height:25vh;
     gap:30px;
     text-align:center;
-    /* border: 1px solid var(--clr-green); */
-    background-color: var(--clr-gray-100);
-    border-radius:5%;
+    border: 1px solid var(--clr-green);
+    background-color: white;
     padding: 20px;
     margin: 30px;
     margin-top: 0px;
 }
 
 .menuitem{
-    min-width:7vw;
-    min-height:5vw;
+    min-width:8vw;
+    min-height:7vw;
     padding: 7px;
-    border: 0.5px solid var(--clr-white);
-    border-radius: 15%;
-    color: var(--clr-primary);
-    background-color: var(--clr-white);
     font-size: 10px;
+    color: var(--clr-primary);
+    background-color: var(--clr-gray-100);
+    border-color:var(--clr-green);
+    border-style:solid;
+    border-radius: 10%;
 }
 
 .checkout-container{
@@ -137,11 +140,15 @@
     justify-content:space-evenly;
     text-align:center;
     margin-top: 50px;
-    background-color:var(--clr-gray-100);
+    background-color:var(--clr-gray-200);
     /* border: 2px solid var(--clr-darkgreen); */
-    border-radius:5%;
 }
 
 .summary-table{
     border-spacing: 40px 0px;
+    font-weight:bold;
+}
+
+.checkout-box{
+    background-color:var(--clr-gray-100);
 }

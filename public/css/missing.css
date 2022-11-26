@@ -44,13 +44,6 @@ thead th{
     text-align:center;
 }
 
-.button-submit{
-    color:var(--clr-white);
-    min-width:30%;
-    min-height:25%;
-    background-color:var(--clr-green);
-}
-
 .category-box{
     display:flex;
     flex-direction: row;
