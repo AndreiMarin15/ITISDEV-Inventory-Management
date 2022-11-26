@@ -41,60 +41,38 @@
         </div>
     </div>
 
-    <div class="page-container">
-        <div><span class="header-font">Inventory Item Spoilage</span></div>
-
-    <div class="category-box">
-                <div>
-                    <button class="category-item"><span class="category-text">Dairy</span></button>
+        <div class="content-container">
+            <div class="createnew-box">
+                <span class="header-font">Inventory Item Spoilage</span>
+                <div class="field-box">
+                    <div>
+                        <label for="search-item" class = "field-font">Search Item </label>
+                    </div>
+                    <div>
+                        <input type="text" class="textbox-long" id="itemname" name="itemname">
+                    </div>
+                </div>
+                <div class="field-box">
+                    <div>
+                       <label for="quantity-item" class = "field-font">Amount </label>
+                    </div>
+                    <div>
+                        <input type="number" class="textbox-short" id="quantity" name="quantity">
+                    </div> 
+                </div>
+                <div class="field-box">
+                    <div>
+                        <label for="desc" class = "field-font">Description </label>
+                    </div>
+                    <div>
+                        <textarea class="textarea-long" id="description" name="description"></textarea>
+                    </div>
                 </div>
                 <div>
-                    <button class="category-item"><span class="category-text">Drinks</span></button>
+                    <button class="button-green">Submit</button>
                 </div>
-                <div>
-                    <button class="category-item"><span class="category-text">Fruits</span></button>
-                </div>
-                <div>
-                    <button class="category-item"><span class="category-text">Meat</span></button>
-                </div>
-                <div>
-                    <button class="category-item"><span class="category-text">Poultry</span></button>
-                </div>
-                <div>
-                    <button class="category-item"><span class="category-text">Vegetables</span></button>
-                </div>
-            </div>
-
-            <div class="inventory-container">
-                <table class="inventory-table">
-                    <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Type</th>
-                        <th>Physical Count</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td rowspan="3"> Coke </td>
-                        <td> Sakto </td>
-                        <td><input type="number">  </td>
-                        
-                    </tr>
-                    <tr>
-                        <td> Litro </td>
-                        <td><input type="number">  </td>
-                    </tr>
-                    <tr>
-                        <td> Mismo </td>
-                        <td><input type="number">  </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="submit-button">
-            <button class="button-submit">Submit</button>
             </div>
         </div>
+    </div>
 </body>
 </html>
