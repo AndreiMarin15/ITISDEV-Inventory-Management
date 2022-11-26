@@ -15,11 +15,18 @@
     /*colors to be used in application 
     Example on how to use: color: var(--clr-white);*/
     --clr-white: white;
-    --clr-gray: #ced4db;
-    --clr-black: black;
+    --clr-gray: hsl(210, 15%, 74%);
+    --clr-gray-100: hsl(0, 0%, 90%);
+    --clr-gray-500: hsl(210, 13%, 65%);
+    --clr-gray-600: hsl(203, 10%, 60%);
+
+    --clr-bg: hsl(214, 100%, 96%);
+
     --clr-green: #1b7565;
     --clr-darkgreen: #0f4d41;
-    --clr-peach: #ece8da;
+
+    --clr-primary: hsl(158, 36%, 26%);
+    --clr-txt-secondary: hsl(208, 24%, 53%);
 
      /*font to be used in application 
     Example on how to use: font-family: var(--font-type2);*/
@@ -32,17 +39,18 @@ body{
     flex-direction:row;
     margin: 0;
     padding: 0;
-    background-color:var(--clr-peach);
+    background-color:var(--clr-gray-100);
     font-family: var(--font-type2);
+    color:var(--clr-txt-primary);
 }
 
 .header-font{
-    color:var(--clr-green);
+    color:var(--clr-txt-primary);
     font-size: 4em;
 }
 
 .field-font{
-    color:var(--clr-green);
+    color:var(--clr-txt-primary);
     font-size: 1em;
     font-weight: 600;
     margin-right: 15px;
@@ -52,7 +60,7 @@ body{
     display:flex;
     flex-direction:column;
     align-items:center;
-    background-color: var(--clr-green);
+    background-color: var(--clr-primary);
     min-width:10vw;
     min-height: 100vh;
     gap: 2px;
@@ -62,7 +70,7 @@ body{
     display:flex;
     flex-direction:row;
     gap: 5px;
-    background-color: var(--clr-peach);
+    background-color: var(--clr-gray-100);
 }   
 
 .panel-box {
@@ -78,14 +86,13 @@ body{
     max-width:125px;
     min-height:80px;
     max-height:125px;
-    background-color: var(--clr-white);
-    border: 1px solid var(--clr-gray);
+    background-color: var(--clr-txt-primary);
     border-radius:15%;
     margin: 7px;
 }
 
 .selected-box{
-    background-color: var(--clr-gray);
+    background-color: var(--clr-white);
 }
 
 .line-separator{
@@ -96,11 +103,11 @@ body{
 .panel-icons{
     width: 6vw;
     height:6vh;
-    color: var(--clr-green);
+    color: var(--clr-gray-100);
 }
 .panel-text{
     font-family: var(--font-family);
-    color: var(--clr-green);
+    color: var(--clr-gray-100);
     font-size:0.7em;
 }
 
