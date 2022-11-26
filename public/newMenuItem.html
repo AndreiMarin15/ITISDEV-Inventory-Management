@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Panel</title>
+        <link rel="stylesheet" href="css/newMenuItem.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+    </head>
+    <!-- Content Here -->
+    <body>
+        <div class="panel-container">
+			<div class ="panel-box">
+				<i class="fa-solid fa-user panel-icons"></i>
+				<span class="panel-text">Profile</span>
+			</div>
+			<hr class="line-separator">
+			<div class ="panel-box">
+				<i class="fa-solid fa-cash-register panel-icons"></i>
+				<span class="panel-text">POS</span>
+			</div>
+			<div class ="panel-box">
+				<i class="fa-solid fa-square-poll-vertical panel-icons"></i>
+				<span class="panel-text">Statistics</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-solid fa-box panel-icons"></i>
+				<span class="panel-text">Inventory</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-regular fa-rectangle-list panel-icons"></i>
+				<span class="panel-text">Menu List</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-regular fa-trash-can panel-icons"></i>
+				<span class="panel-text">Spoilage</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-regular fa-trash-can panel-icons"></i>
+				<span class="panel-text">Missing</span>
+			</div>
+			<div class ="logout-button">
+				<i class="fa-solid fa-right-from-bracket logout-icon"></i>
+				<span>Log Out</span>
+			</div>
+		</div>
+
+    <div class="content-container">
+        <div class="newMenuItem-box">
+            <div><span class="header-font">New Menu Item</span></div>
+            <div class="field-box">
+                <div>
+                    <label for="search-item" class = "field-font">Menu Item Name</label>
+                </div>
+                <div>
+                    <input type="text" class="textbox-long" id="itemname" name="itemname">
+                </div>
+            </div>
+
+            <div class="field-box">
+                <div>
+                    <label for="search-item" class = "field-font">Ingredients</label>
+                </div>
+                    <table class="ingredients-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                            </tr>
+                            <tr>
+                                <td> Coke </td>
+                                <td><input type="number">  </td> 
+                                <td> L </td>
+                            </tr>
+                            <tr>
+                                <td> Pasta </td>
+                                <td><input type="number">  </td> 
+                                <td> kg </td>
+                            </tr> 
+                            <tr>
+                                <td> <input type="text"> </td>
+                                <td> - </td> 
+                                <td> - </td>
+                            </tr>                              
+                        </thead>
+                </table>
+                <div>
+                    <button class="button-green">Add Ingredient</button>
+                </div>
+            </div>
+
+            <div class="field-box">
+                <div>
+                    <label for="quantity-item" class = "field-font">Instructions (Optional)</label>
+                </div>
+                <div>
+                    <textarea class="textarea-long" id="description" name="description"></textarea>
+                </div>
+            </div>
+            <div>
+                <button class="button-green">Done</button>
+            </div>
+        </div>
+    </div>
+    
+
+
+</div>
+</body>
+</html>
