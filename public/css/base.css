@@ -87,7 +87,6 @@ body{
     max-width:125px;
     min-height:80px;
     max-height:125px;
-    background-color: var(--clr-txt-primary);
     border-radius:15%;
     margin: 7px;
 }
@@ -98,6 +97,12 @@ body{
     font-weight:bold;
 }
 
+.selected-tab{
+    background-color: var(--clr-gray-200);
+    color:var(--clr-primary);
+    font-weight:bold;
+}
+
 .line-separator{
     min-width: 70%;
 }
@@ -105,7 +110,7 @@ body{
 .panel-icons{
     width: 6vw;
     height:6vh;
-    color: var(--clr-gray-100);
+    color: var(--clr-white);
 }
 .panel-text{
     font-family: var(--font-family);

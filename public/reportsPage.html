@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Panel</title>
-        <link rel="stylesheet" href="css/invmanagerPanel.css" />
+        <link rel="stylesheet" href="css/reportsPage.css" />
         <link rel="stylesheet" href="css/base.css" />
         <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
     </head>
@@ -40,7 +40,7 @@
         </div>
 
         <div class="page-container">
-            <div><span class="header-font">Inventory List</span></div>
+            <div><span class="header-font">Inventory Reports Page</span></div>
             <div class="search-filters">
                 <div>
                     <input type="text" placeholder="Search" name="search">
@@ -48,17 +48,19 @@
                 </div>
                 <div class="filters">
                     <div>
-                        <label for="filters">Filter by:</label>
-                        <select id="filter" class="dropdown" name="filter">
-                            <option value="Category">Category</option>
-                            <option value="Food-Group">Food Group</option>
+                        <label for="filters">Sort By:</label>
+                        <select id="sort" class="dropdown" name="sort">
+                            <option value="Ascending">Date, Ascending</option>
+                            <option value="Descending">Date, Descending</option>
+                            <option value="Ascending">Employee, Ascending</option>
+                            <option value="Descending">Employee, Descending</option>
                         </select>
                     </div>
                     <div>
-                        <label for="filters">Sort By:</label>
-                        <select id="sort" class="dropdown" name="sort">
-                            <option value="Ascending">Ascending</option>
-                            <option value="Descending">Descending</option>
+                        <label for="filters">Type: </label>
+                        <select id="filter" class="dropdown" name="filter">
+                            <option value="Missing">Missing</option>
+                            <option value="Spoilage">Spoilage</option>
                         </select>
                     </div>
                 </div>
@@ -67,48 +69,24 @@
                 <table class="inventory-table">
                     <thead>
                     <tr>
-                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Report Type</th>
                         <th>Food Group</th>
-                        <th>Running Total</th>
-                        <th>Unit</th>
+                        <th>Employee in-Charge</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td> Coke </td>
+                        <td> 26/11/2022 </td>
+                        <td> Missing </td>
                         <td> Drinks </td>
-                        <td> 5 </td>
-                        <td> Liters (L) </td>
+                        <td> Juan De La Cruz </td>
                     </tr>
                     <tr>
-                        <td> Chicken </td>
+                        <td> 20/9/2021 </td>
+                        <td> Spoilage </td>
                         <td> Meat </td>
-                        <td> 5 </td>
-                        <td> Kilograms (Kg) </td>
-                    </tr>
-                    <tr>
-                        <td> Eggs </td>
-                        <td> Poultry </td>
-                        <td> 10 </td>
-                        <td> Pieces (Pcs) </td>
-                    </tr>
-                    <tr>
-                        <td> Beans </td>
-                        <td> Vegetables </td>
-                        <td> 10 </td>
-                        <td> Kilograms (Kg) </td>
-                    </tr>
-                    <tr>
-                        <td> Orange </td>
-                        <td> Fruits </td>
-                        <td> 100 </td>
-                        <td> Grams (g) </td>
-                    </tr>
-                    <tr>
-                        <td> Milk </td>
-                        <td> Dairy </td>
-                        <td> 7 </td>
-                        <td> Liters (L) </td>
+                        <td> Mark Spencer </td>
                     </tr>
                     </tbody>
                 </table>

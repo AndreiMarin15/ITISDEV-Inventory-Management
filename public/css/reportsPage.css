@@ -5,7 +5,7 @@
     padding:50px;
     gap:10px;
 }
- 
+
 .search-filters{
     display:flex;
     flex-direction:row;
@@ -38,33 +38,4 @@ thead th{
     font-size:1.5rem;
 }
 
-.submit-button{
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-}
 
-.category-box{
-    display:flex;
-    flex-direction: row;
-    min-width:5vw;
-    background-color: var(--clr-peach);
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top:30px;
-    margin-bottom:10px;
-}
-
-.category-item{
-    min-width:10vw;
-    min-height:3vh;
-    padding: 15px;
-    border-color: var(--clr-green);
-    border-radius: 5%;
-    border-style:solid;
-}
-
-.category-text{
-    font-size:1em;
-    font-family: var(--font-family);
-}

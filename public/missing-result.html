@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Panel</title>
-        <link rel="stylesheet" href="css/missing.css" />
+        <link rel="stylesheet" href="css/missingresult.css" />
         <link rel="stylesheet" href="css/base.css" />
         <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
     </head>
@@ -29,7 +29,7 @@
                 <i class="fa-regular fa-trash-can panel-icons"></i>
                 <span class="panel-text">Spoilage</span>
             </div>
-            <div class="panel-box">
+            <div class="panel-box selected-tab">
                 <i class="fa-solid fa-circle-question panel-icons"></i>
                 <span class="panel-text">Missing</span>
             </div>
@@ -40,56 +40,30 @@
         </div>
 
         <div class="page-container">
-            <div><span class="header-font">Inventory Item Missing</span></div>
-            <div class="category-box">
-                <div>
-                    <button class="category-item"><span class="category-text">Dairy</span></button>
-                </div>
-                <div>
-                    <button class="category-item selected-box"><span class="category-text">Drinks</span></button>
-                </div>
-                <div>
-                    <button class="category-item"><span class="category-text">Fruits</span></button>
-                </div>
-                <div>
-                    <button class="category-item"><span class="category-text">Meat</span></button>
-                </div>
-                <div>
-                    <button class="category-item"><span class="category-text">Poultry</span></button>
-                </div>
-                <div>
-                    <button class="category-item"><span class="category-text">Vegetables</span></button>
-                </div>
-            </div>
+            <div><span class="header-font">Missing Result Page</span></div>
 
             <div class="inventory-container">
                 <table class="inventory-table">
                     <thead>
                         <tr>
-                            <th>Category</th>
-                            <th>Type</th>
+                            <th>Category Name</th>
+                            <th>Inventory Count</th>
                             <th>Physical Count</th>
+                            <th>Discrepancy</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td rowspan="3"> Coke </td>
-                            <td> Sakto </td>
-                            <td><input type="number">  </td> 
-                        </tr>
-                        <tr>
-                            <td> Litro </td>
-                            <td><input type="number">  </td>
-                        </tr>
-                        <tr>
-                            <td> Mismo </td>
-                            <td><input type="number">  </td>
+                            <td> Coke </td>
+                            <td> 4.00 Liters </td>
+                            <td> 3.00 Liters </td> 
+                            <td> 1.00 Liters  </td> 
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="submit-button">
-            <button class="button-submit">Submit</button>
+            <button class="button-submit">Back</button>
             </div>
         </div>
 

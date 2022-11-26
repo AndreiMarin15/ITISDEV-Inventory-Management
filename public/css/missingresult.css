@@ -6,17 +6,6 @@
     gap:10px;
 }
  
-.search-filters{
-    display:flex;
-    flex-direction:row;
-}
-
-.filters{
-    display:flex;
-    flex-direction:row;
-    margin-left: auto;
-    gap:20px;
-}
 
 .inventory-container{
     background-color:var(--clr-white);
@@ -39,9 +28,9 @@ thead th{
 }
 
 .submit-button{
-    align-items:center;
-    justify-content:center;
-    text-align:center;
+    align-items:right;
+    justify-content:right;
+    text-align:right;
 }
 
 .category-box{
