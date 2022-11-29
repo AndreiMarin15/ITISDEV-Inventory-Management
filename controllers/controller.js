@@ -1,5 +1,8 @@
 const db = require("../models/db");
 const User = require("../models/User");
+const Category = require("../models/Category");
+const IngredientList = require("../models/ingredientList");
+
 
 const controller = {
     getIndex: (req, res) => {
