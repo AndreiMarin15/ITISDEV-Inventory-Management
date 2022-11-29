@@ -105,7 +105,7 @@
 
 .menuitem{
     min-width:8vw;
-    min-height:7vw;
+    min-height:14vh;
     padding: 7px;
     font-size: 10px;
     color: var(--clr-primary);
