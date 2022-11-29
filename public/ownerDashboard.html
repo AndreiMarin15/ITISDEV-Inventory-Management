@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/ownerDashboard.css">
+		<script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+
+		<!-- START SIDE PANEL -->
+		<div class="panel-container">
+			<div class ="panel-box selected-tab">
+				<i class="fa-solid fa-user panel-icons"></i>
+				<span class="panel-text">Profile</span>
+			</div>
+			<hr class="line-separator">
+			<div class ="panel-box">
+				<i class="fa-solid fa-cash-register panel-icons"></i>
+				<span class="panel-text">POS</span>
+			</div>
+			<div class ="panel-box">
+				<i class="fa-solid fa-square-poll-vertical panel-icons"></i>
+				<span class="panel-text">Statistics</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-solid fa-box panel-icons"></i>
+				<span class="panel-text">Inventory</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-regular fa-rectangle-list panel-icons"></i>
+				<span class="panel-text">Menu List</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-regular fa-trash-can panel-icons"></i>
+				<span class="panel-text">Spoilage</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-regular fa-trash-can panel-icons"></i>
+				<span class="panel-text">Missing</span>
+			</div>
+			<div class ="logout-button">
+				<i class="fa-solid fa-right-from-bracket logout-icon"></i>
+				<span>Log Out</span>
+			</div>
+		</div>
+		<!-- END SIDE PANEL -->
+
+        <div class="content-container">
+            <div class="containers">
+
+                <!-- ANNOUNCEMENTS GRID -->
+                <div class="Announcements">
+                    <div class="grid-content">
+                        <h1> Announcements </h1>
+
+                        <!-- NOTES: need to insert icons/images -->
+                        <h2> New Company Objective Published </h2>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                            Ut enim ad minim veniam, , quis nostrud exercitation ullamco. </p>
+
+                        <h2> New self-appraisal received </h2>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                            Ut enim ad minim veniam, , quis nostrud exercitation ullamco. </p>
+                    </div>
+                </div>
+                <!-- END ANNOUNCEMENTS GRID -->
+
+                <!-- TO DO GRID -->
+                <div class="To-Do">
+                    <div class="grid-content">
+                        <h1> To Do List: </h1>
+                        <!-- START TO-DO TABLE
+                                NOTES:  need to turn into scrollable table
+                                        when rows are being added, grid only
+                                        gets bigger -->
+                        <table>
+                            <col style="width:15%">
+					        <col style="width:15%">
+					        <col style="width:10%">
+
+                            <thead>
+                                <tr>
+                                    <th>Assigned to:</th>
+                                    <th>Task</th>
+                                    <th>Deadline</th>
+                                </tr>
+                            </thead>
+                                <tr>
+                                    <td>Jose Santos</td>
+                                    <td>Clean kitchen</td>
+                                    <td>11.29.22</td>
+                                </tr>
+                                <tr>
+                                    <td>Jose Santos</td>
+                                    <td>Clean kitchen</td>
+                                    <td>11.29.22</td>
+                                </tr>
+                                <tr>
+                                    <td>Jose Santos</td>
+                                    <td>Clean kitchen</td>
+                                    <td>11.29.22</td>
+                                </tr>
+                        </table>
+                        <!-- END TO-DO TABLE -->
+                    </div>
+                </div>
+                <!-- END TO DO GRID -->
+
+                <!-- STATISTICS GRID -->
+                <div class="Sample-Statistics">
+                    <div class="grid-content">
+                        <h1> Sample Statistics</h1>
+                    </div>
+                </div>
+                 <!-- END STATISTICS GRID -->
+
+                 <!-- GROCERY LIST GRID-->
+                <div class="Grocery-List">
+                    <div class="grid-content">
+                        <h1>Suggested Grocery List</h1>
+                         <!-- START TO-DO TABLE
+                                NOTES:  need to turn into scrollable table
+                                        when rows are being added, grid only
+                                        gets bigger -->
+                            <table>
+                                <col style="width:15%">
+                                <col style="width:5%">
+                    
+                                <thead>
+                                     <tr>
+                                        <th>Item Name</th>
+                                        <th>Quantity</th>
+                                     </tr>
+                                </thead>
+                                    <tr>
+                                        <td>Chicken</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pork</td>
+                                        <td>5</td>
+                                    </tr>    
+                                    <tr>
+                                        <td>Coke</td>
+                                        <td>10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ice Cream</td>
+                                        <td>15</td>
+                                    </tr>
+                            </table>
+                    </div>
+                </div>
+                <!-- END GROCERY LIST GRID-->
+
+ 
+                <!-- SAMPLE STATISTICS 2 GRID-->
+                <div class="Sample-Statistics-2">
+                    <div class="grid-content">
+                        <h1> Sample Statistics (Total Sales)</h1>
+                    </div>
+                </div>
+                <!-- END SAMPLE STATISTICS 2 GRID-->
+
+            </div>
+
+        </div>
+
+	</body>
+	</html>
