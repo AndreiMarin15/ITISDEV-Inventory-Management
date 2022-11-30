@@ -1,4 +1,4 @@
-.menulist-container{
+.breakfastmeals-container{
     display:flex;
     flex-direction: column;
     min-width:60vw;
@@ -7,21 +7,14 @@
     background-color: var(--clr-peach);
 }
 
-.menulist-text{
+.breakfastmeals-text{
     font-size:2em;
     font-family: var(--font-family);
     font-weight: bold;    
     /* color: #000; */
 }
 
-.search-box{
-    min-height:2.5vh;
-    padding-top: 20px;
-    margin-left: auto;
-    align-self: center;
-}
-
-.menulist-box{
+.breakfastmeals-box{
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -36,10 +29,10 @@
     margin: 30px;
 }
 
-.menufolder{
+.breakfastmeals-folder{
     min-width:8vw;
     min-height:20vh;
-    padding: 7px;
+    padding: 20px;
     font-size: 10px;
     color: var(--clr-primary);
     background-color: var(--clr-gray-100);
@@ -54,7 +47,7 @@
     font-weight:bold;
 }
 
-.button-addfolder{
+.button-addmenuitem{
     color:var(--clr-white);
     min-width:10vw;
     min-height:5vh;
