@@ -2,7 +2,16 @@ const db = require("../models/db");
 const User = require("../models/User");
 const Category = require("../models/Category");
 const IngredientList = require("../models/ingredientList");
-
+const Missing = require("../models/missing");
+const OrderList = require("../models/OrderList");
+const POS = require("../models/POS");
+const Recipe = require("../models/recipe");
+const Spoilage = require("../models/spoilage");
+const TotalInventory = require("../models/totalInventory");
+const Transactions = require("../models/transactions");
+const Unit = require("../models/unit");
+const UnitConversion = require("../models/unitConversion");
+const UserType = require("../models/UserType");
 
 const controller = {
     getIndex: (req, res) => {
@@ -10,26 +19,66 @@ const controller = {
     },
 
     login: (req, res) => {
-        let username = req.body.username;
-        let password = req.body.password;
-        let fName = "Andrei";
-        let lName = "Marin";
-        let type = 1;
-
-        const newUser = new User({
-            userID: username,
-            firstName: fName,
-            lastName: lName,
-            password: password,
-            userType: type,
-        });
-
-        db.insertOne(User, newUser, (result) => {
-            res.json(result);
-        });
-
-        res.redirect("/");
+        // function for logging in
+        // use bcrypt only when finalized account creation
     },
+
+    // cashier
+
+    getMenu: (req, res) => {
+        // function to get the menu list to be displayed
+    },
+
+    checkout: (req, res) => {},
+
+    // inventory manager
+
+    createCategory: (req, res) => {},
+
+    createItem: (req, res) => {},
+
+    addToInventory: (req, res) => {},
+
+    getInventoryList: (req, res) => {},
+
+    addSpoiled: (req, res) => {},
+
+    addMissing: (req, res) => {},
+
+    getDiscrepancy: (req, res) => {},
+
+    // owner
+    getDashboard: (req, res) => {},
+
+    addMenuFolder: (req, res) => {},
+
+    getMenu: (req, res) => {},
+
+    getFolderItems: (req, res) => {},
+
+    newMenuItem: (req, res) => {},
+
+    addMenuItem: (req, res) => {},
+
+    getTodaysMenu: (req, res) => {},
+
+    addTodaysMenu: (req, res) => {},
+
+    getInventoryReports: (req, res) => {},
+
+    getIngredients: (req, res) => {},
+
+    addIngredient: (req, res) => {},
+
+    getAuditTrail: (req, res) => {},
+
+    viewInvoice: (req, res) => {},
+
+    getTotalSale: (req, res) => {},
+
+    getIngredientCost: (req, res) => {},
+
+    
 };
 
 module.exports = controller;
