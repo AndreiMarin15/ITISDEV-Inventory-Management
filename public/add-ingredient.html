@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/ingredients.css">
+		<script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+
+		<!-- START SIDE PANEL -->
+		<div class="panel-container">
+			<div class ="panel-box">
+				<i class="fa-solid fa-user panel-icons"></i>
+				<span class="panel-text">Profile</span>
+			</div>
+			<hr class="line-separator">
+			<div class ="panel-box">
+				<i class="fa-solid fa-cash-register panel-icons"></i>
+				<span class="panel-text">POS</span>
+			</div>
+			<div class ="panel-box">
+				<i class="fa-solid fa-square-poll-vertical panel-icons"></i>
+				<span class="panel-text">Statistics</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-solid fa-box panel-icons"></i>
+				<span class="panel-text">Inventory</span>
+			</div>
+			<div class ="panel-box selected-tab"> 
+				<i class="fa-regular fa-rectangle-list panel-icons"></i>
+				<span class="panel-text ">Menu List</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-regular fa-trash-can panel-icons"></i>
+				<span class="panel-text">Spoilage</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-regular fa-trash-can panel-icons"></i>
+				<span class="panel-text">Missing</span>
+			</div>
+			<div class ="logout-button">
+				<i class="fa-solid fa-right-from-bracket logout-icon"></i>
+				<span>Log Out</span>
+			</div>
+		</div>
+		<!-- END SIDE PANEL -->
+
+		<div class="content-container">
+			<div class="ingredients-container">
+				<h1>Ingredients</h1>
+
+				<!-- TABLE OF TRANSACTIONS -->
+				<div class = "table-container">
+				    <table>
+					    <col style="width:15%">
+					    <col style="width:10%">
+					    <col style="width:1%">
+
+					    <thead>
+					    <tr>
+						    <th>Item Name</th>
+						    <th>Unit</th>
+						    <th>Quantity</th>
+					    </tr>
+					    </thead>
+
+					    <tr>
+						    <td>Pasta Linguine</td>
+						    <td>500g</td>
+						    <td>1</td>
+					    </tr>
+
+                        <tr>
+						    <td>Fresh Milk</td>
+						    <td>1L</td>
+						    <td>10</td>
+					    </tr>
+
+                        <tr>
+                            <td> <input type="text" name="search" placeholder="Search.." 
+                            style="border: 1px solid #1a7968; border-radius: 4px; 
+                            width: 90%; font-size: 14px; padding: 5px;"> </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+				    </table>
+                </div>
+
+                    <!-- START Add Ingredient Button-->
+                        <button class="button-green popup" onclick="myFunction()" style="margin-left:40px; margin-top:30px;"> 
+                            + Add Ingredient
+                            <span class="popuptext" id="myPopup">Ingredient Added!</span>
+                        </button>
+
+                        <script>
+                            // When the user clicks on <div>, open the popup
+                            function myFunction() {
+                              var popup = document.getElementById("myPopup");
+                              popup.classList.toggle("show");
+                            }
+                        </script>
+                    <!-- END Add Ingredient Button-->      
+			</div>
+		</div>
+</body>
+</html>
