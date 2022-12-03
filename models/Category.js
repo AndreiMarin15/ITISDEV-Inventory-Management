@@ -9,6 +9,9 @@ const CategorySchema = new mongoose.Schema({
     categoryName: {
         type: String,
     },
+    foodGroupID: {
+        type: Number,
+    },
     runningTotal: {
         type: Number,
     },
