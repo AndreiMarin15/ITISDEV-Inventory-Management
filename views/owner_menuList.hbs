@@ -22,33 +22,11 @@
 					<button class="button-addfolder">+ New Folder</button>
 				</div>
                 <div class="menulist-box">
+					{{each MenuGroup}}
 					<div>
-						<button class="menufolder"><span class="menulist-text">Breakfast Meals</span></button>
+						<button class="menufolder"><span class="menulist-text">{{MenuGroup.menuGroupName}}</span></button>
 					</div>
-					<div>
-						<button class="menufolder"><span class="menulist-text">Rice Bowl Meals</span></button>
-					</div>
-					<div>
-						<button class="menufolder"><span class="menulist-text">Meal Category 3</span></button>
-					</div>
-					<div>
-						<button class="menufolder"><span class="menulist-text">Meal Category 4</span></button>
-					</div>
-					<div>
-						<button class="menufolder"><span class="menulist-text">Meal Category 5</span></button>
-					</div>
-					<div>
-						<button class="menufolder"><span class="menulist-text">Meal Category 6</span></button>
-					</div>
-                    <div>
-						<button class="menufolder"><span class="menulist-text">Meal Category 7</span></button>
-					</div>
-					<div>
-						<button class="menufolder"><span class="menulist-text">Meal Category 8</span></button>
-					</div>
-					<div>
-						<button class="menufolder"><span class="menulist-text">Meal Category 9</span></button>
-					</div>
+					{{/each}}
 				</div>
 			</div>
 		</div>

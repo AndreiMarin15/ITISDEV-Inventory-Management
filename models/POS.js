@@ -14,6 +14,9 @@ const POSSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    totalPrice: {
+        type: Number,
+    },
 });
 
 const POS = mongoose.model("POS", POSSchema);

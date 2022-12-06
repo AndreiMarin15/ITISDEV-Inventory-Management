@@ -10,38 +10,18 @@
 	
 		<div class="content-container">
 			<div class="breakfastmeals-container">
-				<h1>Breakfast Meals</h1>
+				
+				<h1>{{Recipe.menuGroupname}}</h1>
+
 				<div>
 					<button class="button-addmenuitem">+ New Menu Item</button>
 				</div>
                 <div class="breakfastmeals-box">
+					{{each Recipe}}
 					<div>
-						<button class="breakfastmeals-folder"><span class="breakfastmeals-text">Menu Item 1</span></button>
+						<button class="breakfastmeals-folder"><span class="breakfastmeals-text">{{Recipe.recipeName}}</span></button>
 					</div>
-					<div>
-						<button class="breakfastmeals-folder"><span class="breakfastmeals-text">Menu Item 2</span></button>
-					</div>
-					<div>
-						<button class="breakfastmeals-folder"><span class="breakfastmeals-text">Menu Item 3</span></button>
-					</div>
-					<div>
-						<button class="breakfastmeals-folder"><span class="breakfastmeals-text">Menu Item 4</span></button>
-					</div>
-					<div>
-						<button class="breakfastmeals-folder"><span class="breakfastmeals-text">Menu Item 5</span></button>
-					</div>
-					<div>
-						<button class="breakfastmeals-folder"><span class="breakfastmeals-text">Menu Item 6</span></button>
-					</div>
-                    <div>
-						<button class="breakfastmeals-folder"><span class="breakfastmeals-text">Menu Item 7</span></button>
-					</div>
-					<div>
-						<button class="breakfastmeals-folder"><span class="breakfastmeals-text">Menu Item 8</span></button>
-					</div>
-					<div>
-						<button class="breakfastmeals-folder"><span class="breakfastmeals-text">Menu Item 9</span></button>
-					</div>
+					{{/each}}
 				</div>
 			</div>
 		</div>

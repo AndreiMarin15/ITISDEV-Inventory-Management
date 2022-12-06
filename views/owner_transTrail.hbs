@@ -43,28 +43,13 @@
 						<th> </th>
 					  </tr>
 					</thead>
+						{{each Transaction}}
 					  <tr>
-						<td>XX-XX-XX</td>
-						<td>XXXXXXXXXX</td>
-						<td>PHP XXX.XX</td>
-						<td>Juan Dela Cruz</td>
+						<td>{{POS.dateOfOrder}}</td>
+						<td>{{POS.POSIDno}}</td>
+						<td>{{POS.totalPrice}}</td>
+						<td>{{POS.personInCharge}}</td>
 						<td><button class="button-view">View</button></td>
-					  </tr>
-					  <tr>
-						<td>XX-XX-XX</td>
-						<td>XXXXXXXXXX</td>
-						<td>PHP XXX.XX</td>
-						<td>Jose Santos</td>
-						<td><button class="button-view"> View </button></td>
-
-					  </tr>
-					  <tr>
-						<td>XX-XX-XX</td>
-						<td>XXXXXXXXXX</td>
-						<td>PHP X,XXX.XX</td>
-						<td>Mark Cruz</td>
-						<td><button class="button-view"> View </button></td>
-
 					  </tr>
 				</table>
 				</div>

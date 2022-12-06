@@ -24,12 +24,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{each Missing}}
                         <tr>
-                            <td> Coke </td>
-                            <td> 4.00 Liters </td>
-                            <td> 3.00 Liters </td> 
-                            <td> 1.00 Liters  </td> 
+                            <td> {{Missing.categoryName}} </td>
+                            <td> {{Missing.runningTotal}} </td>
+                            <td> {{Missing.physicalCount}}</td> 
+                            <td> {{Missing.amount}}  </td> 
                         </tr>
+                        {{/each}}
                     </tbody>
                 </table>
             </div>

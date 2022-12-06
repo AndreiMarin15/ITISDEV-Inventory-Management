@@ -43,22 +43,20 @@
                         <th>Date</th>
                         <th>Report Type</th>
                         <th>Food Group</th>
+                        <th>Amount</th>
                         <th>Employee in-Charge</th>
                     </tr>
                     </thead>
                     <tbody>
+                    {{each Report}}
                     <tr>
-                        <td> 26/11/2022 </td>
-                        <td> Missing </td>
-                        <td> Drinks </td>
-                        <td> Juan De La Cruz </td>
+                        <td> {{report.caseDate}} </td>
+                        <td> {{report.reportType}} </td>
+                        <td> {{report.categoryName}} </td>
+                        <td> {{report.amount}} </td>
+                        <td> {{report.employeeName}} </td>
                     </tr>
-                    <tr>
-                        <td> 20/9/2021 </td>
-                        <td> Spoilage </td>
-                        <td> Meat </td>
-                        <td> Mark Spencer </td>
-                    </tr>
+                    {{/each}}
                     </tbody>
                 </table>
             </div>

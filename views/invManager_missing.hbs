@@ -30,26 +30,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{each Category}}
+                        {{each Ingredient}}
                         <tr>
-                            <td> {{Category.categoryName}} </td>
-                            <td> {{Category.categoryName}} </td>
+                            <td> {{Ingredient.ingredientName}} </td>
+                            <td> {{Ingredient.categoryName}} </td>
                             <td><input type="number">  </td> 
                         </tr>
                         {{/each}}
-                        <tr>
-                            <td rowspan="3"> Coke </td>
-                            <td> Sakto </td>
-                            <td><input type="number">  </td> 
-                        </tr>
-                        <tr>
-                            <td> Litro </td>
-                            <td><input type="number">  </td>
-                        </tr>
-                        <tr>
-                            <td> Mismo </td>
-                            <td><input type="number">  </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>

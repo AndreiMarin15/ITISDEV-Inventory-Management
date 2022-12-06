@@ -28,9 +28,9 @@
                 </div>
                 <div>
                     <select name="menuGroup" id="menuGroup" class="dropdown">
-                        <option>Breakfast Bowl</option>
-                        <option>Lunch Bowl</option>
-                        <option>Dinner Bowl</option>
+                        {{each MenuGroup}}
+                        <option>{{MenuGroup.menuGroupName}}</option>
+                        {{/each}}
                     </select>
                 </div>
             </div>
@@ -44,24 +44,16 @@
                         <thead>
                             <tr>
                                 <th>Category</th>
-                                <th>Quantity</th>
                                 <th>Unit</th>
+                                <th>Quantity</th>
                             </tr>
+                            {{each IngredientList}}
                             <tr>
-                                <td> Coke </td>
-                                <td><input type="number">  </td> 
-                                <td> L </td>
+                                <td>{{IngredientList.categoryName}} </td>
+                                <td>{{IngredientList.unit}}</td>
+                                <td>{{IngredientList.quantity}}</td>
                             </tr>
-                            <tr>
-                                <td> Pasta </td>
-                                <td><input type="number">  </td> 
-                                <td> kg </td>
-                            </tr> 
-                            <tr>
-                                <td> <input type="text"> </td>
-                                <td> - </td> 
-                                <td> - </td>
-                            </tr>                              
+                            {{/each}}
                         </thead>
                 </table>
                 <div>
