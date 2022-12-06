@@ -13,24 +13,11 @@
 		<div class="content-container">
 			<div class="menu-container">
 				<div class="category-box">
+						{{#each Category}}
 						<div>
-							<button class="category-item selected-box"><span class="category-text">Category 1</span></button>
+							<button class="category-item"><span class="category-text">{{Category.categoryName}}</span></button>
 						</div>
-						<div>
-							<button class="category-item"><span class="category-text">Category 2</span></button>
-						</div>
-						<div>
-							<button class="category-item"><span class="category-text">Category 3</span></button>
-						</div>
-						<div>
-							<button class="category-item"><span class="category-text">Category 4</span></button>
-						</div>
-						<div>
-							<button class="category-item"><span class="category-text">Category 5</span></button>
-						</div>
-						<div>
-							<button class="category-item"><span class="category-text">Category 6</span></button>
-						</div>
+						{{/each}}
 
 					<div class="search-box">
 						<form>
@@ -40,45 +27,11 @@
 					</div>
 				</div>
 				<div class="menu-box">
-					<div>
-						<button class="menuitem"><span class="menu-text">Menu Item 1</span><br><span class="price-text">P100</span></button>
-					</div>
-					<div>
-						<button class="menuitem"><span class="menu-text">Menu Item 2</span><br><span class="price-text">P200</span></button>
-					</div>
-					<div>
-						<button class="menuitem"><span class="menu-text">Menu Item 3</span><br><span class="price-text">P300</span></button>
-					</div>
-					<div>
-						<button class="menuitem"><span class="menu-text">Menu Item 4</span><br><span class="price-text">P400</span></button>
-					</div>
-					<div>
-						<button class="menuitem"><span class="menu-text">Menu Item 5</span><br><span class="price-text">P500</span></button>
-					</div>
-					<div>
-						<button class="menuitem"><span class="menu-text">Menu Item 6</span><br><span class="price-text">P600</span></button>
-					</div>
-					<div>
-						<button class="menuitem"><span class="menu-text">Menu Item 7</span><br><span class="price-text">P700</span></button>
-					</div>
-					<div>
-						<button class="menuitem"><span class="menu-text">Menu Item 8</span><br><span class="price-text">P800</span></button>
-					</div>
-					<div>
-						<button class="menuitem"><span class="menu-text">Menu Item 9</span><br><span class="price-text">P900</span></button>
-					</div>
-					<div>
-						<button class="menuitem"><span class="menu-text">Menu Item 10</span><br><span class="price-text">P900</span></button>
-					</div>
-					<div>
-						<button class="menuitem"><span class="menu-text">Menu Item 11</span><br><span class="price-text">P900</span></button>
-					</div>
-					<div>
-						<button class="menuitem"><span class="menu-text">Menu Item 12</span><br><span class="price-text">P900</span></button>
-					</div>
-					<div>
-						<button class="menuitem"><span class="menu-text">Menu Item 13</span><br><span class="price-text">P900</span></button>
-					</div>
+						{{#each Recipe}}
+						<div>
+							<button class="menuitem"><span class="menu-text">{{Recipe.recipeName}}</span><br><span class="price-text">P100</span></button>
+						</div>
+						{{/each}}
 				</div>
 			</div>
 			<div class="checkout-container">
@@ -91,40 +44,33 @@
 							<th>Quantity</th>
 							<th>Price</th>
 						</tr>
+						{{each ?}}
 						<tr>
-							<td><i class="fa-solid fa-trash-can"></i> Item Name1 </td>
-							<td><i class="fa-solid fa-circle-plus"></i> 3 <i class="fa-solid fa-circle-minus"></i></i></td>
-							<td>P1500</td>
+							<td><i class="fa-solid fa-trash-can"></i>{{}} </td>
+							<td><i class="fa-solid fa-circle-plus"></i>{{}}<i class="fa-solid fa-circle-minus"></i></i></td>
+							<td>{{}}</td>
 						</tr>
-						<tr>
-							<td><i class="fa-solid fa-trash-can"></i> Item Name2 </td>
-							<td><i class="fa-solid fa-circle-plus"></i> 6 <i class="fa-solid fa-circle-minus"></i></i></td>
-							<td>P3000</td>
-						</tr>
-						<tr>
-							<td><i class="fa-solid fa-trash-can"></i> Item Name3 </td>
-							<td><i class="fa-solid fa-circle-plus"></i> 9 <i class="fa-solid fa-circle-minus"></i></i></td>
-							<td>P4500</td>
-						</tr>
+						{{/each ?}}
+
 					</table>
 				</div>
 				<div class="checkout-counter">
 					<table class="summary-table">
 						<tr>
 							<th>Discount(%)</th>
-							<td>20</td>
+							<td>{{}}</td>
 						</tr>
 						<tr>
 							<th>Sub Total</th>
-							<td>P1,632.00</td>
+							<td>{{}}</td>
 						</tr>
 						<tr>
 							<th>Tax (1.5%)</th>
-							<td>P88.52</td>
+							<td>{{}}</td>
 						</tr> 
 						<tr>
 							<th>Total</th>
-							<td>P1,720,52</td>
+							<td>{{}}</td>
 						</tr>
 					</table>
 				</div>

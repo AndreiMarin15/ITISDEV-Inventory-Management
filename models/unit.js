@@ -8,7 +8,10 @@ const UnitSchema = new mongoose.Schema({
     },
     unitName: {
         type: String,
-    }
+    },
+    // unitGroupID:{
+    //     type: String,
+    // },
 });
 
 const Unit = mongoose.model("Unit", UnitSchema);

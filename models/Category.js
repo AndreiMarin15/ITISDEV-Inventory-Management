@@ -15,6 +15,9 @@ const CategorySchema = new mongoose.Schema({
     runningTotal: {
         type: Number,
     },
+    // unitGroupID:{
+    //     type: String,
+    // },
     unitID: {
         type: Number,
         required: true,

@@ -13,6 +13,12 @@ const RecipeSchema = new mongoose.Schema({
         type: Boolean,
         default: true,
     },
+    menuGroupID:{
+        type: Number,
+    },
+    price:{
+        type: Number,
+    },
 });
 
 const Recipe = mongoose.model("Recipe", RecipeSchema);
