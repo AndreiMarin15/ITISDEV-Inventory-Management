@@ -13,24 +13,11 @@
         <div class="page-container">
             <div><span class="header-font">Inventory Item Missing</span></div>
             <div class="category-box">
+                {{each foodGroup}}
                 <div>
-                    <button class="category-item"><span class="category-text">Dairy</span></button>
+                    <button class="category-item"><span class="category-text">{{foodGroup.foodGroupName}}</span></button>
                 </div>
-                <div>
-                    <button class="category-item"><span class="category-text">Drinks</span></button>
-                </div>
-                <div>
-                    <button class="category-item"><span class="category-text">Fruits</span></button>
-                </div>
-                <div>
-                    <button class="category-item"><span class="category-text">Meat</span></button>
-                </div>
-                <div>
-                    <button class="category-item"><span class="category-text">Poultry</span></button>
-                </div>
-                <div>
-                    <button class="category-item"><span class="category-text">Vegetables</span></button>
-                </div>
+                {{/each}}
             </div>
 
             <div class="inventory-container">
@@ -43,6 +30,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{each Category}}
+                        <tr>
+                            <td rowspan="3"> {{Category.categoryName}} </td>
+                            <td>  </td>
+                            <td><input type="number">  </td> 
+                        </tr>
+                        {{/each}}
                         <tr>
                             <td rowspan="3"> Coke </td>
                             <td> Sakto </td>
