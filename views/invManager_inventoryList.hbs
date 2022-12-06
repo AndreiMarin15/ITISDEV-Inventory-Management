@@ -45,12 +45,14 @@
                     </tr>
                     </thead>
                     <tbody>
+                    {{each Category}}
                     <tr>
-                        <td> Coke </td>
-                        <td> Drinks </td>
+                        <td> {{Category.categoryName}} </td>
+                        <td> {{Category.foodGroupName}} </td>
                         <td> 5 </td>
                         <td> Liters (L) </td>
                     </tr>
+                    {{/each}}
                     <tr>
                         <td> Chicken </td>
                         <td> Meat </td>

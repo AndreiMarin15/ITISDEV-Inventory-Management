@@ -4,7 +4,6 @@
 		<link rel="stylesheet" href="css/base.css">
 		<link rel="stylesheet" href="css/cashierPanel.css">
 		<script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
-		
 	</head>
 	<body>
 
@@ -44,33 +43,21 @@
 							<th>Quantity</th>
 							<th>Price</th>
 						</tr>
-						{{each ?}}
+						{{each Item}}
 						<tr>
-							<td><i class="fa-solid fa-trash-can"></i>{{}} </td>
-							<td><i class="fa-solid fa-circle-plus"></i>{{}}<i class="fa-solid fa-circle-minus"></i></i></td>
-							<td>{{}}</td>
+							<td><i class="fa-solid fa-trash-can"></i>{{Item.name}} </td>
+							<td><i class="fa-solid fa-circle-plus"></i>{{Item.quantity}}<i class="fa-solid fa-circle-minus"></i></i></td>
+							<td>{{Item.price}}</td>
 						</tr>
-						{{/each ?}}
+						{{/each}}
 
 					</table>
 				</div>
 				<div class="checkout-counter">
 					<table class="summary-table">
 						<tr>
-							<th>Discount(%)</th>
-							<td>{{}}</td>
-						</tr>
-						<tr>
-							<th>Sub Total</th>
-							<td>{{}}</td>
-						</tr>
-						<tr>
-							<th>Tax (1.5%)</th>
-							<td>{{}}</td>
-						</tr> 
-						<tr>
 							<th>Total</th>
-							<td>{{}}</td>
+							<td>{{totalprice}}</td>
 						</tr>
 					</table>
 				</div>
