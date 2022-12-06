@@ -10,8 +10,14 @@ app.get("/login", controller.getIndex);
 
 
 //Testing HBS IF IT WORKS
+
+//Cashier
 app.get("/POS", controller.POS);
 
+//invManager
 app.get("/todaysMenu", controller.todaysMenu);
+
+//Owner
+
 
 module.exports = app;

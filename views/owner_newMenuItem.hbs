@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Panel</title>
+        <link rel="stylesheet" href="css/newMenuItem.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+    </head>
+    <!-- Content Here -->
+    <body>
+
+    {{>ownerPanel}}
+
+    <div class="content-container">
+        <div class="newMenuItem-box">
+            <div><span class="header-font">New Menu Item</span></div>
+            <div class="field-box">
+                <div>
+                    <label for="search-item" class = "field-font">Menu Item Name</label>
+                </div>
+                <div>
+                    <input type="text" class="textbox-long" id="itemname" name="itemname">
+                </div>
+            </div>
+
+            <div class="field-box">
+                <div>
+                    <label for="search-item" class = "field-font">Ingredients</label>
+                </div>
+                    <table class="ingredients-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                            </tr>
+                            <tr>
+                                <td> Coke </td>
+                                <td><input type="number">  </td> 
+                                <td> L </td>
+                            </tr>
+                            <tr>
+                                <td> Pasta </td>
+                                <td><input type="number">  </td> 
+                                <td> kg </td>
+                            </tr> 
+                            <tr>
+                                <td> <input type="text"> </td>
+                                <td> - </td> 
+                                <td> - </td>
+                            </tr>                              
+                        </thead>
+                </table>
+                <div>
+                    <button class="button-green">Add Ingredient</button>
+                </div>
+            </div>
+
+            <div class="field-box">
+                <div>
+                    <label for="quantity-item" class = "field-font">Instructions (Optional)</label>
+                </div>
+                <div>
+                    <textarea class="textarea-long" id="description" name="description"></textarea>
+                </div>
+            </div>
+			<button class="button-green popup" onclick="myFunction()">Done
+				<span class="popuptext" id="myPopup">Menu Item Added!</span>
+			</button>
+			<script>
+				// When the user clicks on <div>, open the popup
+				function myFunction() {
+				  var popup = document.getElementById("myPopup");
+				  popup.classList.toggle("show");
+				}
+			</script>
+        </div>
+    </div>
+    
+
+
+</div>
+</body>
+</html>
