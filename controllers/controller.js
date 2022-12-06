@@ -90,11 +90,41 @@ const controller = {
 //invManager
 
 //owner
+    addIngredient: (req, res) => {
+        res.render("owner_addIngredient");
+    },
+
+    dashboard: (req, res) => {
+        res.render("owner_dashboard");
+    },
+
+    ingredients: (req, res) => {
+        res.render("owner_ingredients");
+    },
+
+    mealCategory: (req, res) => {
+        res.render("owner_mealCategory");
+    },
+
+    menuList: (req, res) => {
+        res.render("owner_menuList");
+    },
+
+    newMenuItem: (req, res) => {
+        res.render("owner_newMenuItem");
+    },
+
+    reportsPage: (req, res) => {
+        res.render("owner_reportsPage");
+    },
+
     todaysMenu: (req, res) => {
         res.render("owner_todaysMenu");
     },
 
-    
+    transTrail: (req, res) => {
+        res.render("owner_transTrail");
+    },
 };
 
 module.exports = controller;

@@ -15,9 +15,17 @@ app.get("/login", controller.getIndex);
 app.get("/POS", controller.POS);
 
 //invManager
-app.get("/todaysMenu", controller.todaysMenu);
+
 
 //Owner
-
+app.get("/addIngredient", controller.addIngredient);
+app.get("/dashboard", controller.dashboard);
+app.get("/ingredients", controller.ingredients);
+app.get("/mealCategory", controller.mealCategory);
+app.get("/menuList", controller.menuList);
+app.get("/newMenuItem", controller.newMenuItem);
+app.get("/reportsPage", controller.reportsPage);
+app.get("/todaysMenu", controller.todaysMenu);
+app.get("/transTrail", controller.transTrail);
 
 module.exports = app;
