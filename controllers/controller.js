@@ -81,9 +81,19 @@ const controller = {
 
   
 //Testing HBS IF IT WORKS
-    cashierPage: (req, res) => {
-        res.render("cashierPOS");
+
+//cashier
+    POS: (req, res) => {
+        res.render("cashier_POS");
     },
+
+//invManager
+
+//owner
+    todaysMenu: (req, res) => {
+        res.render("owner_todaysMenu");
+    },
+
     
 };
 

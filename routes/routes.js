@@ -10,10 +10,14 @@ app.get("/login", controller.getIndex);
 
 
 //Testing HBS IF IT WORKS
-app.get("/cashier", (req, res) => {
-    res.redirect("/cashierPOS");
-});
 
-app.get("/cashier", controller.cashierPage);
+//Cashier
+app.get("/POS", controller.POS);
+
+//invManager
+app.get("/todaysMenu", controller.todaysMenu);
+
+//Owner
+
 
 module.exports = app;
