@@ -17,7 +17,7 @@ const bcrypt = require("bcrypt");
 const controller = {
     // checks if an admin account exists. If yes, it redirects to login. If not, creates an admin usertype and admin account
     getIndex: (req, res) => {
-        db.findOne(User, { userID: "admin" }, {}, (result) => {
+        db.findOne(User, {}, {}, (result) => {
             console.log("res = " + result);
             if (!result) {
                 console.log("no result");
@@ -51,8 +51,31 @@ const controller = {
     },
 
     login: (req, res) => {
-        // function for logging in
-        // use bcrypt only when finalized account creation
+        let toLogin = {
+            userID: req.body.username,
+            password: req.body.password,
+        };
+
+        db.findOne(User, { userID: toLogin.userID }, {}, (user) => {
+            if (user) {
+                console.log("1 " + user);
+                bcrypt.compare(toLogin.password, user.password).then((verify) => {
+                    console.log("2 " + user);
+                    if (verify) {
+                        req.session.userIDs = user.userID;
+                        req.session.firstName = user.firstName;
+                        req.session.lastName = user.lastName;
+                        req.session.userType = user.userType;
+
+                        req.session.save();
+
+                        if (req.session.userType == 0) {
+                            res.render("owner_dashboard");
+                        }
+                    }
+                });
+            }
+        });
     },
 
     // cashier
@@ -78,7 +101,7 @@ const controller = {
         // add item using forms
     },
 
- //   addToInventory: (req, res) => {},
+    //   addToInventory: (req, res) => {},
 
     getInventoryList: (req, res) => {},
 
@@ -93,7 +116,7 @@ const controller = {
 
     addMenuFolder: (req, res) => {},
 
- //   getMenu: (req, res) => {},
+    //   getMenu: (req, res) => {},
 
     getFolderItems: (req, res) => {},
 
@@ -119,16 +142,14 @@ const controller = {
 
     getIngredientCost: (req, res) => {},
 
+    //Testing HBS IF IT WORKS
 
-  
-//Testing HBS IF IT WORKS
-
-//cashier
+    //cashier
     POS: (req, res) => {
         res.render("cashier_POS");
     },
 
-//invManager
+    //invManager
     addToInventory: (req, res) => {
         res.render("invManager_addtoInventory");
     },
@@ -153,7 +174,7 @@ const controller = {
         res.render("invManager_spoilage");
     },
 
-//owner
+    //owner
     addIngredient: (req, res) => {
         res.render("owner_addIngredient");
     },

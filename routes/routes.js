@@ -7,6 +7,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/login", controller.getIndex);
+app.post("/proceedLogin", controller.login);
 
 
 //Testing HBS IF IT WORKS
