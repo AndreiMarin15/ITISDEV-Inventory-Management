@@ -2,6 +2,8 @@
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="/css/login.css" />
     <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="/public/js/login.js"></script>
 </head>
 
 <main>
@@ -14,7 +16,7 @@
         </div>
 
         <div class="form-container sign-in-container">
-            <form method="post" action="/login">
+            <form method="post" action="/proceedLogin">
                 <h1 style="margin: 15px">Sign in</h1>
 
                 <input type="text" id="username" name="username" placeholder="Username" required />

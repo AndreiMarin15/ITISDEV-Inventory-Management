@@ -5,6 +5,9 @@ const bodyparser = require("body-parser");
 const routes = require("./routes/routes");
 const cors = require("cors");
 
+const session = require("express-session");
+const MongoDBSession = require("connect-mongodb-session")(session);
+
 const db = require("./models/db.js");
 
 const app = express();
@@ -14,7 +17,20 @@ app.use(express.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 app.set("view engine", "hbs");
 
+const store = new MongoDBSession({
+    uri: process.env.MONGODB_URL,
+    collection: "Sessions",
+});
 
+app.use(
+    session({
+        secret: "database",
+        resave: false,
+        saveUninitialized: false,
+        store: store,
+        expires: new Date(Date.now() + 864000000),
+    })
+);
 hbs.registerHelper("ifEquals", function (arg1, arg2, options) {
     return arg1 == arg2 ? options.fn(this) : options.inverse(this);
 });
@@ -28,7 +44,6 @@ hbs.registerHelper("ifIn", function (elem, list, options) {
 
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials");
-
 
 dotenv.config();
 port = process.env.PORT;
