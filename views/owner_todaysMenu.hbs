@@ -17,7 +17,7 @@
                     <p>DATE: xx-xx-xx</p>
                     <hr>
                 </div>
-                {{each MenuGroup}}
+                {{#each MenuGroup}}
                     <div class="categoryone">
                         <div class="grid-content">
                             <table>
@@ -30,7 +30,7 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                    {{each Recipe}}
+                                    {{#each Recipe}}
                                     <tr>
                                         <td>{{recipe.recipeName}}</td>
                                         <td><button class="add"> + </button></td>

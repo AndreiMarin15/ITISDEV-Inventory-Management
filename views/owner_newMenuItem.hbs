@@ -28,7 +28,7 @@
                 </div>
                 <div>
                     <select name="menuGroup" id="menuGroup" class="dropdown">
-                        {{each MenuGroup}}
+                        {{#each MenuGroup}}
                         <option>{{MenuGroup.menuGroupName}}</option>
                         {{/each}}
                     </select>
@@ -47,7 +47,7 @@
                                 <th>Unit</th>
                                 <th>Quantity</th>
                             </tr>
-                            {{each IngredientList}}
+                            {{#each IngredientList}}
                             <tr>
                                 <td>{{IngredientList.categoryName}} </td>
                                 <td>{{IngredientList.unit}}</td>

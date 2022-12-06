@@ -13,7 +13,7 @@
         <div class="page-container">
             <div><span class="header-font">Inventory Item Missing</span></div>
             <div class="category-box">
-                {{each foodGroup}}
+                {{#each foodGroup}}
                 <div>
                     <button class="category-item"><span class="category-text">{{foodGroup.foodGroupName}}</span></button>
                 </div>
@@ -30,7 +30,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{each Ingredient}}
+                        {{#each Ingredient}}
                         <tr>
                             <td> {{Ingredient.ingredientName}} </td>
                             <td> {{Ingredient.categoryName}} </td>
