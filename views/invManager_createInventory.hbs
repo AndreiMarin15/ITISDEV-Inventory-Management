@@ -22,11 +22,12 @@
 
                 <div>
                     <select name="foodgroup" id="foodgroup" class="dropdown">
-                        <option>Drinks</option>
-                        <option>Vegetables</option>
-                        <option>Poultry</option>
+                        {{#each foodGroup}}
+                        <option>{{foodGroup.foodGroupName}}</option>
+                        {{/each}}
                     </select>
                 </div>
+
             </div>
             
             <div class="field-box">
@@ -36,9 +37,9 @@
 
                 <div>
                     <select name="category" id="category" class="dropdown">
-                        <option>Coke</option>
-                        <option>Sprite</option>
-                        <option>Royal</option>
+                        {{#each category}}
+                        <option>{{Category.categoryName}}</option>
+                        {{/each}}
                     </select>
                 </div>
 
@@ -67,11 +68,9 @@
                 </div>
                 <div>
                     <select name="netunit" id="netunit" class="dropdown">
-                        <option>kg</option>
-                        <option>g</option>
-                        <option>mg</option>
-                        <option>l</option>
-                        <option>ml</option>
+                        {{#each unit}}
+                        <option>{{unit.unitName}}</option>
+                        {{/each}}
                     </select>
                 </div>
             </div>
