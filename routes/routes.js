@@ -15,7 +15,12 @@ app.get("/login", controller.getIndex);
 app.get("/POS", controller.POS);
 
 //invManager
-
+app.get("/addtoInventory", controller.addToInventory);
+app.get("/createInventory", controller.createInventory);
+app.get("/inventoryList", controller.inventoryList);
+app.get("/missing", controller.missing);
+app.get("/missingResult", controller.missingResult);
+app.get("/spoilage", controller.spoilage);
 
 //Owner
 app.get("/addIngredient", controller.addIngredient);
@@ -27,13 +32,5 @@ app.get("/newMenuItem", controller.newMenuItem);
 app.get("/reportsPage", controller.reportsPage);
 app.get("/todaysMenu", controller.todaysMenu);
 app.get("/transTrail", controller.transTrail);
-app.get("/addtoInventory", controller.addToInventory);
-app.get("/createInventory", controller.createInventory);
-app.get("/inventoryList", controller.inventoryList);
-app.get("/missing", controller.missing);
-app.get("/missingResult", controller.missingResult);
-app.get("/spoilage", controller.spoilage);
-
-//Owner
 
 module.exports = app;
