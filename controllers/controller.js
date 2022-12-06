@@ -37,7 +37,7 @@ const controller = {
 
     createItem: (req, res) => {},
 
-    addToInventory: (req, res) => {},
+ //   addToInventory: (req, res) => {},
 
     getInventoryList: (req, res) => {},
 
@@ -52,7 +52,7 @@ const controller = {
 
     addMenuFolder: (req, res) => {},
 
-    getMenu: (req, res) => {},
+ //   getMenu: (req, res) => {},
 
     getFolderItems: (req, res) => {},
 
@@ -88,6 +88,29 @@ const controller = {
     },
 
 //invManager
+    addToInventory: (req, res) => {
+        res.render("invManager_addtoInventory");
+    },
+
+    createInventory: (req, res) => {
+        res.render("invManager_createInventory");
+    },
+
+    inventoryList: (req, res) => {
+        res.render("invManager_inventoryList");
+    },
+
+    missing: (req, res) => {
+        res.render("invManager_missing");
+    },
+
+    missingResult: (req, res) => {
+        res.render("invManager_missingResult");
+    },
+
+    spoilage: (req, res) => {
+        res.render("invManager_spoilage");
+    },
 
 //owner
     todaysMenu: (req, res) => {
