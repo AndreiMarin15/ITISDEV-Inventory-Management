@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Panel</title>
+        <link rel="stylesheet" href="css/addtoinventory.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+    </head>
+    <!-- Content Here -->
+    <body>
+
+        {{>ownerPanel}}
+
+    <div class="content-container">
+        <div class="createnew-box">
+            <span class="header-font">Add to Inventory / New Transaction</span>
+            <div class="field-box">
+                <div>
+                    <label for="search-item" class = "field-font">Search Item:</label>
+                </div>
+                <div>
+                    <input type="text" class="textbox-long" id="itemname" name="itemname">
+                </div>
+            </div>
+            <div class="field-box">
+                <div>
+                    <label for="quantity-item" class = "field-font">Quantity:</label>
+                </div>
+                <div>
+                    <input type="number" class="textbox-short" id="quantity" name="quantity">
+                </div>
+            </div>
+			<button class="button-green popup" onclick="myFunction()">Add to Inventory
+				<span class="popuptext" id="myPopup">Added to Inventory!</span>
+			</button>
+			<script>
+				// When the user clicks on <div>, open the popup
+				function myFunction() {
+				  var popup = document.getElementById("myPopup");
+				  popup.classList.toggle("show");
+				}
+			</script>
+        </div>
+    </div>
+    
+
+
+</div>
+</body>
+</html>
