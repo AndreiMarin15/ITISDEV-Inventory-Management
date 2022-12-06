@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Panel</title>
+        <link rel="stylesheet" href="css/createInventory.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+    </head>
+    <!-- Content Here -->
+    <body>
+    
+    {{>invManagerPanel}} 
+
+    <div class="content-container">
+        <div class="createnew-box">
+            <span class="header-font">Create New Inventory Item</span>
+
+            <div class="field-box">
+                <div>
+                    <label for="foodgroup" class = "field-font">Food Group:</label>
+                </div>
+
+                <div>
+                    <select name="foodgroup" id="foodgroup" class="dropdown">
+                        <option>Drinks</option>
+                        <option>Vegetables</option>
+                        <option>Poultry</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="field-box">
+                <div>
+                    <label for="category" class = "field-font">Category:</label>
+                </div>
+
+                <div>
+                    <select name="category" id="category" class="dropdown">
+                        <option>Coke</option>
+                        <option>Sprite</option>
+                        <option>Royal</option>
+                    </select>
+                </div>
+
+                <div>
+                    <button class="button-submit">Create New Category</button>
+                </div>
+            </div>
+        
+
+            <div class="field-box">
+                <div>
+                    <label for="itemname" class = "field-font">Item Name:</label>
+                </div>
+
+                <div>
+                    <input type="text" class="textbox-long" id="itemname" name="itemname">
+                </div>
+            </div>
+
+            <div class="field-box">
+                <div>
+                    <label for="netweight" class = "field-font">Net Weight:</label>
+                </div>
+                <div>
+                    <input type="text" class="textbox-short" id="netweight" name="netweight">
+                </div>
+                <div>
+                    <select name="netunit" id="netunit" class="dropdown">
+                        <option>kg</option>
+                        <option>g</option>
+                        <option>mg</option>
+                        <option>l</option>
+                        <option>ml</option>
+                    </select>
+                </div>
+            </div>
+			<button class="button-green popup" onclick="myFunction()">Create Item
+				<span class="popuptext" id="myPopup">Inventory Item Created!</span>
+			</button>
+			<script>
+				// When the user clicks on <div>, open the popup
+				function myFunction() {
+				  var popup = document.getElementById("myPopup");
+				  popup.classList.toggle("show");
+				}
+			</script>
+
+        </div>
+    </div>
+
+    <!-- <div class="create-inventory-container">
+        <h1 style="font-size: 30px; color: var(--clr-green) ">Create New Inventory Item</h1>
+        <span class="brand-name-text">Brand Name</span>
+        <div class="brand-name-box">
+            <div class="dropdown">
+                <span class="brand-name-box"></span>
+                <div class="dropdown-content">
+                    <p>Brand Name 1</p>
+                </div>
+            </div>
+        </div>
+        <span class="category-text">Category</span>
+        <div class="category-box">
+            <div class="dropdown">
+                <span class="category-box"></span>
+                <div class="dropdown-content">
+                    <p>Category 1</p>
+                </div>
+            </div>
+        </div>
+        <span class="net-weight-text">Net Weight</span>
+        <div class="net-weight-box"></div>
+        <div class="unit-measure-box">
+            <div class="dropdown">
+                <span class="unit-measure-box"></span>
+                <div class="dropdown-content">
+                    <p>Unit Measure 1</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+</body>
+</html>

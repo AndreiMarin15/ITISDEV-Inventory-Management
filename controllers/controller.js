@@ -78,7 +78,7 @@ const controller = {
         // add item using forms
     },
 
-    addToInventory: (req, res) => {},
+ //   addToInventory: (req, res) => {},
 
     getInventoryList: (req, res) => {},
 
@@ -93,7 +93,7 @@ const controller = {
 
     addMenuFolder: (req, res) => {},
 
-    getMenu: (req, res) => {},
+ //   getMenu: (req, res) => {},
 
     getFolderItems: (req, res) => {},
 
@@ -118,6 +118,77 @@ const controller = {
     getTotalSale: (req, res) => {},
 
     getIngredientCost: (req, res) => {},
+
+
+  
+//Testing HBS IF IT WORKS
+
+//cashier
+    POS: (req, res) => {
+        res.render("cashier_POS");
+    },
+
+//invManager
+    addToInventory: (req, res) => {
+        res.render("invManager_addtoInventory");
+    },
+
+    createInventory: (req, res) => {
+        res.render("invManager_createInventory");
+    },
+
+    inventoryList: (req, res) => {
+        res.render("invManager_inventoryList");
+    },
+
+    missing: (req, res) => {
+        res.render("invManager_missing");
+    },
+
+    missingResult: (req, res) => {
+        res.render("invManager_missingResult");
+    },
+
+    spoilage: (req, res) => {
+        res.render("invManager_spoilage");
+    },
+
+//owner
+    addIngredient: (req, res) => {
+        res.render("owner_addIngredient");
+    },
+
+    dashboard: (req, res) => {
+        res.render("owner_dashboard");
+    },
+
+    ingredients: (req, res) => {
+        res.render("owner_ingredients");
+    },
+
+    mealCategory: (req, res) => {
+        res.render("owner_mealCategory");
+    },
+
+    menuList: (req, res) => {
+        res.render("owner_menuList");
+    },
+
+    newMenuItem: (req, res) => {
+        res.render("owner_newMenuItem");
+    },
+
+    reportsPage: (req, res) => {
+        res.render("owner_reportsPage");
+    },
+
+    todaysMenu: (req, res) => {
+        res.render("owner_todaysMenu");
+    },
+
+    transTrail: (req, res) => {
+        res.render("owner_transTrail");
+    },
 };
 
 module.exports = controller;

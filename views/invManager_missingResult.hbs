@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Panel</title>
+        <link rel="stylesheet" href="css/missingresult.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+
+        {{>invManagerPanel}}
+
+        <div class="page-container">
+            <div><span class="header-font">Missing Result Page</span></div>
+
+            <div class="inventory-container">
+                <table class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Category Name</th>
+                            <th>Inventory Count</th>
+                            <th>Physical Count</th>
+                            <th>Discrepancy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> Coke </td>
+                            <td> 4.00 Liters </td>
+                            <td> 3.00 Liters </td> 
+                            <td> 1.00 Liters  </td> 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="submit-button">
+            <button class="button-submit">Back</button>
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -6,13 +6,16 @@ const MissingSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    ingredientID: {
+    categoryID: {
         type: String,
     },
     employeeNo: {
         type: String,
     },
     amount: {
+        type: Number,
+    },
+    unitID: {
         type: Number,
     },
     caseDate: {

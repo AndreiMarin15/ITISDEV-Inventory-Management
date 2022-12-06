@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/cashierPanel.css">
+		<script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+		
+	</head>
+	<body>
+
+		{{>cashierPanel}}
+
+		<div class="content-container">
+			<div class="menu-container">
+				<div class="category-box">
+						<div>
+							<button class="category-item selected-box"><span class="category-text">Category 1</span></button>
+						</div>
+						<div>
+							<button class="category-item"><span class="category-text">Category 2</span></button>
+						</div>
+						<div>
+							<button class="category-item"><span class="category-text">Category 3</span></button>
+						</div>
+						<div>
+							<button class="category-item"><span class="category-text">Category 4</span></button>
+						</div>
+						<div>
+							<button class="category-item"><span class="category-text">Category 5</span></button>
+						</div>
+						<div>
+							<button class="category-item"><span class="category-text">Category 6</span></button>
+						</div>
+
+					<div class="search-box">
+						<form>
+							<input type="text" placeholder="Search" name="search">
+							<button type="submit"><i class="fa fa-search search-icon"></i></button>
+						</form>
+					</div>
+				</div>
+				<div class="menu-box">
+					<div>
+						<button class="menuitem"><span class="menu-text">Menu Item 1</span><br><span class="price-text">P100</span></button>
+					</div>
+					<div>
+						<button class="menuitem"><span class="menu-text">Menu Item 2</span><br><span class="price-text">P200</span></button>
+					</div>
+					<div>
+						<button class="menuitem"><span class="menu-text">Menu Item 3</span><br><span class="price-text">P300</span></button>
+					</div>
+					<div>
+						<button class="menuitem"><span class="menu-text">Menu Item 4</span><br><span class="price-text">P400</span></button>
+					</div>
+					<div>
+						<button class="menuitem"><span class="menu-text">Menu Item 5</span><br><span class="price-text">P500</span></button>
+					</div>
+					<div>
+						<button class="menuitem"><span class="menu-text">Menu Item 6</span><br><span class="price-text">P600</span></button>
+					</div>
+					<div>
+						<button class="menuitem"><span class="menu-text">Menu Item 7</span><br><span class="price-text">P700</span></button>
+					</div>
+					<div>
+						<button class="menuitem"><span class="menu-text">Menu Item 8</span><br><span class="price-text">P800</span></button>
+					</div>
+					<div>
+						<button class="menuitem"><span class="menu-text">Menu Item 9</span><br><span class="price-text">P900</span></button>
+					</div>
+					<div>
+						<button class="menuitem"><span class="menu-text">Menu Item 10</span><br><span class="price-text">P900</span></button>
+					</div>
+					<div>
+						<button class="menuitem"><span class="menu-text">Menu Item 11</span><br><span class="price-text">P900</span></button>
+					</div>
+					<div>
+						<button class="menuitem"><span class="menu-text">Menu Item 12</span><br><span class="price-text">P900</span></button>
+					</div>
+					<div>
+						<button class="menuitem"><span class="menu-text">Menu Item 13</span><br><span class="price-text">P900</span></button>
+					</div>
+				</div>
+			</div>
+			<div class="checkout-container">
+				<span class="checkout-header">Checkout</span>
+				<div class="checkout-box">
+				<div class="checkout-content">
+					<table class="checkout-table">
+						<tr>
+							<th>Item Name</th>
+							<th>Quantity</th>
+							<th>Price</th>
+						</tr>
+						<tr>
+							<td><i class="fa-solid fa-trash-can"></i> Item Name1 </td>
+							<td><i class="fa-solid fa-circle-plus"></i> 3 <i class="fa-solid fa-circle-minus"></i></i></td>
+							<td>P1500</td>
+						</tr>
+						<tr>
+							<td><i class="fa-solid fa-trash-can"></i> Item Name2 </td>
+							<td><i class="fa-solid fa-circle-plus"></i> 6 <i class="fa-solid fa-circle-minus"></i></i></td>
+							<td>P3000</td>
+						</tr>
+						<tr>
+							<td><i class="fa-solid fa-trash-can"></i> Item Name3 </td>
+							<td><i class="fa-solid fa-circle-plus"></i> 9 <i class="fa-solid fa-circle-minus"></i></i></td>
+							<td>P4500</td>
+						</tr>
+					</table>
+				</div>
+				<div class="checkout-counter">
+					<table class="summary-table">
+						<tr>
+							<th>Discount(%)</th>
+							<td>20</td>
+						</tr>
+						<tr>
+							<th>Sub Total</th>
+							<td>P1,632.00</td>
+						</tr>
+						<tr>
+							<th>Tax (1.5%)</th>
+							<td>P88.52</td>
+						</tr> 
+						<tr>
+							<th>Total</th>
+							<td>P1,720,52</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<button class="button-submit popup" onclick="myFunction()">Confirm
+				<span class="popuptext" id="myPopup">Successful Transaction!</span>
+			</button>
+			<script>
+				// When the user clicks on <div>, open the popup
+				function myFunction() {
+				  var popup = document.getElementById("myPopup");
+				  popup.classList.toggle("show");
+				}
+			</script>
+		</div>
+		
+		</div>
+
+	</body>
+</html>
+

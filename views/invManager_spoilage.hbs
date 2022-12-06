@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Panel</title>
+        <link rel="stylesheet" href="css/spoilage.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+    </head>
+    <!-- Content Here -->
+    <body>
+
+        {{>invManagerPanel}}
+
+        <div class="content-container">
+            <div class="createnew-box">
+                <span class="header-font">Inventory Item Spoilage</span>
+                <div class="field-box">
+                    <div>
+                        <label for="search-item" class = "field-font">Search Item </label>
+                    </div>
+                    <div>
+                        <input type="text" class="textbox-long" id="itemname" name="itemname">
+                    </div>
+                </div>
+                <div class="field-box">
+                    <div>
+                       <label for="quantity-item" class = "field-font">Amount </label>
+                    </div>
+                    <div>
+                        <input type="number" class="textbox-short" id="quantity" name="quantity">
+                    </div> 
+                </div>
+                <div class="field-box">
+                    <div>
+                        <label for="desc" class = "field-font">Description </label>
+                    </div>
+                    <div>
+                        <textarea class="textarea-long" id="description" name="description"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <button class="button-green">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

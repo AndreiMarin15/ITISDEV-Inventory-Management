@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/ownerPanel.css">
+		<script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+
+        {{>ownerPanel}}
+
+		<div class="content-container">
+			<div class="transaction-trail-container">
+				<h1> Sales Transaction Trail</h1>
+
+				<!-- SEARCH -->
+				<div class="search-box">
+					<form>
+						<input type="text" placeholder="Search" name="search">
+						<button type="submit"><i class="fa fa-search search-icon"></i></button>
+					</form>
+				</div>
+
+				<!-- DROPDOWN TO BE ADDED-->
+				
+
+				<!-- TABLE OF TRANSACTIONS -->
+				<div class = "table-container">
+				<table>
+					<col style="width:10%">
+					<col style="width:15%">
+					<col style="width:15%">
+					<col style="width:20%">
+					<col style="width:10%">
+
+
+					<thead>
+					<tr>
+						<th>Date</th>
+						<th>Receipt Number</th>
+						<th>Total Amount</th>
+						<th>Employee In-Charge</th>
+						<th> </th>
+					  </tr>
+					</thead>
+					  <tr>
+						<td>XX-XX-XX</td>
+						<td>XXXXXXXXXX</td>
+						<td>PHP XXX.XX</td>
+						<td>Juan Dela Cruz</td>
+						<td><button class="button-view">View</button></td>
+					  </tr>
+					  <tr>
+						<td>XX-XX-XX</td>
+						<td>XXXXXXXXXX</td>
+						<td>PHP XXX.XX</td>
+						<td>Jose Santos</td>
+						<td><button class="button-view"> View </button></td>
+
+					  </tr>
+					  <tr>
+						<td>XX-XX-XX</td>
+						<td>XXXXXXXXXX</td>
+						<td>PHP X,XXX.XX</td>
+						<td>Mark Cruz</td>
+						<td><button class="button-view"> View </button></td>
+
+					  </tr>
+				</table>
+				</div>
+
+			</div>
+		</div>
+</body>
+</html>
