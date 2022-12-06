@@ -78,6 +78,12 @@ const controller = {
 
     getIngredientCost: (req, res) => {},
 
+
+  
+//Testing HBS IF IT WORKS
+    cashierPage: (req, res) => {
+        res.render("cashierPOS");
+    },
     
 };
 
