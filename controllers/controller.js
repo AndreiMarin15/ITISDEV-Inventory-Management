@@ -12,9 +12,41 @@ const Transactions = require("../models/transactions");
 const Unit = require("../models/unit");
 const UnitConversion = require("../models/unitConversion");
 const UserType = require("../models/UserType");
+const bcrypt = require("bcrypt");
 
 const controller = {
+    // checks if an admin account exists. If yes, it redirects to login. If not, creates an admin usertype and admin account
     getIndex: (req, res) => {
+        db.findOne(User, { userID: "admin" }, {}, (result) => {
+            console.log("res = " + result);
+            if (!result) {
+                console.log("no result");
+                let adminType = {
+                    userID: 0,
+                    userTypeDesc: "admin",
+                };
+
+                db.insertOne(UserType, adminType, (result) => {
+                    console.log(result);
+
+                    let initialPassword = "00000000";
+                    console.log(initialPassword);
+                    bcrypt.hash(initialPassword, 10, (err, hash) => {
+                        console.log(hash);
+                        let adminUser = {
+                            userID: "admin",
+                            password: hash,
+                            userType: 0,
+                        };
+
+                        db.insertOne(User, adminUser, (result) => {
+                            console.log(result);
+                        });
+                    });
+                });
+            }
+        });
+
         res.render("login");
     },
 
@@ -27,15 +59,24 @@ const controller = {
 
     getMenu: (req, res) => {
         // function to get the menu list to be displayed
+        // QUERY : Find ALL From recipe Where enables == true
+        // send query to the front end as data (res.render)
     },
 
-    checkout: (req, res) => {},
+    checkout: (req, res) => {
+        // Create new POS
+        // Subtract ingredients
+    },
 
     // inventory manager
 
-    createCategory: (req, res) => {},
+    createCategory: (req, res) => {
+        // add category using forms
+    },
 
-    createItem: (req, res) => {},
+    createItem: (req, res) => {
+        // add item using forms
+    },
 
     addToInventory: (req, res) => {},
 
@@ -77,8 +118,6 @@ const controller = {
     getTotalSale: (req, res) => {},
 
     getIngredientCost: (req, res) => {},
-
-    
 };
 
 module.exports = controller;
