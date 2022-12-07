@@ -11,7 +11,7 @@
 
 		<div class="content-container">
 			<div class="ingredients-container">
-				<h1>Ingredients</h1>
+				<h1>Ingredients of {{Recipe.recipeName}}</h1>
 
 				<!-- TABLE OF TRANSACTIONS -->
 				<div class = "table-container">
@@ -23,31 +23,24 @@
 					    <thead>
 					    <tr>
 						    <th>Item Name</th>
-						    <th>Unit</th>
 						    <th>Quantity</th>
+						    <th>Unit</th>
 					    </tr>
 					    </thead>
-
+						{{#each IngredientList}}
 					    <tr>
-						    <td>Pasta Linguine</td>
-						    <td>500g</td>
-						    <td>1</td>
+						    <td>{{IngredientList.categoryName}}</td>
+						    <td>{{IngredientList.amount}}</td>
+						    <td>{{IngredientList.unitID}}</td>
 					    </tr>
-
-                        <tr>
-						    <td>Fresh Milk</td>
-						    <td>1L</td>
-						    <td>10</td>
-					    </tr>
+						{{/each}}
 				    </table>
 
                     <!-- START Add Ingredient Button-->
                     <div>
-                        <button class="add-button">
-                            + Add Ingredient 
-				<!-- SHOULD LEAD TO SCREEN THAT ADDS ROW AND 
-				SEARCH INPUT BOX TO INGREDIENTS TABLE (add-ingredient.html)-->
-                        </button>
+							<button class="add-button">
+								Back
+							</button>
                     </div>
                     <!-- END Add Ingredient Button-->
                 </div>
