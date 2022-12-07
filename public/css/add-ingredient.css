@@ -8,6 +8,7 @@
     align-items:left;
     justify-content:left;
     text-align:left;
+    margin-left:25px;
 }
 
 h1 {
@@ -17,6 +18,8 @@ h1 {
 }
 
 .table-container {
+    display:flex;
+    flex-direction:row;
     overflow: auto;
     padding-bottom: 35px;
     padding-right: 30px;
@@ -24,52 +27,26 @@ h1 {
 }
 
 table {
-    max-width: 80%;
-    margin: 0 auto;
+    width: 60%;
+    margin-right: 0;
     border-collapse: collapse;
     background-color: white;
+    text-align:center;
     table-layout:fixed;
 }
 
 th, td {
-    text-align:right;
+    text-align:center;
     padding: 0.8em 1.5em;
     color: white;
     border-bottom: 1px solid #ddd;
     outline: 0.5px solid #1a7968;
-    table-layout:fixed;
 }
 
 th {
     background-color: #1a7968;
 }
 
-
-table td:nth-child(1) { 
-    text-align: left;
-    color: black; 
-}
-
-table th:nth-child(1) { 
-    text-align: left; 
-}
-
-table td:nth-child(2) { 
-    text-align: left; 
-    color: black; 
-}
-
-table th:nth-child(2) { 
-    text-align: left; 
-}
-
-table th:nth-child(3) { 
-    text-align: right; 
-}
-
-table td:nth-child(3) { 
-    color: black; 
-}
 
 .add-button {
     margin-top: 20px; 
@@ -147,5 +124,3 @@ table td:nth-child(3) {
     from {opacity: 0;}
     to {opacity:1 ;}
   }
-
- 
