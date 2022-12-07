@@ -12,6 +12,8 @@ app.post("/proceedLogin", controller.login);
 
 //Testing HBS IF IT WORKS
 
+app.get("/createUser", controller.createUser);
+
 //Cashier
 app.get("/POS", controller.POS);
 
@@ -23,6 +25,7 @@ app.get("/missing", controller.missing);
 app.get("/missingResult", controller.missingResult);
 app.get("/spoilage", controller.spoilage);
 app.get("/transactionList", controller.transactionList);
+app.get("/createCategory", controller.createCategory);
 
 //Owner
 app.get("/addIngredient", controller.addIngredient);

@@ -93,9 +93,9 @@ const controller = {
 
     // inventory manager
 
-    createCategory: (req, res) => {
+    // inventorycreateCategory: (req, res) => {
         // add category using forms
-    },
+    //},
 
     createItem: (req, res) => {
         // add item using forms
@@ -144,6 +144,10 @@ const controller = {
 
     //Testing HBS IF IT WORKS
 
+    createUser: (req, res) => {
+        res.render("createUser");
+    },
+
     //cashier
     POS: (req, res) => {
         res.render("cashier_POS");
@@ -173,8 +177,13 @@ const controller = {
     spoilage: (req, res) => {
         res.render("invManager_spoilage");
     },
+
     transactionList: (req, res) => {
         res.render("invManager_transactionList");
+    },
+
+    createCategory: (req, res) => {
+        res.render("invManager_createCategory");
     },
 
     //owner
