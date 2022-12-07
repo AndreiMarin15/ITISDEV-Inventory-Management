@@ -24,15 +24,16 @@ h1 {
 }
 
 table {
-    max-width: 80%;
+    width: 95%;
     margin: 0 auto;
     border-collapse: collapse;
     background-color: white;
     table-layout:fixed;
 }
 
+
 th, td {
-    text-align:right;
+    text-align:center;
     padding: 0.8em 1.5em;
     color: white;
     border-bottom: 1px solid #ddd;
@@ -42,33 +43,6 @@ th, td {
 
 th {
     background-color: #1a7968;
-}
-
-
-table td:nth-child(1) { 
-    text-align: left;
-    color: black; 
-}
-
-table th:nth-child(1) { 
-    text-align: left; 
-}
-
-table td:nth-child(2) { 
-    text-align: left; 
-    color: black; 
-}
-
-table th:nth-child(2) { 
-    text-align: left; 
-}
-
-table th:nth-child(3) { 
-    text-align: right; 
-}
-
-table td:nth-child(3) { 
-    color: black; 
 }
 
 .add-button {

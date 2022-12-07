@@ -24,6 +24,7 @@ h1 {
     padding-bottom: 35px;
     padding-right: 30px;
     margin-left: 0 auto;
+    gap:30px;
 }
 
 table {
