@@ -27,19 +27,15 @@
 						    <th>Quantity</th>
 					    </tr>
 					    </thead>
-
+						<tbody>
+						{{#each Ingredients}}
 					    <tr>
-						    <td>Pasta Linguine</td>
-						    <td>500g</td>
-						    <td>1</td>
+						    <td>{{Ingredients.ingredientName}}</td>
+						    <td>{{Ingredients.Unit}}</td>
+						    <td>{{Ingredients.Quantity}}</td>
 					    </tr>
-
-                        <tr>
-						    <td>Fresh Milk</td>
-						    <td>1L</td>
-						    <td>10</td>
-					    </tr>
-
+						{{/each}}
+						</tbody>
                         <tr>
                             <td> <input type="text" name="search" placeholder="Search.." 
                             style="border: 1px solid #1a7968; border-radius: 4px; 
