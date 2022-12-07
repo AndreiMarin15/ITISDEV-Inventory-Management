@@ -9,8 +9,8 @@
     grid-template-rows: 1fr 1fr 1.5fr;
     grid-auto-flow: row;
     grid-template-areas:
-      "Announcements Grocery-List"
-      "To-Do Grocery-List"
+      "Create-User Grocery-List"
+      "To-Do Employee-List"
       "Sample-Statistics Sample-Statistics-2";
     align-content: space-around;
     justify-content: space-between;
@@ -19,8 +19,8 @@
     width: 180vh;
     }
   
-  .Announcements { 
-    grid-area: Announcements;
+  .Create-User { 
+    grid-area: Create-User;
     color: #1a7968;
     outline: 2px solid #1a7968;
     }
@@ -36,8 +36,8 @@
     outline: 2px solid #1a7968;
     }
   
-  .Grocery-List { 
-    grid-area: Grocery-List; 
+  .Employee-List { 
+    grid-area: Employee-List; 
     outline: 2px solid #1a7968;
     
     }

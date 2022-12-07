@@ -13,18 +13,10 @@
             <div class="containers">
 
                 <!-- ANNOUNCEMENTS GRID -->
-                <div class="Announcements">
+                <div class="Create-User">
                     <div class="grid-content">
-                        <h1> Announcements </h1>
-
-                        <!-- NOTES: need to insert icons/images -->
-                        <h2> New Company Objective Published </h2>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, , quis nostrud exercitation ullamco. </p>
-
-                        <h2> New self-appraisal received </h2>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, , quis nostrud exercitation ullamco. </p>
+                        <h1> Create New User </h1>
+                        <button>Create</button>
                     </div>
                 </div>
                 <!-- END ANNOUNCEMENTS GRID -->
@@ -79,9 +71,9 @@
                  <!-- END STATISTICS GRID -->
 
                  <!-- GROCERY LIST GRID-->
-                <div class="Grocery-List">
+                <div class="Employee-List">
                     <div class="grid-content">
-                        <h1>Suggested Grocery List</h1>
+                        <h1>Employee List</h1>
                          <!-- START TO-DO TABLE
                                 NOTES:  need to turn into scrollable table
                                         when rows are being added, grid only
@@ -92,26 +84,20 @@
                     
                                 <thead>
                                      <tr>
-                                        <th>Item Name</th>
-                                        <th>Quantity</th>
+                                        <th>Full Name</th>
+                                        <th>position</th>
                                      </tr>
                                 </thead>
                                     <tr>
                                         <td>Chicken</td>
                                         <td>2</td>
                                     </tr>
-                                    <tr>
-                                        <td>Pork</td>
-                                        <td>5</td>
-                                    </tr>    
-                                    <tr>
-                                        <td>Coke</td>
-                                        <td>10</td>
+                                    {{#each User}}
+                                     <tr>
+                                        <td>{{User.firstName}} {{User.lastName}}</td>
+                                        <td>{{User.userType}}</td>
                                     </tr>
-                                    <tr>
-                                        <td>Ice Cream</td>
-                                        <td>15</td>
-                                    </tr>
+                                    {{/each}}
                             </table>
                     </div>
                 </div>
