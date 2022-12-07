@@ -17,7 +17,8 @@ const bcrypt = require("bcrypt");
 const controller = {
     // checks if an admin account exists. If yes, it redirects to login. If not, creates an admin usertype and admin account
     getIndex: (req, res) => {
-        db.findOne(User, {}, {}, (result) => {
+        let admin = "admin";
+        User.findOne({ userID: admin }).then((result) => {
             console.log("res = " + result);
             if (!result) {
                 console.log("no result");
@@ -29,21 +30,43 @@ const controller = {
                 db.insertOne(UserType, adminType, (result) => {
                     console.log(result);
 
-                    let initialPassword = "00000000";
-                    console.log(initialPassword);
-                    bcrypt.hash(initialPassword, 10, (err, hash) => {
-                        console.log(hash);
-                        let adminUser = {
-                            userID: "admin",
-                            password: hash,
-                            userType: 0,
+                    let invManagerType = {
+                        userID: 1,
+                        userTypeDesc: "Inventory Manager",
+                    };
+
+                    db.insertOne(UserType, invManagerType, (result) => {
+                        console.log(result);
+
+                        let cashierType = {
+                            userID: 2,
+                            userTypeDesc: "Cashier",
                         };
 
-                        db.insertOne(User, adminUser, (result) => {
+                        db.insertOne(UserType, cashierType, (result) => {
                             console.log(result);
+
+                            let initialPassword = "00000000";
+                            console.log(initialPassword);
+                            bcrypt.hash(initialPassword, 10, (err, hash) => {
+                                console.log(hash);
+                                let adminUser = {
+                                    userID: "admin",
+                                    firstName: "N/A",
+                                    lastName: "N/A",
+                                    password: hash,
+                                    userType: 0,
+                                };
+
+                                db.insertOne(User, adminUser, (result) => {
+                                    console.log(result);
+                                });
+                            });
                         });
                     });
                 });
+            } else {
+                console.log(result);
             }
         });
 
@@ -68,14 +91,31 @@ const controller = {
                         req.session.userType = user.userType;
 
                         req.session.save();
-
-                        if (req.session.userType == 0) {
-                            res.render("owner_dashboard");
-                        }
+                        console.log(req.session.userType);
+                        res.redirect("/home");
                     }
                 });
             }
         });
+    },
+
+    logout: (req, res) => {
+        req.session.destroy((err) => {
+            if (err) throw err;
+            res.redirect("/login");
+        });
+    },
+
+    home: (req, res) => {
+        console.log(req.session);
+
+        if (req.session.userType === 0) {
+            res.render("owner_dashboard");
+        } else if (req.session.userType === 1) {
+            res.render("invManager_createInventory");
+        } else if (req.session.userType === 2) {
+            res.render("cashier_POS");
+        }
     },
 
     // cashier
@@ -94,7 +134,7 @@ const controller = {
     // inventory manager
 
     // inventorycreateCategory: (req, res) => {
-        // add category using forms
+    // add category using forms
     //},
 
     createItem: (req, res) => {
@@ -112,7 +152,39 @@ const controller = {
     getDiscrepancy: (req, res) => {},
 
     // owner
-    getDashboard: (req, res) => {},
+    getDashboard: (req, res) => {
+        res.render("owner_dashboard");
+    },
+
+    getAddUser: (req, res) => {
+        res.render("createUser");
+    },
+
+    addUser: (req, res) => {
+        let firstName = req.body.newUserfirst;
+        let lastName = req.body.newUserlast;
+        let password = "00000000";
+        let userID = req.body.assignedID;
+        let userType = parseInt(req.body.employeetype);
+
+        bcrypt.hash(password, 10, function (err, hash) {
+            let newUser = {
+                firstName: firstName,
+                lastName: lastName,
+                password: hash,
+                userID: userID,
+                userType: userType,
+            };
+
+            console.log(newUser);
+
+            db.insertOne(User, newUser, (user) => {
+                console.log("new user " + user);
+
+                res.redirect("/home");
+            });
+        });
+    },
 
     addMenuFolder: (req, res) => {},
 
@@ -120,7 +192,7 @@ const controller = {
 
     getFolderItems: (req, res) => {},
 
-   // newMenuItem: (req, res) => {},
+    // newMenuItem: (req, res) => {},
 
     addMenuItem: (req, res) => {},
 
@@ -132,7 +204,7 @@ const controller = {
 
     getIngredients: (req, res) => {},
 
-  //  addIngredient: (req, res) => {},
+    //  addIngredient: (req, res) => {},
 
     getAuditTrail: (req, res) => {},
 
@@ -234,7 +306,6 @@ const controller = {
         res.render("owner_createFolder");
     },
 };
-
 
 //testing for yana
 

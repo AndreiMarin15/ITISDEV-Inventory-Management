@@ -8,7 +8,9 @@ app.get("/", (req, res) => {
 
 app.get("/login", controller.getIndex);
 app.post("/proceedLogin", controller.login);
-
+app.get("/home", controller.home);
+app.post("/newUser", controller.addUser);
+app.get("/logout", controller.logout);
 
 //Testing HBS IF IT WORKS
 
@@ -29,8 +31,13 @@ app.get("/transactionList", controller.transactionList);
 app.get("/createCategory", controller.createCategory);
 
 //Owner
+app.get("/ownerDashboard", controller.getDashboard);
+app.get("/createNewUser", controller.getAddUser);
+app.post("/addUser", controller.addUser);
+
+
 app.get("/addIngredient", controller.addIngredient);
-app.get("/dashboard", controller.dashboard);
+
 app.get("/ingredients", controller.ingredients);
 app.get("/mealCategory", controller.mealCategory);
 app.get("/menuList", controller.menuList);

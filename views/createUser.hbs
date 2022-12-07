@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
     <head>
         <title>Panel</title>
@@ -7,83 +6,86 @@
         <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        
+
         <div class="content-container">
             <div class="createnew-box">
                 <span class="header-font">Create New User</span>
+                <form action="/newUser" method="post">
+                    <div class="field-box">
 
-                <div class="field-box">
-                    <div>
-                        <label for="newUserfirst" class = "field-font">First Name: </label>
-                    </div>
-    
-                    <div>
-                        <input type="text" class="textbox-long" id="newUserfirst" name="newUserfirst">
-                    </div>
-                </div>
-    
-                <div class="field-box">
-                    <div>
-                        <label for="newUserlast" class = "field-font">Last Name: </label>
+                        <div>
+                            <label for="newUserfirst" class="field-font">First Name: </label>
+                        </div>
+
+                        <div>
+                            <input
+                                type="text"
+                                class="textbox-long"
+                                id="newUserfirst"
+                                name="newUserfirst"
+                            />
+                        </div>
                     </div>
 
-                    <div>
-                        <input type="text" class="textbox-long" id="newUserlast" name="newUserlast">
-                    </div>
-                </div>
+                    <div class="field-box">
+                        <div>
+                            <label for="newUserlast" class="field-font">Last Name: </label>
+                        </div>
 
-                <div class="field-box">
-                    <div>
-                        <label for="employeetype" class = "field-font">Employee Type:</label>
+                        <div>
+                            <input
+                                type="text"
+                                class="textbox-long"
+                                id="newUserlast"
+                                name="newUserlast"
+                            />
+                        </div>
                     </div>
-    
-                    <div>
-                        <select name="employeetype" id="employeetype" class="option-dropdown">
-                            <option>General Manager</option>
-                            <option>Inventory Manager</option>
-                            <option>Chef</option>
-                            <option>Full-time Cook</option>
-                            <option>Part-time Cook</option>
-                            <option>Cashier</option>
-                        </select>
+
+                    <div class="field-box">
+                        <div>
+                            <label for="employeetype" class="field-font">Employee Type:</label>
+                        </div>
+
+                        <div>
+                            <select name="employeetype" id="employeetype" class="option-dropdown">
+                                <option value="0">General Manager</option>
+                                <option value="1">Inventory Manager</option>
+                                <option value="2">Cashier</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Employee ID -->
-                <div class="field-box">
-                    <div>
-                        <label for="netweight" class = "field-font">Employee ID:</label>
+                    <!-- Employee ID -->
+                    <div class="field-box">
+                        <div>
+                            <label for="netweight" class="field-font">Employee ID:</label>
+                        </div>
+
+                        <div class="input-container">
+
+                            <input type="text" class="textbox-long" id="txt1" name="assignedID" />
+                            <input
+                                type="button"
+                                class="input-button"
+                                value="Assign ID"
+                                onclick="insertText('txt1', '123456789');"
+                            />
+
+                            <!-- Assigns randomly generated employee ID on button click-->
+                            <script>
+                                function insertText(elemID, text) { var elem =
+                                document.getElementById(elemID); elem.value += text; }
+                            </script>
+                        </div>
                     </div>
-                   
-                    <div class="input-container">
+                    <!-- END of employee ID-->
 
-                          <input type="text" class="textbox-long" id="txt1" name="assignedID">
-                          <input type="button" class="input-button" value="Assign ID" onclick="insertText('txt1', '123456789');">
+                    <input type="submit" class="button-green popup" />
+                </form>
 
-                        <!-- Assigns randomly generated employee ID on button click-->
-                        <script>
-                            function insertText(elemID, text) {
-                                var elem = document.getElementById(elemID);
-                                    elem.value += text;
-                            }
-                        </script>
-                    </div>
-                </div>
-                <!-- END of employee ID-->
-
-                <button class="button-green popup" onclick="myFunction()">Create New User
-                    <span class="popuptext" id="myPopup">New User Created!</span>
-                </button>
-                <script>
-                    // When the user clicks on <div>, open the popup
-                    function myFunction() {
-                      var popup = document.getElementById("myPopup");
-                      popup.classList.toggle("show");
-                    }
-                </script>
-              
-    
             </div>
+
         </div>
     </body>
-    </html>
+</html>

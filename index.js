@@ -18,7 +18,7 @@ app.use(bodyparser.urlencoded({ extended: false }));
 app.set("view engine", "hbs");
 
 const store = new MongoDBSession({
-    uri: process.env.MONGODB_URL,
+    uri: "mongodb+srv://itisdev:00000000@inventory-management.ngqejrn.mongodb.net/",
     collection: "Sessions",
 });
 
