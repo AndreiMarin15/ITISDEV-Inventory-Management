@@ -33,5 +33,6 @@ app.get("/newMenuItem", controller.newMenuItem);
 app.get("/reportsPage", controller.reportsPage);
 app.get("/todaysMenu", controller.todaysMenu);
 app.get("/transTrail", controller.transTrail);
+app.get("/invoice", controller.invoice);
 
 module.exports = app;

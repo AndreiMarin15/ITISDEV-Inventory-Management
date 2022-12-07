@@ -120,7 +120,7 @@ const controller = {
 
     getFolderItems: (req, res) => {},
 
-    newMenuItem: (req, res) => {},
+   // newMenuItem: (req, res) => {},
 
     addMenuItem: (req, res) => {},
 
@@ -132,7 +132,7 @@ const controller = {
 
     getIngredients: (req, res) => {},
 
-    addIngredient: (req, res) => {},
+  //  addIngredient: (req, res) => {},
 
     getAuditTrail: (req, res) => {},
 
@@ -209,6 +209,10 @@ const controller = {
 
     transTrail: (req, res) => {
         res.render("owner_transTrail");
+    },
+
+    invoice: (req, res) => {
+        res.render("owner_invoice");
     },
 };
 

@@ -5,7 +5,7 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<title>A simple, clean, and responsive HTML invoice template</title>
+		<title>Invoice</title>
         <link rel="stylesheet" href="css/invoice.css" />
 	</head>
 
@@ -13,53 +13,21 @@
 		<div class="invoice-box">
 			<table cellpadding="0" cellspacing="0">
 				<tr class="top">
-					<td colspan="2">
+					<td colspan="3">
 						<table>
 							<tr>
 								<td class="title">
-									<img src="../images/logo.png" style="width: 100%; max-width: 300px" />
+									<img src="./images/design/logo.png" style="width: 20%; max-width: 300px" />
 								</td>
 
 								<td>
-									Invoice #: 123<br />
-									Created: January 1, 2015<br />
-									Due: February 1, 2015
+									POS ID #: {{POS.POSIDno}}<br />
+									Date: {{POS.dateOfOrder}}<br />
+
 								</td>
 							</tr>
 						</table>
 					</td>
-				</tr>
-
-				<tr class="information">
-					<td colspan="2">
-						<table>
-							<tr>
-								<td>
-									Sparksuite, Inc.<br />
-									12345 Sunny Road<br />
-									Sunnyville, CA 12345
-								</td>
-
-								<td>
-									Acme Corp.<br />
-									John Doe<br />
-									john@example.com
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-
-				<tr class="heading">
-					<td>Payment Method</td>
-
-					<td>Cash</td>
-				</tr>
-
-				<tr class="details">
-					<td>Check</td>
-
-					<td>1000</td>
 				</tr>
 
 				<tr class="heading">
@@ -68,18 +36,18 @@
 					<td>Price</td>
 				</tr>
 
-				{{#each orderList}}
+				{{#each item}}
 				<tr class="item">
 					<td>{{orderList.recipeName}}</td>
-					<td>{{orderList.Quantity}}</td>
-					<td>{{orderList.Price}}</td>
+					<td>{{orderList.quantity}}</td>
+					<td>{{orderList.price}}</td>
 				</tr>
 				{{/each}}
 
 				<tr class="total">
 					<td></td>
-
-					<td>{{totalPrice}}</td>
+					<td></td>
+					<td>Total: P{{POS.totalPrice}}</td>
 				</tr>
 			</table>
 		</div>
