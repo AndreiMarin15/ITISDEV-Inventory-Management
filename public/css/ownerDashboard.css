@@ -2,111 +2,126 @@
 
 
 .containers {  
-    margin: 20px;
-    padding: 15px;
-    display: grid;
-    grid-template-columns: 1.5fr 1.5fr;
-    grid-template-rows: 1fr 1fr 1.5fr;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "Create-User Grocery-List"
-      "To-Do Employee-List"
-      "Sample-Statistics Sample-Statistics-2";
-    align-content: space-around;
-    justify-content: space-between;
-    grid-gap: 20px 50px;
-    height: 100vh;
-    width: 180vh;
-    }
+  margin: 20px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr;
+  grid-template-rows: 1fr 1fr 1.5fr;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Transaction-Trail Employee-List"
+    "Inventory Employee-List"
+    "Menu-List Missing-Spoilage";
+  align-content: space-around;
+  justify-content: space-between;
+  grid-gap: 20px 50px;
+  height: 100vh;
+  width: 180vh;
+  }
+
+.Transaction-Trail { 
+  grid-area: Transaction-Trail;
+  color: #1a7968;
+  outline: 2px solid #1a7968;
+  }
+
+.Inventory { 
+  grid-area: Inventory;
+  outline: 2px solid #1a7968;
+  align-items: left;
+
+  }
+
+.Menu-List { 
+  grid-area: Menu-List; 
+  outline: 2px solid #1a7968;
+  }
+
+.Employee-List { 
+  grid-area: Employee-List; 
+  outline: 2px solid #1a7968;
   
-  .Create-User { 
-    grid-area: Create-User;
-    color: #1a7968;
-    outline: 2px solid #1a7968;
-    }
-  
-  .To-Do { 
-    grid-area: To-Do;
-    outline: 2px solid #1a7968;
+  }
+
+.Missing-Spoilage { 
+  grid-area: Missing-Spoilage; 
+  outline: 2px solid #1a7968;
+  }
+
+  h1 {
+      color: #1a7968;
+      font-size: 20px;
+      margin-left: 10px;
+      text-decoration: underline;
+  }
+
+  h1:hover {
+    color: #1a796891;
+    cursor: pointer;
+  }
+
+  h2 {
+      color: #1a7968;
+      font-size: 15px;
+      margin-left: 75px;
+  }
+
+  p {
+      margin-left: 75px;
+      margin-top: -10px;
+      color: black;
+      font-size: 12px;
+  }
+
+  table {
+      max-width: 90%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      border: 1px solid #ddd;
+  }    
+
+  th, td {
+      text-align:right;
+      padding: 0.8em 1.5em;
+      color: #6f7681;
+      border-bottom: 1px solid #ddd;
+      font-size: 10px;
+      background-color: white;
+
+  }
+
+  .inventory-table {
+    align-items: center;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+  }
  
-    }
+  table th:nth-child(1) {
+      text-align:left;
+  }
   
-  .Sample-Statistics { 
-    grid-area: Sample-Statistics; 
-    outline: 2px solid #1a7968;
-    }
-  
-  .Employee-List { 
-    grid-area: Employee-List; 
-    outline: 2px solid #1a7968;
-    
-    }
-  
-  .Sample-Statistics-2 { 
-    grid-area: Sample-Statistics-2; 
-    outline: 2px solid #1a7968;
-    }
-  
-    h1 {
-        color: #1a7968;
-        font-size: 20px;
-        margin-left: 10px;
-    }
+  table td:nth-child(1) {
+      text-align: left; 
+  }
 
-    h2 {
-        color: #1a7968;
-        font-size: 15px;
-        margin-left: 75px;
-    }
+  table th:nth-child(2) {
+      text-align:left;
+  }
 
-    p {
-        margin-left: 75px;
-        margin-top: -10px;
-        color: black;
-        font-size: 12px;
-    }
+  table td:nth-child(2) {
+      text-align: left; 
+  }
 
-    table {
-        max-width: 90%;
-        margin: 0 auto;
-        border-collapse: collapse;
-        border: 1px solid #ddd;
-    }    
+  table th, td:nth-child(3) {
+      text-align: center;
+  }
 
-    th, td {
-        text-align:right;
-        padding: 0.8em 1.5em;
-        color: #6f7681;
-        border-bottom: 1px solid #ddd;
-        font-size: 10px;
-        background-color: white;
 
-    }
-   
-    table th:nth-child(1) {
-        text-align:left;
+
+
+  @media (min-width: 900px) {
+      .cards { grid-template-columns: repeat(2, 1fr); }
     }
     
-    table td:nth-child(1) {
-        text-align: left; 
-    }
-
-    table th:nth-child(2) {
-        text-align:left;
-    }
-
-    table td:nth-child(2) {
-        text-align: left; 
-    }
-
-    table th, td:nth-child(3) {
-        text-align: center;
-    }
-
-  
-
-
-    @media (min-width: 900px) {
-        .cards { grid-template-columns: repeat(2, 1fr); }
-      }
       

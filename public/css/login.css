@@ -117,3 +117,12 @@ img {
 	height: auto;
 	margin-bottom: 15px; 
 }
+
+.btn {
+	cursor: pointer;
+}
+
+input[type="submit"].btn:hover {
+	background-color: #1a7968;
+	color: white;
+}

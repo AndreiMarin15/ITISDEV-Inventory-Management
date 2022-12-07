@@ -13,64 +13,95 @@
             <div class="containers">
 
                 <!-- ANNOUNCEMENTS GRID -->
-                <div class="Create-User">
+                <div class="Transaction-Trail">
                     <div class="grid-content">
-                        <h1> Create New User </h1>
-                        <button>Create</button>
+                        <h1> Transaction Trail </h1> 
+
+                        <table>
+					<col style="width:10%">
+					<col style="width:15%">
+					<col style="width:15%">
+					<col style="width:20%">
+					<col style="width:10%">
+                    
+					<thead>
+					<tr>
+						<th>Date</th>
+						<th>Receipt Number</th>
+						<th>Total Amount</th>
+						<th>Employee In-Charge</th>
+						<th> </th>
+					  </tr>
+					</thead>
+						{{#each POS}}
+					  <tr>
+						<td>{{POS.dateOfOrder}}</td>
+						<td>{{POS.POSIDno}}</td>
+						<td>{{POS.totalPrice}}</td>
+						<td>{{POS.personInCharge}}</td>
+						<td><button class="button-view">View</button></td>
+					  </tr>
+					  {{/each}}
+				</table>
                     </div>
                 </div>
                 <!-- END ANNOUNCEMENTS GRID -->
 
                 <!-- TO DO GRID -->
-                <div class="To-Do">
+                <div class="Inventory">
                     <div class="grid-content">
-                        <h1> To Do List: </h1>
+                        <h1> Inventory </h1>
                         <!-- START TO-DO TABLE
                                 NOTES:  need to turn into scrollable table
                                         when rows are being added, grid only
                                         gets bigger -->
-                        <table>
-                            <col style="width:15%">
-					        <col style="width:15%">
-					        <col style="width:10%">
-
-                            <thead>
-                                <tr>
-                                    <th>Assigned to:</th>
-                                    <th>Task</th>
-                                    <th>Deadline</th>
-                                </tr>
-                            </thead>
-                                <tr>
-                                    <td>Jose Santos</td>
-                                    <td>Clean kitchen</td>
-                                    <td>11.29.22</td>
-                                </tr>
-                                <tr>
-                                    <td>Jose Santos</td>
-                                    <td>Clean kitchen</td>
-                                    <td>11.29.22</td>
-                                </tr>
-                                <tr>
-                                    <td>Jose Santos</td>
-                                    <td>Clean kitchen</td>
-                                    <td>11.29.22</td>
-                                </tr>
-                        </table>
+                        <table class="inventory-table">
+                    <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Food Group</th>
+                        <th>Running Total</th>
+                        <th>Unit</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each Category}}
+                    <tr>
+                        <td> {{Category.categoryName}} </td>
+                        <td> {{Category.foodGroupName}} </td>
+                        <td> {{Category.runningTotal}}</td>
+                        <td> {{Category.unitName}}</td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
                         <!-- END TO-DO TABLE -->
                     </div>
                 </div>
                 <!-- END TO DO GRID -->
 
                 <!-- STATISTICS GRID -->
-                <div class="Sample-Statistics">
+                <div class="Menu-List">
                     <div class="grid-content">
-                        <h1> Sample Statistics</h1>
+                        <h1> Menu List</h1>
+                <table>
+                    <thead>
+					<tr>
+						<th>Name</th>
+                    </tr>    
+					</thead>
+						{{#each MenuGroup}}
+					  <tr>
+						<td>{{MenuGroup.MenuGroupName}}</td>
+					  </tr>
+					  {{/each}}
+				</table>
+
                     </div>
                 </div>
                  <!-- END STATISTICS GRID -->
 
-                 <!-- GROCERY LIST GRID-->
+                 <!-- EMPLOYEE LIST GRID-->
                 <div class="Employee-List">
                     <div class="grid-content">
                         <h1>Employee List</h1>
@@ -101,16 +132,43 @@
                             </table>
                     </div>
                 </div>
-                <!-- END GROCERY LIST GRID-->
+                <!-- EMPLLOYEE LIST GRID-->
 
  
-                <!-- SAMPLE STATISTICS 2 GRID-->
-                <div class="Sample-Statistics-2">
+                <!-- MISSING AND SPOILAGE GRID-->
+                <div class="Missing-Spoilage">
                     <div class="grid-content">
-                        <h1> Sample Statistics (Total Sales)</h1>
+                        <h1>Missing and Spoilage</h1>
+
+                        <table>
+					<col style="width:10%">
+					<col style="width:15%">
+					<col style="width:15%">
+					<col style="width:20%">
+					<col style="width:10%">
+
+					<thead>
+					<tr>
+						<th>Date</th>
+						<th>Receipt Number</th>
+						<th>Item Name</th>
+						<th>Quantity</th>
+						<th> </th>
+					  </tr>
+					</thead>
+						{{#each transactions}}
+					  <tr>
+						<td>{{transactions.buyDate}}</td>
+						<td>{{transactions.transactionID}}</td>
+						<td>{{transactions.ingredientName}}</td>
+						<td>{{transactions.quantity}}</td>
+						<td><button class="button-view">View</button></td>
+					  </tr>
+					  {{/each}}
+				</table>
                     </div>
                 </div>
-                <!-- END SAMPLE STATISTICS 2 GRID-->
+                <!-- END MISSING AND SPOILAGE GRID-->
 
             </div>
 

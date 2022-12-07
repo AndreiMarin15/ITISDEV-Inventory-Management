@@ -20,6 +20,7 @@
     --clr-gray-200: hsl(0, 2%, 74%);
     --clr-gray-500: hsl(210, 13%, 65%);
     --clr-gray-600: hsl(203, 10%, 60%);
+    --clr-grayhover: hsl(205, 9%, 52%);
 
     --clr-bg: hsl(214, 100%, 96%);
 
@@ -89,6 +90,14 @@ body{
     max-height:125px;
     border-radius:15%;
     margin: 7px;
+}
+
+.panel-box:hover {
+    background-color: var(--clr-grayhover);
+    width:8vw;
+    height:10vh;
+    border-radius: 10%;
+    cursor: pointer;
 }
 
 .selected-box{
@@ -228,3 +237,15 @@ button:hover{
     border-radius: 10%;
     transition:0.5s;
 }
+
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+
