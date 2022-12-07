@@ -14,15 +14,16 @@
 
                 <div class="text">
                     <h1>Today's Menu</h1>
-                    <p>DATE: xx-xx-xx</p>
+                    <p>DATE: {{dateToday}}</p>
                     <hr>
                 </div>
+
                 {{#each MenuGroup}}
                     <div class="categoryone">
                         <div class="grid-content">
                             <table>
-                                <col style="width:30%">
-                                <col style="width:1%">
+                            <col style="width:95%">
+					        <col style="width:5%">
 
                                 <thead>
                                     <tr>
@@ -30,12 +31,17 @@
                                         <th></th>
                                     </tr>
                                 </thead>
+                                <tbody>
                                     {{#each Recipe}}
                                     <tr>
                                         <td>{{recipe.recipeName}}</td>
-                                        <td><button class="add"> + </button></td>
+                                        <td><button class="delete"> - </button></td>
                                     </tr>
                                     {{/each}}
+                                     <tr>
+                                    <td colspan="2" style="text-align:center"><button class="add"> + Add </button></td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
