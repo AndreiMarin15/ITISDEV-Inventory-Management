@@ -29,43 +29,32 @@
   
 .categoryone { 
     grid-area: categoryone; 
-    color: #1a7968;
-    outline: 2px solid #1a7968;
     padding: 10px;
 }
   
 .categorytwo { 
     grid-area: categorytwo; 
-    color: #1a7968;
-    outline: 2px solid #1a7968; 
     padding: 10px;
 }
   
 .categorythree { 
     grid-area: categorythree;  
-    color: #1a7968;
-    outline: 2px solid #1a7968;
     padding: 10px;
 }
   
 .categoryfour { 
     grid-area: categoryfour; 
-    color: #1a7968;
-    outline: 2px solid #1a7968; 
+
     padding: 10px;
 }
   
 .categoryfive { 
     grid-area: categoryfive;  
-    color: #1a7968;
-    outline: 2px solid #1a7968;
     padding: 10px;
 }
   
 .categorysix { 
     grid-area: categorysix;  
-    color: #1a7968;
-    outline: 2px solid #1a7968;
     padding: 10px;
 }
 
@@ -73,36 +62,40 @@ table {
     max-width: 90%;
     margin: 0 auto;
     border-collapse: collapse;
-    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow:hidden;
+    outline: solid 0.3px #1a7968;
 }    
 
 td {
     text-align: left;
-    padding: 0.8em 1.5em;
-    color: #6f7681;
+    padding: 0.6em 1.5em;
+    color: black;
     border-bottom: 1px solid #ddd;
-    font-size: 10px;
-    background-color: white;
-    
+    font-size: 12px;    
 }
 
-th {
+thead th {
     text-align: left;
     padding: 0.8em 1.5em;
     color: white;
-    font-size: 12px;
-    background-color: #1a7968
-}
-
-tr:nth-child(even) {
+    font-size: 14px;
     background-color: #1a7968;
 }
-  
+
 .text-container{
     height: 50px;
     width: auto;
 }
 
+tbody tr:nth-child(even) {
+    background-color:  #1a796850;
+
+}
+
+tbody tr:nth-child(odd) {
+    background-color:  rgb(255, 255, 255);
+}
 
 
 h1 {
@@ -117,7 +110,37 @@ p {
     color: rgb(93, 93, 93);
 }
 
-.add {
+.delete {
     border-radius: 50%;
     width: auto;
+    height: auto;
+    background-color: transparent;
+    outline: solid -15px black;
+    transition-duration: 0.2s;
+    cursor: pointer;
 }
+
+.delete:hover {
+    background-color: #1a7968;
+    color: white;
+    border-radius: 50%;
+  }
+
+.add {
+    border: 1px solid var(--clr-green);
+    border-radius: 5px;
+    background-color:var(--clr-green);
+    font-family: var(--font-type2);
+    font-size: 12px;
+    color:var(--clr-white);
+    padding: 5px; 
+    box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+    cursor: pointer;
+    text-align: center;
+    transition-duration: 0.2s;
+}
+
+.add:hover {
+    background-color: white;
+    color: #1a7968;
+  }
