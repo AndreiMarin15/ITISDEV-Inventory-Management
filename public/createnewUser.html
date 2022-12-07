@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Panel</title>
+        <link rel="stylesheet" href="css/createnewUser.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="panel-container">
+            <div class="panel-box">
+                <i class="fa-solid fa-user panel-icons"></i>
+                <span class="panel-text">Profile</span>
+            </div>
+            <hr class="line-separator" />
+            <div class="panel-box">
+                <i class="fa-solid fa-box panel-icons"></i>
+                <span class="panel-text">Inventory List</span>
+            </div>
+            <div class="panel-box selected-tab">
+                <i class="fa-solid fa-circle-plus panel-icons"></i>
+                <span class="panel-text">Create New Item</span>
+            </div>
+            <div class="panel-box">
+                <i class="fa-solid fa-cart-plus panel-icons"></i>
+                <span class="panel-text">Add Inventory</span>
+            </div>
+            <div class="panel-box">
+                <i class="fa-regular fa-trash-can panel-icons"></i>
+                <span class="panel-text">Spoilage</span>
+            </div>
+            <div class="panel-box">
+                <i class="fa-solid fa-circle-question panel-icons"></i>
+                <span class="panel-text">Missing</span>
+            </div>
+            <div class="logout-button">
+                <i class="fa-solid fa-right-from-bracket logout-icon"></i>
+                <span>Log Out</span>
+            </div>
+        </div>
+
+        <div class="content-container">
+            <div class="createnew-box">
+                <span class="header-font">Create New User</span>
+
+                <div class="field-box">
+                    <div>
+                        <label for="newUserfirst" class = "field-font">First Name: </label>
+                    </div>
+    
+                    <div>
+                        <input type="text" class="textbox-long" id="newUserfirst" name="newUserfirst">
+                    </div>
+                </div>
+    
+                <div class="field-box">
+                    <div>
+                        <label for="newUserlast" class = "field-font">Last Name: </label>
+                    </div>
+
+                    <div>
+                        <input type="text" class="textbox-long" id="newUserlast" name="newUserlast">
+                    </div>
+                </div>
+
+                <div class="field-box">
+                    <div>
+                        <label for="employeetype" class = "field-font">Employee Type:</label>
+                    </div>
+    
+                    <div>
+                        <select name="employeetype" id="employeetype" class="option-dropdown">
+                            <option>General Manager</option>
+                            <option>Inventory Manager</option>
+                            <option>Chef</option>
+                            <option>Full-time Cook</option>
+                            <option>Part-time Cook</option>
+                            <option>Cashier</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Employee ID -->
+                <div class="field-box">
+                    <div>
+                        <label for="netweight" class = "field-font">Employee ID:</label>
+                    </div>
+                   
+                    <div class="input-container">
+
+                          <input type="text" class="textbox-long" id="txt1" name="assignedID">
+                          <input type="button" class="input-button" value="Assign ID" onclick="insertText('txt1', '123456789');">
+
+                        <!-- Assigns randomly generated employee ID on button click-->
+                        <script>
+                            function insertText(elemID, text) {
+                                var elem = document.getElementById(elemID);
+                                    elem.value += text;
+                            }
+                        </script>
+                    </div>
+                </div>
+                <!-- END of employee ID-->
+
+                <button class="button-green popup" onclick="myFunction()">Create New User
+                    <span class="popuptext" id="myPopup">New User Created!</span>
+                </button>
+                <script>
+                    // When the user clicks on <div>, open the popup
+                    function myFunction() {
+                      var popup = document.getElementById("myPopup");
+                      popup.classList.toggle("show");
+                    }
+                </script>
+              
+    
+            </div>
+        </div>
+    </body>
+    </html>
