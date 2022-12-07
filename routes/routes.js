@@ -13,6 +13,7 @@ app.post("/proceedLogin", controller.login);
 //Testing HBS IF IT WORKS
 
 app.get("/createUser", controller.createUser);
+app.get("/changePassword", controller.changePassword);
 
 //Cashier
 app.get("/POS", controller.POS);
@@ -38,5 +39,6 @@ app.get("/reportsPage", controller.reportsPage);
 app.get("/todaysMenu", controller.todaysMenu);
 app.get("/transTrail", controller.transTrail);
 app.get("/invoice", controller.invoice);
+app.get("/createFolder", controller.createFolder);
 
 module.exports = app;

@@ -148,6 +148,10 @@ const controller = {
         res.render("createUser");
     },
 
+    changePassword: (req, res) => {
+        res.render("changePassword");
+    },
+
     //cashier
     POS: (req, res) => {
         res.render("cashier_POS");
@@ -225,6 +229,9 @@ const controller = {
 
     invoice: (req, res) => {
         res.render("owner_invoice");
+    },
+    createFolder: (req, res) => {
+        res.render("owner_createFolder");
     },
 };
 
