@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Panel</title>
+        <link rel="stylesheet" href="css/createnewFolder.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+        <script src="js/multiselect-dropdown.js" ></script>
+
+    </head>
+    <body>
+        <!-- START PANEL -->
+        <div class="panel-container">
+			<div class ="panel-box">
+				<i class="fa-solid fa-user panel-icons"></i>
+				<span class="panel-text">Profile</span>
+			</div>
+			<hr class="line-separator">
+			<div class ="panel-box">
+				<i class="fa-solid fa-cash-register panel-icons"></i>
+				<span class="panel-text">POS</span>
+			</div>
+			<div class ="panel-box">
+				<i class="fa-solid fa-square-poll-vertical panel-icons"></i>
+				<span class="panel-text">Statistics</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-solid fa-box panel-icons"></i>
+				<span class="panel-text">Inventory</span>
+			</div>
+			<div class ="panel-box selected-tab"> 
+				<i class="fa-regular fa-rectangle-list panel-icons"></i>
+				<span class="panel-text">Menu List</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-regular fa-trash-can panel-icons"></i>
+				<span class="panel-text">Spoilage</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-regular fa-trash-can panel-icons"></i>
+				<span class="panel-text">Missing</span>
+			</div>
+			<div class ="logout-button">
+				<i class="fa-solid fa-right-from-bracket logout-icon"></i>
+				<span>Log Out</span>
+			</div>
+		</div>
+        <!-- END PANEL -->
+
+        
+        <div class="content-container">
+            <div class="createnew-box">
+                <span class="header-font">Create New Menu Folder</span>
+                
+                <!-- START FOLDER NAME-->
+                <div class="field-box">
+                    <div>
+                        <label for="foldername" class = "field-font">Folder Name:</label>
+                    </div>
+    
+                    <div>
+                        <input type="text" class="textbox-long" id="foldername" name="foldername">
+                    </div>
+                </div>
+                <!-- END FOLDER NAME-->
+
+                <!-- Multiselect Dropdown with Search
+                    TO FIX: Appearance of Search but can be converted into hbs na -->
+                <div class="field-box" style="width: 100%">
+                    <div>
+                        <label for="additems" class = "field-font">Add Menu Items</label>
+                    </div>
+                    
+                    <div>
+                        <select name="select" multiple multiselect-search="true" multiselect-select-all="true" class="select">
+                            <option>Menu Item One</option>
+                            <option>Menu Item Two</option>
+                            <option>Menu Item Three</option>
+                            <option>Menu Item Four</option>
+                            <option>Menu Item Five</option>
+                        </select>    
+                    </div>
+                </div>
+                <!-- END Multiselect Dropdown with Search -->
+
+
+                <button class="button-green popup" onclick="myFunction()">Create Folder
+                    <span class="popuptext" id="myPopup">New Folder Created!</span>
+                </button>
+                <script>
+                    // When the user clicks on <div>, open the popup
+                    function myFunction() {
+                      var popup = document.getElementById("myPopup");
+                      popup.classList.toggle("show");
+                    }
+                </script>
+    
+            </div>
+        </div>
+    </body>
+    </html>
