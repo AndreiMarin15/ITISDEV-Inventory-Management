@@ -173,6 +173,9 @@ const controller = {
     spoilage: (req, res) => {
         res.render("invManager_spoilage");
     },
+    transactionList: (req, res) => {
+        res.render("invManager_transactionList");
+    },
 
     //owner
     addIngredient: (req, res) => {

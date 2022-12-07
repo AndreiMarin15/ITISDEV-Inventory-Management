@@ -22,6 +22,7 @@ app.get("/inventoryList", controller.inventoryList);
 app.get("/missing", controller.missing);
 app.get("/missingResult", controller.missingResult);
 app.get("/spoilage", controller.spoilage);
+app.get("/transactionList", controller.transactionList);
 
 //Owner
 app.get("/addIngredient", controller.addIngredient);
