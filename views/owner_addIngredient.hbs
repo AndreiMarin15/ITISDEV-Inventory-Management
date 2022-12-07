@@ -36,11 +36,11 @@
 						    <td>{{Category.unitName}}</td>
 						    <td> <input type="number" class="textbox-short" id="quantity" name="quantity"></td>
 					    </tr>
+						{{/each}}
 				    </table>
-					<div>
-					    <button class="button-green popup" onclick="myFunction()" style="margin-left:40px; margin-top:30px;"> 
-                            + Add Ingredient
-                            <span class="popuptext" id="myPopup">Ingredient Added!</span>
+						<div>
+					    <button class="button-green popup"> 
+                            Add Ingredient
                         </button>
 						</div>
                 </div>
@@ -49,15 +49,7 @@
 
                         <button class="button-green popup"> 
                             Submit
-                        </button>
-                        {{!-- <script>
-                            // When the user clicks on <div>, open the popup
-                            function myFunction() {
-                              var popup = document.getElementById("myPopup");
-                              popup.classList.toggle("show");
-                            }
-                        </script> --}}
-                    <!-- END Add Ingredient Button-->      
+                        </button>  
 			</div>
 		</div>
 </body>
