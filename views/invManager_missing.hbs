@@ -15,7 +15,7 @@
             <div class="category-box">
                 {{#each foodGroup}}
                 <div>
-                    <button class="category-item"><span class="category-text">{{foodGroup.foodGroupName}}</span></button>
+                    <button class="category-item"><span class="category-text">{{foodGroupName}}</span></button>
                 </div>
                 {{/each}}
             </div>
@@ -32,8 +32,8 @@
                     <tbody>
                         {{#each Ingredient}}
                         <tr>
-                            <td> {{Ingredient.ingredientName}} </td>
-                            <td> {{Ingredient.categoryName}} </td>
+                            <td> {{ingredientName}} </td>
+                            <td> {{categoryName}} </td>
                             <td><input type="number">  </td> 
                         </tr>
                         {{/each}}

@@ -14,7 +14,7 @@
 				<div class="category-box">
 						{{#each Category}}
 						<div>
-							<button class="category-item"><span class="category-text">{{Category.categoryName}}</span></button>
+							<button class="category-item"><span class="category-text">{{categoryName}}</span></button>
 						</div>
 						{{/each}}
 
@@ -28,7 +28,7 @@
 				<div class="menu-box">
 						{{#each Recipe}}
 						<div>
-							<button class="menuitem"><span class="menu-text">{{Recipe.recipeName}}</span><br><span class="price-text">P100</span></button>
+							<button class="menuitem"><span class="menu-text">{{recipeName}}</span><br><span class="price-text">P100</span></button>
 						</div>
 						{{/each}}
 				</div>
@@ -45,9 +45,9 @@
 						</tr>
 						{{#each Item}}
 						<tr>
-							<td><i class="fa-solid fa-trash-can"></i>{{Item.name}} </td>
-							<td><i class="fa-solid fa-circle-plus"></i>{{Item.quantity}}<i class="fa-solid fa-circle-minus"></i></i></td>
-							<td>{{Item.price}}</td>
+							<td><i class="fa-solid fa-trash-can"></i>{{name}} </td>
+							<td><i class="fa-solid fa-circle-plus"></i>{{quantity}}<i class="fa-solid fa-circle-minus"></i></i></td>
+							<td>{{price}}</td>
 						</tr>
 						{{/each}}
 
