@@ -10,9 +10,8 @@ const options = {
 };
 // everything will only be used sa ___Controller.js these will be the replacement of usual functions because marami tayo controllers and marami rin models
 const db = {
-
-
     connect: function () {
+        console.log("Connecting to server...");
         return mongoose.connect(url, options);
     },
 

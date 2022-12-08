@@ -25,19 +25,20 @@
                     </div>
 
                     <!-- NOTES: need to insert icons/images -->
-                    <h2> {{firstName}} {{lastName}} </h2>
+                    <h2> {{Emp.firstName}} {{Emp.lastName}} </h2>
                     <p> Employee Name</p>
 
-                    <h2> {{userType}} </h2>
+                    <h2> {{Emp.userType}} </h2>
                     <p> Position </p>
 
-                    <h2> {{userID}} </h2>
+                    <h2> {{Emp.userID}} </h2>
                     <p> Employee ID </p>
 
-                    <h2> {{dateToday}} </h2>
-                    <p> Last Login </p>
+                 
 
-                    <button class="prof-button"> Change Password </button>
+                    <button class="prof-button" onclick="window.location='/changePassword';" > Change Password </button>
+
+                    
                 </div>
             </div>
             <!-- END PROFILE GRID -->

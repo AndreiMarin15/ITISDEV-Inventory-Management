@@ -84,10 +84,12 @@ const controller = {
                 bcrypt.compare(toLogin.password, user.password).then((verify) => {
                     console.log("2 " + user);
                     if (verify) {
-                        req.session.userIDs = user.userID;
+                        req.session.id = user._id;
+                        req.session.userID = user.userID;
                         req.session.firstName = user.firstName;
                         req.session.lastName = user.lastName;
                         req.session.userType = user.userType;
+                        req.session.password = user.password;
 
                         req.session.save();
                         console.log(req.session.userType);
@@ -140,12 +142,63 @@ const controller = {
                 });
             });
         } else if (req.session.userType === 1) {
-            res.render("invManager_createInventory");
+            db.findOne(UserType, { userID: req.session.userType }, {}, (type) => {
+                let Emp = {
+                    firstName: req.session.firstName,
+                    lastName: req.session.lastName,
+                    userType: type.userTypeDesc,
+                    userID: req.session.userID,
+                };
+                res.render("invManager_dashboard", { Emp: Emp });
+            });
         } else if (req.session.userType === 2) {
-            res.render("cashier_POS");
+            db.findOne(UserType, { userID: req.session.userType }, {}, (type) => {
+                let Emp = {
+                    firstName: req.session.firstName,
+                    lastName: req.session.lastName,
+                    userType: type.userTypeDesc,
+                    userID: req.session.userID,
+                };
+                res.render("cashier_Dashboard", { Emp: Emp });
+            });
         }
     },
+    getChangePassword: function (req, res) {
+        res.render("changePassword");
+    },
+    changePassword: function (req, res) {
+        db.findOne(User, { userID: req.session.userID }, {}, (user) => {
+            let oldPassword = req.body.oldPass;
+            let newPassword = req.body.newPass;
+            let confPassword = req.body.confirmPass;
 
+            
+
+            bcrypt.compare(oldPassword, req.session.password).then((verify) => {
+                if (verify) {
+                    if (newPassword == confPassword) {
+                        bcrypt.hash(newPassword, 10, function (err, hash) {
+                            user.password = hash;
+
+                            user.save().then(() => {
+                                res.send(
+                                    `<script>alert("Password changed."); window.location.href = "/home"; </script>`
+                                );
+                            });
+                        });
+                    } else {
+                        res.send(
+                            `<script>alert("New Password don't match. Please try again"); window.location.href = "/changePassword"; </script>`
+                        );
+                    }
+                } else {
+                    res.send(
+                        `<script>alert("Old Password don't match. Please try again"); window.location.href = "/changePassword"; </script>`
+                    );
+                }
+            });
+        });
+    },
     // cashier
 
     getMenu: (req, res) => {
@@ -201,7 +254,7 @@ const controller = {
                     }
                 });
                 console.log("before: " + maxID);
-                
+
                 let newID = "0000" + (maxID + 1).toString();
                 console.log(newID);
                 res.render("createUser", { empID: newID });
@@ -270,10 +323,6 @@ const controller = {
 
     createUser: (req, res) => {
         res.render("createUser");
-    },
-
-    changePassword: (req, res) => {
-        res.render("changePassword");
     },
 
     //cashier

@@ -11,13 +11,16 @@ app.post("/proceedLogin", controller.login);
 app.get("/home", controller.home);
 app.post("/newUser", controller.addUser);
 app.get("/logout", controller.logout);
+app.get("/changePassword", controller.getChangePassword);
+app.post("/updatePassword", controller.changePassword);
 
 //Testing HBS IF IT WORKS
 
 app.get("/createUser", controller.createUser);
-app.get("/changePassword", controller.changePassword);
+
 
 //Cashier
+/*
 app.get("/POS", controller.POS);
 app.get("/invManagerDashboard", controller.getinvManagerDashboard);
 
@@ -37,7 +40,6 @@ app.get("/ownerDashboard", controller.getownerDashboard);
 app.get("/createNewUser", controller.getAddUser);
 app.post("/addUser", controller.addUser);
 
-
 app.get("/addIngredient", controller.addIngredient);
 
 app.get("/ingredients", controller.ingredients);
@@ -49,5 +51,5 @@ app.get("/todaysMenu", controller.todaysMenu);
 app.get("/transTrail", controller.transTrail);
 app.get("/invoice", controller.invoice);
 app.get("/createFolder", controller.createFolder);
-
+*/
 module.exports = app;

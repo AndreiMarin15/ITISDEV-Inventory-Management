@@ -8,37 +8,7 @@
 	<body>
 
 		<!-- START SIDE PANEL -->
-		<div class="panel-container">
-            <div class="panel-box">
-                <i class="fa-solid fa-house panel-icons"></i>
-                <span class="panel-text">Home</span>
-            </div>
-            <hr class="line-separator" />
-            <div class="panel-box">
-                <i class="fa-solid fa-box panel-icons"></i>
-                <span class="panel-text">Inventory List</span>
-            </div>
-            <div class="panel-box">
-                <i class="fa-solid fa-circle-plus panel-icons"></i>
-                <span class="panel-text">Create New Item</span>
-            </div>
-            <div class="panel-box">
-                <i class="fa-solid fa-cart-plus panel-icons"></i>
-                <span class="panel-text">Add Inventory</span>
-            </div>
-            <div class="panel-box">
-                <i class="fa-regular fa-trash-can panel-icons"></i>
-                <span class="panel-text">Spoilage</span>
-            </div>
-            <div class="panel-box">
-                <i class="fa-solid fa-circle-question panel-icons"></i>
-                <span class="panel-text">Missing</span>
-            </div>
-            <div class="logout-button">
-                <i class="fa-solid fa-right-from-bracket logout-icon"></i>
-                <span>Log Out</span>
-            </div>
-        </div>
+		{{>cashierPanel}}
 		<!-- END SIDE PANEL -->
 
         <div class="content-container">
@@ -55,19 +25,22 @@
                     </div>
 
                     <!-- NOTES: need to insert icons/images -->
-                    <h2> {{firstName}} {{lastName}} </h2>
+                    <h2> {{Emp.firstName}} {{Emp.lastName}} </h2>
                     <p> Employee Name</p>
 
-                    <h2> {{userType}} </h2>
+                    <h2> {{Emp.userType}} </h2>
                     <p> Position </p>
 
-                    <h2> {{userID}} </h2>
+                    <h2> {{Emp.userID}} </h2>
                     <p> Employee ID </p>
 
-                    <h2> {{dateToday}} </h2>
-                    <p> Last Login </p>
+                    <button class="prof-button" id="change"> Change Password </button>
 
-                    <button class="prof-button"> Change Password </button>
+                    <script type="text/javascript">
+                        document.getElementById("change").onclick = function(){
+                            location.href = "/changePassword";
+                        };
+                    </script>
                 </div>
             </div>
             <!-- END PROFILE GRID -->
