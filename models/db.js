@@ -17,21 +17,21 @@ const db = {
         });
     },
 
-    findOne: (model, query, projection, cb) => {
+    findOne: function (model, query, projection, cb) {
         model.findOne(query, projection, (err, res) => {
             if (err) return cb(false);
             return cb(res);
         });
     },
 
-    findMany: (model, query, projection, cb) => {
+    findMany: function (model, query, projection, cb) {
         model.find(query, projection, (err, res) => {
             if (err) return cb(false);
             return cb(res);
         });
     },
 
-    insertOne: (model, docu, cb) => {
+    insertOne: function (model, docu, cb) {
         model.create(docu, (err, res) => {
             if (err) return cb(false);
             console.log("Added: " + res);
@@ -39,7 +39,7 @@ const db = {
         });
     },
 
-    insertMany: (model, docs, cb) => {
+    insertMany: function (model, docs, cb) {
         model.insertMany(docs, (err, res) => {
             if (err) return cb(false);
             console.log("Added: " + res);
@@ -47,7 +47,7 @@ const db = {
         });
     },
 
-    updateOne: (model, filter, update, cb) => {
+    updateOne: function (model, filter, update, cb) {
         model.updateOne(filter, update, (err, res) => {
             if (err) return cb(false);
             console.log("Updated: " + res.nModified);
@@ -55,7 +55,7 @@ const db = {
         });
     },
 
-    updateMany: (model, filter, update, cb) => {
+    updateMany: function (model, filter, update, cb) {
         model.updateMany(filter, update, (err, res) => {
             if (err) return cb(false);
             console.log("Updated: " + res.nModified);
@@ -63,7 +63,7 @@ const db = {
         });
     },
 
-    delOne: (model, conditions, cb) => {
+    delOne: function (model, conditions, cb) {
         model.deleteOne(conditions, (err, res) => {
             if (err) return cb(false);
             console.log("Deleted: " + res.deletedCount);
@@ -71,7 +71,7 @@ const db = {
         });
     },
 
-    delMany: (model, conditions, cb) => {
+    delMany: function (model, conditions, cb) {
         model.deleteMany(conditions, (err, res) => {
             if (err) return cb(false);
             console.log("Deleted: " + res.deletedCount);
