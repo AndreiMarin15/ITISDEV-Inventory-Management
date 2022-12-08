@@ -47,25 +47,31 @@
         color: #1a7968;
         font-size: 20px;
         margin-left: 10px;
-        text-decoration: underline;
+    }
+
+    .linked {
+      color: #1a7968;
+      font-size: 20px;
+      margin-left: 10px;
+      text-decoration: underline;
     }
   
-    h1:hover {
+    .linked:hover {
       color: #1a796891;
       cursor: pointer;
     }
   
     h2 {
-        color: #1a7968;
+        color: #000000;
         font-size: 15px;
-        margin-left: 75px;
+        margin-left: 20px;
     }
   
     p {
-        margin-left: 75px;
+        margin-left: 20px;
         margin-top: -10px;
-        color: black;
-        font-size: 12px;
+        color: rgb(97, 97, 97);
+        font-size: 10px;
     }
   
     table {
@@ -123,5 +129,23 @@
       color: rgb(178, 178, 178);
       width: 20vw;
       height: 20vh;
+      position: relative;
+      margin-left: 20%;
     }
+
+    .prof-button {
+      margin-left: 20px;
+      margin-top: 20px;
+      border-radius: 5px;
+      background-color:var(--clr-green);
+      font-family: var(--font-type2);
+      color:var(--clr-white);
+      padding: 8px; 
+      box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+      cursor: pointer;
+      text-align: center;
+      border: none;
+      font-size: 10px;
+    }
+
         
