@@ -92,8 +92,16 @@ const controller = {
                         req.session.save();
                         console.log(req.session.userType);
                         res.redirect("/home");
+                    } else {
+                        res.send(
+                            `<script>alert("Invalid user credentials."); window.location.href = "/login"; </script>`
+                        );
                     }
                 });
+            } else {
+                res.send(
+                    `<script>alert("Invalid user credentials."); window.location.href = "/login"; </script>`
+                );
             }
         });
     },
@@ -116,6 +124,7 @@ const controller = {
 
                     users.forEach((user) => {
                         let use = {
+                            empID: user.userID,
                             firstName: user.firstName,
                             lastName: user.lastName,
                             userType: userType[user.userType - 1].userTypeDesc,

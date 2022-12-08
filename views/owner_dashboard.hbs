@@ -110,21 +110,20 @@
                                         when rows are being added, grid only
                                         gets bigger -->
                             <table>
-                                <col style="width:15%">
-                                <col style="width:5%">
+                                <col style="width:20%">
+                                <col style="width:10%">
                     
                                 <thead>
                                      <tr>
+                                        <th>ID Number</th>
                                         <th>Full Name</th>
                                         <th>Position</th>
                                      </tr>
                                 </thead>
-                                    <tr>
-                                        <td>Chicken</td>
-                                        <td>2</td>
-                                    </tr>
+                                    
                                     {{#each Employee}}
                                      <tr>
+                                        <td>{{empID}}</td>
                                         <td>{{firstName}} {{lastName}}</td>
                                         <td>{{userType}}</td>
                                     </tr>
