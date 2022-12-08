@@ -10,8 +10,8 @@
 		<!-- START SIDE PANEL -->
 		<div class="panel-container">
             <div class="panel-box">
-                <i class="fa-solid fa-user panel-icons"></i>
-                <span class="panel-text">Profile</span>
+                <i class="fa-solid fa-house panel-icons"></i>
+                <span class="panel-text">Home</span>
             </div>
             <hr class="line-separator" />
             <div class="panel-box">
@@ -72,54 +72,108 @@
             </div>
             <!-- END PROFILE GRID -->
 
-            <!-- INVENTORY GRID -->
+            <!-- INVENTORY-TRANSACTIONS GRID -->
+            <div class="Inventory-Transactions">
+                <div class="grid-content">
+                    <h1 class="linked"> Inventory Transaction Trail </h1>
+                    <!-- START INVENTORY-TRANSACTIONS TABLE
+                            NOTES: only displays most recent transactions(?) -->
+
+                            <table>
+                                <col style="width:10%">
+                                <col style="width:15%">
+                                <col style="width:15%">
+                                <col style="width:20%">
+                                <col style="width:10%">
+            
+                                <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Receipt Number</th>
+                                    <th>Item Name</th>
+                                    <th>Quantity</th>
+                                    <th> </th>
+                                  </tr>
+                                </thead>
+                                  <tr>
+                                    <td>XX-XX-XX</td>
+                                    <td>XXXXXXXXXX</td>
+                                    <td>Coke Zero</td>
+                                    <td>XX</td>
+                                    <td><button class="button-view">View</button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>XX-XX-XX</td>
+                                    <td>XXXXXXXXXX</td>
+                                    <td>Pasta Linguini</td>
+                                    <td>XX</td>
+                                    <td><button class="button-view"> View </button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>XX-XX-XX</td>
+                                    <td>XXXXXXXXXX</td>
+                                    <td>Fresh Milk</td>
+                                    <td>XX</td>
+                                    <td><button class="button-view"> View </button></td>
+                                  </tr>
+                            </table>
+                    <!-- END INVENTORY-TRANSACTIONS TABLE -->
+                </div>
+            </div>
+            <!-- END INVENTORY TRANSACTIONS GRID -->
+
+            <!-- INVENTORY LIST GRID
+                NOTES: Should only display last five items added to inventory list 
+                        because hindi siya naka display: flex-->
+
             <div class="Inventory-List">
                 <div class="grid-content">
-                    <h1 class="linked"> Inventory </h1>
-                    <!-- START TO-DO TABLE
-                            NOTES:  need to turn into scrollable table
-                                    when rows are being added, grid only
-                                    gets bigger -->
-                    <table>
-                        <col style="width:15%">
-                        <col style="width:15%">
+                    <h1 class="linked"> Inventory List </h1>
+
+                    <table class="inventory-table">
                         <col style="width:10%">
+                        <col style="width:10%">
+                        <col style="width:10%">
+                        <col style="width:15%">
 
                         <thead>
-                            <tr>
-                                <th>Assigned to:</th>
-                                <th>Task</th>
-                                <th>Deadline</th>
-                            </tr>
+                        <tr>
+                            <th>Category</th>
+                            <th>Food Group</th>
+                            <th>Unit</th>
+                            <th>Running Total</th>
+                        </tr>
                         </thead>
-                            <tr>
-                                <td>Jose Santos</td>
-                                <td>Clean kitchen</td>
-                                <td>11.29.22</td>
-                            </tr>
-                            <tr>
-                                <td>Jose Santos</td>
-                                <td>Clean kitchen</td>
-                                <td>11.29.22</td>
-                            </tr>
-                            <tr>
-                                <td>Jose Santos</td>
-                                <td>Clean kitchen</td>
-                                <td>11.29.22</td>
-                            </tr>
+                        <tbody>
+                        <tr>
+                            <td> Coke </td>
+                            <td> Drinks </td>
+                            <td> Liters (L) </td>
+                            <td> 5 </td>
+                        </tr>
+                        <tr>
+                            <td> Chicken </td>
+                            <td> Meat </td>
+                            <td> Kilograms (Kg) </td>
+                            <td> 5 </td>
+                        </tr>
+                        <tr>
+                            <td> Eggs </td>
+                            <td> Poultry </td>
+                            <td> Pieces (Pcs) </td>
+                            <td> 10 </td>
+                        </tr>
+                        <tr>
+                            <td> Beans </td>
+                            <td> Vegetables </td>
+                            <td> Kilograms (Kg) </td>
+                            <td> 10 </td>
+                        </tr>
+                        </tbody>
                     </table>
-                    <!-- END TO-DO TABLE -->
                 </div>
             </div>
-            <!-- END INVENTORY GRID -->
-
-            <!-- MISSING-SPOILAGE GRID -->
-            <div class="Missing-Spoilage">
-                <div class="grid-content">
-                    <h1 class="linked"> Missing and Spoilage </h1>
-                </div>
-            </div>
-             <!-- END MISSING-SPOILAGE GRID -->
+             <!-- END INVENTORY LIST GRID -->
 
             </div>
 
