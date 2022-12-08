@@ -248,7 +248,15 @@ const controller = {
         res.render("cashier_POS");
     },
 
+    getcashierDashboard: (req, res) => {
+        res.render("cashier_dashboard");
+    },
+
     //invManager
+    getinvManagerDashboard: (req, res) => {
+        res.render("invManager_dashboard");
+    },
+
     addToInventory: (req, res) => {
         res.render("invManager_addtoInventory");
     },
@@ -286,7 +294,7 @@ const controller = {
         res.render("owner_addIngredient");
     },
 
-    dashboard: (req, res) => {
+    getownerDashboard: (req, res) => {
         res.render("owner_dashboard");
     },
 

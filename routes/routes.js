@@ -19,8 +19,10 @@ app.get("/changePassword", controller.changePassword);
 
 //Cashier
 app.get("/POS", controller.POS);
+app.get("/invManagerDashboard", controller.getinvManagerDashboard);
 
 //invManager
+app.get("/cashierDashboard", controller.getcashierDashboard);
 app.get("/addtoInventory", controller.addToInventory);
 app.get("/createInventory", controller.createInventory);
 app.get("/inventoryList", controller.inventoryList);
@@ -31,7 +33,7 @@ app.get("/transactionList", controller.transactionList);
 app.get("/createCategory", controller.createCategory);
 
 //Owner
-app.get("/ownerDashboard", controller.getDashboard);
+app.get("/ownerDashboard", controller.getownerDashboard);
 app.get("/createNewUser", controller.getAddUser);
 app.post("/addUser", controller.addUser);
 
