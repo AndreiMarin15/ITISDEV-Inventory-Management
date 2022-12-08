@@ -16,9 +16,8 @@ const bcrypt = require("bcrypt");
 
 const controller = {
     // checks if an admin account exists. If yes, it redirects to login. If not, creates an admin usertype and admin account
-    getIndex: (req, res) => {
-        let admin = "admin";
-        User.findOne({ userID: admin }).then((result) => {
+    getIndex: function (req, res) {
+        db.findOne(User, { userType: 0 }, {}, (result) => {
             console.log("res = " + result);
             if (!result) {
                 console.log("no result");
@@ -73,7 +72,7 @@ const controller = {
         res.render("login");
     },
 
-    login: (req, res) => {
+    login: function (req, res) {
         let toLogin = {
             userID: req.body.username,
             password: req.body.password,
@@ -99,18 +98,38 @@ const controller = {
         });
     },
 
-    logout: (req, res) => {
+    logout: function (req, res) {
         req.session.destroy((err) => {
             if (err) throw err;
             res.redirect("/login");
         });
     },
 
-    home: (req, res) => {
+    home: function (req, res) {
         console.log(req.session);
 
         if (req.session.userType === 0) {
-            res.render("owner_dashboard");
+            db.findMany(User, { $or: [{ userType: 1 }, { userType: 2 }] }, {}, (users) => {
+                db.findMany(UserType, { $or: [{ userID: 1 }, { userID: 2 }] }, {}, (userType) => {
+                    let employee = [];
+                    console.log(userType);
+
+                    users.forEach((user) => {
+                        let use = {
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+                            userType: userType[user.userType - 1].userTypeDesc,
+                        };
+
+                        console.log(user);
+                        console.log(use);
+
+                        employee.push(use);
+                    });
+                    console.log(employee);
+                    res.render("owner_dashboard", { Employee: employee });
+                });
+            });
         } else if (req.session.userType === 1) {
             res.render("invManager_createInventory");
         } else if (req.session.userType === 2) {
@@ -152,15 +171,15 @@ const controller = {
     getDiscrepancy: (req, res) => {},
 
     // owner
-    getDashboard: (req, res) => {
+    getDashboard: function (req, res) {
         res.render("owner_dashboard");
     },
 
-    getAddUser: (req, res) => {
+    getAddUser: function (req, res) {
         res.render("createUser");
     },
 
-    addUser: (req, res) => {
+    addUser: function (req, res) {
         let firstName = req.body.newUserfirst;
         let lastName = req.body.newUserlast;
         let password = "00000000";
