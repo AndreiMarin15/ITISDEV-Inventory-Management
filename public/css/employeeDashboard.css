@@ -9,9 +9,9 @@
     grid-template-rows: 1fr 1fr 1fr; 
     grid-auto-flow: row-dense;
     grid-template-areas:
-      "Profile Inventory-List"
-      "Profile Inventory-List"
-      "Missing-Spoilage Inventory-List";
+      "Profile Inventory-Transactions"
+      "Profile Inventory-Transactions"
+      "Inventory-List Inventory-Transactions";
     align-content: space-around;
     justify-content: space-between;
     grid-gap: 20px 30px;
@@ -28,16 +28,16 @@
     height: 100%;
     }
   
-  .Inventory-List { 
-    grid-area: Inventory-List;
+  .Inventory-Transactions { 
+    grid-area: Inventory-Transactions;
     outline: 2px solid #1a7968;
     align-items: left;
     width: 100%;
     height: 100%;
     }
   
-  .Missing-Spoilage { 
-    grid-area: Missing-Spoilage; 
+  .Inventory-List { 
+    grid-area: Inventory-List; 
     outline: 2px solid #1a7968;
     width: 100%;
     height: 100%;
@@ -78,7 +78,6 @@
         max-width: 90%;
         margin: 0 auto;
         border-collapse: collapse;
-        border: 1px solid #ddd;
     }    
   
     th, td {
@@ -88,7 +87,11 @@
         border-bottom: 1px solid #ddd;
         font-size: 10px;
         background-color: white;
-  
+    }
+
+    th {
+      background-color: #1a7968;
+      color: white;
     }
   
     .inventory-table {
@@ -113,10 +116,19 @@
     table td:nth-child(2) {
         text-align: left; 
     }
-  
-    table th, td:nth-child(3) {
-        text-align: center;
+    
+    table th:nth-child(3) {
+      text-align: left;
     }
+  
+    table td:nth-child(3) {
+        text-align: left;
+    }
+
+    table th, td:nth-child(4) {
+      text-align: right;
+  }
+
   
   
   
@@ -146,6 +158,45 @@
       text-align: center;
       border: none;
       font-size: 10px;
+      transition: 0.2s;
+    }
+
+    .prof-button:hover {
+      margin-left: 20px;
+      margin-top: 20px;
+      border-radius: 5px;
+      background-color: white;
+      font-family: var(--font-type2);
+      color:var(--clr-white);
+      padding: 8px; 
+      box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+      cursor: pointer;
+      text-align: center;
+      color: #1a7968;
+      border: 0.5px solid #1a7968;
+      font-size: 10px;
+    }
+
+    .inventory-table {
+      align-items: center;
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #ddd;
+    }
+
+    .button-view {
+      margin-left: 20px;
+      border-radius: 5px;
+      background-color:var(--clr-green);
+      font-family: var(--font-type2);
+      color:var(--clr-white);
+      padding: 5px; 
+      box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+      cursor: pointer;
+      text-align: center;
+      border: none;
+      font-size: 10px;
+      transition: 0.2s;
     }
 
         
