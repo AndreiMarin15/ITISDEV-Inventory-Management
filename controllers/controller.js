@@ -185,7 +185,31 @@ const controller = {
     },
 
     getAddUser: function (req, res) {
-        res.render("createUser");
+        // User.find({ userID: { $not: "admin" } })
+
+        User.find({ userID: { $ne: "admin" } }).then((users) => {
+            console.log(users);
+            if (users) {
+                console.log("if");
+                let maxID = 00001;
+                users.forEach((user) => {
+                    let id = parseInt(user.userID);
+
+                    if (maxID < id) {
+                        maxID = id;
+                        console.log(maxID);
+                    }
+                });
+                console.log("before: " + maxID);
+                
+                let newID = "0000" + (maxID + 1).toString();
+                console.log(newID);
+                res.render("createUser", { empID: newID });
+            } else {
+                console.log("else");
+                res.render("createUser", { empID: "00001" });
+            }
+        });
     },
 
     addUser: function (req, res) {

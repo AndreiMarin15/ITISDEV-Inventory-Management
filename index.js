@@ -52,9 +52,21 @@ hostname = process.env.HOSTNAME;
 app.use(express.static(`public`));
 app.use(routes);
 
-db.connect();
+const url = process.env.MONGODB_URL;
 
-app.listen(port, hostname, function () {
-    console.log(`Server is running at:`);
-    console.log(`http://` + hostname + `:` + port);
-});
+const start = async () => {
+    try {
+        await db.connect();
+        console.log("Connected to: " + url);
+
+        app.listen(port, hostname, function () {
+            console.log(`Server is running at:`);
+            console.log(`http://` + hostname + `:` + port);
+        });
+    } catch (err) {
+        console.log(err);
+        console.log("failed to connect to database");
+    }
+};
+
+start();
