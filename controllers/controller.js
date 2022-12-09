@@ -172,8 +172,6 @@ const controller = {
             let newPassword = req.body.newPass;
             let confPassword = req.body.confirmPass;
 
-            
-
             bcrypt.compare(oldPassword, req.session.password).then((verify) => {
                 if (verify) {
                     if (newPassword == confPassword) {
@@ -212,6 +210,10 @@ const controller = {
         // Subtract ingredients
     },
 
+    getPOS: (req, res) => {
+        res.render("cashier_POS");
+    },
+
     // inventory manager
 
     // inventorycreateCategory: (req, res) => {
@@ -224,7 +226,25 @@ const controller = {
 
     //   addToInventory: (req, res) => {},
 
-    getInventoryList: (req, res) => {},
+    getInventoryList: (req, res) => {
+        res.render("invManager_inventoryList");
+    },
+
+    getCreateCategory: (req, res) => {
+        res.render("invManager_createCategory");
+    },
+
+    getAddInventory: (req, res) => {
+        res.render("invManager_createInventory");
+    },
+
+    getSpoilage: (req, res) => {
+        res.render("invManager_spoilage");
+    },
+
+    getMissing: (req, res) => {
+        res.render("invManager_missing");
+    },
 
     addSpoiled: (req, res) => {},
 
@@ -291,6 +311,14 @@ const controller = {
         });
     },
 
+    getTransactionTrail: function (req, res) {
+        res.render("owner_transTrail");
+    },
+
+    getOwnerMenu: function (req, res) {
+        res.render("owner_menuList");
+    },
+
     addMenuFolder: (req, res) => {},
 
     //   getMenu: (req, res) => {},
@@ -320,7 +348,7 @@ const controller = {
     getIngredientCost: (req, res) => {},
 
     //Testing HBS IF IT WORKS
-
+    /*
     createUser: (req, res) => {
         res.render("createUser");
     },
@@ -413,7 +441,7 @@ const controller = {
     },
     createFolder: (req, res) => {
         res.render("owner_createFolder");
-    },
+    }, */
 };
 
 //testing for yana

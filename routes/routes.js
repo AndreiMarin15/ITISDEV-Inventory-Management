@@ -16,8 +16,23 @@ app.post("/updatePassword", controller.changePassword);
 
 //Testing HBS IF IT WORKS
 
-app.get("/createUser", controller.createUser);
+//Owner
 
+app.get("/createNewUser", controller.getAddUser);
+app.post("/addUser", controller.addUser);
+app.get("/transactionTrail", controller.getTransactionTrail);
+app.get("/ownerMenu", controller.getOwnerMenu);
+
+
+// inventory manager
+app.get("/inventoryList", controller.getInventoryList);
+app.get("/createCategory", controller.getCreateCategory);
+app.get("/addInventory", controller.getAddInventory);
+app.get("/inventorySpoiled", controller.getSpoilage);
+app.get("/inventoryMissing", controller.getMissing);
+
+// cashier
+app.get("/viewPOS", controller.getPOS);
 
 //Cashier
 /*
@@ -35,10 +50,7 @@ app.get("/spoilage", controller.spoilage);
 app.get("/transactionList", controller.transactionList);
 app.get("/createCategory", controller.createCategory);
 
-//Owner
-app.get("/ownerDashboard", controller.getownerDashboard);
-app.get("/createNewUser", controller.getAddUser);
-app.post("/addUser", controller.addUser);
+
 
 app.get("/addIngredient", controller.addIngredient);
 
