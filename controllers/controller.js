@@ -13,6 +13,7 @@ const Unit = require("../models/unit");
 const UnitConversion = require("../models/unitConversion");
 const UserType = require("../models/UserType");
 const bcrypt = require("bcrypt");
+const FoodGroup = require("../models/foodGroup");
 
 const controller = {
     // checks if an admin account exists. If yes, it redirects to login. If not, creates an admin usertype and admin account
@@ -230,8 +231,79 @@ const controller = {
         res.render("invManager_inventoryList");
     },
 
-    getCreateCategory: (req, res) => {
-        res.render("invManager_createCategory");
+    getCreateCategory: async (req, res) => {
+        try {
+            await db.findOne(FoodGroup, {}, {}, (foodgroup) => {
+                if (!foodgroup) {
+                    let drinks = {
+                        foodGroupID: 1,
+                        foodGroupName: "Drinks",
+                    };
+
+                    let vegetables = {
+                        foodGroupID: 2,
+                        foodGroupName: "Vegetables",
+                    };
+
+                    let poultry = {
+                        foodGroupID: 3,
+                        foodGroupName: "Poultry",
+                    };
+
+                    let dairy = {
+                        foodGroupID: 4,
+                        foodGroupName: "Dairy",
+                    };
+
+                    let meat = {
+                        foodGroupID: 5,
+                        foodGroupName: "Meat",
+                    };
+
+                    db.insertOne(FoodGroup, drinks, (result) => {
+                        console.log(result);
+                    });
+
+                    db.insertOne(FoodGroup, vegetables, (result) => {
+                        console.log(result);
+                    });
+
+                    db.insertOne(FoodGroup, poultry, (result) => {
+                        console.log(result);
+                    });
+
+                    db.insertOne(FoodGroup, dairy, (result) => {
+                        console.log(result);
+                    });
+
+                    db.insertOne(FoodGroup, meat, (result) => {
+                        console.log(result);
+                    });
+                }
+            });
+
+            await db.findMany(FoodGroup, {}, {}, (groups) => {
+                let foodGroup = [];
+
+                groups.forEach((group) => {
+                    let food = {
+                        foodGroupID: group.foodGroupID,
+                        foodGroupName: group.foodGroupName,
+                    };
+
+                    console.log(food);
+
+                    foodGroup.push(food);
+                });
+
+                console.log("A " + foodGroup);
+                console.log("B " + foodGroup);
+
+                res.render("invManager_createCategory", { foodGroup: foodGroup });
+            });
+        } catch (err) {
+            console.log(err);
+        }
     },
 
     getCreateItem: (req, res) => {
