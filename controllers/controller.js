@@ -234,6 +234,10 @@ const controller = {
         res.render("invManager_createCategory");
     },
 
+    getCreateItem: (req, res) => {
+        res.render("invManager_addtoInventory");
+    },
+
     getAddInventory: (req, res) => {
         res.render("invManager_createInventory");
     },

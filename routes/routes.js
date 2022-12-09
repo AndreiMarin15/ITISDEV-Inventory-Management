@@ -30,6 +30,7 @@ app.get("/createCategory", controller.getCreateCategory);
 app.get("/addInventory", controller.getAddInventory);
 app.get("/inventorySpoiled", controller.getSpoilage);
 app.get("/inventoryMissing", controller.getMissing);
+app.get("/addItem", controller.getCreateItem);
 
 // cashier
 app.get("/viewPOS", controller.getPOS);
