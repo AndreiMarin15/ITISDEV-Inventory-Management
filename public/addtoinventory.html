@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Panel</title>
+        <title>Record Purchase</title>
         <link rel="stylesheet" href="css/addtoinventory.css" />
         <link rel="stylesheet" href="css/base.css" />
         <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
@@ -21,14 +21,14 @@
         </div>
         <div class="panel-box">
             <i class="fa-solid fa-circle-plus panel-icons"></i>
-            <span class="panel-text">Create New Item</span>
+            <span class="panel-text">Record First Purchase</span>
         </div>
         <div class="panel-box selected-tab">
             <i class="fa-solid fa-cart-plus panel-icons"></i>
-            <span class="panel-text">Add Inventory</span>
+            <span class="panel-text">Record Purchase</span>
         </div>
         <div class="panel-box">
-            <i class="fa-regular fa-trash-can panel-icons"></i>
+            <i class="fa-solid fa-trash-can panel-icons"></i>
             <span class="panel-text">Spoilage</span>
         </div>
         <div class="panel-box">
@@ -43,13 +43,17 @@
 
     <div class="content-container">
         <div class="createnew-box">
-            <span class="header-font">Add to Inventory / New Transaction</span>
+            <span class="header-font">Record Purchase</span>
             <div class="field-box">
                 <div>
                     <label for="search-item" class = "field-font">Search Item:</label>
                 </div>
                 <div>
-                    <input type="text" class="textbox-long" id="itemname" name="itemname">
+                    <select name="itemname" id="itemname" class="dropdown">
+                        <option>Item Name 1</option>
+                        <option>Item Name 2</option>
+                        <option>Item Name 3</option>
+                    </select>
                 </div>
             </div>
             <div class="field-box">
@@ -72,9 +76,6 @@
 			</script>
         </div>
     </div>
-    
-
-
 </div>
 </body>
 </html>
