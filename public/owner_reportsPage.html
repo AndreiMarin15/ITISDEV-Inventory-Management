@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Owner | Inventory Reports Page</title>
+        <link rel="stylesheet" href="css/reportsPage.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+		<div class="panel-container">
+			<div class ="panel-box">
+				<i class="fa-solid fa-user panel-icons"></i>
+				<span class="panel-text">Profile</span>
+			</div>
+			<hr class="line-separator">
+			<div class ="panel-box">
+				<i class="fa-solid fa-cash-register panel-icons"></i>
+				<span class="panel-text">POS</span>
+			</div>
+			<div class ="panel-box">
+				<i class="fa-solid fa-square-poll-vertical panel-icons"></i>
+				<span class="panel-text">Statistics</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-solid fa-box panel-icons"></i>
+				<span class="panel-text">Inventory</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-solid fa-rectangle-list panel-icons"></i>
+				<span class="panel-text">Menu List</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-solid fa-trash-can panel-icons"></i>
+				<span class="panel-text">Spoilage</span>
+			</div>
+			<div class ="panel-box"> 
+				<i class="fa-solid fa-circle-question panel-icons"></i>
+				<span class="panel-text">Missing</span>
+			</div>
+			<div class ="logout-button">
+				<i class="fa-solid fa-right-from-bracket logout-icon"></i>
+				<span>Log Out</span>
+			</div>
+		</div>
+
+        <div class="page-container">
+            <div><span class="header-font">Inventory Reports Page</span></div>
+            <div class="search-filters">
+                <div>
+                    <input type="text" placeholder="Search" name="search">
+                    <button type="submit"><i class="fa fa-search search-icon"></i></button>
+                </div>
+                <div class="filters">
+                    <div>
+                        <label for="filters">Sort By:</label>
+                        <select id="sort" class="dropdown" name="sort">
+                            <option value="Ascending">Date, Ascending</option>
+                            <option value="Descending">Date, Descending</option>
+                            <option value="Ascending">Employee, Ascending</option>
+                            <option value="Descending">Employee, Descending</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filters">Type: </label>
+                        <select id="filter" class="dropdown" name="filter">
+                            <option value="Missing">Missing</option>
+                            <option value="Spoilage">Spoilage</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="inventory-container">
+                <table class="inventory-table">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Report Type</th>
+                        <th>Food Group</th>
+                        <th>Amount</th>
+                        <th>Employee in-Charge</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td> 26/11/2022 </td>
+                        <td> Missing </td>
+                        <td> Drinks </td>
+                        <td> 4Liters </td>
+                        <td> Juan De La Cruz </td>
+                    </tr>
+                    <tr>
+                        <td> 20/9/2021 </td>
+                        <td> Spoilage </td>
+                        <td> Meat </td>
+                        <td> 1kg </td>
+                        <td> Mark Spencer </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </body>
+</html>
