@@ -75,7 +75,7 @@ const controller = {
 
     login: function (req, res) {
         let toLogin = {
-            userID: req.body.username,
+            userID: req.body.userID,
             password: req.body.password,
         };
 
@@ -233,58 +233,9 @@ const controller = {
 
     getCreateCategory: async (req, res) => {
         try {
-            await db.findOne(FoodGroup, {}, {}, (foodgroup) => {
-                if (!foodgroup) {
-                    let drinks = {
-                        foodGroupID: 1,
-                        foodGroupName: "Drinks",
-                    };
-
-                    let vegetables = {
-                        foodGroupID: 2,
-                        foodGroupName: "Vegetables",
-                    };
-
-                    let poultry = {
-                        foodGroupID: 3,
-                        foodGroupName: "Poultry",
-                    };
-
-                    let dairy = {
-                        foodGroupID: 4,
-                        foodGroupName: "Dairy",
-                    };
-
-                    let meat = {
-                        foodGroupID: 5,
-                        foodGroupName: "Meat",
-                    };
-
-                    db.insertOne(FoodGroup, drinks, (result) => {
-                        console.log(result);
-                    });
-
-                    db.insertOne(FoodGroup, vegetables, (result) => {
-                        console.log(result);
-                    });
-
-                    db.insertOne(FoodGroup, poultry, (result) => {
-                        console.log(result);
-                    });
-
-                    db.insertOne(FoodGroup, dairy, (result) => {
-                        console.log(result);
-                    });
-
-                    db.insertOne(FoodGroup, meat, (result) => {
-                        console.log(result);
-                    });
-                }
-            });
-
             await db.findMany(FoodGroup, {}, {}, (groups) => {
                 let foodGroup = [];
-
+                console.log(groups);
                 groups.forEach((group) => {
                     let food = {
                         foodGroupID: group.foodGroupID,
@@ -306,12 +257,33 @@ const controller = {
         }
     },
 
-    getCreateItem: (req, res) => {
-        res.render("invManager_addtoInventory");
+    getCreateItem: async (req, res) => {
+        try {
+            await db.findMany(FoodGroup, {}, {}, (groups) => {
+                let foodGroup = [];
+                console.log(groups);
+                groups.forEach((group) => {
+                    let food = {
+                        foodGroupID: group.foodGroupID,
+                        foodGroupName: group.foodGroupName,
+                    };
+
+                    console.log(food);
+
+                    foodGroup.push(food);
+                });
+
+                console.log("A " + foodGroup);
+                console.log("B " + foodGroup);
+                res.render("invManager_recordFirstPurchase", { foodGroup: foodGroup });
+            });
+        } catch (err) {
+            console.log(err);
+        }
     },
 
     getAddInventory: (req, res) => {
-        res.render("invManager_createInventory");
+        res.render("invManager_recordPurchase");
     },
 
     getSpoilage: (req, res) => {
@@ -364,7 +336,7 @@ const controller = {
     addUser: function (req, res) {
         let firstName = req.body.newUserfirst;
         let lastName = req.body.newUserlast;
-        let password = "00000000";
+        let password = req.body.newUserPassword;
         let userID = req.body.assignedID;
         let userType = parseInt(req.body.employeetype);
 
@@ -395,7 +367,9 @@ const controller = {
         res.render("owner_menuList");
     },
 
-    addMenuFolder: (req, res) => {},
+    addMenuFolder: (req, res) => {
+        res.render("owner_createFolder");
+    },
 
     //   getMenu: (req, res) => {},
 

@@ -22,7 +22,7 @@ app.get("/createNewUser", controller.getAddUser);
 app.post("/addUser", controller.addUser);
 app.get("/transactionTrail", controller.getTransactionTrail);
 app.get("/ownerMenu", controller.getOwnerMenu);
-
+app.get("/newFolder", controller.addMenuFolder);
 
 // inventory manager
 app.get("/inventoryList", controller.getInventoryList);
@@ -30,7 +30,7 @@ app.get("/createCategory", controller.getCreateCategory);
 app.get("/addInventory", controller.getAddInventory);
 app.get("/inventorySpoiled", controller.getSpoilage);
 app.get("/inventoryMissing", controller.getMissing);
-app.get("/addItem", controller.getCreateItem);
+app.get("/firstPurchase", controller.getCreateItem);
 
 // cashier
 app.get("/viewPOS", controller.getPOS);

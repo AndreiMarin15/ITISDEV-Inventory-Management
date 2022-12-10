@@ -1,17 +1,16 @@
 @font-face {
-    font-family: 'Omnes';
-    src: url('font/Omnes.eot') format('embedded-opentype'), /* IE6-IE8 */
-         url('font/Omnes.woff') format('woff'),
-         url('font/Omnes.woff2') format('woff2'), /* Modern Browsers */
-         url('font/Omnes.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-family: "Omnes";
+    src: url("font/Omnes.eot") format("embedded-opentype"),
+        /* IE6-IE8 */ url("font/Omnes.woff") format("woff"), url("font/Omnes.woff2") format("woff2"),
+        /* Modern Browsers */ url("font/Omnes.ttf") format("truetype"); /* Safari, Android, iOS */
 }
 
 @font-face {
-    font-family: 'Omnes Medium';
-    src: url('font/Omnes Medium.otf') format('opentype');
+    font-family: "Omnes Medium";
+    src: url("font/Omnes Medium.otf") format("opentype");
 }
 
-:root{
+:root {
     /*colors to be used in application 
     Example on how to use: color: var(--clr-white);*/
     --clr-white: white;
@@ -30,222 +29,231 @@
     --clr-primary: hsl(158, 36%, 26%);
     --clr-txt-secondary: hsl(208, 24%, 53%);
 
-     /*font to be used in application 
+    /*font to be used in application 
     Example on how to use: font-family: var(--font-type2);*/
-    --font-type: 'Omnes', Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --font-type2: 'Omnes Medium', var(--font-type);
+    --font-type: "Omnes", Poppins, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    --font-type2: "Omnes Medium", var(--font-type);
 }
 
-body{
+body {
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     margin: 0;
     padding: 0;
-    background-color:var(--clr-gray-100);
+    background-color: var(--clr-gray-100);
     font-family: var(--font-type2);
-    color:var(--clr-txt-primary);
+    color: var(--clr-txt-primary);
 }
 
-.header-font{
-    color:var(--clr-txt-primary);
+.header-font {
+    color: var(--clr-txt-primary);
     font-size: 4em;
 }
 
-.field-font{
-    color:var(--clr-txt-primary);
+.field-font {
+    color: var(--clr-txt-primary);
     font-size: 1em;
     font-weight: 600;
     margin-right: 15px;
 }
 
-.panel-container{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+.panel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: var(--clr-primary);
-    min-width:10vw;
+    min-width: 10vw;
     min-height: 100vh;
     gap: 2px;
 }
 
-.content-container{
-    display:flex;
-    flex-direction:row;
+.content-container {
+    display: flex;
+    flex-direction: row;
     gap: 5px;
     background-color: var(--clr-gray-100);
-}   
+}
 
 .panel-box {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    gap:5px;
-    width:5vw;
-    height:10vh;
-    min-width:80px;
-    max-width:125px;
-    min-height:80px;
-    max-height:125px;
-    border-radius:15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 5px;
+    width: 5vw;
+    height: 10vh;
+    min-width: 80px;
+    max-width: 125px;
+    min-height: 80px;
+    max-height: 125px;
+    border-radius: 15%;
     margin: 7px;
 }
 
 .panel-box:hover {
     background-color: var(--clr-grayhover);
-    width:8vw;
-    height:10vh;
+    width: 8vw;
+    height: 10vh;
     border-radius: 10%;
     cursor: pointer;
 }
 
-.selected-box{
+.selected-box {
     background-color: var(--clr-darkgreen);
-    color:var(--clr-white);
-    font-weight:bold;
+    color: var(--clr-white);
+    font-weight: bold;
 }
 
-.selected-tab{
+.selected-tab {
     background-color: var(--clr-gray-200);
-    color:var(--clr-primary);
-    font-weight:bold;
+    color: var(--clr-primary);
+    font-weight: bold;
 }
 
-.line-separator{
+.line-separator {
     min-width: 70%;
 }
 
-.panel-icons{
+.panel-icons {
     width: 6vw;
-    height:6vh;
+    height: 6vh;
     color: var(--clr-white);
 }
-.panel-text{
+.panel-text {
     font-family: var(--font-family);
     color: var(--clr-gray-100);
-    font-size:0.7em;
+    font-size: 0.7em;
 }
 
-.logout-button{
-    margin-top:auto;
-    margin-right:auto;
+.logout-button {
+    margin-top: auto;
+    margin-right: auto;
     color: var(--clr-white);
-    margin-left:15px;
-    margin-bottom:15px;
-    font-size:15px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    font-size: 15px;
 }
 
-.dropdown{
+.dropdown {
     padding: 7px 5px;
     border-radius: 5px;
     border: 1px solid var(--clr-green);
-    width:8vw;
-    height:3.5vh;
+    width: 17vw;
+    height: 4vh;
     font-weight: bold;
-    color:var(--clr-green);
+    color: var(--clr-green);
 }
 
-.button-white{
+.dropdown[disabled="disabled"]{
+    color: var(--clr-gray);
+    
+}
+
+.button-white {
     border: 1px solid var(--clr-green);
     border-radius: 5px;
-    background-color:var(--clr-white);
+    background-color: var(--clr-white);
     font-family: var(--font-type2);
     font-size: 14px;
-    width:8vw;
-    height:4vh;
-    color:var(--clr-green);
-    padding: 10px; 
+    width: 8vw;
+    height: 4vh;
+    color: var(--clr-green);
+    padding: 10px;
     box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
     cursor: pointer;
     text-align: center;
 }
 
-.button-green{
+.button-green {
     border: 1px solid var(--clr-green);
     border-radius: 5px;
-    background-color:var(--clr-green);
+    background-color: var(--clr-green);
     font-family: var(--font-type2);
     font-size: 14px;
-    width:10vw;
-    height:6vh;
-    color:var(--clr-white);
-    padding: 10px; 
+    width: 10vw;
+    height: 6vh;
+    color: var(--clr-white);
+    padding: 10px;
     box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
     cursor: pointer;
     text-align: center;
 }
 
-.button-submit{
-    color:var(--clr-white);
-    min-width:10vw;
-    min-height:5vh;
-    background-color:var(--clr-green);
+.button-submit {
+    color: var(--clr-white);
+    min-width: 10vw;
+    min-height: 5vh;
+    background-color: var(--clr-green);
     border-radius: 10%;
 }
 
-.textbox-long{
+.textbox-long {
     border: 1px solid var(--clr-green);
     border-radius: 5px;
-    background-color:var(--clr-white);
+    background-color: var(--clr-white);
     font-family: var(--font-type2);
     font-size: 14px;
-    width:15vw;
-    height:1vh;
-    color:var(--clr-green);
-    padding: 10px; 
+    width: 15vw;
+    height: 1vh;
+    color: var(--clr-green);
+    padding: 10px;
     box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
     cursor: pointer;
     text-align: left;
 }
 
-.textbox-short{
+.textbox-short {
     border: 1px solid var(--clr-green);
     border-radius: 5px;
-    background-color:var(--clr-white);
+    background-color: var(--clr-white);
     font-family: var(--font-type2);
     font-size: 14px;
-    width:5vw;
-    height:1vh;
-    color:var(--clr-green);
-    padding: 10px; 
+    width: 5vw;
+    height: 1vh;
+    color: var(--clr-green);
+    padding: 10px;
     box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
     cursor: pointer;
     text-align: left;
 }
 
-.textarea-long{
+.textarea-long {
     border: 1px solid var(--clr-green);
     border-radius: 5px;
-    background-color:var(--clr-white);
+    background-color: var(--clr-white);
     font-family: var(--font-type2);
     font-size: 14px;
-    color:var(--clr-green);
-    padding: 10px; 
+    color: var(--clr-green);
+    padding: 10px;
     box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
     cursor: pointer;
     text-align: left;
-    min-width:20vw;
-    min-height:5vh;
+    min-width: 20vw;
+    min-height: 5vh;
 }
 
-button:hover{
-    color:white;
+button:hover {
+    color: white;
     background-color: var(--clr-darkgreen);
-    border-color:var(--clr-green);
-    border-style:solid;
+    border-color: var(--clr-green);
+    border-style: solid;
     border-radius: 10%;
-    transition:0.5s;
+    transition: 0.5s;
 }
 
-a:link { text-decoration: none; }
+a:link {
+    text-decoration: none;
+}
 
+a:visited {
+    text-decoration: none;
+}
 
-a:visited { text-decoration: none; }
+a:hover {
+    text-decoration: none;
+}
 
-
-a:hover { text-decoration: none; }
-
-
-a:active { text-decoration: none; }
-
+a:active {
+    text-decoration: none;
+}

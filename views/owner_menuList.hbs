@@ -20,7 +20,10 @@
                     </form>
                 </div>
 				<div>
-					<button class="button-addfolder">+ New Folder</button>
+					<form action="/newFolder">
+						<input type="submit" class="button-addfolder" value="+ New Folder">
+					</form>
+					
 				</div>
                 <div class="menulist-box">
 					{{#each MenuGroup}}

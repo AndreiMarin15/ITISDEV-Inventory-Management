@@ -20,14 +20,24 @@
                     <label for="foodgroup" class = "field-font">Food Group:</label>
                 </div>
 
+                {{#if foodGroup}}
                 <div>
                     <select name="foodgroup" id="foodgroup" class="dropdown">
                         {{#each foodGroup}}
-                        <option>{{foodGroupName}}</option>
+                        <option value="{{foodGroupID}}">{{foodGroupName}}</option>
                         {{/each}}
                     </select>
                 </div>
+                {{else}}
+                <div>
+                    <select name="foodgroup" id="foodgroup" class="dropdown" disabled="disabled">
+                     
+                        <option>No Food Group added</option>
+                       
+                    </select>
+                </div>
 
+                {{/if}}
             </div>
             
             <div class="field-box">
