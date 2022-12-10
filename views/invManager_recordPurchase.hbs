@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Panel</title>
+        <title>Inventory Manager | Record Purchase</title>
         <link rel="stylesheet" href="css/addtoinventory.css" />
         <link rel="stylesheet" href="css/base.css" />
         <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
@@ -13,13 +13,17 @@
 
     <div class="content-container">
         <div class="createnew-box">
-            <span class="header-font">Add to Inventory / New Transaction</span>
+            <span class="header-font">Record Purchase</span>
             <div class="field-box">
                 <div>
                     <label for="search-item" class = "field-font">Search Item:</label>
                 </div>
                 <div>
-                    <input type="text" class="textbox-long" id="itemname" name="itemname">
+                    <select name="itemname" id="itemname" class="dropdown">
+                        {{#each transactions}}
+                        <option>{{ingredientName}}</option>
+                        {{/each}}
+                    </select>
                 </div>
             </div>
             <div class="field-box">
@@ -30,8 +34,8 @@
                     <input type="number" class="textbox-short" id="quantity" name="quantity">
                 </div>
             </div>
-			<button class="button-green popup" onclick="myFunction()">Add to Inventory
-				<span class="popuptext" id="myPopup">Added to Inventory!</span>
+			<button class="button-green popup" onclick="myFunction()">Record Purchase
+				<span class="popuptext" id="myPopup">Purchase Recorded!</span>
 			</button>
 			<script>
 				// When the user clicks on <div>, open the popup
