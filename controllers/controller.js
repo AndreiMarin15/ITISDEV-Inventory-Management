@@ -283,6 +283,50 @@ const controller = {
         }
     },
 
+    addFoodGroup: async (req, res) => {
+        let name = req.body.foldername;
+
+        await db.findMany(FoodGroup, {}, {}, (foodgroups) => {
+            if (foodgroups.length > 0) {
+                let id = 1;
+
+                foodgroups.forEach((foodgroup) => {
+                    if (foodgroup.foodGroupID >= id) {
+                        id = foodgroup.foodGroupID + 1;
+                    }
+                });
+
+                let group = {
+                    foodGroupID: id,
+                    foodGroupName: name,
+                };
+
+                db.insertOne(FoodGroup, group, (result) => {
+                    console.log(result);
+                });
+
+                res.send(
+                    `<script>alert("Food Group Created."); window.location.href = "/firstPurchase"; </script>`
+                );
+            } else {
+                let id = 1;
+
+                let group = {
+                    foodGroupID: id,
+                    foodGroupName: name,
+                };
+
+                db.insertOne(FoodGroup, group, (result) => {
+                    console.log(result);
+                });
+
+                res.send(
+                    `<script>alert("Food Group Created."); window.location.href = "/firstPurchase"; </script>`
+                );
+            }
+        });
+    },
+
     getAddInventory: (req, res) => {
         res.render("invManager_recordPurchase");
     },
@@ -290,7 +334,6 @@ const controller = {
     getSpoilage: (req, res) => {
         res.render("invManager_spoilage");
     },
-
 
     getMissing: (req, res) => {
         res.render("invManager_missing");
@@ -383,7 +426,7 @@ const controller = {
 
     addFolder: async (req, res) => {
         let folderName = req.body.foldername;
-        console.log(req.body.foldername)
+        console.log(req.body.foldername);
         await db.findMany(MenuGroup, {}, {}, (menugroups) => {
             if (menugroups.length > 0) {
                 let id = 1;
@@ -440,6 +483,7 @@ const controller = {
     getFoodGroup: (req, res) => {
         res.render("invManager_createFoodGroup");
     },
+
     getTodaysMenu: (req, res) => {},
 
     addTodaysMenu: (req, res) => {},

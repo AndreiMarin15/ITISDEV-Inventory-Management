@@ -39,6 +39,7 @@ app.get("/addInventory", controller.getAddInventory);
 app.get("/inventorySpoiled", controller.getSpoilage);
 app.get("/inventoryMissing", controller.getMissing);
 app.get("/firstPurchase", controller.getCreateItem);
+app.post("/addFoodGroup", controller.addFoodGroup);
 
 // cashier
 app.get("/viewPOS", controller.getPOS);

@@ -17,7 +17,7 @@
         <div class="content-container">
             <div class="createnew-box">
                 <span class="header-font">Create New Food Group</span>
-                
+                <form action="/addFoodGroup" method="post">
                 <!-- START FOLDER NAME-->
                 <div class="field-box">
                     <div>
@@ -35,18 +35,11 @@
 
                 <!-- END Multiselect Dropdown with Search -->
 
-
-                <button class="button-green popup" onclick="myFunction()">Create Food Group
-                    <span class="popuptext" id="myPopup">New Food Group Created!</span>
-                </button>
-                <script>
-                    // When the user clicks on <div>, open the popup
-                    function myFunction() {
-                      var popup = document.getElementById("myPopup");
-                      popup.classList.toggle("show");
-                    }
+                <input type="submit" value="Create Food Group" class="button-green popup">
+             
+                
                 </script>
-    
+                </form>
             </div>
         </div>
     </body>
