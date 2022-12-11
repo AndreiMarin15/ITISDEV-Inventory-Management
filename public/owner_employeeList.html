@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Owner | Sales Transaction Trail</title>
+        <link rel="stylesheet" href="css/base.css" />
+        <link rel="stylesheet" href="css/employeeList.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!-- START SIDE PANEL -->
+        <div class="panel-container">
+            <div class="panel-box">
+                <i class="fa-solid fa-user panel-icons"></i>
+                <span class="panel-text">Profile</span>
+            </div>
+            <hr class="line-separator" />
+            <div class="panel-box">
+                <i class="fa-solid fa-cash-register panel-icons"></i>
+                <span class="panel-text">POS</span>
+            </div>
+            <div class="panel-box">
+                <i class="fa-solid fa-square-poll-vertical panel-icons"></i>
+                <span class="panel-text">Statistics</span>
+            </div>
+            <div class="panel-box">
+                <i class="fa-solid fa-box panel-icons"></i>
+                <span class="panel-text">Inventory</span>
+            </div>
+            <div class="panel-box">
+                <i class="fa-solid fa-rectangle-list panel-icons"></i>
+                <span class="panel-text">Menu List</span>
+            </div>
+            <div class="panel-box">
+                <i class="fa-solid fa-trash-can panel-icons"></i>
+                <span class="panel-text">Spoilage</span>
+            </div>
+            <div class="panel-box">
+                <i class="fa-solid fa-circle-question panel-icons"></i>
+                <span class="panel-text">Missing</span>
+            </div>
+            <div class="logout-button">
+                <i class="fa-solid fa-right-from-bracket logout-icon"></i>
+                <span>Log Out</span>
+            </div>
+        </div>
+        <!-- END SIDE PANEL -->
+
+        <div class="content-container">
+            <div class="transaction-trail-container">
+                <h1>Employee List</h1>
+
+                <!-- SEARCH -->
+                <div class="search-box">
+                    <form>
+                        <input type="text" placeholder="Search" name="search" />
+                        <button type="submit"><i class="fa fa-search search-icon"></i></button>
+                    </form>
+                </div>
+
+                <!-- DROPDOWN TO BE ADDED-->
+
+                <!-- TABLE OF TRANSACTIONS -->
+                <div class="table-container">
+                    <table>
+                        <col style="width: 10%" />
+                        <col style="width: 15%" />
+                        <col style="width: 15%" />
+                        <col style="width: 10%" />
+
+                        <thead>
+                            <tr>
+                                <th>user ID</th>
+                                <th>Full Name</th>
+                                <th>Position</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>001</td>
+                            <td>Diego Pallasigue</td>
+                            <td>Cashier</td>
+                            <td><button class="button-view">Delete</button></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

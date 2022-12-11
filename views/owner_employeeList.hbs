@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Owner | Sales Transaction Trail</title>
+        <link rel="stylesheet" href="css/base.css" />
+        <link rel="stylesheet" href="css/employeeList.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!-- START SIDE PANEL -->
+    {{>ownerPanel}}
+        <!-- END SIDE PANEL -->
+
+        <div class="content-container">
+            <div class="transaction-trail-container">
+                <h1>Employee List</h1>
+
+                <!-- SEARCH -->
+                <div class="search-box">
+                    <form>
+                        <input type="text" placeholder="Search" name="search" />
+                        <button type="submit"><i class="fa fa-search search-icon"></i></button>
+                    </form>
+                </div>
+
+                <!-- DROPDOWN TO BE ADDED-->
+
+                <!-- TABLE OF TRANSACTIONS -->
+                <div class="table-container">
+                    <table>
+                        <col style="width: 10%" />
+                        <col style="width: 15%" />
+                        <col style="width: 15%" />
+                        <col style="width: 10%" />
+
+                        <thead>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>Full Name</th>
+                                <th>Position</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        {{#each User}}
+                        <tr>
+                            <td>{{userID}}</td>
+                            <td>{{firstName}} {{lastName}}</td>
+                            <td>{{position}}</td>
+                            <td><button class="button-view">Delete</button></td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

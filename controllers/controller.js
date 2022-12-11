@@ -305,6 +305,10 @@ const controller = {
         res.render("owner_dashboard");
     },
 
+    getEmployeeList: function (req, res) {
+        res.render("owner_employeeList");
+    },
+
     getAddUser: function (req, res) {
         // User.find({ userID: { $not: "admin" } })
 
@@ -388,7 +392,9 @@ const controller = {
 
     addTodaysMenu: (req, res) => {},
 
-    getInventoryReports: (req, res) => {},
+    getInventoryReports: (req, res) => {
+        res.render("owner_reportsPage");
+    },
 
     getIngredients: (req, res) => {},
 
@@ -397,6 +403,7 @@ const controller = {
     },
 
     getAuditTrail: (req, res) => {},
+
 
     viewInvoice: (req, res) => {},
 

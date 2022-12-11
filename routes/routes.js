@@ -26,6 +26,8 @@ app.get("/newFolder", controller.addMenuFolder);
 app.get("/addIngredient", controller.addIngredient);
 app.get("/newDish", controller.addMenuItem);
 app.get("/recordFirstPurchase", controller.createItem);
+app.get("/employeeList", controller.getEmployeeList);
+app.get("/reportsPage", controller.getInventoryReports);
 
 // inventory manager
 app.get("/inventoryList", controller.getInventoryList);
