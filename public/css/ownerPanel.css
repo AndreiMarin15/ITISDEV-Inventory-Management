@@ -99,3 +99,10 @@ table td:nth-child(5) {
     margin-left: auto;
     gap:20px;
 }
+
+.sub-text2{
+    font-weight:bold;
+    font-size:24px;
+    color: #1a7968;
+    margin-left:40px;
+}
