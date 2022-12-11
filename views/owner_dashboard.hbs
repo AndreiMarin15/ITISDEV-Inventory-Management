@@ -3,175 +3,175 @@
 	<head>
         <title>Owner | Dashboard</title>
 		<link rel="stylesheet" href="css/base.css">
-		<link rel="stylesheet" href="css/ownerDashboard.css">
+		<link rel="stylesheet" href="css/employeeDashboard.css">
 		<script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
 
+		<!-- START SIDE PANEL -->
         {{>ownerPanel}}
+		<!-- END SIDE PANEL -->
 
         <div class="content-container">
             <div class="containers">
 
-                <!-- TRANSACTION TRAIL GRID -->
-                <div class="Transaction-Trail">
-                    <div class="grid-content">
-                        <h1 class="linked"> Transaction Trail </h1> 
+               <!-- PROFILE GRID -->
+               <div class="Profile">
+                <div class="grid-content">
+                    <h1> Profile </h1>
 
-                        <table>
-					<col style="width:10%">
-					<col style="width:15%">
-					<col style="width:15%">
-					<col style="width:20%">
-					<col style="width:10%">
                     
-					<thead>
-					<tr>
-						<th>Date</th>
-						<th>Receipt Number</th>
-						<th>Total Amount</th>
-						<th>Employee In-Charge</th>
-						<th> </th>
-					  </tr>
-					</thead>
-						{{#each POS}}
-					  <tr>
-						<td>{{dateOfOrder}}</td>
-						<td>{{POSIDno}}</td>
-						<td>{{totalPrice}}</td>
-						<td>{{personInCharge}}</td>
-						<td><button class="button-view">View</button></td>
-					  </tr>
-					  {{/each}}
-				</table>
+                    <div class="user-icon">
+                        <i class="fa-solid fa-circle-user prof-pic"></i>
+                    </div>
+
+                    <!-- NOTES: need to insert icons/images -->
+                    <h2> {{Emp.firstName}} {{Emp.lastName}} </h2>
+                    <p class="title"> Employee Name</p>
+
+                    <h2> {{Emp.userType}} </h2>
+                    <p class="title"> Position </p>
+
+                    <h2> {{Emp.userID}} </h2>
+                    <p class="title"> Employee ID </p>
+
+                    <button class="prof-button" onclick="window.location='/changePassword';" > Change Password </button>
+
+                </div>
+            </div>
+            <!-- END PROFILE GRID -->
+
+            <!-- SALES SUMMARY GRID -->
+            <div class="Sales-Summary">
+                <div class="grid-content">
+                    <h1> Top Selling Menu Items </h1>
+
+                    <p class="report-date"> As of: XX-XX-XX 00:00 PM/AM </p>
+
+                     <div class="sales-grid">
+                        <div class="top-selling">
+                            <h3 class="menu-item"> Steak Rice Bowl </h3>
+                            <p class="menu-details">
+                                <b>Instances sold: </b>
+                                40 <br> 
+                                <b> Menu Group: </b>
+                                Rice Bowls
+                            </p>
+                        </div>
+
+                        <div class="top-selling">
+                            <h3 class="menu-item"> Lasagna </h3>
+                            <p class="menu-details">
+                                <b>Instances sold: </b>
+                                25 <br> 
+                                <b> Menu Group: </b>
+                                Pasta
+                            </p>
+                        </div>   
+                        
+                        <div class="top-selling">
+                            <h3 class="menu-item"> Caesar's Salad </h3>
+                            <p class="menu-details">
+                                <b>Instances sold: </b>
+                                15 <br> 
+                                <b> Menu Group: </b>
+                                Salad
+                            </p>
+                        </div>  
                     </div>
                 </div>
-                <!-- TRANSACTION TRAIL GRID -->
+            </div>
+            <!-- END SALES SUMMARY GRID -->
 
-                <!-- INVENTORY GRID -->
-                <div class="Inventory">
-                    <div class="grid-content">
-                        <h1 class="linked"> Inventory </h1>
-                        <!-- START INVENTORY TABLE
-                                NOTES:  need to turn into scrollable table
-                                        when rows are being added, grid only
-                                        gets bigger -->
+            <!-- INVENTORY-TRANSACTIONS GRID -->
+            <div class="Inventory-Transactions">
+                <div class="grid-content">
+                    <h1 class="linked"> Inventory List </h1>
+                    <!-- START INVENTORY-LIST TABLE
+                            NOTES: should be sorted w/ low stock items at the top 
+                            To follow guidelines for Reports-->
+
+                        <p class="report-date"> As of: XX-XX-XX 00:00 PM/AM </p>
+
+
                         <table class="inventory-table">
-                    <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Food Group</th>
-                        <th>Running Total</th>
-                        <th>Unit</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {{#each Category}}
-                    <tr>
-                        <td> {{categoryName}} </td>
-                        <td> {{foodGroupName}} </td>
-                        <td> {{runningTotal}}</td>
-                        <td> {{unitName}}</td>
-                    </tr>
-                    {{/each}}
-                    </tbody>
-                </table>
-                        <!-- END INVENTORY TABLE -->
-                    </div>
-                </div>
-                <!-- END INVENTORY GRID -->
-
-                <!-- MENU LIST GRID -->
-                <div class="Menu-List">
-                    <div class="grid-content">
-                        <h1 class="linked"> Menu List</h1>
-                <table>
-                    <thead>
-					<tr>
-						<th>Name</th>
-                    </tr>    
-					</thead>
-						{{#each MenuGroup}}
-					  <tr>
-						<td>{{MenuGroupName}}</td>
-					  </tr>
-					  {{/each}}
-				</table>
-
-                    </div>
-                </div>
-                 <!-- END MENU LIST GRID -->
-
-                 <!-- EMPLOYEE LIST GRID-->
-                <div class="Employee-List">
-                    <div class="grid-content">
-                        <h1>Employee List</h1>
-                         <!-- START EMPLOYEE LIST TABLE
-                                NOTES:  need to turn into scrollable table
-                                        when rows are being added, grid only
-                                        gets bigger -->
-                            <table>
-                                <col style="width:15%">
+                                <col style="width:20%">
                                 <col style="width:20%">
                                 <col style="width:10%">
-                    
+                                <col style="width:10%">
+            
                                 <thead>
-                                     <tr>
-                                        <th>ID Number</th>
-                                        <th>Full Name</th>
-                                        <th>Position</th>
-                                     </tr>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Food Group</th>
+                                    <th>Running Total</th>
+                                    <th>Unit</th>
+                                </tr>
                                 </thead>
-                                    
-                                    {{#each Employee}}
-                                     <tr>
-                                        <td>{{empID}}</td>
-                                        <td>{{firstName}} {{lastName}}</td>
-                                        <td>{{userType}}</td>
-                                    </tr>
-                                    {{/each}}
-                            </table>
+                            <tbody>
+                            {{#each Category}}
+                            <tr>
+                                <td> {{categoryName}} </td>
+                                <td> {{foodGroupName}} </td>
+                                <td> {{runningTotal}}</td>
+                                <td> {{unitName}}</td>
+                            </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+
+                        <p class="report-end"> ----- END OF LIST -----</p>
+                    <!-- END INVENTORY-TRANSACTIONS TABLE -->
+                </div>
+            </div>
+            <!-- END INVENTORY TRANSACTIONS GRID -->
+
+            <!-- INVENTORY LIST GRID
+                NOTES: Should only display last five items added to inventory list 
+                        because hindi siya naka display: flex-->
+
+            <div class="Inventory-List">
+                <div class="grid-content">
+                    <h1> Low Ingredient Count </h1>
+
+                    <div class="inner-grid">
+                        <div class="current-stock">
+                            <h3> 24 </h3>
+                            <p class="item">Chicken</p>
+                        </div>
+
+                        <div class="current-stock">
+                            <h3> 25 </h3>
+                            <p class="item">Milk</p>
+                        </div>   
+                        
+                        <div class="current-stock">
+                            <h3> 26 </h3>
+                            <p class="item">Coke Sakto</p>
+                        </div>  
+                        
+                        <div class="current-stock">
+                            <h3> 27 </h3>
+                            <p class="item">Pork</p>
+                        </div>  
+                        
+                        <div class="current-stock">
+                            <h3> 28 </h3>
+                            <p class="item">Butter</p>
+                        </div>    
+
+                        <div class="current-stock">
+                            <h3> 29 </h3>
+                            <p class="item">Cheese</p>
+                        </div>    
                     </div>
                 </div>
-                <!-- EMPLLOYEE LIST GRID-->
-
- 
-                <!-- MISSING AND SPOILAGE GRID-->
-                <div class="Missing-Spoilage">
-                    <div class="grid-content">
-                        <h1 class="linked">Missing and Spoilage</h1>
-
-                        <table>
-					<col style="width:10%">
-					<col style="width:15%">
-					<col style="width:15%">
-					<col style="width:20%">
-					<col style="width:10%">
-
-					<thead>
-					<tr>
-						<th>Date</th>
-						<th>Receipt Number</th>
-						<th>Item Name</th>
-						<th>Quantity</th>
-						<th> </th>
-					  </tr>
-					</thead>
-						{{#each transactions}}
-					  <tr>
-						<td>{{buyDate}}</td>
-						<td>{{transactionID}}</td>
-						<td>{{ingredientName}}</td>
-						<td>{{quantity}}</td>
-						<td><button class="button-view">View</button></td>
-					  </tr>
-					  {{/each}}
-				</table>
-                    </div>
-                </div>
-                <!-- END MISSING AND SPOILAGE GRID-->
+            </div>
+             <!-- END INVENTORY LIST GRID -->
 
             </div>
+
         </div>
+
 	</body>
-</html>
+	</html>
