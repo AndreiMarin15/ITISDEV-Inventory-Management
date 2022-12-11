@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Owner | Inventory List</title>
+        <link rel="stylesheet" href="css/invmanagerPanel.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        
+        {{>ownerPanel}} 
+
+        <div class="page-container">
+            <div><span class="header-font">Inventory List</span></div>
+            <div class="search-filters">
+                <div>
+                    <input type="text" placeholder="Search" name="search">
+                    <button type="submit"><i class="fa fa-search search-icon"></i></button>
+                </div>
+                <div class="filters">
+                    <div>
+                        <label for="filters">Filter by:</label>
+                        <select id="filter" class="dropdown" name="filter">
+                            <option value="Category">Category</option>
+                            <option value="Food-Group">Food Group</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filters">Sort By:</label>
+                        <select id="sort" class="dropdown" name="sort">
+                            <option value="Ascending">Ascending</option>
+                            <option value="Descending">Descending</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="inventory-container">
+                <table class="inventory-table">
+                    <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Food Group</th>
+                        <th>Running Total</th>
+                        <th>Unit</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each Category}}
+                    <tr>
+                        <td> {{categoryName}} </td>
+                        <td> {{foodGroupName}} </td>
+                        <td> {{runningTotal}}</td>
+                        <td> {{unitName}}</td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

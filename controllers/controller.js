@@ -291,6 +291,7 @@ const controller = {
         res.render("invManager_spoilage");
     },
 
+
     getMissing: (req, res) => {
         res.render("invManager_missing");
     },
@@ -304,6 +305,10 @@ const controller = {
     // owner
     getDashboard: function (req, res) {
         res.render("owner_dashboard");
+    },
+
+    getOwnerInventoryList: (req, res) => {
+        res.render("owner_inventoryList");
     },
 
     getEmployeeList: function (req, res) {
