@@ -5,6 +5,7 @@
     min-width:70vw;
     min-height:80vh;
     background-color: var(--clr-peach);
+    gap:20px;
 }
 
 h1 {
@@ -37,7 +38,7 @@ table {
 }
 
 th, td {
-    text-align:right;
+    text-align:center;
     padding: 0.8em 1.5em;
     color: #6f7681;
     border-bottom: 1px solid #ddd;
@@ -48,7 +49,7 @@ th {
 }
 
 table th:nth-child(3) { 
-    text-align: right; 
+    text-align: center; 
 }
 
 table td:nth-child(1) { 
@@ -68,7 +69,7 @@ table th:nth-child(2) {
 }
 
 table th, td:nth-child(4) { 
-    text-align: left;
+    text-align: right;
 }
 
 table td:nth-child(5) { 
@@ -86,4 +87,15 @@ table td:nth-child(5) {
     color: white;
 }
 
+.search-filters{
+    display:flex;
+    flex-direction:row;
+    margin-left: 40px;
+}
 
+.filters{
+    display:flex;
+    flex-direction:row;
+    margin-left: auto;
+    gap:20px;
+}

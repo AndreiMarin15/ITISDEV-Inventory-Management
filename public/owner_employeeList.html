@@ -50,11 +50,24 @@
                 <h1>Employee List</h1>
 
                 <!-- SEARCH -->
-                <div class="search-box">
-                    <form>
-                        <input type="text" placeholder="Search" name="search" />
+                <div class="search-filters">
+                    <div>
+                        <input type="text" placeholder="Search" name="search">
                         <button type="submit"><i class="fa fa-search search-icon"></i></button>
-                    </form>
+                    </div>
+                    <div class="filters">
+                        <div>
+                            <label for="filters">Sort By:</label>
+                            <select id="sort" class="dropdown" name="sort">
+                                <option value="Ascending">Employee ID, Ascending</option>
+                                <option value="Descending">Employee ID, Descending</option>
+                                <option value="Ascending">Full Name, Ascending</option>
+                                <option value="Descending">Fulll Name, Descending</option>
+                                <option value="Ascending">Position, Ascending</option>
+                                <option value="Descending">Position, Descending</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- DROPDOWN TO BE ADDED-->
@@ -69,7 +82,7 @@
 
                         <thead>
                             <tr>
-                                <th>user ID</th>
+                                <th>Employee ID</th>
                                 <th>Full Name</th>
                                 <th>Position</th>
                                 <th></th>

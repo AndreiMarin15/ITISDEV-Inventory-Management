@@ -11,7 +11,10 @@
         {{>ownerPanel}}
         
         <div class="page-container">
-            <div><span class="header-font">Inventory Reports Page</span></div>
+            <div>
+                <h1>Inventory Reports Page</h1>
+                <span class="sub-text">{{dateToday}}</span>
+            </div>
             <div class="search-filters">
                 <div>
                     <input type="text" placeholder="Search" name="search">
@@ -30,6 +33,7 @@
                     <div>
                         <label for="filters">Type: </label>
                         <select id="filter" class="dropdown" name="filter">
+                            <option value="Missing">All</option>
                             <option value="Missing">Missing</option>
                             <option value="Spoilage">Spoilage</option>
                         </select>

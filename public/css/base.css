@@ -257,3 +257,15 @@ a:hover {
 a:active {
     text-decoration: none;
 }
+
+.sub-text{
+    font-weight:bold;
+    font-size:24px;
+    color: #1a7968;
+}
+
+h1 {
+    /* margin-left: 40px; */
+    color: #1a7968;
+    margin-bottom:0px;
+}
