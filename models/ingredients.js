@@ -10,7 +10,7 @@ const IngredientsSchema = new mongoose.Schema({
         type: String,
     },
     netWeight: {
-        type: String,
+        type: Number,
     },
     unitMeasure: {
         type: String,
