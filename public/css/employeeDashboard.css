@@ -198,8 +198,8 @@
     .inventory-table {
       align-items: center;
       width: 100%;
-      border-collapse: collapse;
       border: 1px solid #ddd;
+
     }
 
     .button-view {
@@ -216,4 +216,19 @@
       font-size: 10px;
       transition: 0.2s;
     }
-        
+    
+    .report-date {
+      font-size: 12px;
+      color: rgb(64, 64, 64);
+      margin-right: 40px;
+      text-align: right;
+    }
+
+    .report-end {
+      font-size: 12px;
+      color: rgb(161, 65, 65);
+      text-align: center;
+      margin-top: 15px;
+    }
+
+
