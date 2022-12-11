@@ -19,59 +19,63 @@ const MenuGroup = require("../models/menuGroup");
 const controller = {
     // checks if an admin account exists. If yes, it redirects to login. If not, creates an admin usertype and admin account
     getIndex: function (req, res) {
-        db.findOne(User, { userType: 0 }, {}, (result) => {
-            console.log("res = " + result);
-            if (!result) {
-                console.log("no result");
-                let adminType = {
-                    userID: 0,
-                    userTypeDesc: "admin",
-                };
-
-                db.insertOne(UserType, adminType, (result) => {
-                    console.log(result);
-
-                    let invManagerType = {
-                        userID: 1,
-                        userTypeDesc: "Inventory Manager",
+        if (req.session.userID == null) {
+            db.findOne(User, { userType: 0 }, {}, (result) => {
+                console.log("res = " + result);
+                if (!result) {
+                    console.log("no result");
+                    let adminType = {
+                        userID: 0,
+                        userTypeDesc: "admin",
                     };
 
-                    db.insertOne(UserType, invManagerType, (result) => {
+                    db.insertOne(UserType, adminType, (result) => {
                         console.log(result);
 
-                        let cashierType = {
-                            userID: 2,
-                            userTypeDesc: "Cashier",
+                        let invManagerType = {
+                            userID: 1,
+                            userTypeDesc: "Inventory Manager",
                         };
 
-                        db.insertOne(UserType, cashierType, (result) => {
+                        db.insertOne(UserType, invManagerType, (result) => {
                             console.log(result);
 
-                            let initialPassword = "00000000";
-                            console.log(initialPassword);
-                            bcrypt.hash(initialPassword, 10, (err, hash) => {
-                                console.log(hash);
-                                let adminUser = {
-                                    userID: "admin",
-                                    firstName: "N/A",
-                                    lastName: "N/A",
-                                    password: hash,
-                                    userType: 0,
-                                };
+                            let cashierType = {
+                                userID: 2,
+                                userTypeDesc: "Cashier",
+                            };
 
-                                db.insertOne(User, adminUser, (result) => {
-                                    console.log(result);
+                            db.insertOne(UserType, cashierType, (result) => {
+                                console.log(result);
+
+                                let initialPassword = "00000000";
+                                console.log(initialPassword);
+                                bcrypt.hash(initialPassword, 10, (err, hash) => {
+                                    console.log(hash);
+                                    let adminUser = {
+                                        userID: "admin",
+                                        firstName: "N/A",
+                                        lastName: "N/A",
+                                        password: hash,
+                                        userType: 0,
+                                    };
+
+                                    db.insertOne(User, adminUser, (result) => {
+                                        console.log(result);
+                                    });
                                 });
                             });
                         });
                     });
-                });
-            } else {
-                console.log(result);
-            }
-        });
+                } else {
+                    console.log(result);
+                }
+            });
 
-        res.render("login");
+            res.render("login");
+        } else {
+            res.redirect("/home");
+        }
     },
 
     login: function (req, res) {
