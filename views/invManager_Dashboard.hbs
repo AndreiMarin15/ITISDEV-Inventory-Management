@@ -3,7 +3,7 @@
 	<head>
         <title>Inventory Manager | Inventory Dashboard</title>
 		<link rel="stylesheet" href="css/base.css">
-		<link rel="stylesheet" href="css/employeeDashboard.css">
+		<link rel="stylesheet" href="css/invmanagerDashboard.css">
 		<script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
@@ -41,8 +41,8 @@
             </div>
             <!-- END PROFILE GRID -->
 
-            <!-- INVENTORY-TRANSACTIONS GRID -->
-            <div class="Inventory-Transactions">
+            <!-- INVENTORY-LIST GRID -->
+            <div class="Inventory-List">
                 <div class="grid-content">
                     <h1 class="linked"> Inventory List </h1>
                     <!-- START INVENTORY-LIST TABLE
@@ -79,18 +79,20 @@
                         </table>
 
                         <p class="report-end"> ----- END OF LIST -----</p>
-                    <!-- END INVENTORY-TRANSACTIONS TABLE -->
+                    <!-- END INVENTORY-LIST TABLE -->
                 </div>
             </div>
-            <!-- END INVENTORY TRANSACTIONS GRID -->
+            <!-- END INVENTORY LIST GRID -->
 
-            <!-- INVENTORY LIST GRID
-                NOTES: Should only display last five items added to inventory list 
-                        because hindi siya naka display: flex-->
+            <!-- INVENTORY COUNT GRID
+                NOTES: INVENTORY COUNT displays the ingredients that
+                are running low in quantity -->
 
-            <div class="Inventory-List">
+            <div class="Inventory-Count">
                 <div class="grid-content">
                     <h1> Low Ingredient Count </h1>
+
+                    <p class="report-date"> As of: XX-XX-XX 00:00 PM/AM </p>
 
                     <div class="inner-grid">
                         <div class="current-stock">
@@ -125,7 +127,7 @@
                     </div>
                 </div>
             </div>
-             <!-- END INVENTORY LIST GRID -->
+             <!-- END INVENTORY COUNT GRID -->
 
             </div>
 

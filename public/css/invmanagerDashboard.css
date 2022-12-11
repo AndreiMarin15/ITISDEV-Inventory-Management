@@ -1,0 +1,235 @@
+
+
+
+.containers {  
+    margin: 20px;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    grid-auto-flow: row-dense;
+    grid-template-areas:
+      "Profile Inventory-List"
+      "Profile Inventory-List"
+      "Inventory-Count Inventory-List";
+    align-content: space-around;
+    justify-content: space-between;
+    grid-gap: 20px 30px;
+    height: 100vh;
+    width: 180vh;
+    place-items: center;
+    }
+  
+  .Profile { 
+    grid-area: Profile;
+    color: #1a7968;
+    outline: 2px solid #1a7968;
+    width: 100%;
+    height: 100%;
+    }
+  
+  .Inventory-List { 
+    grid-area: Inventory-List;
+    outline: 2px solid #1a7968;
+    align-items: left;
+    width: 100%;
+    height: 100%;
+    }
+  
+  .Inventory-Count { 
+    grid-area: Inventory-Count; 
+    outline: 2px solid #1a7968;
+    width: 100%;
+    height: 100%;
+    }
+
+  .inner-grid {
+    margin: 15px;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    }
+
+  .current-stock {
+    outline: 1px solid #1a7968;
+    width: 90%;
+    max-height: 100%;
+    border-radius: 5px;
+    background-color: #4f8c81;
+    text-align: center;
+  }
+
+  h3 {
+    margin-top: 4px;
+    color: white;
+    font-size: 20px;
+  }
+
+  .item {
+    color: white;
+    margin-top: -20px;
+    font-size: 12px;
+  }
+  
+    h1 {
+        color: #1a7968;
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
+    .linked {
+      color: #1a7968;
+      font-size: 20px;
+      margin-left: 10px;
+      text-decoration: underline;
+    }
+  
+    .linked:hover {
+      color: #1a796891;
+      cursor: pointer;
+    }
+  
+    h2 {
+        color: #000000;
+        font-size: 15px;
+        margin-left: 20px;
+    }
+  
+    .title {
+        margin-left: 20px;
+        margin-top: -10px;
+        color: rgb(97, 97, 97);
+        font-size: 10px;
+    }
+  
+    table {
+        max-width: 90%;
+        margin: 0 auto;
+        border-collapse: collapse;
+    }    
+  
+    th, td {
+        text-align:right;
+        padding: 0.8em 1.5em;
+        color: #6f7681;
+        border-bottom: 1px solid #ddd;
+        font-size: 10px;
+        background-color: white;
+    }
+
+    th {
+      background-color: #1a7968;
+      color: white;
+    }
+     
+    table th:nth-child(1) {
+        text-align:left;
+    }
+    
+    table td:nth-child(1) {
+        text-align: left; 
+    }
+  
+    table th:nth-child(2) {
+        text-align:left;
+    }
+  
+    table td:nth-child(2) {
+        text-align: left; 
+    }
+    
+    table th:nth-child(3) {
+      text-align: left;
+    }
+  
+    table td:nth-child(3) {
+        text-align: left;
+    }
+
+    table th, td:nth-child(4) {
+      text-align: right;
+  }
+
+    @media (min-width: 900px) {
+        .cards { grid-template-columns: repeat(2, 1fr); }
+      }
+      
+    .prof-pic {
+      color: rgb(178, 178, 178);
+      width: 20vw;
+      height: 20vh;
+      position: relative;
+      margin-left: 20%;
+    }
+
+    .prof-button {
+      margin-left: 20px;
+      margin-top: 20px;
+      border-radius: 5px;
+      background-color:var(--clr-green);
+      font-family: var(--font-type2);
+      color:var(--clr-white);
+      padding: 8px; 
+      box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+      cursor: pointer;
+      text-align: center;
+      border: none;
+      font-size: 10px;
+      transition: 0.2s;
+    }
+
+    .prof-button:hover {
+      margin-left: 20px;
+      margin-top: 20px;
+      border-radius: 5px;
+      background-color: white;
+      font-family: var(--font-type2);
+      color:var(--clr-white);
+      padding: 8px; 
+      box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+      cursor: pointer;
+      text-align: center;
+      color: #1a7968;
+      border: 0.5px solid #1a7968;
+      font-size: 10px;
+    }
+
+    .inventory-table {
+      align-items: center;
+      width: 100%;
+      border: 1px solid #ddd;
+
+    }
+
+    .button-view {
+      margin-left: 20px;
+      border-radius: 5px;
+      background-color:var(--clr-green);
+      font-family: var(--font-type2);
+      color:var(--clr-white);
+      padding: 5px; 
+      box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+      cursor: pointer;
+      text-align: center;
+      border: none;
+      font-size: 10px;
+      transition: 0.2s;
+    }
+    
+    .report-date {
+      font-size: 12px;
+      color: rgb(64, 64, 64);
+      margin-right: 40px;
+      text-align: right;
+      margin-bottom: 5px;
+    }
+
+    .report-end {
+      font-size: 12px;
+      color: rgb(161, 65, 65);
+      text-align: center;
+      margin-top: 15px;
+    }
+
+
