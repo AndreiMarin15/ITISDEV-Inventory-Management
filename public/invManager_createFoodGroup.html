@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inventory Manager | New Food Group</title>
+        <link rel="stylesheet" href="css/createFoodGroup.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+        <script src="js/multiselect-dropdown.js" ></script>
+
+    </head>
+    <body>
+        <!-- START PANEL -->
+        <div class="panel-container">
+            <div class="panel-box">
+                <i class="fa-solid fa-user panel-icons"></i>
+                <span class="panel-text">Profile</span>
+            </div>
+            <hr class="line-separator" />
+            <div class="panel-box">
+                <i class="fa-solid fa-box panel-icons"></i>
+                <span class="panel-text">Inventory List</span>
+            </div>
+            <div class="panel-box">
+                <i class="fa-solid fa-circle-plus panel-icons"></i>
+                <span class="panel-text">Record First Purchase</span>
+            </div>
+            <div class="panel-box">
+                <i class="fa-solid fa-cart-plus panel-icons"></i>
+                <span class="panel-text">Record Purchase</span>
+            </div>
+            <div class="panel-box">
+                <i class="fa-solid fa-trash-can panel-icons"></i>
+                <span class="panel-text">Spoilage</span>
+            </div>
+            <div class="panel-box">
+                <i class="fa-solid fa-circle-question panel-icons"></i>
+                <span class="panel-text">Missing</span>
+            </div>
+            <div class="logout-button">
+                <i class="fa-solid fa-right-from-bracket logout-icon"></i>
+                <span>Log Out</span>
+            </div>
+        </div>
+        <!-- END PANEL -->
+
+        
+        <div class="content-container">
+            <div class="createnew-box">
+                <span class="header-font">Create New Food Group</span>
+                
+                <!-- START FOLDER NAME-->
+                <div class="field-box">
+                    <div>
+                        <label for="foldername" class = "field-font">Food Group:</label>
+                    </div>
+    
+                    <div>
+                        <input type="text" class="textbox-long" id="foldername" name="foldername">
+                    </div>
+                </div>
+                <!-- END FOLDER NAME-->
+
+                <!-- Multiselect Dropdown with Search
+                    TO FIX: Appearance of Search but can be converted into hbs na -->
+
+                <!-- END Multiselect Dropdown with Search -->
+
+
+                <button class="button-green popup" onclick="myFunction()">Create Food Group
+                    <span class="popuptext" id="myPopup">New Food Group Created!</span>
+                </button>
+                <script>
+                    // When the user clicks on <div>, open the popup
+                    function myFunction() {
+                      var popup = document.getElementById("myPopup");
+                      popup.classList.toggle("show");
+                    }
+                </script>
+    
+            </div>
+        </div>
+    </body>
+    </html>

@@ -23,10 +23,14 @@ app.post("/addUser", controller.addUser);
 app.get("/transactionTrail", controller.getTransactionTrail);
 app.get("/ownerMenu", controller.getOwnerMenu);
 app.get("/newFolder", controller.addMenuFolder);
+app.get("/addIngredient", controller.addIngredient);
+app.get("/newDish", controller.addMenuItem);
+app.get("/recordFirstPurchase", controller.createItem);
 
 // inventory manager
 app.get("/inventoryList", controller.getInventoryList);
 app.get("/createCategory", controller.getCreateCategory);
+app.get("/createFoodGroup", controller.getFoodGroup);
 app.get("/addInventory", controller.getAddInventory);
 app.get("/inventorySpoiled", controller.getSpoilage);
 app.get("/inventoryMissing", controller.getMissing);
@@ -53,7 +57,7 @@ app.get("/createCategory", controller.createCategory);
 
 
 
-app.get("/addIngredient", controller.addIngredient);
+
 
 app.get("/ingredients", controller.ingredients);
 app.get("/mealCategory", controller.mealCategory);

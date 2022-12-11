@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Owner | New Menu Folder</title>
-        <link rel="stylesheet" href="css/createnewFolder.css" />
+        <title>Inventory Manager | New Food Group</title>
+        <link rel="stylesheet" href="css/createFoodGroup.css" />
         <link rel="stylesheet" href="css/base.css" />
         <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
         <script src="js/multiselect-dropdown.js" ></script>
@@ -10,18 +10,18 @@
     </head>
     <body>
         <!-- START PANEL -->
-        {{>ownerPanel}}
+{{>invManagerPanel}}
         <!-- END PANEL -->
 
         
         <div class="content-container">
             <div class="createnew-box">
-                <span class="header-font">Create New Menu Group</span>
+                <span class="header-font">Create New Food Group</span>
                 
                 <!-- START FOLDER NAME-->
                 <div class="field-box">
                     <div>
-                        <label for="foldername" class = "field-font">Menu Group Name:</label>
+                        <label for="foldername" class = "field-font">Food Group:</label>
                     </div>
     
                     <div>
@@ -32,26 +32,12 @@
 
                 <!-- Multiselect Dropdown with Search
                     TO FIX: Appearance of Search but can be converted into hbs na -->
-                {{!-- <div class="field-box" style="width: 100%">
-                    <div>
-                        <label for="additems" class = "field-font">Add Menu Items</label>
-                    </div> --}}
-                    
-                    {{!-- <div>
-                        <select name="select" multiple multiselect-search="true" multiselect-select-all="true" class="select">
-                            <option>Menu Item One</option>
-                            <option>Menu Item Two</option>
-                            <option>Menu Item Three</option>
-                            <option>Menu Item Four</option>
-                            <option>Menu Item Five</option>
-                        </select>    
-                    </div> --}}
-                {{!-- </div> --}}
+
                 <!-- END Multiselect Dropdown with Search -->
 
 
-                <button class="button-green popup" onclick="myFunction()">Create Menu Group
-                    <span class="popuptext" id="myPopup">New Folder Created!</span>
+                <button class="button-green popup" onclick="myFunction()">Create Food Group
+                    <span class="popuptext" id="myPopup">New Food Group Created!</span>
                 </button>
                 <script>
                     // When the user clicks on <div>, open the popup
@@ -60,6 +46,7 @@
                       popup.classList.toggle("show");
                     }
                 </script>
+    
             </div>
         </div>
     </body>

@@ -222,7 +222,7 @@ const controller = {
     //},
 
     createItem: (req, res) => {
-        // add item using forms
+        res.render("invManager_recordFirstPurchase");
     },
 
     //   addToInventory: (req, res) => {},
@@ -377,8 +377,13 @@ const controller = {
 
     // newMenuItem: (req, res) => {},
 
-    addMenuItem: (req, res) => {},
+    addMenuItem: (req, res) => {
+        res.render("owner_newDish");
+    },
 
+    getFoodGroup: (req, res) => {
+        res.render("invManager_createFoodGroup");
+    },
     getTodaysMenu: (req, res) => {},
 
     addTodaysMenu: (req, res) => {},
@@ -387,7 +392,9 @@ const controller = {
 
     getIngredients: (req, res) => {},
 
-    //  addIngredient: (req, res) => {},
+    addIngredient: (req, res) => {
+        res.render("owner_addIngredient");
+    },
 
     getAuditTrail: (req, res) => {},
 

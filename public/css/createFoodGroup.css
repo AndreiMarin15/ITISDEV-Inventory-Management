@@ -20,6 +20,14 @@
     gap: 30px;
 }
 
+/* TEST AREA */
+.select {
+    width: 240%;
+}
+/* END TEST AREA */
+
+
+
 /* Popup container */
 .popup {
     position: relative;
@@ -72,11 +80,3 @@
     from {opacity: 0;}
     to {opacity:1 ;}
   }
-  .inv-submit {
-    color:var(--clr-white);
-    width: auto;
-    height: auto;
-    background-color:var(--clr-green);
-    border-radius: 10%;
-    padding: 10px;
-}
