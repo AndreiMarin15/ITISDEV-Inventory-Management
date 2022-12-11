@@ -28,6 +28,7 @@ app.get("/newDish", controller.addMenuItem);
 app.get("/recordFirstPurchase", controller.createItem);
 app.get("/employeeList", controller.getEmployeeList);
 app.get("/reportsPage", controller.getInventoryReports);
+app.post("/addFolder", controller.addFolder);
 
 // inventory manager
 app.get("/inventoryList", controller.getInventoryList);

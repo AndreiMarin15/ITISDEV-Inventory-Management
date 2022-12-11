@@ -14,6 +14,7 @@ const UnitConversion = require("../models/unitConversion");
 const UserType = require("../models/UserType");
 const bcrypt = require("bcrypt");
 const FoodGroup = require("../models/foodGroup");
+const MenuGroup = require("../models/menuGroup");
 
 const controller = {
     // checks if an admin account exists. If yes, it redirects to login. If not, creates an admin usertype and admin account
@@ -375,6 +376,52 @@ const controller = {
         res.render("owner_createFolder");
     },
 
+    addFolder: async (req, res) => {
+        let folderName = req.body.foldername;
+        console.log(req.body.foldername)
+        await db.findMany(MenuGroup, {}, {}, (menugroups) => {
+            if (menugroups.length > 0) {
+                let id = 1;
+
+                menugroups.forEach((menugroup) => {
+                    if (menugroup.menuGroupID >= id) {
+                        id = menugroup.menuGroupID + 1;
+                    }
+
+                    console.log(id);
+                });
+
+                let group = {
+                    menuGroupID: id,
+                    menuGroupName: folderName,
+                };
+
+                db.insertOne(MenuGroup, group, (result) => {
+                    console.log(result);
+                });
+
+                res.send(
+                    `<script>alert("Menu Group Created."); window.location.href = "/ownerMenu"; </script>`
+                );
+            } else {
+                let id = 1;
+
+                let group = {
+                    menuGroupID: id,
+                    menuGroupName: folderName,
+                };
+
+                db.insertOne(MenuGroup, group, (result) => {
+                    console.log(result);
+                });
+
+                res.send(
+                    `<script>alert("Menu Group Created."); window.location.href = "/ownerMenu"; </script>`
+                );
+            }
+        });
+    },
+
     //   getMenu: (req, res) => {},
 
     getFolderItems: (req, res) => {},
@@ -403,7 +450,6 @@ const controller = {
     },
 
     getAuditTrail: (req, res) => {},
-
 
     viewInvoice: (req, res) => {},
 
