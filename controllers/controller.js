@@ -15,6 +15,7 @@ const UserType = require("../models/UserType");
 const bcrypt = require("bcrypt");
 const FoodGroup = require("../models/foodGroup");
 const MenuGroup = require("../models/menuGroup");
+const Ingredients = require("../models/ingredients");
 
 const controller = {
     // checks if an admin account exists. If yes, it redirects to login. If not, creates an admin usertype and admin account
@@ -226,11 +227,7 @@ const controller = {
     // add category using forms
     //},
 
-    createItem: (req, res) => {
-        
-
-        res.render("invManager_recordFirstPurchase");
-    },
+    
 
     //   addToInventory: (req, res) => {},
 
@@ -254,10 +251,11 @@ const controller = {
                     foodGroup.push(food);
                 });
 
-                console.log("A " + foodGroup);
-                console.log("B " + foodGroup);
+                db.findMany(Unit, {}, {}, (units) => {
+                    res.render("invManager_createCategory", { foodGroup: foodGroup, unit: units });
+                });
 
-                res.render("invManager_createCategory", { foodGroup: foodGroup });
+                
             });
         } catch (err) {
             console.log(err);
@@ -266,23 +264,40 @@ const controller = {
 
     getCreateItem: async (req, res) => {
         try {
-            await db.findMany(FoodGroup, {}, {}, (groups) => {
-                let foodGroup = [];
-                console.log(groups);
-                groups.forEach((group) => {
-                    let food = {
-                        foodGroupID: group.foodGroupID,
-                        foodGroupName: group.foodGroupName,
-                    };
-
-                    console.log(food);
-
-                    foodGroup.push(food);
-                });
-
-                console.log("A " + foodGroup);
-                console.log("B " + foodGroup);
-                res.render("invManager_recordFirstPurchase", { foodGroup: foodGroup });
+            db.findMany(Unit, {}, {}, (units) => {
+                
+                if(units.length == 0){
+                    let initialUnits = [
+                        {
+                            unitID: 1,
+                            unitName: "kg",
+                        }, 
+                        {
+                            unitID: 2,
+                            unitName: "L",
+                        },
+                        {
+                            unitID: 3,
+                            unitName: "pcs",
+                        }, 
+                    ];
+    
+                    db.insertMany(Unit, initialUnits, (result) => {
+                        console.log(result);
+                    })
+                    
+                    db.findMany(Category, {}, {}, categories => {
+                     
+                        res.render("invManager_recordFirstPurchase", {unit: units, category:categories});
+                    })
+                    
+                } else {
+                    db.findMany(Category, {}, {}, categories => {
+                  
+                        res.render("invManager_recordFirstPurchase", {unit: units, category:categories});
+                    })
+                 
+                }
             });
         } catch (err) {
             console.log(err);
@@ -333,8 +348,90 @@ const controller = {
         });
     },
 
+    addCategory: async (req, res) => {
+      await db.findMany(Category, {}, {}, (categories) => {
+        if (categories.length == 0){
+            
+            let newCategory = {
+                categoryID: 1,
+                categoryName: req.body.categoryname,
+                foodGroupID: parseInt(req.body.foodgroup),
+                runningTotal: 0,
+                unitID: req.body.netunit,
+            }
+         
+           
+            db.insertOne(Category, newCategory, result => {
+                console.log(result);
+                res.redirect("/firstPurchase");
+            })
+            
+        } else {
+            let maxID = Math.max.apply(null, categories.map((categ) => {
+                return categ.categoryID;
+            }));
+
+            let newCategory = {
+                categoryID: maxID + 1,
+                categoryName: req.body.categoryname,
+                foodGroupID: req.body.foodgroup,
+                runningTotal: 0,
+                unitID: req.body.netunit,
+            }
+            db.insertOne(Category, newCategory, result => {
+                console.log(result);
+                res.redirect("/firstPurchase");
+            })
+            
+        }
+      });
+    },
+
+    firstPurchace: async (req, res) => {
+        await db.findMany(Ingredients, {}, {}, ingredients => {
+            if(ingredients.length == 0){
+                db.findOne(Unit, {unitID: parseInt(req.body.netunit) },{}, (unit) => {
+                    let newIngredient = {
+                        ingredientID: 1,
+                        ingredientName: req.body.itemname,
+                        netWeight: parseInt(req.body.netweight),
+                        unitMeasure: unit.unitName,
+                        categoryID: req.body.category,
+                    };
+                    db.insertOne(Ingredients, newIngredient, result => {
+                        console.log(result);
+                        res.redirect("/recordPurchase");
+                    });
+
+                })
+            } else {
+                db.findOne(Unit, {unitID: parseInt(req.body.netunit) }, {}, (unit) =>{
+                    let maxID = Math.max.apply(null, ingredients.map((ing) => {
+                        return ing.ingredientID;
+                    }));
+                    let newIngredient = {
+                        ingredientID: maxID + 1,
+                        ingredientName: req.body.itemname,
+                        netWeight: parseInt(req.body.netweight),
+                        unitMeasure: unit.unitName,
+                        categoryID: req.body.category,
+                    };
+    
+                    db.insertOne(Ingredients, newIngredient, result => {
+                        console.log(result);
+                        res.redirect("/recordPurchase");
+                    });
+                })
+            }
+        })
+    },
+
     getRecordPurchase: (req, res) => {
-        res.render("invManager_recordPurchase");
+
+        db.findMany(Ingredients, {}, {}, (ingredients) => {
+            res.render("invManager_recordPurchase", {ingredient: ingredients});
+        })
+        
     },
 
     getSpoilage: (req, res) => {
@@ -345,11 +442,6 @@ const controller = {
         res.render("invManager_missing");
     },
 
-    addSpoiled: (req, res) => {},
-
-    addMissing: (req, res) => {},
-
-    getDiscrepancy: (req, res) => {},
 
     // owner
     getDashboard: function (req, res) {
@@ -507,7 +599,7 @@ const controller = {
 
     //   getMenu: (req, res) => {},
 
-    getFolderItems: (req, res) => {},
+
 
     // newMenuItem: (req, res) => {},
 
@@ -519,27 +611,17 @@ const controller = {
         res.render("invManager_createFoodGroup");
     },
 
-    getTodaysMenu: (req, res) => {},
-
-    addTodaysMenu: (req, res) => {},
 
     getInventoryReports: (req, res) => {
         res.render("owner_reportsPage");
     },
 
-    getIngredients: (req, res) => {},
+
 
     addIngredient: (req, res) => {
         res.render("owner_addIngredient");
     },
 
-    getAuditTrail: (req, res) => {},
-
-    viewInvoice: (req, res) => {},
-
-    getTotalSale: (req, res) => {},
-
-    getIngredientCost: (req, res) => {},
 
     //Testing HBS IF IT WORKS
     /*

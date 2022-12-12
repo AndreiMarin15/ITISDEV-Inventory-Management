@@ -21,14 +21,14 @@
                 </div>
                 <div>
                     <select name="itemname" id="itemname" class="dropdown">
-                        {{#each Ingredients}}
-                        <option>{{ingredientName}}</option>
+                        {{#each ingredient}}
+                        <option value={{ingredientID}}>{{ingredientName}}</option>
                         {{/each}}
                     </select>
                 </div>
 
                 <div>
-                     <a href="/recordFirstPurchase" class="inv-submit">Create New Item</a>
+                     <a href="/firstPurchase" class="inv-submit">Create New Item</a>
                 </div>
             </div>
             <div class="field-box">

@@ -14,7 +14,7 @@
     <div class="content-container">
         <div class="createnew-box">
             <span class="header-font">Record First Purchase</span>
-            <form action="#" method="post">
+            <form action="/addFirstPurchase" method="post">
             <div class="field-box">
                 <div>
                     <label for="category" class = "field-font">Category:</label>
@@ -23,7 +23,7 @@
                 <div>
                     <select name="category" id="category" class="dropdown">
                         {{#each category}}
-                        <option>{{categoryName}}</option>
+                        <option value={{categoryID}}>{{categoryName}}</option>
                         {{/each}}
                     </select>
                 </div>
@@ -54,12 +54,12 @@
                 <div>
                     <select name="netunit" id="netunit" class="dropdown">
                         {{#each unit}}
-                        <option>{{unitName}}</option>
+                        <option value={{unitID}}>{{unitName}}</option>
                         {{/each}}
                     </select>
                 </div>
             </div>
-            <input type="submit" class="button-green popup"/>
+            <input type="submit" class="button-green popup" value="Submit"/>
             </form>
             
 			{{!-- <button class="button-green popup" onclick="myFunction()">Record Purchase

@@ -12,7 +12,7 @@
         <div class="content-container">
             <div class="createnew-box">
                 <span class="header-font">Create New Category</span>
-                <form action="#" method="post">
+                <form action="/newCategory" method="post">
                 <div class="field-box">
                     <div>
                         <label for="categoryname" class="field-font">Category Name:</label>
@@ -62,14 +62,14 @@
                     </div>
                     <div>
                         <select name="netunit" id="netunit" class="dropdown">
-                            {{#each Unit}}
-                                <option>{{unitName}}</option>
+                            {{#each unit}}
+                                <option value={{unitID}}>{{unitName}}</option>
                             {{/each}}
                         </select>
                     </div>
                 </div>
 
-                <input type="submit" class="button-green popup"/>
+                <input type="submit" class="button-green popup" value="Submit"/>
 
                 </form>
             </div>

@@ -35,6 +35,8 @@ const db = {
             console.log("Added: " + res);
             return cb(true);
         });
+
+       
     },
 
     insertMany: function (model, docs, cb) {

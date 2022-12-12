@@ -25,7 +25,6 @@ app.get("/ownerMenu", controller.getOwnerMenu);
 app.get("/newFolder", controller.addMenuFolder);
 app.get("/addIngredient", controller.addIngredient);
 app.get("/newDish", controller.addMenuItem);
-app.get("/recordFirstPurchase", controller.createItem);
 app.get("/employeeList", controller.getEmployeeList);
 app.get("/reportsPage", controller.getInventoryReports);
 app.post("/addFolder", controller.addFolder);
@@ -41,6 +40,8 @@ app.get("/inventorySpoiled", controller.getSpoilage);
 app.get("/inventoryMissing", controller.getMissing);
 app.get("/firstPurchase", controller.getCreateItem);
 app.post("/addFoodGroup", controller.addFoodGroup);
+app.post("/newCategory", controller.addCategory);
+app.post("/addFirstPurchase", controller.firstPurchace);
 
 // cashier
 app.get("/viewPOS", controller.getPOS);
