@@ -144,7 +144,7 @@ const controller = {
                         employee.push(use);
                     });
                     console.log(employee);
-                    res.render("owner_Dashboard", { Employee: employee });
+                    res.render("owner_dashboard", { Employee: employee });
                 });
             });
         } else if (req.session.userType === 1) {
@@ -351,7 +351,7 @@ const controller = {
 
     // owner
     getDashboard: function (req, res) {
-        res.render("owner_Dashboard");
+        res.render("owner_dashboard");
     },
 
     getOwnerInventoryList: (req, res) => {
@@ -359,7 +359,36 @@ const controller = {
     },
 
     getEmployeeList: function (req, res) {
-        res.render("owner_employeeList");
+        db.findMany(User, { $or: [{ userType: 1 }, { userType: 2 }] }, {}, (users) => {
+            db.findMany(UserType, { $or: [{ userID: 1 }, { userID: 2 }] }, {}, (userType) => {
+                let employee = [];
+                
+
+                users.forEach((user) => {
+                    let use = {
+                        userID: user.userID,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        position: userType[user.userType - 1].userTypeDesc,
+                    };
+
+                 
+
+                    employee.push(use);
+                });
+               
+                res.render("owner_employeeList", { employee: employee });
+            });
+        });
+    },
+
+    deleteUser: async (req, res) => {
+        console.log(req.params.userID);
+        await db.delOne(User, {userID: req.params.userID}, (user) => {
+            console.log("deleted" + user);
+
+            res.redirect(req.get('referer'));
+        });
     },
 
     getAddUser: function (req, res) {

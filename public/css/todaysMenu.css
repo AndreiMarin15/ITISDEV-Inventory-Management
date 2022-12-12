@@ -9,6 +9,7 @@
 .containers
 {  
     margin: 20px;
+    margin-top: -15px;
     padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -21,10 +22,24 @@
       "categoryfour categoryfive categorysix";
     height: auto;
     width: auto;
+    overflow-y:scroll;
+    height:700px;
+}
+
+.header-right {
+    grid-area: header-right;
+}
+
+.inner-grid {
+    display: grid;
+    grid-template-columns: 4fr 0.5fr;
+    grid-gap: 5px;
+    align-items: end;
+    margin-top: -15px;
 }
 
 .text { 
-    grid-area: text; 
+    grid-area: text;
 }
   
 .categoryone { 
@@ -65,6 +80,10 @@ table {
     border-radius: 10px;
     overflow:hidden;
     outline: solid 0.3px #1a7968;
+    
+    overflow-y:scroll;
+    height:229px;
+    display:block;
 }    
 
 td {
@@ -89,7 +108,7 @@ thead th {
 }
 
 tbody tr:nth-child(even) {
-    background-color:  #1a796850;
+    background-color:  #97b7b150;
 
 }
 
@@ -108,6 +127,10 @@ h1 {
 p {
     font-size: 15px;
     color: rgb(93, 93, 93);
+}
+
+.ins-text {
+    font-size: 12px;
 }
 
 .delete {
@@ -140,7 +163,39 @@ p {
     transition-duration: 0.2s;
 }
 
-.add:hover {
+  .view {
+    border: 1px solid var(--clr-green);
+    border-radius: 5px;
+    background-color:var(--clr-green);
+    font-family: var(--font-type2);
+    font-size: 10px;
+    color:var(--clr-white);
+    padding: 5px; 
+    box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+    cursor: pointer;
+    text-align: center;
+    transition-duration: 0.2s;
+}
+
+.header-buttons {
+    border: 1px solid var(--clr-green);
+    border-radius: 5px;
+    background-color:var(--clr-green);
+    font-family: var(--font-type2);
+    font-size: 12px;
+    color:var(--clr-white);
+    padding: 8px; 
+    box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+    cursor: pointer;
+    text-align: center;
+    transition-duration: 0.2s;
+    width: 200px;
+    position: relative;
+
+}
+
+button:hover{
+    border-radius: 5px;
     background-color: white;
     color: #1a7968;
-  }
+}

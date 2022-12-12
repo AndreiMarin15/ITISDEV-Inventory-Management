@@ -14,6 +14,7 @@
     <div class="content-container">
         <div class="newMenuItem-box">
             <div><span class="header-font">Create New Dish</span></div>
+            <form action="#" method="post">
             <div class="field-box">
                 <div>
                     <label for="search-item" class = "field-font">Dish Name</label>
@@ -77,16 +78,18 @@
                     <textarea class="textarea-long" id="description" name="description"></textarea>
                 </div>
             </div>
-			<button class="button-green popup" onclick="myFunction()">Done
+            <input type="submit" class="button-green popup" />
+			{{!-- <button class="button-green popup" onclick="myFunction()">Done
 				<span class="popuptext" id="myPopup">New Dish Added!</span>
-			</button>
-			<script>
+			</button> --}}
+			{{!-- <script>
 				// When the user clicks on <div>, open the popup
 				function myFunction() {
 				  var popup = document.getElementById("myPopup");
 				  popup.classList.toggle("show");
 				}
-			</script>
+			</script> --}}
+            </form>
         </div>
     </div>
 </div>

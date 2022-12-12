@@ -58,12 +58,13 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        {{#each User}}
+                        {{#each employee}}
                         <tr>
                             <td>{{userID}}</td>
                             <td>{{firstName}} {{lastName}}</td>
                             <td>{{position}}</td>
-                            <td><button class="button-view">Delete</button></td>
+                            
+                            <td><a href="/deleteUser/{{userID}}" class="button-view">Delete</a></td>
                         </tr>
                         {{/each}}
                     </table>
