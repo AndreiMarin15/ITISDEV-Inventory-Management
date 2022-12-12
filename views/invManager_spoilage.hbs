@@ -16,11 +16,13 @@
                 <span class="header-font">Inventory Item Spoilage</span>
                 <div class="field-box">
                     <div>
-                        <label for="search-item" class = "field-font">Search Item </label>
+                        <label for="search-item" class = "field-font">Item Name</label>
                     </div>
-                    <div>
-                        <input type="text" class="textbox-long" id="itemname" name="itemname">
-                    </div>
+                    <select name="itemName" id="itemName" class="dropdown">
+                        {{#each item}}
+                        <option>{{itemName}}</option>
+                        {{/each}}
+                    </select>
                 </div>
                 <div class="field-box">
                     <div>
