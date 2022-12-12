@@ -30,6 +30,7 @@ app.get("/employeeList", controller.getEmployeeList);
 app.get("/reportsPage", controller.getInventoryReports);
 app.post("/addFolder", controller.addFolder);
 app.get("/ownerInventoryList", controller.getOwnerInventoryList);
+app.get("/deleteUser/:userID", controller.deleteUser);
 
 // inventory manager
 app.get("/inventoryList", controller.getInventoryList);
