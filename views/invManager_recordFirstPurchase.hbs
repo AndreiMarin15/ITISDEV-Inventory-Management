@@ -14,35 +14,6 @@
     <div class="content-container">
         <div class="createnew-box">
             <span class="header-font">Record First Purchase</span>
-
-            <div class="field-box">
-                <div>
-                    <label for="foodgroup" class = "field-font">Food Group:</label>
-                </div>
-
-                {{#if foodGroup}}
-                <div>
-                    <select name="foodgroup" id="foodgroup" class="dropdown">
-                        {{#each foodGroup}}
-                        <option value="{{foodGroupID}}">{{foodGroupName}}</option>
-                        {{/each}}
-                    </select>
-                </div>
-                {{else}}
-
-                <div>
-                    <select name="foodgroup" id="foodgroup" class="dropdown" disabled="disabled">
-                     
-                        <option>No Food Group added</option>
-                       
-                    </select>
-                </div>
-
-                {{/if}}
-                <div>
-                     <a href="/createFoodGroup" class="inv-submit">Create New Food Group</a>
-                </div>
-            </div>
             
             <div class="field-box">
                 <div>

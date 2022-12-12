@@ -73,3 +73,12 @@
     from {opacity: 0;}
     to {opacity:1 ;}
   }
+
+  .inv-submit {
+    color:var(--clr-white);
+    width: auto;
+    height: auto;
+    background-color:var(--clr-green);
+    border-radius: 10%;
+    padding: 10px;
+}
