@@ -227,6 +227,8 @@ const controller = {
     //},
 
     createItem: (req, res) => {
+        
+
         res.render("invManager_recordFirstPurchase");
     },
 
