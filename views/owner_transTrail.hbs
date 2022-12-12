@@ -25,18 +25,22 @@
                     </div>
                     <div class="filters">
                         <div>
-                            <label for="filters">Sort By:</label>
-                            <select id="sort" class="dropdown" name="sort">
-                                <option value="Ascending">Recipe Name, Ascending</option>
-                                <option value="Descending">Recipe Name, Descending</option>
-                                <option value="Ascending">Menu Group, Ascending</option>
-                                <option value="Descending">Menu Group, Descending</option>
-                                <option value="Ascending">Quantity, Ascending</option>
-                                <option value="Descending">Quantity, Descending</option>
-                                <option value="Ascending">Total Revenue, Ascending</option>
-                                <option value="Descending">Total Revenue, Descending</option>
+                            <label for="filters">Filter By:</label>
+                            <select id="filter" class="dropdown" name="filter">
+                                <option value="RecipeName">Recipe Name</option>
+                                <option value="MenuGroup">Menu Group</option>
+                                <option value="Quantity">Quantity</option>
+                                <option value="TotalRevenue">Total Revenue</option>
                             </select>
                         </div>
+						<div>
+                        <label for="filters">Sort By:</label>
+                        <select id="sort" class="dropdown" name="sort">
+                            <option value="Ascending">Ascending</option>
+                            <option value="Descending">Descending</option>
+                        </select>
+                    	</div>
+						<button type="submit"><i class="fa-solid fa-filter"></i> filter and sort</button>
                     </div>
                 </div>
 
