@@ -36,7 +36,7 @@ app.get("/deleteUser/:userID", controller.deleteUser);
 app.get("/inventoryList", controller.getInventoryList);
 app.get("/createCategory", controller.getCreateCategory);
 app.get("/createFoodGroup", controller.getFoodGroup);
-app.get("/addInventory", controller.getAddInventory);
+app.get("/recordPurchase", controller.getRecordPurchase);
 app.get("/inventorySpoiled", controller.getSpoilage);
 app.get("/inventoryMissing", controller.getMissing);
 app.get("/firstPurchase", controller.getCreateItem);
