@@ -331,7 +331,7 @@ const controller = {
         });
     },
 
-    getAddInventory: (req, res) => {
+    getRecordPurchase: (req, res) => {
         res.render("invManager_recordPurchase");
     },
 

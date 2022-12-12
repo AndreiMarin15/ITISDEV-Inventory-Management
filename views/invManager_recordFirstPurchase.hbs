@@ -14,7 +14,7 @@
     <div class="content-container">
         <div class="createnew-box">
             <span class="header-font">Record First Purchase</span>
-            
+            <form action="#" method="post">
             <div class="field-box">
                 <div>
                     <label for="category" class = "field-font">Category:</label>
@@ -59,7 +59,10 @@
                     </select>
                 </div>
             </div>
-			<button class="button-green popup" onclick="myFunction()">Record Purchase
+            <input type="submit" class="button-green popup"/>
+            </form>
+            
+			{{!-- <button class="button-green popup" onclick="myFunction()">Record Purchase
 				<span class="popuptext" id="myPopup">First Purchase Recorded!</span>
 			</button>
 			<script>
@@ -68,8 +71,8 @@
 				  var popup = document.getElementById("myPopup");
 				  popup.classList.toggle("show");
 				}
-			</script>
-
+			</script> --}}
+            
         </div>
     </div>
 
