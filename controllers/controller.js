@@ -144,7 +144,7 @@ const controller = {
                         employee.push(use);
                     });
                     console.log(employee);
-                    res.render("owner_dashboard", { Employee: employee });
+                    res.render("owner_Dashboard", { Employee: employee });
                 });
             });
         } else if (req.session.userType === 1) {
@@ -155,7 +155,7 @@ const controller = {
                     userType: type.userTypeDesc,
                     userID: req.session.userID,
                 };
-                res.render("invManager_dashboard", { Emp: Emp });
+                res.render("invManager_Dashboard", { Emp: Emp });
             });
         } else if (req.session.userType === 2) {
             db.findOne(UserType, { userID: req.session.userType }, {}, (type) => {
@@ -351,7 +351,7 @@ const controller = {
 
     // owner
     getDashboard: function (req, res) {
-        res.render("owner_dashboard");
+        res.render("owner_Dashboard");
     },
 
     getOwnerInventoryList: (req, res) => {
