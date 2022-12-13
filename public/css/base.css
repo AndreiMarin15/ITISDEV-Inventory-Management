@@ -328,3 +328,30 @@ h1 {
   margin-top: -25px;
   margin-left: 10px;
 }
+
+.back {
+  border: 1px solid var(--clr-gray);
+  border-radius: 5px;
+  background-color: var(--clr-gray);
+  font-family: var(--font-type2);
+  font-size: 14px;
+  width: 9vw;
+  height: 2vh;
+  color: var(--clr-white);
+  padding: 10px;
+  box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+  cursor: pointer;
+  text-align: center;
+}
+
+.back:hover{
+  border-radius: 5px;
+  background-color: white;
+  color: #1a7968;
+}
+.button-placement {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 5px;
+}
