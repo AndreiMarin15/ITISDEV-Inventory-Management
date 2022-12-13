@@ -467,32 +467,45 @@ const controller = {
                 let newTotal = category.runningTotal + currentTotal;
 
                 db.updateOne(Category, {categoryID: category.categoryID}, {runningTotal: newTotal}, result => {
-                    
-                        db.findMany(Ingredients, {}, {}, ingredients => {
-                            
-                            let maxID = Math.max.apply(null, ingredients.map((ingred) => {
-                                return parseInt(ingred.categoryID);
-                            }));
-                            let toInsert = [];
+                    db.findMany(Transactions, {}, {}, transactions => {
+                        console.log(Date.now());
 
-                            let i = 0;
-                            for (i = 0; i < req.body.quantity; i++){
-                                let toPush = {
-                                    ingredientID: maxID + 1 + i,
-                                    ingredientName: ingredient.ingredientName,
-                                    netWeight: ingredient.netWeight,
-                                    unitMeasure: ingredient.unitMeasure,
-                                    categoryID: ingredient.categoryID,
-                                }
+                        if(transactions.length == 0){
 
-                                toInsert.push(toPush);
+                            let transaction = {
+                                transactionID: 1,
+                                ingredientID: req.body.itemname,
+                                quantity: req.body.quantity,
+                                buyDate: Date.now()
                             }
-                            db.insertMany(Ingredients, toInsert, inserted => {
+
+                            db.insertOne(Transactions, transaction, trans => {
+                                console.log(trans);
                                 res.send(
-                                    `<script>alert("Purchase Recorded."); window.location.href = "/recordPurchase"; </script>`
+                                    `<script>alert("Transaction Recorded."); window.location.href = "/recordPurchase"; </script>`
                                 );
+
                             })
-                        })
+                        } else {
+                            let maxID = Math.max.apply(null, transactions.map((transact) => {
+                                return transact.transactionID;
+                            }));
+                            let transaction = {
+                                transactionID: maxID + 1,
+                                ingredientID: req.body.itemname,
+                                quantity: req.body.quantity,
+                                buyDate: Date.now()
+                            }
+
+                            db.insertOne(Transactions, transaction, trans => {
+                                console.log(trans);
+                                res.send(
+                                    `<script>alert("Transaction Recorded."); window.location.href = "/recordPurchase"; </script>`
+                                );
+
+                            })
+                        }
+                    })
                 })
             });
         });

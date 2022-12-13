@@ -15,9 +15,6 @@ const TransactionsSchema = new mongoose.Schema({
     buyDate: {
         type: Date,
     },
-    expirationDate: {
-        type: Date,
-    },
 });
 
 const Transactions = mongoose.model("Transactions", TransactionsSchema);
