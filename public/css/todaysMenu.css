@@ -32,7 +32,7 @@
 
 .inner-grid {
     display: grid;
-    grid-template-columns: 4fr 0.5fr;
+    grid-template-columns: 4fr 1fr;
     grid-gap: 5px;
     align-items: end;
     margin-top: -15px;
