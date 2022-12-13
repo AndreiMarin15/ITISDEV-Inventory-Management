@@ -17,6 +17,7 @@ const FoodGroup = require("../models/foodGroup");
 const MenuGroup = require("../models/menuGroup");
 const Ingredients = require("../models/ingredients");
 const moment = require("moment");
+const { relativeTimeRounding } = require("moment");
 
 
 const controller = {
@@ -229,14 +230,75 @@ const controller = {
     // add category using forms
     //},
 
-    getReportsPageInvManager: (req, res) => {
-        res.render("invManager_reportsPage")
+    getReportsPageInvManager:async (req, res) => {
+        let report = [];
+        await db.findMany(Category, {}, {}, categories => {
+            db.findMany(User, { userID: { $ne: "admin" } }, {}, users => {
+                db.findMany(Spoilage, {}, {}, spoilage => {
+                    spoilage.forEach(spoiled => {
+                        let spoiledPush = {
+                            caseDate: spoiled.caseDate,
+                            reportType: "Spoilage",
+                            CategoryName: categories.find(categ => categ.categoryID === parseInt(spoiled.categoryID) ).categoryName,
+                            amount: spoiled.amount,
+                            employeeName: users.find(user => user.userID === spoiled.employeeNo).firstName + " " + users.find(user => user.userID === spoiled.employeeNo).lastName
+                        }
+                     
+                        report.push(spoiledPush);
+                    })
+                    db.findMany(Missing, {}, {}, missing => {
+                        missing.forEach(miss => {
+                            let missingPush = {
+                                caseDate: miss.caseDate,
+                            reportType: "Missing",
+                            CategoryName: categories.find(categ => categ.categoryID === parseInt(miss.categoryID) ).categoryName,
+                            amount: miss.amount,
+                            employeeName: users.find(user => user.userID === miss.employeeNo).firstName + " " + users.find(user => user.userID === miss.employeeNo).lastName
+                            }
+                            report.push(missingPush);
+                        })
+                        report.sort((a, b) => {
+                            let da = new Date(a.caseDate),
+                                db = new Date(b.caseDate);
+
+                                return db - da;
+                        });
+
+                        res.render("invManager_reportsPage", {Report: report})
+                    })
+                })
+            })
+            
+        })
+        
+        
     },
 
     //   addToInventory: (req, res) => {},
 
     getInventoryList: (req, res) => {
-        res.render("invManager_inventoryList");
+        db.findMany(Category, {}, {}, categories => {
+            db.findMany(FoodGroup, {}, {}, foodgroups => {
+                console.log(foodgroups)
+                db.findMany(Unit, {}, {}, units => {
+                    let toPass = []
+                    categories.forEach(category => {
+                        let toPush = {
+                            categoryName: category.categoryName,
+                            foodGroupName: foodgroups[category.foodGroupID - 1].foodGroupName,
+                            runningTotal: (category.runningTotal).toFixed(2),
+                            unitName: units[category.unitID - 1].unitName
+                        }
+                        console.log(toPush);
+                        toPass.push(toPush);
+                    })
+
+                    res.render("invManager_inventoryList", {details: toPass});
+                })
+                
+            })
+        })
+        
     },
 
     getCreateCategory: async (req, res) => {
@@ -538,14 +600,14 @@ const controller = {
         db.findMany(Spoilage, {}, {}, spoiled => {
             if(spoiled.length == 0) {
                 db.findOne(Category, {categoryID: req.body.itemName}, {}, category => {
-                    let date = new Date(new Date(Date.now()).getFullYear(), new Date(Date.now()).getMonth(), new Date(Date.now()).getDate())
+                    let date = new Date(Date.now())
                     let spoil = {
                         caseID: 1,
                         categoryID: req.body.itemName,
                         employeeNo: req.session.userID,
                         amount: parseFloat(req.body.quantity),
                         unitID: category.unitID,
-                        date: date,
+                        caseDate: date,
                     }
                     if(category.runningTotal - parseFloat(req.body.quantity) >= 0){
                     db.insertOne(Spoilage, spoil, spo => {
@@ -570,14 +632,14 @@ const controller = {
                     let maxID = Math.max.apply(null, spoiled.map((spoi) => {
                         return spoi.caseID;
                     }));
-                    let date = new Date(new Date(Date.now()).getFullYear(), new Date(Date.now()).getMonth(), new Date(Date.now()).getDate())
+                    let date = new Date(Date.now())
                     let spoil = {
                         caseID: maxID + 1,
                         categoryID: req.body.itemName,
                         employeeNo: req.session.userID,
                         amount: parseFloat(req.body.quantity),
                         unitID: category.unitID,
-                        date: date,
+                        caseDate: date,
                     }
                     if(category.runningTotal - parseFloat(req.body.quantity) >= 0){
                     db.insertOne(Spoilage, spoil, spo => {
@@ -607,6 +669,10 @@ const controller = {
 
     getMissing: (req, res) => {
         res.render("invManager_missing");
+
+        // get category
+        // type is the ingredients
+        // 
     },
 
 
