@@ -394,14 +394,25 @@ const controller = {
                     let newIngredient = {
                         ingredientID: 1,
                         ingredientName: req.body.itemname,
-                        netWeight: parseInt(req.body.netweight),
+                        netWeight: parseFloat(req.body.netweight),
                         unitMeasure: unit.unitName,
                         categoryID: req.body.category,
                     };
-                    db.insertOne(Ingredients, newIngredient, result => {
-                        console.log(result);
-                        res.redirect("/recordPurchase");
-                    });
+
+                    db.findOne(Category, {categoryID: newIngredient.categoryID}, {}, (category) => {
+
+                        let newTotal = newIngredient.netWeight + category.runningTotal;
+
+                        db.updateOne(Category, {categoryID: category.categoryID}, {runningTotal: newTotal}, result1 => {
+                            console.log(result1);
+                            db.insertOne(Ingredients, newIngredient, result => {
+                                console.log(result);
+                                res.redirect("/recordPurchase");
+                            });
+                        })
+                        
+                    })
+                   
 
                 })
             } else {
@@ -412,15 +423,26 @@ const controller = {
                     let newIngredient = {
                         ingredientID: maxID + 1,
                         ingredientName: req.body.itemname,
-                        netWeight: parseInt(req.body.netweight),
+                        netWeight: parseFloat(req.body.netweight),
                         unitMeasure: unit.unitName,
                         categoryID: req.body.category,
                     };
+
+                    db.findOne(Category, {categoryID: newIngredient.categoryID}, {}, (category) => {
+
+                        let newTotal = newIngredient.netWeight + category.runningTotal;
+
+                        db.updateOne(Category, {categoryID: category.categoryID}, {runningTotal: newTotal}, result1 => {
+                            console.log(result1);
+                            db.insertOne(Ingredients, newIngredient, result => {
+                                console.log(result);
+                                res.redirect("/recordPurchase");
+                            });
+                        })
+                        
+                    })
     
-                    db.insertOne(Ingredients, newIngredient, result => {
-                        console.log(result);
-                        res.redirect("/recordPurchase");
-                    });
+                    
                 })
             }
         })
@@ -431,11 +453,57 @@ const controller = {
         db.findMany(Ingredients, {}, {}, (ingredients) => {
             res.render("invManager_recordPurchase", {ingredient: ingredients});
         })
-        
+        // Ingredient
+        // yung ingredient, ichecheck ano ang net weight and anong category, quantity will be multiplied with net weight
+        // punta sa category
+        // uupdate ang running total = current total + quantity * netweight
     },
 
-    getSpoilage: (req, res) => {
-        res.render("invManager_spoilage");
+    recordPurchase: async (req, res) => {
+        await db.findOne(Ingredients, {ingredientID: req.body.itemname}, {}, (ingredient) => {
+            db.findOne(Category, {categoryID: ingredient.categoryID}, {}, (category) => {
+                let currentTotal = ingredient.netWeight * req.body.quantity;
+
+                let newTotal = category.runningTotal + currentTotal;
+
+                db.updateOne(Category, {categoryID: category.categoryID}, {runningTotal: newTotal}, result => {
+                    
+                        db.findMany(Ingredients, {}, {}, ingredients => {
+                            
+                            let maxID = Math.max.apply(null, ingredients.map((ingred) => {
+                                return parseInt(ingred.categoryID);
+                            }));
+                            let toInsert = [];
+
+                            let i = 0;
+                            for (i = 0; i < req.body.quantity; i++){
+                                let toPush = {
+                                    ingredientID: maxID + 1 + i,
+                                    ingredientName: ingredient.ingredientName,
+                                    netWeight: ingredient.netWeight,
+                                    unitMeasure: ingredient.unitMeasure,
+                                    categoryID: ingredient.categoryID,
+                                }
+
+                                toInsert.push(toPush);
+                            }
+                            db.insertMany(Ingredients, toInsert, inserted => {
+                                res.send(
+                                    `<script>alert("Purchase Recorded."); window.location.href = "/recordPurchase"; </script>`
+                                );
+                            })
+                        })
+                })
+            });
+        });
+    },
+
+    getSpoilage: async (req, res) => {
+        await db.findMany(Category, {}, {}, (items) => {
+            res.render("invManager_spoilage", {item: items});
+        });
+
+        
     },
 
     getMissing: (req, res) => {

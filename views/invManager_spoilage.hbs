@@ -21,7 +21,7 @@
                     </div>
                     <select name="itemName" id="itemName" class="dropdown">
                         {{#each item}}
-                        <option>{{itemName}}</option>
+                        <option value={{categoryName}}>{{categoryName}}</option>
                         {{/each}}
                     </select>
                 </div>
@@ -30,7 +30,7 @@
                        <label for="quantity-item" class = "field-font">Amount </label>
                     </div>
                     <div>
-                        <input type="number" class="textbox-short" id="quantity" name="quantity">
+                        <input type="number" class="textbox-short" id="quantity" name="quantity" value="1" min="1">
                     </div> 
                 </div>
                 <div class="field-box">
@@ -41,7 +41,7 @@
                         <textarea class="textarea-long" id="description" name="description"></textarea>
                     </div>
                 </div>
-                <input type="submit" class="button-green popup" />
+                <input type="submit" class="button-green popup" value="Submit" />
                 </form>
             </div>
         </div>

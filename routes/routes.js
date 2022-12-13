@@ -42,6 +42,7 @@ app.get("/firstPurchase", controller.getCreateItem);
 app.post("/addFoodGroup", controller.addFoodGroup);
 app.post("/newCategory", controller.addCategory);
 app.post("/addFirstPurchase", controller.firstPurchace);
+app.post("/additionalPurchase", controller.recordPurchase);
 
 // cashier
 app.get("/viewPOS", controller.getPOS);

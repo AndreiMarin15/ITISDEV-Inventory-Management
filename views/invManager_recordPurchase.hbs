@@ -14,7 +14,7 @@
     <div class="content-container">
         <div class="createnew-box">
             <span class="header-font">Record Purchase</span>
-             <form action="#" method="post">
+             <form action="/additionalPurchase" method="post">
             <div class="field-box">
                 <div>
                     <label for="search-item" class = "field-font">Search Item:</label>
@@ -36,10 +36,10 @@
                     <label for="quantity-item" class = "field-font">Quantity:</label>
                 </div>
                 <div>
-                    <input type="number" class="textbox-short" id="quantity" name="quantity" min="1" value="1"> 
+                    <input type="number" class="textbox-short" id="quantity" name="quantity" min = "1" value ="1"> 
                 </div>
             </div>
-            <input type="submit" class="button-green popup" />
+            <input type="submit" class="button-green popup" value="Submit"/>
             </form>
 			{{!-- <button class="button-green popup" onclick="myFunction()">Record Purchase
 				<span class="popuptext" id="myPopup">Purchase Recorded!</span>
