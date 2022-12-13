@@ -23,7 +23,7 @@ h1 {
 
 .table-container {
     overflow: auto;
-    background-color: white;
+    background-color: transparent;
     padding-top: 40px;
     padding-bottom: 35px;
     padding-right: 30px;
@@ -35,6 +35,7 @@ table {
     border-collapse: collapse;
     border: 1px solid #ddd;
     table-layout:fixed;
+    background-color: white;
 }
 
 th, td {
@@ -106,3 +107,11 @@ table td:nth-child(5) {
     color: #1a7968;
     margin-left:40px;
 }
+
+p {
+    margin-top: 5px;
+    margin-left: 40px;
+    font-size: 20px;
+    color: rgb(93, 93, 93);
+}
+
