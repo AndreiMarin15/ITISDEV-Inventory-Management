@@ -308,3 +308,10 @@ h1 {
 .field-box{
     margin-bottom:30px;
 }
+
+.directions {
+    font-size: 15px;
+    color: rgb(93, 93, 93);
+    margin-top: -25px;
+    margin-left: 10px;
+}

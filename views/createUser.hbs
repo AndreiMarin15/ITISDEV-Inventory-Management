@@ -12,6 +12,7 @@
         <div class="content-container">
             <div class="createnew-box">
                 <h1 class="header-font">Create New User</h1>
+                <p class="directions"> All fields are required to be filled in.</p>
 
                 <form action="/newUser" method="post">
                     <div class="field-box">
@@ -26,6 +27,7 @@
                                 class="textbox-long"
                                 id="newUserfirst"
                                 name="newUserfirst"
+                                required
                             />
                         </div>
                     </div>
@@ -41,6 +43,7 @@
                                 class="textbox-long"
                                 id="newUserlast"
                                 name="newUserlast"
+                                required
                             />
                         </div>
                     </div>
@@ -51,7 +54,7 @@
                         </div>
 
                         <div>
-                            <select name="employeetype" id="employeetype" class="option-dropdown">
+                            <select name="employeetype" id="employeetype" class="option-dropdown" required>
                 
                                 <option value="1">Inventory Manager</option>
                                 <option value="2">Cashier</option>
@@ -73,6 +76,7 @@
                                 class="input-button"
                                 value="Assign ID"
                                 onclick="insertText('txt1','0000' + {{empID}});"
+                                required
                             />
 
                             <!-- Assigns randomly generated employee ID on button click-->
@@ -95,6 +99,7 @@
                                 class="textbox-long"
                                 id="newUserPassword"
                                 name="newUserPassword"
+                                required
                             />
                         </div>
                     </div>
