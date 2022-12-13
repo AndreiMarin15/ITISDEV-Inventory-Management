@@ -221,6 +221,10 @@ const controller = {
     },
 
     getPOS: (req, res) => {
+        db.findMany(MenuGroup, {}, {}, menugroups => {
+            
+        })
+
         res.render("cashier_POS");
     },
 
