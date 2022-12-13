@@ -229,7 +229,9 @@ const controller = {
     // add category using forms
     //},
 
-    
+    getReportsPageInvManager: (req, res) => {
+        res.render("invManager_reportsPage")
+    },
 
     //   addToInventory: (req, res) => {},
 
