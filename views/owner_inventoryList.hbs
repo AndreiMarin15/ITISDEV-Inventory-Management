@@ -11,8 +11,14 @@
         {{>ownerPanel}} 
 
         <div class="page-container">
-            <div><h1 class="header-font">Inventory List</h1></div>
-            <br>
+            <div>
+                <h1 class="header-font">Inventory List</h1>
+        
+                <p>As of: {{dateToday}}</p>
+
+                <hr class="separator">
+            </div>
+
             <div class="search-filters">
                 <div>
                     <input type="text" placeholder="Search" name="search">

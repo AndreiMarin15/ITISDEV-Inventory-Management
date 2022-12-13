@@ -152,6 +152,21 @@ body {
     
 }
 
+.filter-dropdown {
+    padding: 7px 5px;
+    border-radius: 5px;
+    border: 1px solid var(--clr-green);
+    width: auto;
+    height: 4vh;
+    font-weight: bold;
+    color: var(--clr-green);
+}
+
+.filter-dropdown[disabled="disabled"]{
+    color: var(--clr-gray);
+    
+}
+
 .button-white {
     border: 1px solid var(--clr-green);
     border-radius: 5px;

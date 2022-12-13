@@ -9,13 +9,15 @@
 .search-filters{
     display:flex;
     flex-direction:row;
+    max-width: 90%;
+
 }
 
 .filters{
     display:flex;
     flex-direction:row;
     margin-left: auto;
-    gap:20px;
+    gap: 25px;
 }
 
 .inventory-container{
@@ -61,5 +63,11 @@ thead th {
     font-size: 15px;
 }
 
+p {
+    margin-top: 5px;
+    margin-left: 5px;
+    font-size: 20px;
+    color: rgb(93, 93, 93);
+}
 
 
