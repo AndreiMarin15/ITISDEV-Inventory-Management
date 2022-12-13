@@ -16,6 +16,6 @@
 .field-box{
     display:flex;
     flex-direction:row;
-    margin: 5px;
+    margin: 10px;
     gap: 30px;
 }
