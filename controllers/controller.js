@@ -16,6 +16,8 @@ const bcrypt = require("bcrypt");
 const FoodGroup = require("../models/foodGroup");
 const MenuGroup = require("../models/menuGroup");
 const Ingredients = require("../models/ingredients");
+const moment = require("moment");
+
 
 const controller = {
     // checks if an admin account exists. If yes, it redirects to login. If not, creates an admin usertype and admin account
@@ -401,15 +403,11 @@ const controller = {
 
                     db.findOne(Category, {categoryID: newIngredient.categoryID}, {}, (category) => {
 
-                        let newTotal = newIngredient.netWeight + category.runningTotal;
-
-                        db.updateOne(Category, {categoryID: category.categoryID}, {runningTotal: newTotal}, result1 => {
-                            console.log(result1);
                             db.insertOne(Ingredients, newIngredient, result => {
                                 console.log(result);
                                 res.redirect("/recordPurchase");
                             });
-                        })
+                        
                         
                     })
                    
@@ -430,15 +428,14 @@ const controller = {
 
                     db.findOne(Category, {categoryID: newIngredient.categoryID}, {}, (category) => {
 
-                        let newTotal = newIngredient.netWeight + category.runningTotal;
+               
 
-                        db.updateOne(Category, {categoryID: category.categoryID}, {runningTotal: newTotal}, result1 => {
-                            console.log(result1);
+                      
                             db.insertOne(Ingredients, newIngredient, result => {
                                 console.log(result);
                                 res.redirect("/recordPurchase");
                             });
-                        })
+                      
                         
                     })
     
@@ -468,15 +465,17 @@ const controller = {
 
                 db.updateOne(Category, {categoryID: category.categoryID}, {runningTotal: newTotal}, result => {
                     db.findMany(Transactions, {}, {}, transactions => {
-                        console.log(Date.now());
-
+                        
+                        let date = new Date(new Date(Date.now()).getFullYear(), new Date(Date.now()).getMonth(), new Date(Date.now()).getDate())
+                        
+                        console.log("date today: " + date); 
                         if(transactions.length == 0){
 
                             let transaction = {
                                 transactionID: 1,
                                 ingredientID: req.body.itemname,
                                 quantity: req.body.quantity,
-                                buyDate: Date.now()
+                                buyDate: date
                             }
 
                             db.insertOne(Transactions, transaction, trans => {
@@ -494,7 +493,7 @@ const controller = {
                                 transactionID: maxID + 1,
                                 ingredientID: req.body.itemname,
                                 quantity: req.body.quantity,
-                                buyDate: Date.now()
+                                buyDate: date
                             }
 
                             db.insertOne(Transactions, transaction, trans => {
@@ -513,10 +512,95 @@ const controller = {
 
     getSpoilage: async (req, res) => {
         await db.findMany(Category, {}, {}, (items) => {
-            res.render("invManager_spoilage", {item: items});
+            db.findMany(Unit, {}, {}, units => {
+                let item = [];
+                items.forEach(it => {
+                    let instance = {
+                        categoryID: it.categoryID,
+                        categoryName: it.categoryName,
+                        unitName: units[it.unitID - 1].unitName,
+                    }
+
+                    item.push(instance)
+                })
+
+                res.render("invManager_spoilage", {item: item});
+            })
+            
         });
 
         
+    },
+
+    submitSpoilage: async(req, res) => {
+        db.findMany(Spoilage, {}, {}, spoiled => {
+            if(spoiled.length == 0) {
+                db.findOne(Category, {categoryID: req.body.itemName}, {}, category => {
+                    let date = new Date(new Date(Date.now()).getFullYear(), new Date(Date.now()).getMonth(), new Date(Date.now()).getDate())
+                    let spoil = {
+                        caseID: 1,
+                        categoryID: req.body.itemName,
+                        employeeNo: req.session.userID,
+                        amount: parseFloat(req.body.quantity),
+                        unitID: category.unitID,
+                        date: date,
+                    }
+                    if(category.runningTotal - parseFloat(req.body.quantity) >= 0){
+                    db.insertOne(Spoilage, spoil, spo => {
+                        console.log(spo);
+                        
+                            db.updateOne(Category, {categoryID: category.categoryID}, {runningTotal: category.runningTotal - parseFloat(req.body.quantity)}, updated => {
+                                res.send(
+                                    `<script>alert("Spoilage Recorded."); window.location.href = "/home"; </script>`
+                                );
+                            })
+                        
+                        
+                    })
+                } else {
+                    res.send(
+                        `<script>alert("Spoilage report more than existing inventory."); window.location.href = "/inventorySpoiled"; </script>`
+                    );
+                }
+                })
+            } else {
+                db.findOne(Category, {categoryID: req.body.itemName}, {}, category => {
+                    let maxID = Math.max.apply(null, spoiled.map((spoi) => {
+                        return spoi.caseID;
+                    }));
+                    let date = new Date(new Date(Date.now()).getFullYear(), new Date(Date.now()).getMonth(), new Date(Date.now()).getDate())
+                    let spoil = {
+                        caseID: maxID + 1,
+                        categoryID: req.body.itemName,
+                        employeeNo: req.session.userID,
+                        amount: parseFloat(req.body.quantity),
+                        unitID: category.unitID,
+                        date: date,
+                    }
+                    if(category.runningTotal - parseFloat(req.body.quantity) >= 0){
+                    db.insertOne(Spoilage, spoil, spo => {
+                        console.log(spo);
+
+                        
+                            db.updateOne(Category, {categoryID: category.categoryID}, {runningTotal: category.runningTotal - parseFloat(req.body.quantity)}, updated => {
+                            res.send(
+                                `<script>alert("Spoilage Recorded."); window.location.href = "/home"; </script>`
+                            );
+                        })
+
+                        
+                        
+                    })
+                } else {
+                    res.send(
+                        `<script>alert("Spoilage report more than existing inventory."); window.location.href = "/inventorySpoiled"; </script>`
+                    );
+                }
+
+
+                })
+            }
+        })
     },
 
     getMissing: (req, res) => {
