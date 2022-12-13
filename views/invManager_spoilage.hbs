@@ -14,32 +14,27 @@
         <div class="content-container">
             <div class="createnew-box">
                 <span class="header-font">Inventory Item Spoilage</span>
-                 <form action="#" method="post">
+                 <form action="/submitSpoilage" method="post">
                 <div class="field-box">
                     <div>
                         <label for="search-item" class = "field-font">Item Name</label>
                     </div>
                     <select name="itemName" id="itemName" class="dropdown">
                         {{#each item}}
-                        <option value={{categoryName}}>{{categoryName}}</option>
+                        <option value={{categoryID}}>{{categoryName}} ({{unitName}})</option>
                         {{/each}}
                     </select>
                 </div>
                 <div class="field-box">
                     <div>
-                       <label for="quantity-item" class = "field-font">Amount </label>
+                       <label for="quantity-item" class = "field-font">Quantity </label>
                     </div>
                     <div>
-                        <input type="number" class="textbox-short" id="quantity" name="quantity" value="1" min="1">
+                        <input type="text" class="textbox-short" id="quantity" name="quantity" placeholder="0.00">
                     </div> 
                 </div>
                 <div class="field-box">
-                    <div>
-                        <label for="desc" class = "field-font">Description </label>
-                    </div>
-                    <div>
-                        <textarea class="textarea-long" id="description" name="description"></textarea>
-                    </div>
+                   
                 </div>
                 <input type="submit" class="button-green popup" value="Submit" />
                 </form>

@@ -44,6 +44,7 @@ app.post("/newCategory", controller.addCategory);
 app.post("/addFirstPurchase", controller.firstPurchace);
 app.post("/additionalPurchase", controller.recordPurchase);
 app.get("/reportsPageinvManager", controller.getReportsPageInvManager);
+app.post("/submitSpoilage", controller.submitSpoilage)
 
 // cashier
 app.get("/viewPOS", controller.getPOS);

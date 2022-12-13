@@ -1,332 +1,330 @@
 @font-face {
-    font-family: "Omnes";
-    src: url("font/Omnes.eot") format("embedded-opentype"),
-        /* IE6-IE8 */ url("font/Omnes.woff") format("woff"), url("font/Omnes.woff2") format("woff2"),
-        /* Modern Browsers */ url("font/Omnes.ttf") format("truetype"); /* Safari, Android, iOS */
+  font-family: "Omnes";
+  src: url("font/Omnes.eot") format("embedded-opentype"),
+    /* IE6-IE8 */ url("font/Omnes.woff") format("woff"),
+    url("font/Omnes.woff2") format("woff2"),
+    /* Modern Browsers */ url("font/Omnes.ttf") format("truetype"); /* Safari, Android, iOS */
 }
 
 @font-face {
-    font-family: "Omnes Medium";
-    src: url("font/Omnes Medium.otf") format("opentype");
+  font-family: "Omnes Medium";
+  src: url("font/Omnes Medium.otf") format("opentype");
 }
 
 :root {
-    /*colors to be used in application 
+  /*colors to be used in application 
     Example on how to use: color: var(--clr-white);*/
-    --clr-white: white;
-    --clr-gray: hsl(210, 15%, 74%);
-    --clr-gray-100: hsl(0, 0%, 90%);
-    --clr-gray-200: hsl(0, 2%, 74%);
-    --clr-gray-500: hsl(210, 13%, 65%);
-    --clr-gray-600: hsl(203, 10%, 60%);
-    --clr-grayhover: hsl(205, 9%, 52%);
+  --clr-white: white;
+  --clr-gray: hsl(210, 15%, 74%);
+  --clr-gray-100: hsl(0, 0%, 90%);
+  --clr-gray-200: hsl(0, 2%, 74%);
+  --clr-gray-500: hsl(210, 13%, 65%);
+  --clr-gray-600: hsl(203, 10%, 60%);
+  --clr-grayhover: hsl(205, 9%, 52%);
 
-    --clr-bg: hsl(214, 100%, 96%);
+  --clr-bg: hsl(214, 100%, 96%);
 
-    --clr-green: #1b7565;
-    --clr-darkgreen: #0f4d41;
+  --clr-green: #1b7565;
+  --clr-darkgreen: #0f4d41;
 
-    --clr-primary: hsl(158, 36%, 26%);
-    --clr-txt-secondary: hsl(208, 24%, 53%);
+  --clr-primary: hsl(158, 36%, 26%);
+  --clr-txt-secondary: hsl(208, 24%, 53%);
 
-    /*font to be used in application 
+  /*font to be used in application 
     Example on how to use: font-family: var(--font-type2);*/
-    --font-type: "Omnes", Poppins, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    --font-type2: "Omnes Medium", var(--font-type);
+  --font-type: "Omnes", Poppins, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-type2: "Omnes Medium", var(--font-type);
 }
 
 body {
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-    padding: 0;
-    background-color: var(--clr-gray-100);
-    font-family: var(--font-type2);
-    color: var(--clr-txt-primary);
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  background-color: var(--clr-gray-100);
+  font-family: var(--font-type2);
+  color: var(--clr-txt-primary);
 }
 
 .header-font {
-    color: #1a7968;
-    font-size: 35px;
-    margin-left: 5px;
+  color: #1a7968;
+  font-size: 35px;
+  margin-left: 5px;
 }
 
-
 .field-font {
-    color: var(--clr-txt-primary);
-    font-size: 1em;
-    font-weight: 600;
-    margin-right: 15px;
+  color: var(--clr-txt-primary);
+  font-size: 1em;
+  font-weight: 600;
+  margin-right: 15px;
 }
 
 .panel-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--clr-primary);
-    min-width: 10vw;
-    min-height: 100vh;
-    gap: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--clr-primary);
+  min-width: 10vw;
+  min-height: 100vh;
+  gap: 2px;
 }
 
 .content-container {
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    background-color: var(--clr-gray-100);
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  background-color: var(--clr-gray-100);
 }
 
 .panel-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 5px;
-    width: 5vw;
-    height: 10vh;
-    min-width: 80px;
-    max-width: 125px;
-    min-height: 80px;
-    max-height: 125px;
-    border-radius: 15%;
-    margin: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 5px;
+  width: 5vw;
+  height: 10vh;
+  min-width: 80px;
+  max-width: 125px;
+  min-height: 80px;
+  max-height: 125px;
+  border-radius: 15%;
+  margin: 7px;
 }
 
 .panel-box:hover {
-    background-color: var(--clr-grayhover);
-    width: 8vw;
-    height: 10vh;
-    border-radius: 10%;
-    cursor: pointer;
+  background-color: var(--clr-grayhover);
+  width: 8vw;
+  height: 10vh;
+  border-radius: 10%;
+  cursor: pointer;
 }
 
 .selected-box {
-    background-color: var(--clr-darkgreen);
-    color: var(--clr-white);
-    font-weight: bold;
+  background-color: var(--clr-darkgreen);
+  color: var(--clr-white);
+  font-weight: bold;
 }
 
 .selected-tab {
-    background-color: var(--clr-gray-200);
-    color: var(--clr-primary);
-    font-weight: bold;
+  background-color: var(--clr-gray-200);
+  color: var(--clr-primary);
+  font-weight: bold;
 }
 
 .line-separator {
-    min-width: 70%;
+  min-width: 70%;
 }
 
 .panel-icons {
-    width: 6vw;
-    height: 6vh;
-    color: var(--clr-white);
+  width: 6vw;
+  height: 6vh;
+  color: var(--clr-white);
 }
 .panel-text {
-    font-family: var(--font-family);
-    color: var(--clr-gray-100);
-    font-size: 0.7em;
+  font-family: var(--font-family);
+  color: var(--clr-gray-100);
+  font-size: 0.7em;
 }
 
 .logout-button {
-    margin-top: auto;
-    margin-right: auto;
-    color: var(--clr-white);
-    margin-left: 15px;
-    margin-bottom: 15px;
-    font-size: 15px;
+  margin-top: auto;
+  margin-right: auto;
+  color: var(--clr-white);
+  margin-left: 15px;
+  margin-bottom: 15px;
+  font-size: 15px;
 }
 
 .dropdown {
-    padding: 7px 5px;
-    border-radius: 5px;
-    border: 1px solid var(--clr-green);
-    width: 17vw;
-    height: 4vh;
-    font-weight: bold;
-    color: var(--clr-green);
+  padding: 7px 5px;
+  border-radius: 5px;
+  border: 1px solid var(--clr-green);
+  width: 17vw;
+  height: 4vh;
+  font-weight: bold;
+  color: var(--clr-green);
 }
 
-.dropdown[disabled="disabled"]{
-    color: var(--clr-gray);
-    
+.dropdown[disabled="disabled"] {
+  color: var(--clr-gray);
 }
 
 .filter-dropdown {
-    padding: 7px 5px;
-    border-radius: 5px;
-    border: 1px solid var(--clr-green);
-    width: auto;
-    height: 4vh;
-    font-weight: bold;
-    color: var(--clr-green);
+  padding: 7px 5px;
+  border-radius: 5px;
+  border: 1px solid var(--clr-green);
+  width: auto;
+  height: 4vh;
+  font-weight: bold;
+  color: var(--clr-green);
 }
 
-.filter-dropdown[disabled="disabled"]{
-    color: var(--clr-gray);
-    
+.filter-dropdown[disabled="disabled"] {
+  color: var(--clr-gray);
 }
 
 .button-white {
-    border: 1px solid var(--clr-green);
-    border-radius: 5px;
-    background-color: var(--clr-white);
-    font-family: var(--font-type2);
-    font-size: 14px;
-    width: 8vw;
-    height: 4vh;
-    color: var(--clr-green);
-    padding: 10px;
-    box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
-    cursor: pointer;
-    text-align: center;
+  border: 1px solid var(--clr-green);
+  border-radius: 5px;
+  background-color: var(--clr-white);
+  font-family: var(--font-type2);
+  font-size: 14px;
+  width: 8vw;
+  height: 4vh;
+  color: var(--clr-green);
+  padding: 10px;
+  box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+  cursor: pointer;
+  text-align: center;
 }
 
 .button-green {
-    border: 1px solid var(--clr-green);
-    border-radius: 5px;
-    background-color: var(--clr-green);
-    font-family: var(--font-type2);
-    font-size: 14px;
-    width: 10vw;
-    height: 6vh;
-    color: var(--clr-white);
-    padding: 10px;
-    box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
-    cursor: pointer;
-    text-align: center;
+  border: 1px solid var(--clr-green);
+  border-radius: 5px;
+  background-color: var(--clr-green);
+  font-family: var(--font-type2);
+  font-size: 14px;
+  width: 10vw;
+  height: 6vh;
+  color: var(--clr-white);
+  padding: 10px;
+  box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+  cursor: pointer;
+  text-align: center;
 }
 
-.button-green:hover{
-    border-radius: 5px;
-    background-color: white;
-    color: #1a7968;
+.button-green:hover {
+  border-radius: 5px;
+  background-color: white;
+  color: #1a7968;
 }
 
 .button-submit:hover {
-    border-radius: 5px;
-    background-color: white;
-    color: #1a7968;
+  border-radius: 5px;
+  background-color: white;
+  color: #1a7968;
 }
 
 .button-submit {
-    color: var(--clr-white);
-    min-width: 10vw;
-    min-height: 5vh;
-    background-color: var(--clr-green);
-    border-radius: 10%;
+  color: var(--clr-white);
+  min-width: 10vw;
+  min-height: 5vh;
+  background-color: var(--clr-green);
+  border-radius: 10%;
 }
 
 .textbox-long {
-    border: 1px solid var(--clr-green);
-    border-radius: 5px;
-    background-color: var(--clr-white);
-    font-family: var(--font-type2);
-    font-size: 14px;
-    width: 15vw;
-    height: 1vh;
-    color: black;
-    padding: 10px;
-    box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
-    cursor: pointer;
-    text-align: left;
+  border: 1px solid var(--clr-green);
+  border-radius: 5px;
+  background-color: var(--clr-white);
+  font-family: var(--font-type2);
+  font-size: 14px;
+  width: 15vw;
+  height: 1vh;
+  color: black;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+  cursor: pointer;
+  text-align: left;
 }
 
 .textbox-short {
-    border: 1px solid var(--clr-green);
-    border-radius: 5px;
-    background-color: var(--clr-white);
-    font-family: var(--font-type2);
-    font-size: 14px;
-    width: 5vw;
-    height: 1vh;
-    color: var(--clr-green);
-    padding: 10px;
-    box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
-    cursor: pointer;
-    text-align: left;
+  border: 1px solid var(--clr-green);
+  border-radius: 5px;
+  background-color: var(--clr-white);
+  font-family: var(--font-type2);
+  font-size: 14px;
+  width: 5vw;
+  height: 1vh;
+  color: var(--clr-green);
+  padding: 10px;
+  box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+  cursor: pointer;
+  text-align: left;
 }
 
 .textarea-long {
-    border: 1px solid var(--clr-green);
-    border-radius: 5px;
-    background-color: var(--clr-white);
-    font-family: var(--font-type2);
-    font-size: 14px;
-    color: var(--clr-green);
-    padding: 10px;
-    box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
-    cursor: pointer;
-    text-align: left;
-    min-width: 20vw;
-    min-height: 5vh;
+  border: 1px solid var(--clr-green);
+  border-radius: 5px;
+  background-color: var(--clr-white);
+  font-family: var(--font-type2);
+  font-size: 14px;
+  color: var(--clr-green);
+  padding: 10px;
+  box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+  cursor: pointer;
+  text-align: left;
+  min-width: 20vw;
+  min-height: 5vh;
 }
 
 button:hover {
-    color: white;
-    background-color: var(--clr-darkgreen);
-    border-color: var(--clr-green);
-    border-style: solid;
-    border-radius: 10%;
-    transition: 0.5s;
+  color: white;
+  background-color: var(--clr-darkgreen);
+  border-color: var(--clr-green);
+  border-style: solid;
+  border-radius: 10%;
+  transition: 0.5s;
 }
 
 a:link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:visited {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:active {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-.sub-text{
-    font-weight:bold;
-    font-size:24px;
-    color: #1a7968;
+.sub-text {
+  font-weight: bold;
+  font-size: 24px;
+  color: #1a7968;
 }
 
 h1 {
-    /* margin-left: 40px; */
-    color: #1a7968;
-    margin-bottom:0px;
+  /* margin-left: 40px; */
+  color: #1a7968;
+  margin-bottom: 0px;
 }
 
 .inv-submit {
-    color:var(--clr-white);
-    width: auto;
-    height: auto;
-    background-color:var(--clr-green);
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
+  color: var(--clr-white);
+  width: auto;
+  height: auto;
+  background-color: var(--clr-green);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
 }
 
 .inv-submit:hover {
-    color:var(--clr-green);
-    width: auto;
-    height: auto;
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid var(--clr-green);
-    padding: 10px;
-    text-align: center;
+  color: var(--clr-green);
+  width: auto;
+  height: auto;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid var(--clr-green);
+  padding: 10px;
+  text-align: center;
 }
 
-.field-box{
-    margin-bottom:30px;
+.field-box {
+  margin-bottom: 30px;
 }
 
 .directions {
-    font-size: 15px;
-    color: rgb(93, 93, 93);
-    margin-top: -25px;
-    margin-left: 10px;
+  font-size: 15px;
+  color: rgb(93, 93, 93);
+  margin-top: -25px;
+  margin-left: 10px;
 }
