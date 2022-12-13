@@ -797,8 +797,27 @@ const controller = {
         res.render("owner_transTrail");
     },
 
-    getOwnerMenu: function (req, res) {
-        res.render("owner_menuList");
+    getOwnerMenu: async (req, res) => {
+        await db.findMany(MenuGroup, {}, {}, menugroups => {
+            let menugrp = [];
+            menugroups.forEach(menu => {
+                let grp = {
+                    MenuGroupID: menu.menuGroupID,
+                    MenuGroupName: menu.menuGroupName,
+                }
+
+                menugrp.push(grp);
+            })
+            let date = new Date(Date.now())
+            let month = date.getMonth() + 1;
+            let day = date.getDate();
+            let year = date.getFullYear();
+            console.log(menugrp)
+
+        res.render("owner_menuList", {dateToday: month + "-" + day + "-" + year, menugrps: menugrp});
+        })
+
+        
     },
 
     addMenuFolder: (req, res) => {
@@ -857,8 +876,48 @@ const controller = {
 
     // newMenuItem: (req, res) => {},
 
-    addMenuItem: (req, res) => {
-        res.render("owner_newDish");
+    addMenuItem:async (req, res) => {
+        console.log(req.params.menugroupID)
+
+           await db.findOne(MenuGroup, {menuGroupID: req.params.menugroupID}, {}, menugroup => {
+                db.findMany(Recipe, {}, {}, recipes => {
+                    if(recipes.length > 0){
+                        maxID = Math.max.apply(null, recipes.map((rec) => {
+                            return rec.recipeID;
+                         }));
+                         let toInsert = {
+                            recipeID: maxID + 1,
+                            recipeName: "Recipe Name",
+                            menuGroupID: req.params.menugroupID,
+                            price: 0.0
+                         }
+
+                         db.insertOne(Recipe, toInsert, insert => {
+                            res.render("owner_newDish", {menuGroupName: menugroup.menuGroupName, recipeName: toInsert.recipeName, recipeID: toInsert.recipeID});
+                         })
+                    } else {
+                        let toInsert = {
+                            recipeID: 1,
+                            recipeName: "Recipe Name",
+                            menuGroupID: req.params.menugroupID,
+                            price: 0.0
+                         }
+
+                         db.insertOne(Recipe, toInsert, insert => {
+                            res.render("owner_newDish", {menuGroupName: menugroup.menuGroupName, recipeName: toInsert.recipeName, recipeID: toInsert.recipeID});
+                         })
+                    }
+
+                })
+               
+       })
+        
+    },
+
+    cancelDish: async (req, res) => {
+        db.delOne(Recipe, {recipeID: req.params.recipeID}, deleted => {
+            res.redirect("/ownerMenu");
+        })
     },
 
     getFoodGroup: (req, res) => {

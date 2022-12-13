@@ -24,12 +24,13 @@ app.get("/transactionTrail", controller.getTransactionTrail);
 app.get("/ownerMenu", controller.getOwnerMenu);
 app.get("/newFolder", controller.addMenuFolder);
 app.get("/addIngredient", controller.addIngredient);
-app.get("/newDish", controller.addMenuItem);
+app.get("/newDish/:menugroupID", controller.addMenuItem);
 app.get("/employeeList", controller.getEmployeeList);
 app.get("/reportsPage", controller.getInventoryReports);
 app.post("/addFolder", controller.addFolder);
 app.get("/ownerInventoryList", controller.getOwnerInventoryList);
 app.get("/deleteUser/:userID", controller.deleteUser);
+app.get("/cancel/:recipeID", controller.cancelDish);
 
 // inventory manager
 app.get("/inventoryList", controller.getInventoryList);

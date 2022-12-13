@@ -2,8 +2,8 @@
 <html>
     <head>
         <title>Owner | New Dish</title>
-        <link rel="stylesheet" href="css/newMenuItem.css" />
-        <link rel="stylesheet" href="css/base.css" />
+        <link rel="stylesheet" href="/css/newMenuItem.css" />
+        <link rel="stylesheet" href="/css/base.css" />
         <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
     </head>
     <!-- Content Here -->
@@ -20,7 +20,7 @@
                     <label for="search-item" class = "field-font">Dish Name</label>
                 </div>
                 <div>
-                    <input type="text" class="textbox-long" id="itemname" name="itemname">
+                    <input type="text" class="textbox-long" id="itemname" name="itemname" placeholder="{{recipeName}}">
                 </div>
             </div>
             <div class="field-box">
@@ -28,11 +28,8 @@
                     <label for="menu-group" class = "field-font">Menu Group</label>
                 </div>
                 <div>
-                    <select name="menuGroup" id="menuGroup" class="dropdown">
-                        {{#each MenuGroup}}
-                        <option>{{menuGroupName}}</option>
-                        {{/each}}
-                    </select>
+                    <input type="text" class="textbox-long"  value="{{menuGroupName}}" disabled />
+                    
                 </div>
             </div>
 
@@ -66,7 +63,7 @@
                     <label for="price" class = "field-font">Price</label>
                 </div>
                 <div>
-                    <input type="number" class="textbox-short" id="price" name="price">
+                    <input type="number" step="0.01" class="textbox-short" id="price" name="price" min="0" value="1">
                 </div>
             </div>
 
@@ -78,7 +75,8 @@
                     <textarea class="textarea-long" id="description" name="description"></textarea>
                 </div>
             </div>
-            <input type="submit" class="button-green popup" />
+            <input type="submit" class="button-green popup" value="Submit" />
+            <a href="/cancel/{{recipeID}}" class="button-green popup">Cancel</a>
 			{{!-- <button class="button-green popup" onclick="myFunction()">Done
 				<span class="popuptext" id="myPopup">New Dish Added!</span>
 			</button> --}}

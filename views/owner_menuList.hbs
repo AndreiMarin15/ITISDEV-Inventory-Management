@@ -30,7 +30,9 @@
                 </div>
 
                 <!-- CATEGORY TABLE -->
-				{{#each MenuGroup}}
+                
+				{{#each menugrps}}
+                <div>
                 <div class="categoryone">
                     <div class="grid-content">
                         <table>
@@ -56,11 +58,12 @@
                                 </tr>
 							{{/each}}
                                 <tr>
-                                    <td colspan="2" style="text-align:center"><a href="/newDish" class="add"> + Add New Dish</a></td>
+                                    <td colspan="2" style="text-align:center"><a href="/newDish/{{MenuGroupID}}" class="add"> + Add New Dish</a></td>
                                 </tr>
                             </tbody>    
                         </table>
                      </div>
+                </div>
                 </div>
 				{{/each}}
                 <!-- END CATEGORY TABLE -->
