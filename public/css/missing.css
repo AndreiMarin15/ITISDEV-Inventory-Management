@@ -19,23 +19,27 @@
 }
 
 .inventory-container{
-    background-color:var(--clr-white);
+    background-color:transparent;
+}
+
+.inventory-table {
+    margin-top: 10px; 
+    margin-bottom: 40px;
 }
 
 .inventory-table, th, td{
-    width:100%;
-    border: 3px solid var(--clr-green);
+    width: 80%;
+    border: 2px solid var(--clr-green);
     border-collapse:collapse;
-    padding:10px;
-    text-align:center;
+    padding:8px;
     table-layout:fixed;
     color:var(--clr-green);
+    background-color: white;
 }
 
+
 thead th{
-    text-align:center;
-    color:var(--clr-black);
-    font-size:1.5rem;
+    font-size: 15px;
 }
 
 .submit-button{
@@ -68,3 +72,19 @@ thead th{
     font-size:1em;
     font-family: var(--font-family);
 }
+
+
+
+table th:nth-child(1) { 
+    text-align: left; 
+}
+
+table th:nth-child(2) { 
+    text-align: left; 
+}
+
+
+table th:nth-child(3) { 
+    text-align: right; 
+}
+
