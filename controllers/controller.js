@@ -845,8 +845,48 @@ const controller = {
     },
 
 
-    getInventoryReports: (req, res) => {
-        res.render("owner_reportsPage");
+    getInventoryReports: async (req, res) => {
+        let report = [];
+        await db.findMany(Category, {}, {}, categories => {
+            db.findMany(User, { userID: { $ne: "admin" } }, {}, users => {
+                db.findMany(Spoilage, {}, {}, spoilage => {
+                    spoilage.forEach(spoiled => {
+                        let spoiledPush = {
+                            caseDate: spoiled.caseDate,
+                            reportType: "Spoilage",
+                            CategoryName: categories.find(categ => categ.categoryID === parseInt(spoiled.categoryID) ).categoryName,
+                            amount: spoiled.amount,
+                            employeeName: users.find(user => user.userID === spoiled.employeeNo).firstName + " " + users.find(user => user.userID === spoiled.employeeNo).lastName
+                        }
+                     
+                        report.push(spoiledPush);
+                    })
+                    db.findMany(Missing, {}, {}, missing => {
+                        missing.forEach(miss => {
+                            let missingPush = {
+                                caseDate: miss.caseDate,
+                            reportType: "Missing",
+                            CategoryName: categories.find(categ => categ.categoryID === parseInt(miss.categoryID) ).categoryName,
+                            amount: miss.amount,
+                            employeeName: users.find(user => user.userID === miss.employeeNo).firstName + " " + users.find(user => user.userID === miss.employeeNo).lastName
+                            }
+                            report.push(missingPush);
+                        })
+                        report.sort((a, b) => {
+                            let da = new Date(a.caseDate),
+                                db = new Date(b.caseDate);
+
+                                return db - da;
+                        });
+
+                        res.render("owner_reportsPage", {Report: report})
+                    })
+                })
+            })
+            
+        })
+
+  
     },
 
 

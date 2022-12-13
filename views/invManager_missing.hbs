@@ -62,6 +62,9 @@
                     <div>
                         <label for="search-item" class = "field-font">Category</label>
                     </div>
+                    {{#each category}}
+                    <a href="/missingUpdate/{{category.categoryID}}">{{category.categoryName}}</a>
+                    {{/each}}
                     <select name="itemName" id="itemName" class="dropdown">
                         {{#each item}}
                         <option value={{categoryID}}>{{categoryName}} ({{unitName}})</option>
