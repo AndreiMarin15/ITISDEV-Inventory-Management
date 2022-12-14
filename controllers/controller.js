@@ -1023,6 +1023,36 @@ const controller = {
       });
     });
   },
+    getOwnerInventoryList: (req, res) => {
+        db.findMany(Category, {}, {}, categories => {
+            db.findMany(FoodGroup, {}, {}, foodgroups => {
+                console.log(foodgroups)
+                db.findMany(Unit, {}, {}, units => {
+                    let toPass = []
+                    categories.forEach(category => {
+                        let toPush = {
+                            categoryName: category.categoryName,
+                            foodGroupName: foodgroups[category.foodGroupID - 1].foodGroupName,
+                            runningTotal: (category.runningTotal).toFixed(2),
+                            unitName: units[category.unitID - 1].unitName
+                        }
+                        console.log(toPush);
+                        toPass.push(toPush);
+                    })
+                    let date = new Date(Date.now());
+                    let month = date.getMonth() + 1;
+                    let day = date.getDate();
+                    let year = date.getFullYear();
+                  
+
+                    let fullDate = month + "-" + day + "-" + year;
+                    res.render("owner_inventoryList", {details: toPass, dateToday: fullDate});
+                })
+                
+            })
+        })
+     
+    },
 
   getEmployeeList: function (req, res) {
     db.findMany(
@@ -1137,6 +1167,15 @@ const controller = {
             MenuGroupID: menu.menuGroupID,
             MenuGroupName: menu.menuGroupName,
           };
+    getOwnerMenu: async (req, res) => {
+        await db.findMany(MenuGroup, {}, {}, menugroups => {
+     
+                    let menugrp = [];
+            menugroups.forEach(menu => {
+                let grp = {
+                    MenuGroupID: menu.menuGroupID,
+                    MenuGroupName: menu.menuGroupName,
+                }
 
           menugrp.push(grp);
         });
@@ -1270,12 +1309,41 @@ const controller = {
       }
     );
   },
+    addMenuItem:async (req, res) => {
+        console.log(req.params.menugroupID)
+           await db.findOne(MenuGroup, {menuGroupID: req.params.menugroupID}, {}, menugroup => {
+            db.findMany(Category,{}, {}, categories => {
+                db.findMany(Unit, {}, {}, units => {
+                    toPass = [];
 
-  cancelDish: async (req, res) => {
-    db.delOne(Recipe, { recipeID: req.params.recipeID }, (deleted) => {
-      res.redirect("/ownerMenu");
-    });
-  },
+                    categories.forEach(category => {
+                        let toPush = {
+                            categoryID: category.categoryID,
+                            categoryName: category.categoryName,
+                            unitName: units.find(uni => uni.unitID == category.unitID).unitName,
+                            
+                        }
+
+                        toPass.push(toPush);
+                    })
+                    res.render("owner_newDish", {menuGroupID: menugroup.menuGroupID, menuGroupName: menugroup.menuGroupName, menugroupID: req.params.menugroupID, Category: toPass});
+                })
+
+                
+            })
+                
+       })
+        
+    },
+
+    submitDish: async (req, res) => {
+        
+    },
+
+    cancelDish: async (req, res) => {
+            res.redirect("/ownerMenu");
+    
+    },
 
   getFoodGroup: (req, res) => {
     res.render("invManager_createFoodGroup");

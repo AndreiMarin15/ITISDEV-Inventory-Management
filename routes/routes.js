@@ -32,7 +32,7 @@ app.get("/reportsPage", controller.getInventoryReports);
 app.post("/addFolder", controller.addFolder);
 app.get("/ownerInventoryList", controller.getOwnerInventoryList);
 app.get("/deleteUser/:userID", controller.deleteUser);
-app.get("/cancel/:recipeID", controller.cancelDish);
+app.get("/cancel", controller.cancelDish);
 app.get("/testing", controller.getTesting);
 
 // inventory manager

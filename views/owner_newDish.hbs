@@ -18,7 +18,7 @@
         <div class="newMenuItem-box">
             <h1 class="header-font">Create New Dish</h1>
             <p class="directions"> All fields are required to be filled in unless stated optional.</p>
-            <form action="#" method="post">
+            <form action="/submitDish/{{menuGroupID}}" method="post">
             <div class="field-box">
                 <div>
                     <label for="search-item" class = "field-font">Dish Name</label>
@@ -81,14 +81,7 @@
                 </div>
             </div>
 
-            <div class="field-box">
-                <div>
-                    <label for="quantity-item" class = "field-font">Instructions (Optional)</label>
-                </div>
-                <div>
-                    <textarea class="textarea-long" id="description" name="description"></textarea>
-                </div>
-            </div>
+           
             <input type="submit" class="button-green popup" value="Submit" />
             <a href="/cancel/{{recipeID}}" class="button-red">Cancel</a>
 			{{!-- <button class="button-green popup" onclick="myFunction()">Done
