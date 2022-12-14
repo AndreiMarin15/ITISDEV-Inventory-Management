@@ -1400,4 +1400,9 @@ const controller = {
 
 //testing for yana
 
+//testing for viewDish
+// viewDish: (req, res) => {
+//   res.render("owner_viewDish");
+// },
+
 module.exports = controller;

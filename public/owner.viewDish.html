@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Owner | View Dish</title>
+        <link rel="stylesheet" href="/css/newMenuItem.css" />
+        <link rel="stylesheet" href="/css/base.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+        <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    </head>
+    <!-- Content Here -->
+    <body>
+
+    {{>ownerPanel}}
+
+    <div class="content-container">
+
+        <div class="newMenuItem-box">
+            <h1 class="header-font">View Dish</h1>
+            <div class="field-box">
+                <div>
+                    <label for="search-item" class = "field-font">Dish Name</label>
+                </div>
+                <div>
+                    <input type="text" class="textbox-long"  value="{{recipeName}}" disabled />
+                </div>
+            </div>
+            <div class="field-box">
+                <div>
+                    <label for="menu-group" class = "field-font">Menu Group</label>
+                </div>
+                <div>
+                    <input type="text" class="textbox-long"  value="{{menuGroupName}}" disabled />
+                    
+                </div>
+            </div>
+
+
+
+
+            <div class="field-box">
+                <div>
+                    <label for="search-item" class = "field-font">Ingredients</label>
+                </div>
+                    <table class="ingredients-table" id="ingredientsTable">
+                        <thead>
+					    <tr>
+						    <th>Category Name</th>
+						    <th>Quantity</th>
+					    </tr>
+					    </thead>
+						<tbody>
+						{{!-- {{#each Ingredients}} --}}
+					    <tr>
+						    <td> 
+								<select name="category" id="category" class="dropdown">
+									{{#each Category}}
+									<option value="{{categoryID}}">{{categoryName}}({{unitName}})</option>
+									{{/each}}
+								</select>
+							</td>
+						    <td> <input type="number" class="textbox-short" id="quantity" value ="0" name="quantity" step="0.01" min ="0"></td>
+					    </tr>
+						{{!-- {{/each}} --}}
+				    </table>
+            </div>
+            <div class="field-box">
+                <div>
+                    <label for="price" class = "field-font">Price</label>
+                </div>
+                <div>
+                    <input type="text" class="textbox-long"  value="{{price}}" disabled />
+                </div>
+            </div>
+
+            <div class="field-box">
+                <div>
+                    <label for="quantity-item" class = "field-font">Instructions (Optional)</label>
+                </div>
+                <div>
+                    <input type="textarea" class="textbox-long"  value="{{Instructions}}" disabled />
+                </div>
+            </div>
+            <input type="submit" class="button-red" value="Submit">Delete</input>
+        </div>
+    </div>
+</body>
+</html>
