@@ -1,59 +1,116 @@
-.page-container{
-    display:flex;
-    flex-direction:column;
-    min-width:85vw;
-    padding:50px;
-    gap:10px;
-}
- 
-
-.inventory-container{
-    background-color:var(--clr-white);
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 85vw;
+  padding: 50px;
+  gap: 10px;
 }
 
-.inventory-table, th, td{
-    width:100%;
-    border: 3px solid var(--clr-green);
-    border-collapse:collapse;
-    padding:10px;
-    text-align:center;
-    table-layout:fixed;
-    color:var(--clr-green);
+.inventory-container {
+  background-color: transparent;
+  margin-top: 35px;
 }
 
-thead th{
-    text-align:center;
-    color:var(--clr-black);
-    font-size:1.5rem;
+.inventory-table,
+th,
+td {
+  width: 100%;
+  border: 1px solid var(--clr-green);
+  border-collapse: collapse;
+  padding: 10px;
+  text-align: center;
+  table-layout: fixed;
+  background-color: white;
 }
 
-.submit-button{
-    align-items:right;
-    justify-content:right;
-    text-align:right;
+thead th {
+  color: white;
+  background-color: #1a7968;
+  font-size: 18px;
 }
 
-.category-box{
-    display:flex;
-    flex-direction: row;
-    min-width:5vw;
-    background-color: var(--clr-peach);
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top:30px;
-    margin-bottom:10px;
+.submit-button {
+  align-items: right;
+  justify-content: right;
+  text-align: right;
 }
 
-.category-item{
-    min-width:10vw;
-    min-height:3vh;
-    padding: 15px;
-    border-color: var(--clr-green);
-    border-radius: 5%;
-    border-style:solid;
+.category-box {
+  display: flex;
+  flex-direction: row;
+  min-width: 5vw;
+  background-color: var(--clr-peach);
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
-.category-text{
-    font-size:1em;
-    font-family: var(--font-family);
+.category-item {
+  min-width: 10vw;
+  min-height: 3vh;
+  padding: 15px;
+  border-color: var(--clr-green);
+  border-radius: 5%;
+  border-style: solid;
 }
+
+.category-text {
+  font-size: 1em;
+  font-family: var(--font-family);
+}
+
+.backbtn-area {
+  display: flex;
+  flex-direction: row;
+  margin-top: -15px;
+  margin-left: 5px;
+  position: absolute;
+  margin-bottom: 25px;
+}
+
+.back-btn {
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.back-btn:visited {
+  color: rgb(79, 79, 79);
+}
+
+.back-btn:hover {
+  color: rgb(40, 40, 40);
+}
+
+table th:nth-child(1) {
+  text-align: left;
+}
+
+table td:nth-child(1) {
+  text-align: left;
+}
+
+table th:nth-child(2) {
+  text-align: right;
+}
+
+table th:nth-child(3) {
+  text-align: right;
+}
+
+table th:nth-child(4) {
+    text-align: right;
+  }
+
+  table td:nth-child(2) {
+    text-align: right;
+  }
+  
+  table td:nth-child(3) {
+    text-align: right;
+  }
+  
+  table td:nth-child(4) {
+      text-align: right;
+    }
+  
