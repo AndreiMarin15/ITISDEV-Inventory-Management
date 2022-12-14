@@ -1241,64 +1241,12 @@ const controller = {
   addMenuItem: async (req, res) => {
     console.log(req.params.menugroupID);
 
-    await db.findOne(
-      MenuGroup,
-      { menuGroupID: req.params.menugroupID },
-      {},
-      (menugroup) => {
-        db.delMany(
-          Recipe,
-          {
-            recipeName: "Recipe Name",
-            menuGroupID: menugroup.menuGroupID,
-            price: 0,
-          },
-          (deleted) => {
-            db.findMany(Recipe, {}, {}, (recipes) => {
-              if (recipes.length > 0) {
-                maxID = Math.max.apply(
-                  null,
-                  recipes.map((rec) => {
-                    return rec.recipeID;
-                  })
-                );
-                let toInsert = {
-                  recipeID: maxID + 1,
-                  recipeName: "Recipe Name",
-                  menuGroupID: req.params.menugroupID,
-                  price: 0.0,
-                };
-
-                db.insertOne(Recipe, toInsert, (insert) => {
+    await db.findOne(MenuGroup,{ menuGroupID: req.params.menugroupID },{},(menugroup) => {
                   res.render("owner_newDish", {
                     menuGroupName: menugroup.menuGroupName,
-                    recipeName: toInsert.recipeName,
-                    recipeID: toInsert.recipeID,
-                    menugroupID: toInsert.menuGroupID,
-                  });
-                });
-              } else {
-                let toInsert = {
-                  recipeID: 1,
-                  recipeName: "Recipe Name",
-                  menuGroupID: req.params.menugroupID,
-                  price: 0.0,
-                };
-
-                db.insertOne(Recipe, toInsert, (insert) => {
-                  res.render("owner_newDish", {
-                    menuGroupName: menugroup.menuGroupName,
-                    recipeName: toInsert.recipeName,
-                    recipeID: toInsert.recipeID,
-                    menugroupID: toInsert.menuGroupID,
-                  });
-                });
-              }
-            });
-          }
-        );
-      }
-    );
+                    menugroupID: toInsert.menuGroupID})
+                })
+    
   },
     addMenuItem:async (req, res) => {
         console.log(req.params.menugroupID)
