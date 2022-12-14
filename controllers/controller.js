@@ -662,7 +662,14 @@ const controller = {
           item.push(instance);
         });
 
-        res.render("invManager_spoilage", { item: item });
+        let date = new Date(Date.now());
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        let year = date.getFullYear();
+
+        let fullDate = month + "-" + day + "-" + year;
+
+        res.render("invManager_spoilage", { item: item, dateToday: fullDate,});
       });
     });
   },
@@ -792,11 +799,20 @@ const controller = {
 
                   ingred.push(toPush);
                 });
+
+                let date = new Date(Date.now());
+                let month = date.getMonth() + 1;
+                let day = date.getDate();
+                let year = date.getFullYear();
+        
+                let fullDate = month + "-" + day + "-" + year;
+        
                 res.render("invManager_missing", {
                   foodGroupID: foodgroup.foodGroupID,
                   foodGroupName: foodgroup.foodGroupName,
                   foodGroup: fgroups,
                   Ingredient: ingred,
+                  dateToday: fullDate,
                 });
               }
             );
