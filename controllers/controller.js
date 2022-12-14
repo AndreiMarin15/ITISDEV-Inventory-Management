@@ -158,11 +158,23 @@ const controller = {
               let month = date.getMonth() + 1;
               let day = date.getDate();
               let year = date.getFullYear();
-          
-              let fullDate = month + "-" + day + "-" + year;
-              
+
+              let h = date.getHours();
+              let m = date.getMinutes();
+
+              let ampm = h >= 12 ? "PM" : "AM";
+              h = h % 12;
+              h = h ? h : 12; // the hour '0' should be '12'
+              m = m < 10 ? "0" + m : m;
+
+              let time = h + ":" + m + " " + ampm;
+              let fullDate = month + "-" + day + "-" + year + ", " + time;
+
               console.log(employee);
-              res.render("owner_dashboard", { Employee: employee, dateToday:fullDate });
+              res.render("owner_dashboard", {
+                Employee: employee,
+                dateToday: fullDate,
+              });
             }
           );
         }
@@ -181,7 +193,17 @@ const controller = {
         let day = date.getDate();
         let year = date.getFullYear();
 
-        let fullDate = month + "-" + day + "-" + year;
+        let h = date.getHours();
+        let m = date.getMinutes();
+
+        let ampm = h >= 12 ? "PM" : "AM";
+        h = h % 12;
+        h = h ? h : 12; // the hour '0' should be '12'
+        m = m < 10 ? "0" + m : m;
+
+        let time = h + ":" + m + " " + ampm;
+
+        let fullDate = month + "-" + day + "-" + year + ", " + time;
 
         res.render("invManager_Dashboard", { Emp: Emp, dateToday: fullDate });
       });
@@ -968,7 +990,6 @@ const controller = {
 
   // owner
   getDashboard: function (req, res) {
-
     res.render("owner_dashboard");
   },
 
