@@ -35,6 +35,7 @@ app.get("/deleteUser/:userID", controller.deleteUser);
 app.get("/cancel", controller.cancelDish);
 app.get("/testing", controller.getTesting);
 app.post("/submitDish/:menugroupID", controller.submitDish);
+app.post("/ownerInventoryListFiltered", controller.getOwnerFiltered);
 
 // inventory manager
 app.get("/inventoryList", controller.getInventoryList);
@@ -52,6 +53,7 @@ app.post("/additionalPurchase", controller.recordPurchase);
 app.get("/reportsPageinvManager", controller.getReportsPageInvManager);
 app.post("/submitSpoilage", controller.submitSpoilage);
 app.post("/inventoryListFiltered", controller.getFiltered);
+
 
 // cashier
 app.get("/viewPOS", controller.getPOS);
