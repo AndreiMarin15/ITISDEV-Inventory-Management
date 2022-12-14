@@ -689,10 +689,10 @@ const controller = {
         let day = date.getDate();
         let year = date.getFullYear();
 
-        res.render("invManager_spoilage", 
-        { item: item, 
-          dateToday: month + "-" + day + "-" + year,});
-        });
+        let fullDate = month + "-" + day + "-" + year;
+
+        res.render("invManager_spoilage", { item: item, dateToday: fullDate,});
+      });
     });
   },
 
@@ -827,12 +827,14 @@ const controller = {
                 let day = date.getDate();
                 let year = date.getFullYear();
         
+                let fullDate = month + "-" + day + "-" + year;
+        
                 res.render("invManager_missing", {
                   foodGroupID: foodgroup.foodGroupID,
                   foodGroupName: foodgroup.foodGroupName,
                   foodGroup: fgroups,
                   Ingredient: ingred,
-                  dateToday: month + "-" + day + "-" + year,
+                  dateToday: fullDate,
                 });
               }
             );
