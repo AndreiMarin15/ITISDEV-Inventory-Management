@@ -627,10 +627,10 @@ const controller = {
 					item.push(instance);
 				});
 
-        res.render("invManager_spoilage", { item: item });
-      });
-    });
-  },
+				res.render("invManager_spoilage", { item: item });
+			});
+		});
+	},
 
 	submitSpoilage: async (req, res) => {
 		db.findMany(Spoilage, {}, {}, (spoiled) => {
@@ -1193,9 +1193,7 @@ const controller = {
 				db.insertOne(Recipe, toInsert, (inserted) => {});
 			}
 		});
-		await db.findMany(IngredientList, {}, {}, (ingredientList) => {
-            
-        });
+		await db.findMany(IngredientList, {}, {}, (ingredientList) => {});
 	},
 
 	cancelDish: async (req, res) => {
