@@ -54,6 +54,9 @@ app.post("/submitSpoilage", controller.submitSpoilage)
 // cashier
 app.get("/viewPOS", controller.getPOS);
 
+//Testing for viewDish
+// app.get("/viewDish", controller.viewDish);
+
 //Cashier
 /*
 app.get("/POS", controller.POS);
