@@ -55,6 +55,7 @@ app.post("/additionalPurchase", controller.recordPurchase);
 app.get("/reportsPageinvManager", controller.getReportsPageInvManager);
 app.post("/submitSpoilage", controller.submitSpoilage);
 app.post("/inventoryListFiltered", controller.getFiltered);
+app.post("/reportsPageInvManagerFiltered",controller.getReportsInvManagerFiltered);
 
 
 // cashier

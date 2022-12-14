@@ -24,30 +24,32 @@
                 </div>
                 
                 <div class="filters">
+                    <form action="/reportsPageInvManagerFiltered" method="post">
                     <div>
                         <label for="filters">Filter By:</label>
                         <select id="filter" class="filter-dropdown" name="filter">
-                            <option value="Date">Date</option>
-                            <option value="Employee">Employee</option>
+                            <option value="1">Date</option>
+                            <option value="2">Employee</option>
                         </select>
                     </div>
                     <div>
                         <label for="filters">Sort By:</label>
                         <select id="sort" class="filter-dropdown" name="sort">
-                            <option value="Ascending">Ascending</option>
-                            <option value="Descending">Descending</option>
+                            <option value="1">Ascending</option>
+                            <option value="2">Descending</option>
                         </select>
                     </div>
                     <div>
                         <label for="filters">Type: </label>
                         <select id="type" class="filter-dropdown" name="type">
-                            <option value="Missing">All</option>
-                            <option value="Missing">Missing</option>
-                            <option value="Spoilage">Spoilage</option>
+                            <option value="1">All</option>
+                            <option value="2">Missing</option>
+                            <option value="3">Spoilage</option>
                         </select>
                     </div>
                     <div>
-                        <button type="submit"><i class="fa-solid fa-filter"></i> filter and sort</button>
+                        <input type="submit" value="filter and sort" class="button-green popup">
+                        </form>
                     </div>                
                 </div>
             </div>
