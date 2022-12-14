@@ -352,7 +352,7 @@ h1 {
   font-family: var(--font-type2);
   font-size: 14px;
   width: 9vw;
-  height: 1.5vh;
+  height: auto;
   color: var(--clr-white);
   padding: 10px;
   box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
@@ -392,4 +392,26 @@ h1 {
   border-radius: 5px;
   background-color: white;
   color: var(--clr-red);
+}
+
+.back-area {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+  margin-left: 15px;
+  margin-bottom: -15px;
+  position: absolute;
+}
+
+.back-button {
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.back-button:visited {
+  color: rgb(79, 79, 79);
+}
+
+.back-button:hover {
+  color: rgb(40, 40, 40);
 }
