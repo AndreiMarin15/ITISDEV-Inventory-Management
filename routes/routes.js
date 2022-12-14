@@ -3,7 +3,7 @@ const app = express();
 const controller = require("../controllers/controller");
 
 app.get("/", (req, res) => {
-    res.redirect("/login");
+	res.redirect("/login");
 });
 
 app.post("/showTesting", controller.testing);
@@ -49,7 +49,7 @@ app.post("/newCategory", controller.addCategory);
 app.post("/addFirstPurchase", controller.firstPurchase);
 app.post("/additionalPurchase", controller.recordPurchase);
 app.get("/reportsPageinvManager", controller.getReportsPageInvManager);
-app.post("/submitSpoilage", controller.submitSpoilage)
+app.post("/submitSpoilage", controller.submitSpoilage);
 
 // cashier
 app.get("/viewPOS", controller.getPOS);
