@@ -1019,36 +1019,6 @@ const controller = {
 					let year = date.getFullYear();
 
 					let fullDate = month + "-" + day + "-" + year;
-					res.render("owner_inventoryList", {
-						details: toPass,
-						dateToday: fullDate,
-					});
-				});
-			});
-		});
-	},
-	getOwnerInventoryList: (req, res) => {
-		db.findMany(Category, {}, {}, (categories) => {
-			db.findMany(FoodGroup, {}, {}, (foodgroups) => {
-				console.log(foodgroups);
-				db.findMany(Unit, {}, {}, (units) => {
-					let toPass = [];
-					categories.forEach((category) => {
-						let toPush = {
-							categoryName: category.categoryName,
-							foodGroupName: foodgroups[category.foodGroupID - 1].foodGroupName,
-							runningTotal: category.runningTotal.toFixed(2),
-							unitName: units[category.unitID - 1].unitName,
-						};
-						console.log(toPush);
-						toPass.push(toPush);
-					});
-					let date = new Date(Date.now());
-					let month = date.getMonth() + 1;
-					let day = date.getDate();
-					let year = date.getFullYear();
-
-					let fullDate = month + "-" + day + "-" + year;
 					res.render("owner_inventoryList", { details: toPass, dateToday: fullDate });
 				});
 			});
