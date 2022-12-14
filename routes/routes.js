@@ -51,6 +51,7 @@ app.post("/addFirstPurchase", controller.firstPurchase);
 app.post("/additionalPurchase", controller.recordPurchase);
 app.get("/reportsPageinvManager", controller.getReportsPageInvManager);
 app.post("/submitSpoilage", controller.submitSpoilage);
+app.post("/inventoryListFiltered", controller.getFiltered);
 
 // cashier
 app.get("/viewPOS", controller.getPOS);

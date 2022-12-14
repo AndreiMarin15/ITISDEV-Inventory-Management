@@ -338,14 +338,13 @@ const controller = {
 						console.log(toPush);
 						toPass.push(toPush);
 					});
-          
-          toPass.sort((a,b) => {
-            let ca = a.categoryName,
-                cb = b.categoryName;
 
-            return ca.localeCompare(cb);
-        });
-         
+					toPass.sort((a, b) => {
+						let ca = a.categoryName,
+							cb = b.categoryName;
+
+						return ca.localeCompare(cb);
+					});
 
 					let date = new Date(Date.now());
 					let month = date.getMonth() + 1;
@@ -363,7 +362,111 @@ const controller = {
 		});
 	},
 
-  
+	getFiltered: async (req, res) => {
+		db.findMany(Category, {}, {}, (categories) => {
+			db.findMany(FoodGroup, {}, {}, (foodgroups) => {
+				console.log(foodgroups);
+				db.findMany(Unit, {}, {}, (units) => {
+					let toPass = [];
+					categories.forEach((category) => {
+						let toPush = {
+							categoryName: category.categoryName,
+							foodGroupName: foodgroups[category.foodGroupID - 1].foodGroupName,
+							runningTotal: category.runningTotal.toFixed(2),
+							unitName: units[category.unitID - 1].unitName,
+						};
+						console.log(toPush);
+						toPass.push(toPush);
+					});
+
+					if (req.body.filter == 1) {
+						if (req.body.sort == 1) {
+							toPass.sort((a, b) => {
+								// by category ascending
+								let ca = a.categoryName,
+									cb = b.categoryName;
+
+								return ca.localeCompare(cb);
+							});
+							let date = new Date(Date.now());
+							let month = date.getMonth() + 1;
+							let day = date.getDate();
+							let year = date.getFullYear();
+
+							let fullDate = month + "-" + day + "-" + year;
+
+							res.render("invManager_inventoryList", {
+								details: toPass,
+								dateToday: fullDate,
+							});
+						} else if (req.body.sort == 2) {
+							toPass.sort((a, b) => {
+								// by category descending
+								let ca = a.categoryName,
+									cb = b.categoryName;
+
+								return cb.localeCompare(ca);
+							});
+
+							let date = new Date(Date.now());
+							let month = date.getMonth() + 1;
+							let day = date.getDate();
+							let year = date.getFullYear();
+
+							let fullDate = month + "-" + day + "-" + year;
+
+							res.render("invManager_inventoryList", {
+								details: toPass,
+								dateToday: fullDate,
+							});
+						}
+					} else {
+						if (req.body.sort == 1) {
+							toPass.sort((a, b) => {
+								// by foodgroup ascending
+								let ca = a.foodGroupName,
+									cb = b.foodGroupName;
+
+								return ca.localeCompare(cb);
+							});
+
+							let date = new Date(Date.now());
+							let month = date.getMonth() + 1;
+							let day = date.getDate();
+							let year = date.getFullYear();
+
+							let fullDate = month + "-" + day + "-" + year;
+
+							res.render("invManager_inventoryList", {
+								details: toPass,
+								dateToday: fullDate,
+							});
+						} else if (req.body.sort == 2) {
+							toPass.sort((a, b) => {
+								// by foodgroup descending
+								let ca = a.foodGroupName,
+									cb = b.foodGroupName;
+
+								return cb.localeCompare(ca);
+							});
+
+							let date = new Date(Date.now());
+							let month = date.getMonth() + 1;
+							let day = date.getDate();
+							let year = date.getFullYear();
+
+							let fullDate = month + "-" + day + "-" + year;
+
+							res.render("invManager_inventoryList", {
+								details: toPass,
+								dateToday: fullDate,
+							});
+						}
+					}
+				});
+			});
+		});
+	},
 
 	getCreateCategory: async (req, res) => {
 		try {
