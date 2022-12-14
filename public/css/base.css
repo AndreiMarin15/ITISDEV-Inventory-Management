@@ -352,7 +352,7 @@ h1 {
   font-family: var(--font-type2);
   font-size: 14px;
   width: 9vw;
-  height: 2vh;
+  height: 1.5vh;
   color: var(--clr-white);
   padding: 10px;
   box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
@@ -365,9 +365,31 @@ h1 {
   background-color: white;
   color: #1a7968;
 }
+
 .button-placement {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 5px;
+}
+
+.delete {
+  border: 1px solid var(--clr-red);
+  border-radius: 5px;
+  background-color: var(--clr-red);
+  font-family: var(--font-type2);
+  font-size: 14px;
+  width: 10vw;
+  height: 4vh;
+  color: var(--clr-white);
+  padding: 10px;
+  box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+  cursor: pointer;
+  text-align: center;
+}
+
+.delete:hover{
+  border-radius: 5px;
+  background-color: white;
+  color: var(--clr-red);
 }

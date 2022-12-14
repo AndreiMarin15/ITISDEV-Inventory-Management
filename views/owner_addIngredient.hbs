@@ -54,15 +54,28 @@
 					</div>
                 </div>
 			</div>
+
 						<div class="add-row">
-						<button id="btnNewRow" class="button-green popup">Add Ingredient Row</button>
+							<div>
+								<button id="btnNewRow" class="button-green popup">Add Ingredient Row</button>
+							</div>
+							<div>
+								<button id="btnDelete" class="delete">Delete Ingredient Row</button>
+							</div>
 						</div>
+
 						<script>
     					$(document).ready(function() {
         					$('#btnNewRow').on('click', function(evt) {
             					evt.preventDefault();
             					$("#ingredientsTable").find('tbody')
                 					.append($('<tr><td><select name="category" id="category" class="dropdown">{{#each Category}}<option>{{categoryName}}({{unitName}})</option>{{/each}}</select></td><td> <input type="number" class="textbox-short" id="quantity" name="quantity"></td></tr>'))
+        					});
+
+							$('#btnDelete').on('click', function(evt) {
+            					evt.preventDefault();
+								if($("#ingredientsTable tr:not(:first)"))
+            						$("#ingredientsTable tr:last").remove()
         					});
     					});
 						</script>
