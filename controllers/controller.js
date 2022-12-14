@@ -984,8 +984,13 @@ const controller = {
 
 
 
-    addIngredient: (req, res) => {
-        res.render("owner_addIngredient");
+    addIngredient:async (req, res) => {
+        await db.findOne(MenuGroup, {menuGroupID: req.params.menugroupID}, {}, menugroup => {
+            db.findOne(Recipe, {recipeID: req.params.recipeID},{}, recipe => {
+                res.render("owner_addIngredient", {recipe: recipe, menugroup: menugroup});
+            })
+        })
+        
     },
 
 
