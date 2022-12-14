@@ -415,3 +415,9 @@ h1 {
 .back-button:hover {
   color: rgb(40, 40, 40);
 }
+
+.add-row{
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+}

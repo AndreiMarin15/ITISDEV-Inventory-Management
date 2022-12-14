@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="/css/newMenuItem.css" />
         <link rel="stylesheet" href="/css/base.css" />
         <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+        <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
     </head>
     <!-- Content Here -->
     <body>
@@ -41,25 +42,35 @@
                 <div>
                     <label for="search-item" class = "field-font">Ingredients</label>
                 </div>
-                    <table class="ingredients-table">
+                    <table class="ingredients-table" id="ingredientsTable">
                         <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Unit</th>
-                                <th>Quantity</th>
-                            </tr>
-                            {{#each IngredientList}}
-                            <tr>
-                                <td>{{categoryName}} </td>
-                                <td>{{unit}}</td>
-                                <td>{{quantity}}</td>
-                            </tr>
-                            {{/each}}
-                        </thead>
-                </table>
-                <div>
-                       <a href="/addIngredient/{{menugroupID}}/{{recipeID}}" class="button-green" > Add Ingredient</a> 
-                </div>
+					    <tr>
+						    <th>Category Name</th>
+						    <th>Quantity</th>
+					    </tr>
+					    </thead>
+						<tbody>
+						{{!-- {{#each Ingredients}} --}}
+					    <tr>
+						    <td> 
+								<select name="category" id="category" class="dropdown">
+									{{#each Category}}
+									<option value="{{categoryID}}">{{categoryName}}({{unitName}})</option>
+									{{/each}}
+								</select>
+							</td>
+						    <td> <input type="number" class="textbox-short" id="quantity" value ="0" name="quantity" step="0.01" min ="0"></td>
+					    </tr>
+						{{!-- {{/each}} --}}
+				    </table>
+                <div class="add-row">
+							<div>
+								<button id="btnNewRow" class="button-green popup">Add Ingredient Row</button>
+							</div>
+							<div>
+								<button id="btnDelete" class="delete">Delete Last Ingredient Row</button>
+							</div>
+						</div>
             </div>
             <div class="field-box">
                 <div>
@@ -93,6 +104,21 @@
             </form>
         </div>
     </div>
+    						<script>
+    					$(document).ready(function() {
+        					$('#btnNewRow').on('click', function(evt) {
+            					evt.preventDefault();
+            					$("#ingredientsTable").find('tbody')
+                					.append($('<tr><td><select name="category" id="category" class="dropdown">{{#each Category}}<option value={{categoryID}} >{{categoryName}}({{unitName}})</option>{{/each}}</select></td><td> <input type="number" step="0.01" min ="0" value ="0" class="textbox-short" id="quantity" name="quantity"></td></tr>'))
+        					});
+
+							$('#btnDelete').on('click', function(evt) {
+            					evt.preventDefault();
+            					$("#ingredientsTable tbody tr:last").remove();
+        					});
+							
+    					});
+						</script>
 </div>
 </body>
 </html>
