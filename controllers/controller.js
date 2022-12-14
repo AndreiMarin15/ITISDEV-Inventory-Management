@@ -1131,7 +1131,24 @@ const controller = {
     addIngredient:async (req, res) => {
         await db.findOne(MenuGroup, {menuGroupID: req.params.menugroupID}, {}, menugroup => {
             db.findOne(Recipe, {recipeID: req.params.recipeID},{}, recipe => {
-                res.render("owner_addIngredient", {recipe: recipe, menugroup: menugroup});
+                db.findMany(Category, {}, {}, categories => {
+                    db.findMany(Unit, {}, {}, units => {
+                        let toPass = [];
+
+                        categories.forEach(category => {
+                            let toPush = {
+                                categoryID: category.categoryID,
+                                categoryName: category.categoryName,
+                                unitName: units.find(unit => unit.unitID == category.unitID).unitName
+                            }
+
+                            toPass.push(toPush);
+                        })
+
+                        res.render("owner_addIngredient", {recipe: recipe, menugroup: menugroup, Category: toPass});
+                    })
+                })
+                
             })
         })
         

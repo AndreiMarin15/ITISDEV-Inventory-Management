@@ -44,11 +44,11 @@
 						    <td> 
 								<select name="category" id="category" class="dropdown">
 									{{#each Category}}
-									<option>{{categoryName}}({{unitName}})</option>
+									<option value="{{categoryID}}">{{categoryName}}({{unitName}})</option>
 									{{/each}}
 								</select>
 							</td>
-						    <td> <input type="number" class="textbox-short" id="quantity" name="quantity"></td>
+						    <td> <input type="number" class="textbox-short" id="quantity" value ="0" name="quantity" step="0.01" min ="0"></td>
 					    </tr>
 						{{!-- {{/each}} --}}
 				    </table>
@@ -79,13 +79,14 @@
         					$('#btnNewRow').on('click', function(evt) {
             					evt.preventDefault();
             					$("#ingredientsTable").find('tbody')
-                					.append($('<tr><td><select name="category" id="category" class="dropdown">{{#each Category}}<option>{{categoryName}}({{unitName}})</option>{{/each}}</select></td><td> <input type="number" class="textbox-short" id="quantity" name="quantity"></td></tr>'))
+                					.append($('<tr><td><select name="category" id="category" class="dropdown">{{#each Category}}<option value={{categoryID}} >{{categoryName}}({{unitName}})</option>{{/each}}</select></td><td> <input type="number" step="0.01" min ="0" value ="0" class="textbox-short" id="quantity" name="quantity"></td></tr>'))
         					});
 
 							$('#btnDelete').on('click', function(evt) {
             					evt.preventDefault();
             					$("#ingredientsTable tbody tr:last").remove();
         					});
+							
     					});
 						</script>
 
