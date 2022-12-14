@@ -1276,7 +1276,8 @@ const controller = {
     },
 
     submitDish: async (req, res) => {
-        
+        // dish will go to recipes
+        // ingredients will go to ingredientList
     },
 
     cancelDish: async (req, res) => {
