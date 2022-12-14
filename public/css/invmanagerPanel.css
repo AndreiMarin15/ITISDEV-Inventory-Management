@@ -24,18 +24,18 @@
 
 .inventory-table {
     margin-top: 10px; 
+    width: 100%;
 }
 
 
 .inventory-table, th, td{
-    width:100%;
-    border: 2px solid var(--clr-green);
+    border: 1px solid #1a7968;
     border-collapse:collapse;
     padding:8px;
     text-align:center;
-    table-layout:fixed;
-    color:var(--clr-green);
+    color: black;
     background-color: white;
+    table-layout: fixed;
 }
 
 table th:nth-child(1){
@@ -54,8 +54,26 @@ table th:nth-child(4){
     text-align: left;
 }
 
+table td:nth-child(1){
+    text-align: left;
+}
+
+table td:nth-child(2){
+    text-align: left;
+}
+
+table td:nth-child(3){
+    text-align: right;
+}
+
+table td:nth-child(4){
+    text-align: left;
+}
+
 thead th {
     font-size: 15px;
+    background-color: #1a7968;
+    color: white;
 }
 
 p {
