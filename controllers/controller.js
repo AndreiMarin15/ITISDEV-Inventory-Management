@@ -1038,24 +1038,38 @@ const controller = {
 
 	getOwnerMenu: async (req, res) => {
 		await db.findMany(MenuGroup, {}, {}, (menugroups) => {
-			let menugrp = [];
-			menugroups.forEach((menu) => {
-				let grp = {
-					MenuGroupID: menu.menuGroupID,
-					MenuGroupName: menu.menuGroupName,
-				};
-
-				menugrp.push(grp);
+			let menuIDs = [];
+			menugroups.forEach((grup) => {
+				menuIDs.push(grup.menuGroupID);
 			});
-			let date = new Date(Date.now());
-			let month = date.getMonth() + 1;
-			let day = date.getDate();
-			let year = date.getFullYear();
-			console.log(menugrp);
+			db.findMany(Recipe, { menuGroupID: { $in: menuIDs } }, {}, (recipes) => {
+				let menugrp = [];
+				menugroups.forEach((menu) => {
+					let rec = [];
+					recipes.forEach((recipe) => {
+						if (menu.menuGroupID == recipe.menuGroupID) {
+							rec.push(recipe);
+						}
+					});
 
-			res.render("owner_menuList", {
-				dateToday: month + "-" + day + "-" + year,
-				menugrps: menugrp,
+					let grp = {
+						MenuGroupID: menu.menuGroupID,
+						MenuGroupName: menu.menuGroupName,
+						Recipe: rec,
+					};
+
+					menugrp.push(grp);
+				});
+				let date = new Date(Date.now());
+				let month = date.getMonth() + 1;
+				let day = date.getDate();
+				let year = date.getFullYear();
+				console.log(menugrp);
+
+				res.render("owner_menuList", {
+					dateToday: month + "-" + day + "-" + year,
+					menugrps: menugrp,
+				});
 			});
 		});
 	},
@@ -1155,7 +1169,7 @@ const controller = {
 		let ingredients = req.body.category;
 		let quantities = req.body.quantity;
 
-		let ingredientList = [];
+		let ingredientListBody = [];
 
 		for (let i = 0; i < ingredients.length; i++) {
 			let toPush = {
@@ -1163,7 +1177,7 @@ const controller = {
 				amount: quantities[i],
 			};
 
-			ingredientList.push(toPush);
+			ingredientListBody.push(toPush);
 		}
 
 		await db.findMany(Recipe, {}, {}, (recipes) => {
@@ -1175,7 +1189,48 @@ const controller = {
 					price: req.body.price,
 				};
 
-				db.insertOne(Recipe, toInsert, (inserted) => {});
+				db.insertOne(Recipe, toInsert, (inserted) => {
+					db.findMany(IngredientList, {}, {}, (ingredientlists) => {
+						db.findMany(Category, {}, {}, (categories) => {
+							let toIngredient = [];
+							let maxID = Math.max.apply(
+								null,
+								ingredientlists.map((li) => {
+									return li.ingredientListID;
+								})
+							);
+							let newID = 0;
+							ingredientListBody.forEach((list) => {
+								if (ingredientlists.length == 0) {
+									let toPush = {
+										ingredientListID: newID + 1,
+										categoryID: list.categoryID,
+										recipeID: toInsert.recipeID,
+										amount: list.amount,
+										unitID: categories.find((cat) => cat.categoryID == list.categoryID).unitID,
+									};
+									newID++;
+									toIngredient.push(toPush);
+								} else {
+									let toPush = {
+										ingredientListID: maxID + 1,
+										categoryID: list.categoryID,
+										recipeID: toInsert.recipeID,
+										amount: list.amount,
+										unitID: categories.find((cat) => cat.categoryID == list.categoryID).unitID,
+									};
+									maxID++;
+									console.log("MAX ID " + maxID);
+									toIngredient.push(toPush);
+								}
+							});
+							console.log(toIngredient);
+							db.insertMany(IngredientList, toIngredient, (inserted) => {
+								res.redirect("/ownerMenu");
+							});
+						});
+					});
+				});
 			} else {
 				let maxID = Math.max.apply(
 					null,
@@ -1190,10 +1245,50 @@ const controller = {
 					price: req.body.price,
 				};
 
-				db.insertOne(Recipe, toInsert, (inserted) => {});
+				db.insertOne(Recipe, toInsert, (inserted) => {
+					db.findMany(IngredientList, {}, {}, (ingredientlists) => {
+						db.findMany(Category, {}, {}, (categories) => {
+							let toIngredient = [];
+							let maxID = Math.max.apply(
+								null,
+								ingredientlists.map((li) => {
+									return li.ingredientListID;
+								})
+							);
+							let newID = 0;
+							ingredientListBody.forEach((list) => {
+								if (ingredientlists.length == 0) {
+									let toPush = {
+										ingredientListID: newID + 1,
+										categoryID: list.categoryID,
+										recipeID: toInsert.recipeID,
+										amount: list.amount,
+										unitID: categories.find((cat) => cat.categoryID == list.categoryID).unitID,
+									};
+									newID++;
+									toIngredient.push(toPush);
+								} else {
+									let toPush = {
+										ingredientListID: maxID + 1,
+										categoryID: list.categoryID,
+										recipeID: toInsert.recipeID,
+										amount: list.amount,
+										unitID: categories.find((cat) => cat.categoryID == list.categoryID).unitID,
+									};
+									maxID++;
+									console.log("MAX ID " + maxID);
+									toIngredient.push(toPush);
+								}
+							});
+							console.log(toIngredient);
+							db.insertMany(IngredientList, toIngredient, (inserted) => {
+								res.redirect("/ownerMenu");
+							});
+						});
+					});
+				});
 			}
 		});
-		await db.findMany(IngredientList, {}, {}, (ingredientList) => {});
 	},
 
 	cancelDish: async (req, res) => {

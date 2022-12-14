@@ -34,6 +34,7 @@ app.get("/ownerInventoryList", controller.getOwnerInventoryList);
 app.get("/deleteUser/:userID", controller.deleteUser);
 app.get("/cancel", controller.cancelDish);
 app.get("/testing", controller.getTesting);
+app.post("/submitDish/:menugroupID", controller.submitDish);
 
 // inventory manager
 app.get("/inventoryList", controller.getInventoryList);
