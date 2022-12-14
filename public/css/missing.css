@@ -92,9 +92,9 @@ table th:nth-child(3) {
   margin-top: -15px;
   padding: 2px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 5px;
-  overflow-x: scroll;
+  overflow:auto;
 }
 
 .category-buttons {
