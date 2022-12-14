@@ -95,50 +95,13 @@
                     <p class="report-date"> As of: {{dateToday}} </p>
 
                     <div class="inner-grid">
-                        <div class="current-stock">
-                            <h3> 24 </h3>
-                            <p class="item">Chicken</p>
+                        {{#each stock}}
+                            <div class="current-stock">
+                            <h3> {{runningTotal}} </h3>
+                            <p class="item">{{categoryName}}</p>
                         </div>
-
-                        <div class="current-stock">
-                            <h3> 25 </h3>
-                            <p class="item">Milk</p>
-                        </div>   
+                        {{/each}}
                         
-                        <div class="current-stock">
-                            <h3> 26 </h3>
-                            <p class="item">Coke Sakto</p>
-                        </div>  
-                        
-                        <div class="current-stock">
-                            <h3> 27 </h3>
-                            <p class="item">Pork</p>
-                        </div>  
-                        
-                        <div class="current-stock">
-                            <h3> 28 </h3>
-                            <p class="item">Butter</p>
-                        </div>    
-
-                        <div class="current-stock">
-                            <h3> 29 </h3>
-                            <p class="item">Cheese</p>
-                        </div>
-
-                        <div class="current-stock">
-                            <h3> 30 </h3>
-                            <p class="item">It's</p>
-                        </div>  
-
-                        <div class="current-stock">
-                            <h3> 31 </h3>
-                            <p class="item">Me</p>
-                        </div>
-
-                        <div class="current-stock">
-                            <h3> 32 </h3>
-                            <p class="item">Hi</p>
-                        </div>                 
                     </div>
                 </div>
             </div>

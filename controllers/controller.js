@@ -126,72 +126,159 @@ const controller = {
 		if (req.session.userType === 0) {
 			db.findMany(User, { $or: [{ userType: 1 }, { userType: 2 }] }, {}, (users) => {
 				db.findMany(UserType, { $or: [{ userID: 1 }, { userID: 2 }] }, {}, (userType) => {
-					let employee = [];
-					console.log(userType);
+					db.findMany(Category, {}, {}, (categories) => {
+						db.findMany(FoodGroup, {}, {}, (foodgroups) => {
+							db.findMany(Unit, {}, {}, (units) => {
+								let employee = [];
+								console.log(userType);
 
-					users.forEach((user) => {
-						let use = {
-							empID: user.userID,
-							firstName: user.firstName,
-							lastName: user.lastName,
-							userType: userType[user.userType - 1].userTypeDesc,
-						};
+								users.forEach((user) => {
+									let use = {
+										empID: user.userID,
+										firstName: user.firstName,
+										lastName: user.lastName,
+										userType: userType[user.userType - 1].userTypeDesc,
+									};
 
-						console.log(user);
-						console.log(use);
+									console.log(user);
+									console.log(use);
 
-						employee.push(use);
-					});
-					let date = new Date(Date.now());
-					let month = date.getMonth() + 1;
-					let day = date.getDate();
-					let year = date.getFullYear();
+									employee.push(use);
+								});
+								let date = new Date(Date.now());
+								let month = date.getMonth() + 1;
+								let day = date.getDate();
+								let year = date.getFullYear();
 
-					let h = date.getHours();
-					let m = date.getMinutes();
+								let h = date.getHours();
+								let m = date.getMinutes();
 
-					let ampm = h >= 12 ? "PM" : "AM";
-					h = h % 12;
-					h = h ? h : 12; // the hour '0' should be '12'
-					m = m < 10 ? "0" + m : m;
+								let ampm = h >= 12 ? "PM" : "AM";
+								h = h % 12;
+								h = h ? h : 12; // the hour '0' should be '12'
+								m = m < 10 ? "0" + m : m;
 
-					let time = h + ":" + m + " " + ampm;
-					let fullDate = month + "-" + day + "-" + year + ", " + time;
+								let time = h + ":" + m + " " + ampm;
+								let fullDate = month + "-" + day + "-" + year + ", " + time;
 
-					console.log(employee);
-					res.render("owner_dashboard", {
-						Employee: employee,
-						dateToday: fullDate,
+								console.log(employee);
+								let toCategory = [];
+								let toStock = [];
+
+								categories.forEach((category) => {
+									let toPushCateg = {
+										categoryName: category.categoryName,
+										foodGroupName: foodgroups.find((fgrp) => fgrp.foodGroupID == category.foodGroupID).foodGroupName,
+										runningTotal: category.runningTotal,
+										unitName: units.find((unt) => unt.unitID == category.unitID).unitName,
+									};
+									let toPushStock = {
+										categoryName: category.categoryName,
+										runningTotal: category.runningTotal,
+									};
+
+									toCategory.push(toPushCateg);
+									toStock.push(toPushStock);
+								});
+
+								toStock.sort((a, b) => {
+									let da = a.runningTotal,
+										db = b.runningTotal;
+
+									return da - db;
+								});
+
+								let stockPass = [];
+
+								for (let i = 0; i < 12; i++) {
+									if (toStock[i] != null) {
+										stockPass.push(toStock[i]);
+									}
+								}
+
+								res.render("owner_dashboard", {
+									Employee: employee,
+									dateToday: fullDate,
+									Category: toCategory, // category name, foodgroup name, running total, unitname
+									stock: stockPass, // 12 only, running total and category name
+								});
+							});
+						});
 					});
 				});
 			});
 		} else if (req.session.userType === 1) {
 			db.findOne(UserType, { userID: req.session.userType }, {}, (type) => {
-				let Emp = {
-					firstName: req.session.firstName,
-					lastName: req.session.lastName,
-					userType: type.userTypeDesc,
-					userID: req.session.userID,
-				};
+				db.findMany(Category, {}, {}, (categories) => {
+					db.findMany(FoodGroup, {}, {}, (foodgroups) => {
+						db.findMany(Unit, {}, {}, (units) => {
+							let Emp = {
+								firstName: req.session.firstName,
+								lastName: req.session.lastName,
+								userType: type.userTypeDesc,
+								userID: req.session.userID,
+							};
 
-				let date = new Date(Date.now());
-				let month = date.getMonth() + 1;
-				let day = date.getDate();
-				let year = date.getFullYear();
+							let date = new Date(Date.now());
+							let month = date.getMonth() + 1;
+							let day = date.getDate();
+							let year = date.getFullYear();
 
-				let h = date.getHours();
-				let m = date.getMinutes();
+							let h = date.getHours();
+							let m = date.getMinutes();
 
-				let ampm = h >= 12 ? "PM" : "AM";
-				h = h % 12;
-				h = h ? h : 12; // the hour '0' should be '12'
-				m = m < 10 ? "0" + m : m;
+							let ampm = h >= 12 ? "PM" : "AM";
+							h = h % 12;
+							h = h ? h : 12; // the hour '0' should be '12'
+							m = m < 10 ? "0" + m : m;
 
-				let time = h + ":" + m + " " + ampm;
+							let time = h + ":" + m + " " + ampm;
 
-				let fullDate = month + "-" + day + "-" + year + ", " + time;
+							let fullDate = month + "-" + day + "-" + year + ", " + time;
 
-				res.render("invManager_Dashboard", { Emp: Emp, dateToday: fullDate });
+							let toCategory = [];
+							let toStock = [];
+
+							categories.forEach((category) => {
+								let toPushCateg = {
+									categoryName: category.categoryName,
+									foodGroupName: foodgroups.find((fgrp) => fgrp.foodGroupID == category.foodGroupID).foodGroupName,
+									runningTotal: category.runningTotal,
+									unitName: units.find((unt) => unt.unitID == category.unitID).unitName,
+								};
+								let toPushStock = {
+									categoryName: category.categoryName,
+									runningTotal: category.runningTotal,
+								};
+
+								toCategory.push(toPushCateg);
+								toStock.push(toPushStock);
+							});
+
+							toStock.sort((a, b) => {
+								let da = a.runningTotal,
+									db = b.runningTotal;
+
+								return da - db;
+							});
+
+							let stockPass = [];
+
+							for (let i = 0; i < 12; i++) {
+								if (toStock[i] != null) {
+									stockPass.push(toStock[i]);
+								}
+							}
+
+							res.render("invManager_Dashboard", {
+								Emp: Emp,
+								dateToday: fullDate,
+								Category: toCategory,
+								stock: stockPass,
+							});
+						});
+					});
+				});
 			});
 		} else if (req.session.userType === 2) {
 			db.findOne(UserType, { userID: req.session.userType }, {}, (type) => {
@@ -1025,8 +1112,8 @@ const controller = {
 		});
 	},
 
-  getOwnerFiltered: async (req, res) => {
-    db.findMany(Category, {}, {}, (categories) => {
+	getOwnerFiltered: async (req, res) => {
+		db.findMany(Category, {}, {}, (categories) => {
 			db.findMany(FoodGroup, {}, {}, (foodgroups) => {
 				console.log(foodgroups);
 				db.findMany(Unit, {}, {}, (units) => {
@@ -1130,8 +1217,6 @@ const controller = {
 			});
 		});
 	},
-  
-
 
 	getEmployeeList: function (req, res) {
 		db.findMany(User, { $or: [{ userType: 1 }, { userType: 2 }] }, {}, (users) => {
