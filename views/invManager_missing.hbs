@@ -59,33 +59,11 @@
                 <h2> Select Category </h2>
 
                 <div class="inner-grid">
+                    {{#each Category}}
                     <div>
-                       <a id="categ" href="#">
-                            <button type="button" class="category-buttons"> TEST </button>
-                        </a> 
+                        <button type="button" class="category-buttons"> {{CategoryName}} </button>
                     </div>
-                    <div>
-                        <button type="button" class="category-buttons"> TEST </button>
-                    </div>
-                    <div>
-                        <button type="button" class="category-buttons"> TEST </button>
-                    </div>
-                    <div>
-                        <button type="button" class="category-buttons"> TEST </button>
-                    </div>
-                    <div>
-                        <button type="button" class="category-buttons"> TEST </button>
-                    </div>
-                    <div>
-                        <button type="button" class="category-buttons"> TEST </button>
-                    </div>
-                    <div>
-                        <button type="button" class="category-buttons"> TEST </button>
-                    </div>
-                    <div>
-                        <button type="button" class="category-buttons"> TEST </button>
-                    </div>
-
+                    {{/each}}
                 </div>
 
                  <form action="/submitSpoilage" method="post">
@@ -110,7 +88,7 @@
                     </div>
                     <select name="itemName" id="itemName" class="dropdown">
                         {{#each item}}
-                        <option value={{categoryID}}>{{categoryName}} ({{unitName}})</option>
+                        <option value={{ingredientName}}({{unitName}})</option>
                         {{/each}}
                     </select>
                 </div>
@@ -124,7 +102,6 @@
                     </div> 
                 </div>
                 <div class="field-box">
-                   
                 </div>
                 <input type="submit" class="button-green popup" value="Submit" />
                 </form>
