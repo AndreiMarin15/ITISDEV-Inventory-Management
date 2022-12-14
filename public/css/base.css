@@ -380,7 +380,7 @@ h1 {
   font-family: var(--font-type2);
   font-size: 14px;
   width: 10vw;
-  height: 4vh;
+  height: auto; /*4vh*/
   color: var(--clr-white);
   padding: 10px;
   box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);

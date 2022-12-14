@@ -12,16 +12,26 @@
 		{{>ownerPanel}}
 
 		<div class="content-container">
+
+			<div class="back-area">
+                     <a href="/ownerMenu" class="back-button">
+                        <i class="fa-solid fa-arrow-left" style="color: rgb(79, 79, 79)"> </i> 
+                     Go Back
+                     </a>
+            </div>  
+
 			<div class="ingredients-container">
 				<div class="contents">
 					<div>
-						<h1>Add Ingredients for Recipe {{recipe.recipeID}} of {{menugroup.menuGroupName}}</h1>
+						<h1 class="add-ing">Add Ingredients for Recipe {{recipe.recipeID}} of {{menugroup.menuGroupName}}</h1>
+						<hr>
 					</div>
 					<div>
             <form action="#" method="post">
 				<!-- TABLE OF TRANSACTIONS -->
 				<div class = "table-container">
 				    <table id="ingredientsTable">
+			
 					    <thead>
 					    <tr>
 						    <th>Category Name</th>
@@ -46,9 +56,9 @@
                     <div>
                         <input type="submit" class="button-green popup" value="Submit"/>
                     </div>
-                    <div>
+                    <!-- <div>
                         <a href="/newDish/:{{menugroupID}}" class="back popup">Back</a>
-                    </div>
+                    </div> -->
                 	</div>
 					</form>
 					</div>

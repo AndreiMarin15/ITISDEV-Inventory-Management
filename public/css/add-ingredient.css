@@ -9,6 +9,7 @@
     justify-content:left;
     text-align:left;
     margin-left:25px;
+    margin-top: 30px;
 }
 .contents{
   display:flex;
@@ -62,8 +63,9 @@ th, td {
     outline: 0.5px solid #1a7968;
 }
 
-th {
+thead th {
     background-color: #1a7968;
+    color: white;
 }
 
 
@@ -155,3 +157,7 @@ th {
     background-color: white;
 }
 
+.add-ing {
+  margin-top: 35px;
+  font-size: 25px;
+}
