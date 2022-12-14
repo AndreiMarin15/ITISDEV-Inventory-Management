@@ -11,12 +11,20 @@
 {{>invManagerPanel}}
 
         <div class="page-container">
-            <div><h1 class="header-font">Inventory Item Missing - {{foodGroupName}}</h1></div>
+            <div>
+                <h1 class="header-font">
+                    Inventory Item Missing
+                </h1>
+            </div>
+
+                <h3 class="categ-select"> Category Selected: <u>{{foodGroupName}}</u></h2>
+
             <div class="category-box">
                 {{#each foodGroup}}
                 <div>
-                    <a href="/inventoryMissing/{{foodGroupID}}" class="category-item"><span class="category-text">{{foodGroupName}}</span></a>
-
+                    <a href="/inventoryMissing/{{foodGroupID}}" class="category-item">
+                        <span class="category-text">{{foodGroupName}}</span>
+                    </a>
                 </div>
                 {{/each}}
             </div>
