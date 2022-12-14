@@ -13,45 +13,86 @@
 
 		<div class="content-container">
 			<div class="ingredients-container">
-				<h1>Add Ingredients for Recipe {{recipe.recipeID}} of {{menugroup.menuGroupName}}</h1>
-				<br>
+				<div class="contents">
+					<div>
+						<h1>Add Ingredients for Recipe {{recipe.recipeID}} of {{menugroup.menuGroupName}}</h1>
+					</div>
+					<div>
             <form action="#" method="post">
 				<!-- TABLE OF TRANSACTIONS -->
 				<div class = "table-container">
-				    <table>
+				    <table id="ingredientsTable">
 					    <thead>
 					    <tr>
 						    <th>Category Name</th>
-						    <th>Unit</th>
 						    <th>Quantity</th>
 					    </tr>
 					    </thead>
 						<tbody>
-						{{#each Ingredients}}
+						{{!-- {{#each Ingredients}} --}}
 					    <tr>
 						    <td> 
 								<select name="category" id="category" class="dropdown">
 									{{#each Category}}
-									<option>{{categoryName}}</option>
+									<option>{{categoryName}}({{unitName}})</option>
 									{{/each}}
 								</select>
 							</td>
-						    <td>{{unitName}}</td>
 						    <td> <input type="number" class="textbox-short" id="quantity" name="quantity"></td>
 					    </tr>
-						{{/each}}
+						{{!-- {{/each}} --}}
 				    </table>
-						<div>
-					    <button type="button" class="button-green popup"> 
-                            Add Ingredient
-                        </button>
-						</div>
+                	<div class = "button-placement">
+                    <div>
+                        <input type="submit" class="button-green popup" value="Submit"/>
+                    </div>
+                    <div>
+                        <a href="/newDish/:{{menugroupID}}" class="back popup">Back</a>
+                    </div>
+                	</div>
+					</form>
+					</div>
                 </div>
-
-                    <!-- START Add Ingredient Button-->
-            <input type="submit" class="button-green popup" value="Submit"/>
-			</form>
 			</div>
+						<div class="add-row">
+						<button id="btnNewRow" class="button-green popup">Add Ingredient Row</button>
+						</div>
+						<script>
+    					$(document).ready(function() {
+        					$('#btnNewRow').on('click', function(evt) {
+            					evt.preventDefault();
+            					$("#ingredientsTable").find('tbody')
+                					.append($('<tr><td><select name="category" id="category" class="dropdown">{{#each Category}}<option>{{categoryName}}({{unitName}})</option>{{/each}}</select></td><td> <input type="number" class="textbox-short" id="quantity" name="quantity"></td></tr>'))
+        					});
+    					});
+						</script>
+
 		</div>
 </body>
 </html>
+
+                    <!-- START Add Ingredient Button-->
+
+
+			             {{!-- START Add Ingredient Button-->
+                        <button class="button-green popup" onclick="myFunction();addRow()" style="margin-left:40px; margin-top:30px;" id="btnNewRow"> 
+                            + Add Ingredient
+                            {<span class="popuptext" id="myPopup">Ingredient Added!</span>
+                        </button> 
+                         <script>
+                            // When the user clicks on <div>, open the popup
+                            function myFunction() {
+                              var popup = document.getElementById("myPopup");
+                              popup.classList.toggle("show");
+                            }
+							function addRow() {
+								var tableRow = document.getElementById("table");
+								var row = tableRow.insertRow(1);
+								var cell1 = row.insertCell(0);
+								var cell2 = row.insertCell(1);
+								var cell3 = row.insertCell(2);
+ 									cell1.innerHTML = "Cell of New Row";
+ 									cell2.innerHTML = "Cell of New Row";
+ 									cell3.innerHTML = "Cell of New Row";
+							}
+                        </script>  --}}

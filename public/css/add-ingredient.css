@@ -1,7 +1,7 @@
 .ingredients-container{
     padding-top: 40px;
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     min-width:60vw;
     min-height:80vh;
     background-color: var(--clr-peach);
@@ -9,6 +9,17 @@
     justify-content:left;
     text-align:left;
     margin-left:25px;
+}
+.contents{
+  display:flex;
+  flex-direction:column;
+  width:50vw;
+  margin-right:0px;
+  gap:20px;
+}
+
+.add-row{
+  margin-top:90px;
 }
 
 h1 {
@@ -19,12 +30,16 @@ h1 {
 
 .table-container {
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
     overflow: auto;
     padding-bottom: 35px;
-    padding-right: 30px;
+    margin-right:1px;
     margin-left: 40px;
-    gap:30px;
+    gap:20px;
+}
+
+#ingredientsTable{
+  min-width:90%;
 }
 
 table {
@@ -125,3 +140,15 @@ th {
     from {opacity: 0;}
     to {opacity:1 ;}
   }
+
+  .inventory-table, th, td{
+    width:90%;
+    border: 2px solid var(--clr-green);
+    border-collapse:collapse;
+    padding:8px;
+    text-align:center;
+    table-layout:fixed;
+    color:var(--clr-green);
+    background-color: white;
+}
+
