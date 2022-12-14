@@ -994,6 +994,18 @@ const controller = {
     },
 
 
+    testing: async (req, res) => {
+       
+        console.log(req.body.categoryname);
+        console.log(req.body.myname)
+        res.redirect("/testing");
+    },
+
+    getTesting: (req, res) => {
+        res.render("testingPage");
+    }
+
+
     //Testing HBS IF IT WORKS
     /*
     createUser: (req, res) => {

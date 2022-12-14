@@ -6,6 +6,8 @@ app.get("/", (req, res) => {
     res.redirect("/login");
 });
 
+app.post("/showTesting", controller.testing);
+
 app.get("/login", controller.getIndex);
 app.post("/proceedLogin", controller.login);
 app.get("/home", controller.home);
@@ -31,6 +33,7 @@ app.post("/addFolder", controller.addFolder);
 app.get("/ownerInventoryList", controller.getOwnerInventoryList);
 app.get("/deleteUser/:userID", controller.deleteUser);
 app.get("/cancel/:recipeID", controller.cancelDish);
+app.get("/testing", controller.getTesting);
 
 // inventory manager
 app.get("/inventoryList", controller.getInventoryList);
