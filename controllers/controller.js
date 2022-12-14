@@ -845,8 +845,13 @@ const controller = {
                         console.log(toPush);
                         toPass.push(toPush);
                     })
+                    let date = new Date(Date.now());
+                    let month = date.getMonth() + 1;
+                    let day = date.getDate();
+                    let year = date.getFullYear();
 
-                    res.render("owner_inventoryList", {details: toPass});
+                    let fullDate = month + "-" + day + "-" + year;
+                    res.render("owner_inventoryList", {details: toPass, dateToday: fullDate});
                 })
                 
             })
