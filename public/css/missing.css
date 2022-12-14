@@ -26,22 +26,25 @@
 .inventory-table {
   margin-top: 10px;
   margin-bottom: 40px;
+  width: 80%;
 }
 
 .inventory-table,
 th,
 td {
-  width: 80%;
-  border: 2px solid var(--clr-green);
-  border-collapse: collapse;
-  padding: 8px;
-  table-layout: fixed;
-  color: var(--clr-green);
-  background-color: white;
+  border: 1px solid #1a7968;
+    border-collapse:collapse;
+    padding:8px;
+    text-align:center;
+    color: black;
+    background-color: white;
+    table-layout: fixed;
 }
 
 thead th {
   font-size: 15px;
+  background-color: #1a7968;
+  color: white;
 }
 
 .submit-button {
@@ -87,6 +90,18 @@ table th:nth-child(3) {
   text-align: right;
 }
 
+table td:nth-child(1) {
+  text-align: left;
+}
+
+table td:nth-child(2) {
+  text-align: left;
+}
+
+table td:nth-child(3) {
+  text-align: right;
+}
+
 .inner-grid {
   margin: 25px;
   margin-top: -15px;
@@ -94,7 +109,7 @@ table th:nth-child(3) {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 5px;
-  overflow:auto;
+  overflow: auto;
 }
 
 .category-buttons {
@@ -113,26 +128,26 @@ table th:nth-child(3) {
 }
 
 .category-buttons:hover {
-    border: 1px solid var(--clr-green);
-    border-radius: 5px;
-    background-color: white;
-    font-family: var(--font-type2);
-    font-size: 14px;
-    width: 8vw;
-    height: 6vh;
-    color: var(--clr-green);
-    padding: 10px;
-    box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
-    cursor: pointer;
-    text-align: center;
-  }
+  border: 1px solid var(--clr-green);
+  border-radius: 5px;
+  background-color: white;
+  font-family: var(--font-type2);
+  font-size: 14px;
+  width: 8vw;
+  height: 6vh;
+  color: var(--clr-green);
+  padding: 10px;
+  box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+  cursor: pointer;
+  text-align: center;
+}
 
-  .category-buttons:focus {
-    border: 1px solid var(--clr-green);   
-    background-color: rgb(255, 255, 255);
-    color: var(--clr-green);
-    font-weight: 600;
-   }
+.category-buttons:focus {
+  border: 1px solid var(--clr-green);
+  background-color: rgb(255, 255, 255);
+  color: var(--clr-green);
+  font-weight: 600;
+}
 
 .createnew-box {
   display: flex;
