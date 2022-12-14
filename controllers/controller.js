@@ -1158,15 +1158,7 @@ const controller = {
     res.render("owner_transTrail", { dateToday: fullDate });
   },
 
-  getOwnerMenu: async (req, res) => {
-    await db.findMany(MenuGroup, {}, {}, (menugroups) => {
-      db.delMany(Recipe, { recipeName: "Recipe Name", price: 0 }, (deleted) => {
-        let menugrp = [];
-        menugroups.forEach((menu) => {
-          let grp = {
-            MenuGroupID: menu.menuGroupID,
-            MenuGroupName: menu.menuGroupName,
-          };
+ 
     getOwnerMenu: async (req, res) => {
         await db.findMany(MenuGroup, {}, {}, menugroups => {
      
@@ -1190,7 +1182,6 @@ const controller = {
           menugrps: menugrp,
         });
       });
-    });
   },
 
   addMenuFolder: (req, res) => {
