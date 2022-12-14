@@ -1154,6 +1154,87 @@ const controller = {
 		});
 	},
 
+  getEmployeeFiltered: async (req,res) => {
+    db.findMany(User, { $or: [{ userType: 1 }, { userType: 2 }] }, {}, (users) => {
+			db.findMany(UserType, { $or: [{ userID: 1 }, { userID: 2 }] }, {}, (userType) => {
+				let employee = [];
+
+				users.forEach((user) => {
+					let use = {
+						userID: user.userID,
+						firstName: user.firstName,
+						lastName: user.lastName,
+						position: userType[user.userType - 1].userTypeDesc,
+					};
+
+					employee.push(use);
+				});
+        if (req.body.filter == 1){
+          if(req.body.sort == 1){
+            employee.sort((a, b) => {
+              // by employee ascending
+              let ca = a.userID,
+                cb = b.userID;
+
+              return ca.localeCompare(cb);
+            });
+            res.render("owner_employeeList", { employee: employee });
+          } else if (req.body.sort == 2){
+              employee.sort((a, b) => {
+              // by employee descending
+              let ca = a.userID,
+                cb = b.userID;
+
+              return cb.localeCompare(ca);
+            });
+            res.render("owner_employeeList", { employee: employee });
+          } 
+        } else if (req.body.filter == 2){
+            if(req.body.sort == 1){
+              employee.sort((a, b) => {
+                // by Full Name ascending
+                let ca = a.firstName + a.lastName,
+                  cb = b.firstName + b.lastName;
+
+                return ca.localeCompare(cb);
+              });
+              res.render("owner_employeeList", { employee: employee });
+            } else if (req.body.sort == 2){
+                employee.sort((a, b) => {
+                // by Full Name descending
+                let ca = a.firstName + a.lastName,
+                cb = b.firstName + b.lastName;
+
+                return cb.localeCompare(ca);
+              });
+              res.render("owner_employeeList", { employee: employee });
+            } 
+        } else {
+            if(req.body.sort == 1){
+              employee.sort((a, b) => {
+                // by Position ascending
+                let ca = a.position
+                  cb = b.position
+
+                return ca.localeCompare(cb);
+              });
+              res.render("owner_employeeList", { employee: employee });
+            } else if (req.body.sort == 2){
+                employee.sort((a, b) => {
+                // by Posotion descending
+                let ca = a.position
+                cb = b.position
+
+                return cb.localeCompare(ca);
+              });
+              res.render("owner_employeeList", { employee: employee });
+            } 
+        }
+				
+			});
+		});
+  },
+
 	deleteUser: async (req, res) => {
 		console.log(req.params.userID);
 		await db.delOne(User, { userID: req.params.userID }, (user) => {

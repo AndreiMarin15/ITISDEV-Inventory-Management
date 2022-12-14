@@ -36,6 +36,7 @@ app.get("/cancel", controller.cancelDish);
 app.get("/testing", controller.getTesting);
 app.post("/submitDish/:menugroupID", controller.submitDish);
 app.post("/ownerInventoryListFiltered", controller.getOwnerFiltered);
+app.post("/employeeListFiltered", controller.getEmployeeFiltered);
 
 // inventory manager
 app.get("/inventoryList", controller.getInventoryList);
