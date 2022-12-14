@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <title>Inventory Manager | New Category</title>
+        <link rel="stylesheet" href="css/createnewCategory.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+
+        {{>invManagerPanel}}
+
+        <div class="content-container">
+            <div class="createnew-box">
+                <span class="header-font">Create New Category</span>
+                <form action="/showTesting" method="post">
+                <div class="field-box">
+                    <div>
+                        <label for="categoryname" class="field-font">Category 1:</label>
+                    </div>
+
+                    <div>
+                        <input
+                            type="text"
+                            class="textbox-long"
+                            id="categoryname"
+                            name="categoryname"
+                        />
+                    </div>
+                </div>
+
+                <div class="field-box">
+                    <div>
+                        <label for="categoryname" class="field-font"> Name 1:</label>
+                    </div>
+
+                    <div>
+                        <input
+                            type="text"
+                            class="textbox-long"
+                            id="categoryname"
+                            name="myname"
+                        />
+                    </div>
+                </div>
+
+                <div class="field-box">
+                    <div>
+                        <label for="categoryname" class="field-font">Category 2:</label>
+                    </div>
+
+                    <div>
+                        <input
+                            type="text"
+                            class="textbox-long"
+                            id="categoryname"
+                            name="categoryname"
+                        />
+                    </div>
+                </div>
+
+                <div class="field-box">
+                    <div>
+                        <label for="categoryname" class="field-font"> Name 2:</label>
+                    </div>
+
+                    <div>
+                        <input
+                            type="text"
+                            class="textbox-long"
+                            id="categoryname"
+                            name="myname"
+                        />
+                    </div>
+                </div>
+
+                
+
+
+                <div class = "button-placement">
+                    <div>
+                        <input type="submit" class="button-green popup" value="Submit"/>
+                    </div>
+                    <div>
+                        <a href="/firstPurchase" class="back popup">Back</a>
+                    </div>
+                </div>
+
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
