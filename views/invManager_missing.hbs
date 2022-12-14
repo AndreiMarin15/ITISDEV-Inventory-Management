@@ -2,8 +2,8 @@
 <html>
     <head>
         <title>Inventory Manager | Missing</title>
-        <link rel="stylesheet" href="css/missing.css" />
-        <link rel="stylesheet" href="css/base.css" />
+        <link rel="stylesheet" href="/css/missing.css" />
+        <link rel="stylesheet" href="/css/base.css" />
         <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -15,11 +15,12 @@
             <div class="category-box">
                 {{#each foodGroup}}
                 <div>
-                    <button class="category-item"><span class="category-text">{{foodGroupName}}</span></button>
+                    <a href="/inventoryMissing/{{foodGroupID}}" class="category-item"><span class="category-text">{{foodGroupName}}</span></a>
+
                 </div>
                 {{/each}}
             </div>
-            <form action="#" method="post">
+            <form action="/submitMissing/{{foodGroupID}}" method="post">
             <div class="inventory-container">
                 <table class="inventory-table">
                     <col style="width:30%">
@@ -37,9 +38,9 @@
                     <tbody>
                         {{#each Ingredient}}
                         <tr>
-                            <td> {{categoryName}} </td>
-                            <td> {{ingredientName}} </td>
-                            <td><input type="number">  </td> 
+                            <td> {{categoryName}} <input type="hidden" name="categoryIDs" value={{categoryID}}></td>
+                            <td> {{ingredientName}} <input type="hidden" name="ingredientIDs" value={{ingredientID}}></td>
+                            <td><input type="number" name="physical" min="0" value="0">  </td> 
                         </tr>
                         {{/each}}
                     </tbody>
