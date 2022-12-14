@@ -46,7 +46,7 @@ app.post("/submitMissing/:id", controller.submitMissing);
 app.get("/firstPurchase", controller.getCreateItem);
 app.post("/addFoodGroup", controller.addFoodGroup);
 app.post("/newCategory", controller.addCategory);
-app.post("/addFirstPurchase", controller.firstPurchace);
+app.post("/addFirstPurchase", controller.firstPurchase);
 app.post("/additionalPurchase", controller.recordPurchase);
 app.get("/reportsPageinvManager", controller.getReportsPageInvManager);
 app.post("/submitSpoilage", controller.submitSpoilage)

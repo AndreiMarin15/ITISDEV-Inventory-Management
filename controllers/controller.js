@@ -532,7 +532,7 @@ const controller = {
     });
   },
 
-  firstPurchace: async (req, res) => {
+  firstPurchase: async (req, res) => {
     await db.findMany(Ingredients, {}, {}, (ingredients) => {
       if (ingredients.length == 0) {
         db.findOne(Unit, { unitID: parseInt(req.body.netunit) }, {}, (unit) => {
