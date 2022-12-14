@@ -803,7 +803,8 @@ const controller = {
 
     getOwnerMenu: async (req, res) => {
         await db.findMany(MenuGroup, {}, {}, menugroups => {
-            let menugrp = [];
+                db.delMany(Recipe, {recipeName: "Recipe Name", price: 0}, deleted => {
+                    let menugrp = [];
             menugroups.forEach(menu => {
                 let grp = {
                     MenuGroupID: menu.menuGroupID,
@@ -819,6 +820,9 @@ const controller = {
             console.log(menugrp)
 
         res.render("owner_menuList", {dateToday: month + "-" + day + "-" + year, menugrps: menugrp});
+                })
+        
+            
         })
 
         
@@ -884,6 +888,7 @@ const controller = {
         console.log(req.params.menugroupID)
 
            await db.findOne(MenuGroup, {menuGroupID: req.params.menugroupID}, {}, menugroup => {
+            db.delMany(Recipe, {recipeName: "Recipe Name", menuGroupID: menugroup.menuGroupID, price: 0}, deleted => {
                 db.findMany(Recipe, {}, {}, recipes => {
                     if(recipes.length > 0){
                         maxID = Math.max.apply(null, recipes.map((rec) => {
@@ -895,9 +900,10 @@ const controller = {
                             menuGroupID: req.params.menugroupID,
                             price: 0.0
                          }
-
+                         
                          db.insertOne(Recipe, toInsert, insert => {
-                            res.render("owner_newDish", {menuGroupName: menugroup.menuGroupName, recipeName: toInsert.recipeName, recipeID: toInsert.recipeID});
+                            res.render("owner_newDish", {menuGroupName: menugroup.menuGroupName, recipeName: toInsert.recipeName,
+                                 recipeID: toInsert.recipeID, menugroupID: toInsert.menuGroupID});
                          })
                     } else {
                         let toInsert = {
@@ -908,11 +914,14 @@ const controller = {
                          }
 
                          db.insertOne(Recipe, toInsert, insert => {
-                            res.render("owner_newDish", {menuGroupName: menugroup.menuGroupName, recipeName: toInsert.recipeName, recipeID: toInsert.recipeID});
+                            res.render("owner_newDish", {menuGroupName: menugroup.menuGroupName, recipeName: toInsert.recipeName, 
+                                recipeID: toInsert.recipeID, menugroupID: toInsert.menuGroupID});
                          })
                     }
 
                 })
+            })
+                
                
        })
         

@@ -23,7 +23,7 @@ app.post("/addUser", controller.addUser);
 app.get("/transactionTrail", controller.getTransactionTrail);
 app.get("/ownerMenu", controller.getOwnerMenu);
 app.get("/newFolder", controller.addMenuFolder);
-app.get("/addIngredient", controller.addIngredient);
+app.get("/addIngredient/:menugroupID/:recipeID", controller.addIngredient);
 app.get("/newDish/:menugroupID", controller.addMenuItem);
 app.get("/employeeList", controller.getEmployeeList);
 app.get("/reportsPage", controller.getInventoryReports);
