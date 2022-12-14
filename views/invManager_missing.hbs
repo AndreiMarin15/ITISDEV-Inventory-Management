@@ -7,13 +7,11 @@
         <script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        <div class="content-container">
+{{>invManagerPanel}}
 
-        {{>invManagerPanel}}
-
-<!-- OLD LAYOUT -->
-        <!-- <div class="page-container">
-            <div><h1 class="header-font">Missing Inventory Items</h1></div>
-            <form action="#" method="post">
+        <div class="page-container">
+            <div><span class="header-font">Inventory Item Missing - {{foodGroupName}}</span></div>
             <div class="category-box">
                 {{#each foodGroup}}
                 <div>
@@ -21,10 +19,9 @@
                 </div>
                 {{/each}}
             </div>
-
+            <form action="#" method="post">
             <div class="inventory-container">
                 <table class="inventory-table">
-                    
                     <thead>
                         <tr>
                             <th>Category</th>
@@ -35,80 +32,19 @@
                     <tbody>
                         {{#each Ingredient}}
                         <tr>
-                            <td> {{ingredientName}} </td>
                             <td> {{categoryName}} </td>
+                            <td> {{ingredientName}} </td>
                             <td><input type="number">  </td> 
                         </tr>
                         {{/each}}
                     </tbody>
                 </table>
             </div>
-            <input type="submit" class="button-green popup" />
-            </form>
-        </div> -->
-<!-- END OF OLD LAYOUT -->
-
-
-        <!-- TEMPORARY PROPOSED SOLUTION -->
-        <div class="content-container">
-            <div class="createnew-box">
-                <h1 class="header-font">Record Missing Inventory Item</h1>
-                <p class="directions"> All fields are required to be filled in.</p>
-
-                
-                <h2> Select Category </h2>
-
-                <div class="inner-grid">
-                    {{#each Category}}
-                    <div>
-                       <a id="categ" href="#">
-                        <button type="button" class="category-buttons"> TEST </button>
-                        </a> 
-                        <button type="button" class="category-buttons"> {{CategoryName}} </button>
-                    </div>
-                    {{/each}}
-                </div>
-
-                 <form action="/submitSpoilage" method="post">
-
-                 <!-- <div class="field-box">
-                    <div>
-                        <label for="search-item" class = "field-font">Category</label>
-                    </div>
-                    {{#each category}}
-                    <a href="/missingUpdate/{{category.categoryID}}">{{category.categoryName}}</a>
-                    {{/each}}
-                    <select name="itemName" id="itemName" class="dropdown">
-                        {{#each item}}
-                        <option value={{categoryID}}>{{categoryName}} ({{unitName}})</option>
-                        {{/each}}
-                    </select>
-                </div> -->
-
-                <div class="field-box">
-                    <div>
-                        <label for="search-item" class = "field-font">Item Type</label>
-                    </div>
-                    <select name="itemName" id="itemName" class="dropdown">
-                        {{#each item}}
-                        <option value={{ingredientID}}>{{ingredientName}}({{unitName}}) </option>
-                        {{/each}}
-                    </select>
-                </div>
-
-                <div class="field-box">
-                    <div>
-                       <label for="quantity-item" class = "field-font">Physical Count </label>
-                    </div>
-                    <div>
-                        <input type="text" class="textbox-short" id="quantity" name="quantity" placeholder="0" required>
-                    </div> 
-                </div>
-                <div class="field-box">
-                </div>
-                <input type="submit" class="button-green popup" value="Submit" />
-                </form>
+            <div class="submit-button">
+             <input type="submit" value="Submit Ingredients" class="button-green popup" />
             </div>
+            </form>
         </div>
+
     </body>
 </html>
