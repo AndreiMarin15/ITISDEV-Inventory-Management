@@ -328,16 +328,9 @@ const controller = {
 	},
 	// cashier
 
-	getMenu: (req, res) => {
-		// function to get the menu list to be displayed
-		// QUERY : Find ALL From recipe Where enables == true
-		// send query to the front end as data (res.render)
-	},
+	
 
-	checkout: (req, res) => {
-		// Create new POS
-		// Subtract ingredients
-	},
+	
 
 	getPOS: (req, res) => {
 		db.findMany(MenuGroup, {}, {}, (menugroups) => {});
