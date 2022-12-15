@@ -59,7 +59,11 @@
 				<span class="checkout-header">Checkout</span>
 				<div class="checkout-box">
 				<div class="checkout-content">
+<<<<<<< Updated upstream
 					<form action='#' method="post" class="checkout-content">
+=======
+					<form action='/submitPOS' method="post">
+>>>>>>> Stashed changes
 					<table class="checkout-table" id="CO-table">
 						<thead>
 						<tr>
@@ -71,10 +75,16 @@
 						<tr>
 							<td>
 								<select name="recipe" id="recipe" class="dropdown">
+									{{#each Recipe}}
 									<option value="{{recipeID}}">{{recipeName}}</option>
+									{{/each}}
+
 								</select>
 							</td>
-							<td><input type="number" class="textbox-short" id="quantity" value ="0" name="quantity" step="0.01" min ="0"></td>
+							<td>
+								
+							<input type="number" class="textbox-short" id="quantity" value ="1" step="1" name="quantity"  min ="1">
+							</td>
 						</tr>
 						</tbody>
 
@@ -99,7 +109,7 @@
         					$('#btnNewRow').on('click', function(evt) {
             					evt.preventDefault();
             					$("#CO-table").find('tbody')
-                					.append($('<tr><td><select name="recipe" id="recipe" class="dropdown"><option value="{{recipeID}}">{{recipeName}}</option></select></td><td><input type="number" class="textbox-short" id="quantity" value ="0" name="quantity" step="0.01" min ="0"></td></tr>'))
+                					.append($('<tr><td><select name="recipe" id="recipe" class="dropdown">{{#each Recipe}}<option value="{{recipeID}}">{{recipeName}}</option>{{/each}}</select></td><td><input type="hidden" name="price" value="{{price}}"><input type="number" class="textbox-short" id="quantity" value ="1" name="quantity" step="1" min ="1"></td></tr>'))
         					});
 
 							$('#btnDelete').on('click', function(evt) {

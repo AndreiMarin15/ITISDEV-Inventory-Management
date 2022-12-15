@@ -61,6 +61,7 @@ app.post("/reportsPageInvManagerFiltered", controller.getReportsInvManagerFilter
 
 // cashier
 app.get("/viewPOS/:menugroupID", controller.getPOS);
+app.post("/submitPOS", controller.submitPOS);
 
 //Testing for viewDish
 // app.get("/viewDish", controller.viewDish);
