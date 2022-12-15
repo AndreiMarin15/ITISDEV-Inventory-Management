@@ -20,7 +20,7 @@
 .menu-container{
     display:flex;
     flex-direction: column;
-    min-width:60vw;
+    min-width:50vw;
     min-height:100vh;
     background-color: var(--clr-peach);
 }
@@ -160,9 +160,10 @@
 
 .checkout-content{
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
     justify-content:space-evenly;
     text-align:center;
+    gap:35px;
 }
 
 .checkout-counter{

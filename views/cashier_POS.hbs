@@ -59,7 +59,7 @@
 				<span class="checkout-header">Checkout</span>
 				<div class="checkout-box">
 				<div class="checkout-content">
-					<form action='#' method="post">
+					<form action='#' method="post" class="checkout-content">
 					<table class="checkout-table" id="CO-table">
 						<thead>
 						<tr>
@@ -79,19 +79,20 @@
 						</tbody>
 
 					</table>
+											<div class="add-row2">
+							<div>
+								<button id="btnNewRow" class="button-green popup">Add Ingredient Row</button>
+							</div>
+							<div>
+								<button id="btnDelete" class="button-red popup">Delete Last Ingredient Row</button>
+							</div>
+						</div>
 					<div>
                         <input type="submit" class="button-green popup" value="Submit"/>
                     </div>
 					</form>
 				</div>
-						<div class="add-row">
-							<div>
-								<button id="btnNewRow" class="button-green popup">Add Ingredient Row</button>
-							</div>
-							<div>
-								<button id="btnDelete" class="delete">Delete Last Ingredient Row</button>
-							</div>
-						</div>
+
 
 						<script>
     					$(document).ready(function() {
