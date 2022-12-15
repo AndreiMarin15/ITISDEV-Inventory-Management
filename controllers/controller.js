@@ -131,7 +131,6 @@ const controller = {
 						db.findMany(FoodGroup, {}, {}, (foodgroups) => {
 							db.findMany(Unit, {}, {}, (units) => {
 								let employee = [];
-								
 
 								users.forEach((user) => {
 									let use = {
@@ -141,7 +140,6 @@ const controller = {
 										userType: userType[user.userType - 1].userTypeDesc,
 									};
 
-							
 									employee.push(use);
 								});
 								let date = new Date(Date.now());
@@ -160,7 +158,6 @@ const controller = {
 								let time = h + ":" + m + " " + ampm;
 								let fullDate = month + "-" + day + "-" + year + ", " + time;
 
-								
 								let toCategory = [];
 								let toStock = [];
 
@@ -293,7 +290,7 @@ const controller = {
 			});
 		}
 	},
-	
+
 	getChangePassword: function (req, res) {
 		res.render("changePassword");
 	},
@@ -327,10 +324,6 @@ const controller = {
 		});
 	},
 	// cashier
-
-	
-
-	
 
 	getPOS: (req, res) => {
 		db.findMany(MenuGroup, {}, {}, (menugroups) => {});
@@ -1543,7 +1536,23 @@ const controller = {
 					let rec = [];
 					recipes.forEach((recipe) => {
 						if (menu.menuGroupID == recipe.menuGroupID) {
-							rec.push(recipe);
+							if (recipe.enabled == true) {
+								let toPush = {
+									// recipe id recipe name enabled
+									recipeID: recipe.recipeID,
+									recipeName: recipe.recipeName,
+									Status: "Enabled",
+								};
+								rec.push(toPush);
+							} else {
+								let toPush = {
+									// recipe id recipe name enabled
+									recipeID: recipe.recipeID,
+									recipeName: recipe.recipeName,
+									Status: "Disabled",
+								};
+								rec.push(toPush);
+							}
 						}
 					});
 
@@ -1567,6 +1576,13 @@ const controller = {
 				});
 			});
 		});
+	},
+
+	toggleIngredients: async (req, res) => {
+		toggled = req.body.toggle;
+		console.log(toggle);
+
+		res.redirect("/ownerMenu");
 	},
 
 	viewIngredients: async (req, res) => {
