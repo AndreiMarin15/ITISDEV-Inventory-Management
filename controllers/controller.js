@@ -295,6 +295,7 @@ const controller = {
 			});
 		}
 	},
+	
 	getChangePassword: function (req, res) {
 		res.render("changePassword");
 	},
