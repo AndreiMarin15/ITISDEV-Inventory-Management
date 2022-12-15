@@ -1878,9 +1878,9 @@ const controller = {
 								CategoryName: categories.find((categ) => categ.categoryID === parseInt(miss.categoryID)).categoryName,
 								amount: miss.amount,
 								employeeName:
-									users.find((user) => user.userID === miss.employeeNo).firstName +
+									users.find((user) => user.userID == miss.employeeNo).firstName +
 									" " +
-									users.find((user) => user.userID === miss.employeeNo).lastName,
+									users.find((user) => user.userID == miss.employeeNo).lastName,
 							};
 							report.push(missingPush);
 						});
