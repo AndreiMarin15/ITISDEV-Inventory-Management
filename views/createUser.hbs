@@ -77,13 +77,18 @@
                                 class="input-button"
                                 value="Assign ID"
                                 onclick="insertText('txt1','0000' + {{empID}});"
+                                id="elembutton"
                                 required
                             />
 
                             <!-- Assigns randomly generated employee ID on button click-->
                             <script>
                                 function insertText(elemID, text) { var elem =
-                                document.getElementById(elemID); elem.value += text; }
+                                document.getElementById(elemID); elem.value += text;
+                                document.getElementById("elembutton").onclick = null; 
+                                }
+
+                                
                             </script>
                         </div>
                     </div>

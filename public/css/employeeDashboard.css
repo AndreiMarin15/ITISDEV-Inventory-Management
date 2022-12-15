@@ -9,7 +9,7 @@
     grid-template-rows: 1fr 1fr 1fr; 
     grid-auto-flow: row-dense;
     grid-template-areas:
-      "Profile Sales-Summary"
+      "Profile Inventory-Transactions"
       "Profile Inventory-Transactions"
       "Inventory-List Inventory-Transactions";
     align-content: space-around;
@@ -43,12 +43,7 @@
     height: 100%;
     }
 
-  .Sales-Summary { 
-    grid-area: Sales-Summary; 
-    outline: 2px solid #1a7968;
-    width: 100%;
-    height: 100%;
-  }  
+
 
   .inner-grid {
     margin: 25px;
@@ -182,15 +177,15 @@
     }
     
     table th:nth-child(3) {
-      text-align: left;
+      text-align: right;
     }
   
     table td:nth-child(3) {
-        text-align: left;
+        text-align: right;
     }
 
     table th, td:nth-child(4) {
-      text-align: right;
+      text-align: left;
   }
 
     @media (min-width: 900px) {

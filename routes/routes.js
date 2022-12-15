@@ -6,7 +6,7 @@ app.get("/", (req, res) => {
 	res.redirect("/login");
 });
 
-app.post("/showTesting", controller.testing);
+
 
 app.get("/login", controller.getIndex);
 app.post("/proceedLogin", controller.login);
@@ -16,7 +16,7 @@ app.get("/logout", controller.logout);
 app.get("/changePassword", controller.getChangePassword);
 app.post("/updatePassword", controller.changePassword);
 
-//Testing HBS IF IT WORKS
+
 
 //Owner
 
@@ -33,7 +33,6 @@ app.post("/addFolder", controller.addFolder);
 app.get("/ownerInventoryList", controller.getOwnerInventoryList);
 app.get("/deleteUser/:userID", controller.deleteUser);
 app.get("/cancel", controller.cancelDish);
-app.get("/testing", controller.getTesting);
 app.post("/submitDish/:menugroupID", controller.submitDish);
 app.post("/ownerInventoryListFiltered", controller.getOwnerFiltered);
 app.post("/employeeListFiltered", controller.getEmployeeFiltered);
@@ -63,37 +62,5 @@ app.post("/reportsPageInvManagerFiltered", controller.getReportsInvManagerFilter
 app.get("/viewPOS/:menugroupID", controller.getPOS);
 app.post("/submitPOS", controller.submitPOS);
 
-//Testing for viewDish
-// app.get("/viewDish", controller.viewDish);
 
-//Cashier
-/*
-app.get("/POS", controller.POS);
-app.get("/invManagerDashboard", controller.getinvManagerDashboard);
-
-//invManager
-app.get("/cashierDashboard", controller.getcashierDashboard);
-app.get("/addtoInventory", controller.addToInventory);
-app.get("/createInventory", controller.createInventory);
-app.get("/inventoryList", controller.inventoryList);
-app.get("/missing", controller.missing);
-app.get("/missingResult", controller.missingResult);
-app.get("/spoilage", controller.spoilage);
-app.get("/transactionList", controller.transactionList);
-app.get("/createCategory", controller.createCategory);
-
-
-
-
-
-app.get("/ingredients", controller.ingredients);
-app.get("/mealCategory", controller.mealCategory);
-app.get("/menuList", controller.menuList);
-app.get("/newMenuItem", controller.newMenuItem);
-app.get("/reportsPage", controller.reportsPage);
-app.get("/todaysMenu", controller.todaysMenu);
-app.get("/transTrail", controller.transTrail);
-app.get("/invoice", controller.invoice);
-app.get("/createFolder", controller.createFolder);
-*/
 module.exports = app;

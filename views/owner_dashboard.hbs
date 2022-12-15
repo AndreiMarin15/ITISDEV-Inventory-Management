@@ -25,7 +25,6 @@
                         <i class="fa-solid fa-circle-user prof-pic"></i>
                     </div>
 
-                    <!-- NOTES: need to insert icons/images -->
                     <h2> {{Emp.firstName}} {{Emp.lastName}} </h2>
                     <p class="title"> Employee Name</p>
 
@@ -41,55 +40,12 @@
             </div>
             <!-- END PROFILE GRID -->
 
-            <!-- SALES SUMMARY GRID -->
-            <div class="Sales-Summary">
-                <div class="grid-content">
-                    <h1> Top Selling Menu Items </h1>
-
-                    <p class="report-date"> As of: {{dateToday}}</p>
-
-                     <div class="sales-grid">
-                        <div class="top-selling">
-                            <h3 class="menu-item"> Steak Rice Bowl </h3>
-                            <p class="menu-details">
-                                <b>Instances sold: </b>
-                                40 <br> 
-                                <b> Menu Group: </b>
-                                Rice Bowls
-                            </p>
-                        </div>
-
-                        <div class="top-selling">
-                            <h3 class="menu-item"> Lasagna </h3>
-                            <p class="menu-details">
-                                <b>Instances sold: </b>
-                                25 <br> 
-                                <b> Menu Group: </b>
-                                Pasta
-                            </p>
-                        </div>   
-                        
-                        <div class="top-selling">
-                            <h3 class="menu-item"> Caesar's Salad </h3>
-                            <p class="menu-details">
-                                <b>Instances sold: </b>
-                                15 <br> 
-                                <b> Menu Group: </b>
-                                Salad
-                            </p>
-                        </div>  
-                    </div>
-                </div>
-            </div>
-            <!-- END SALES SUMMARY GRID -->
 
             <!-- INVENTORY-TRANSACTIONS GRID -->
             <div class="Inventory-Transactions">
                 <div class="grid-content">
                     <h1 class="linked"> Inventory List </h1>
-                    <!-- START INVENTORY-LIST TABLE
-                            NOTES: should be sorted w/ low stock items at the top 
-                            To follow guidelines for Reports-->
+                    <!-- START INVENTORY-LIST TABLE-->
 
                         <p class="report-date"> As of: {{dateToday}}</p>
 
@@ -126,9 +82,7 @@
             </div>
             <!-- END INVENTORY TRANSACTIONS GRID -->
 
-            <!-- INVENTORY LIST GRID
-                NOTES: Should only display last five items added to inventory list 
-                        because hindi siya naka display: flex-->
+            <!-- INVENTORY LIST GRID -->
 
             <div class="Inventory-List">
                 <div class="grid-content">
