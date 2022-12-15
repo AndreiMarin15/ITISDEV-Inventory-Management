@@ -4,7 +4,7 @@ const Category = require("../models/Category");
 const IngredientList = require("../models/ingredientList");
 const Missing = require("../models/missing");
 const OrderList = require("../models/orderList");
-const POS = require("../models/POS");
+const Pos = require("../models/POS");
 const Recipe = require("../models/recipe");
 const Spoilage = require("../models/spoilage");
 const Transactions = require("../models/transactions");
@@ -325,11 +325,215 @@ const controller = {
 		db.findMany(MenuGroup, {}, {}, (menugroups) => {
 			db.findOne(MenuGroup, { menuGroupID: req.params.menugroupID }, {}, (active) => {
 				db.findMany(Recipe, { menuGroupID: active.menuGroupID, enabled: true }, {}, (recipes) => {
-
+					console.log(recipes);
 					res.render("cashier_POS", { menugroup: menugroups, Recipe: recipes });
 				});
 			});
 		});
+	},
+	// let maxID = Math.max.apply(
+	//	null,
+	//	ingredients.map((ing) => {
+	//		return ing.ingredientID;
+	//	})
+
+	// submit
+	// rerecord POS
+	// rerecord OrderList
+
+	// check recipeID
+	// sa recipe checheck ingredient list
+	// makukuha ingredient ni recipe
+	// may sarili syang amount
+	// amount ni ingredient list imultiply sa quantity
+	// kunin category ni ingredient
+	// ibabawas sa running total
+
+	submitPOS: async (req, res) => {
+		let recipes = req.body.recipe;
+		let quantity = req.body.quantity;
+
+		let orders = [];
+		console.log("recipes " + recipes);
+		console.log("quantity " + quantity);
+
+		for (let i = 0; i < recipes.length; i++) {
+			let toPush = {
+				recipe: recipes[i],
+				quanity: quantity[i],
+			};
+
+			orders.push(toPush);
+		}
+
+		await db.findMany(Pos, {}, {}, (pos) => {
+			db.findMany(Category, {}, {}, (categories) => {
+				if (pos.length == 0) {
+					let maxID = 1;
+					let toInsert = {
+						POSIDno: maxID,
+						dateOfOrder: new Date(Date.now()),
+						idPersonInCharge: req.session.userID,
+					};
+
+					db.insertOne(Pos, toInsert, (inserted) => {
+						db.findMany(OrderList, {}, {}, (orderlists) => {
+							if (orderlists.length == 0) {
+								let orderID = 1;
+								orders.forEach((order) => {
+									let toOrder = {
+										orderListID: orderID,
+										POSIDno: toInsert.POSIDno,
+										recipeID: order.recipe,
+										quantity: order.quanity,
+									};
+									db.insertOne(OrderList, toOrder, (inserted) => {
+										db.findMany(IngredientList, { recipeID: toOrder.recipeID }, {}, (ingredients) => {
+											// ingredients ng recipes sa mga inorder
+
+											ingredients.forEach((ingredient) => {
+												let toSubtract = toOrder.quantity * ingredient.amount;
+												let subtracted =
+													categories.find((categ) => categ.categoryID == ingredient.categoryID).runningTotal -
+													toSubtract;
+
+												db.updateOne(
+													Category,
+													{ categoryID: ingredient.categoryID },
+													{ runningTotal: subtracted },
+													(updated) => {}
+												);
+											});
+										});
+									});
+									orderID++;
+								});
+							} else {
+								let orderID = Math.max.apply(
+									null,
+									orderlists.map((ord) => {
+										return ord.orderListID;
+									})
+								);
+								orders.forEach((order) => {
+									let toOrder = {
+										orderListID: orderID + 1,
+										POSIDno: toInsert.POSIDno,
+										recipeID: order.recipe,
+										quantity: order.quanity,
+									};
+									db.insertOne(OrderList, toOrder, (inserted) => {
+										db.findMany(IngredientList, { recipeID: toOrder.recipeID }, {}, (ingredients) => {
+											// ingredients ng recipes sa mga inorder
+
+											ingredients.forEach((ingredient) => {
+												let toSubtract = toOrder.quantity * ingredient.amount;
+												let subtracted =
+													categories.find((categ) => categ.categoryID == ingredient.categoryID).runningTotal -
+													toSubtract;
+
+													db.updateOne(
+														Category,
+														{ categoryID: ingredient.categoryID },
+														{ runningTotal: subtracted },
+														(updated) => {}
+													);
+											});
+										});
+									});
+									orderID++;
+								});
+							}
+						});
+					});
+				} else {
+					let maxID = Math.max.apply(
+						null,
+						pos.map((p) => {
+							return p.POSIDno;
+						})
+					);
+
+					let toInsert = {
+						POSIDno: maxID + 1,
+						dateOfOrder: new Date(Date.now()),
+						idPersonInCharge: req.session.userID,
+					};
+
+					db.insertOne(Pos, toInsert, (inserted) => {
+						db.findMany(OrderList, {}, {}, (orderlists) => {
+							if (orderlists.length == 0) {
+								let orderID = 1;
+								orders.forEach((order) => {
+									let toOrder = {
+										orderListID: orderID,
+										POSIDno: toInsert.POSIDno,
+										recipeID: order.recipe,
+										quantity: order.quanity,
+									};
+									db.insertOne(OrderList, toOrder, (inserted) => {
+										db.findMany(IngredientList, { recipeID: toOrder.recipeID }, {}, (ingredients) => {
+											// ingredients ng recipes sa mga inorder
+
+											ingredients.forEach((ingredient) => {
+												let toSubtract = toOrder.quantity * ingredient.amount;
+												let subtracted =
+													categories.find((categ) => categ.categoryID == ingredient.categoryID).runningTotal -
+													toSubtract;
+
+													db.updateOne(
+														Category,
+														{ categoryID: ingredient.categoryID },
+														{ runningTotal: subtracted },
+														(updated) => {}
+													);
+											});
+										});
+									});
+									orderID++;
+								});
+							} else {
+								let orderID = Math.max.apply(
+									null,
+									orderlists.map((ord) => {
+										return ord.orderListID;
+									})
+								);
+								orders.forEach((order) => {
+									let toOrder = {
+										orderListID: orderID + 1,
+										POSIDno: toInsert.POSIDno,
+										recipeID: order.recipe,
+										quantity: order.quanity,
+									};
+									db.insertOne(OrderList, toOrder, (inserted) => {
+										db.findMany(IngredientList, { recipeID: toOrder.recipeID }, {}, (ingredients) => {
+											// ingredients ng recipes sa mga inorder
+
+											ingredients.forEach((ingredient) => {
+												let toSubtract = toOrder.quantity * ingredient.amount;
+												let subtracted =
+													categories.find((categ) => categ.categoryID == ingredient.categoryID).runningTotal -
+													toSubtract;
+
+													db.updateOne(
+														Category,
+														{ categoryID: ingredient.categoryID },
+														{ runningTotal: subtracted },
+														(updated) => {}
+													);
+											});
+										});
+									});
+									orderID++;
+								});
+							}
+						});
+					});
+				}
+			});
+		});
+		res.redirect("/viewPOS/1");
 	},
 
 	// inventory manager
@@ -1087,7 +1291,8 @@ const controller = {
 	},
 	// categoryName: categories.find(categ => categ.categoryID === ingredient.categoryID ).categoryName
 	submitMissing: async (req, res) => {
-		let categoryIDs = req.body.categoryIDs.map(Number);
+		if(req.body.categoryIDs.length > 1){
+			let categoryIDs = req.body.categoryIDs.map(Number);
 		let ingredientIDs = req.body.ingredientIDs.map(Number);
 		let physicalCounts = req.body.physical;
 		let ingredientCount = [];
@@ -1210,6 +1415,132 @@ const controller = {
 				res.render("invManager_missingResult", { Missing: toPass });
 			});
 		});
+		} else {
+			let categoryIDs = req.body.categoryIDs;
+			let ingredientIDs = req.body.ingredientIDs;
+			let physicalCounts = req.body.physical;
+			let ingredientCount = [];
+			let i;
+	
+			for (i = 0; i < physicalCounts.length; i++) {
+				let toPush = {
+					categoryID: categoryIDs[i],
+					ingredientID: ingredientIDs[i],
+					physicalCount: parseFloat(physicalCounts[i]),
+				};
+	
+				ingredientCount.push(toPush);
+			}
+			db.findMany(Ingredients, { ingredientID: { $in: ingredientIDs } }, {}, (ingredients) => {
+				let toHBS = [];
+				let withNetweight = [];
+				ingredientCount.forEach((count) => {
+					// add netweight ng mga same category
+	
+					let netweights = {
+						categoryID: count.categoryID,
+						ingredientID: count.ingredientID,
+						netweight:
+							ingredients.find((ingred) => ingred.ingredientID == count.ingredientID).netWeight * count.physicalCount,
+					};
+	
+					withNetweight.push(netweights);
+				});
+	
+				db.findMany(Category, { categoryID: { $in: categoryIDs } }, {}, (categories) => {
+					let toPass = [];
+					categories.forEach((category) => {
+						let toPush = {
+							categoryID: category.categoryID,
+							categoryName: category.categoryName,
+							runningTotal: category.runningTotal,
+							physicalCount: 0.0,
+							amount: 0.0,
+						};
+	
+						for (let i = 0; i < withNetweight.length; i++) {
+							if (category.categoryID == withNetweight[i].categoryID) {
+								toPush.physicalCount = toPush.physicalCount + withNetweight[i].netweight;
+								toPush.amount = Math.abs(toPush.runningTotal - toPush.physicalCount);
+							}
+						}
+						toPass.push(toPush);
+						// maxID = Math.max.apply(null, recipes.map((rec) => {
+						//        return rec.recipeID;
+						//        }));
+						if (category.runningTotal > toPush.physicalCount) {
+							db.findMany(Missing, {}, {}, (missings) => {
+								if (missings.length == 0) {
+									let date = new Date(Date.now());
+									let toInsert = {
+										caseID: "1",
+										categoryID: category.categoryID,
+										employeeNo: req.session.userID,
+										amount: toPush.amount,
+										unitID: category.unitID,
+										caseDate: date,
+									};
+									console.log(toInsert);
+									db.insertOne(Missing, toInsert, (inserted) => {
+										console.log(inserted);
+										db.updateOne(
+											Category,
+											{ categoryID: category.categoryID },
+											{ runningTotal: toPush.physicalCount },
+											(updated) => {
+												console.log(updated);
+											}
+										);
+									});
+								} else {
+									let date = new Date(Date.now());
+									let maxID = Math.max.apply(
+										null,
+										missings.map((miss) => {
+											return miss.caseID;
+										})
+									);
+									let toInsert = {
+										caseID: (maxID + 1).toString(),
+										categoryID: category.categoryID,
+										employeeNo: req.session.userID,
+										amount: toPush.amount,
+										unitID: category.unitID,
+										caseDate: date,
+									};
+									console.log(toInsert);
+									db.insertOne(Missing, toInsert, (inserted) => {
+										console.log(inserted);
+										db.updateOne(
+											Category,
+											{ categoryID: category.categoryID },
+											{ runningTotal: toPush.physicalCount },
+											(updated) => {
+												console.log(updated);
+											}
+										);
+									});
+								}
+							});
+						} else {
+							db.updateOne(
+								Category,
+								{ categoryID: category.categoryID },
+								{ runningTotal: toPush.physicalCount },
+								(updated) => {
+									console.log(updated + "no insert");
+								}
+							);
+						}
+					});
+					// change running total of the category with the manual count running total
+					// record discrepancy in missing
+	
+					res.render("invManager_missingResult", { Missing: toPass });
+				});
+			});
+		}
+		
 	},
 
 	// owner
@@ -1859,7 +2190,7 @@ const controller = {
 						let spoiledPush = {
 							caseDate: spoiled.caseDate,
 							reportType: "Spoilage",
-							CategoryName: categories.find((categ) => categ.categoryID === parseInt(spoiled.categoryID)).categoryName,
+							CategoryName: categories.find((categ) => categ.categoryID == parseInt(spoiled.categoryID)).categoryName,
 							amount: spoiled.amount,
 							employeeName:
 								users.find((user) => user.userID === spoiled.employeeNo).firstName +
