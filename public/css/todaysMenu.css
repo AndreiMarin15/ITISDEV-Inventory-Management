@@ -163,6 +163,13 @@ p {
     transition-duration: 0.2s;
 }
 
+.add:hover {
+    color: var(--clr-green);
+    background-color: white;
+    border: 1px solid var(--clr-green);
+    text-align: center;
+  }
+
   .view {
     border: 1px solid var(--clr-green);
     border-radius: 5px;
@@ -175,6 +182,13 @@ p {
     cursor: pointer;
     text-align: center;
     transition-duration: 0.2s;
+}
+
+.view:hover {
+    color: var(--clr-green);
+    background-color: white;
+    border: 1px solid var(--clr-green);
+    text-align: center;
 }
 
 .header-buttons {
