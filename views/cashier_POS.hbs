@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="/css/base.css">
 		<link rel="stylesheet" href="/css/cashierPanel.css">
 		<script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
+		<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 	</head>
 	<body>
 
@@ -32,7 +33,7 @@
 				<div class="menu-box">
 						{{#each Recipe}}
 						<div>
-							<button class="menuitem"><span class="menu-text">{{recipeName}}</span><br><span class="price-text">{{price}}</span></button>
+							<button class="menuitem" id="{{recipeID}}" onclick="myFunction()"><span class="menu-text">{{recipeName}}</span><br><span class="price-text">{{price}}</span></button>
 						</div>
 						{{/each}}
 				</div>
@@ -42,44 +43,79 @@
 				<span class="checkout-header">Checkout</span>
 				<div class="checkout-box">
 				<div class="checkout-content">
-					<table class="checkout-table">
+					<form action='#' method="post">
+					<table class="checkout-table" id="CO-table">
+						<thead>
 						<tr>
 							<th>Item Name</th>
 							<th>Quantity</th>
-							<th>Price</th>
 						</tr>
-						{{#each Item}}
+						</thead>
+						<tbody>
 						<tr>
-							<td><i class="fa-solid fa-trash-can"></i>{{name}} </td>
-							<td><i class="fa-solid fa-circle-plus"></i>{{quantity}}<i class="fa-solid fa-circle-minus"></i></i></td>
-							<td>{{price}}</td>
+							<td>
+								<select name="recipe" id="recipe" class="dropdown">
+									<option value="{{recipeID}}">{{recipeName}}</option>
+								</select>
+							</td>
+							<td><input type="number" class="textbox-short" id="quantity" value ="0" name="quantity" step="0.01" min ="0"></td>
 						</tr>
-						{{/each}}
+						</tbody>
 
 					</table>
+					<div>
+                        <input type="submit" class="button-green popup" value="Submit"/>
+                    </div>
+					</form>
 				</div>
+						<div class="add-row">
+							<div>
+								<button id="btnNewRow" class="button-green popup">Add Ingredient Row</button>
+							</div>
+							<div>
+								<button id="btnDelete" class="delete">Delete Last Ingredient Row</button>
+							</div>
+						</div>
 
-					<div class="checkout-counter">
-						<table class="summary-table">
-							<tr>
-								<th>Total</th>
-								<td>{{totalprice}}</td>
-							</tr>
-						</table>
-					</div>
-				</div>
+						<script>
+    					$(document).ready(function() {
+        					$('#btnNewRow').on('click', function(evt) {
+            					evt.preventDefault();
+            					$("#CO-table").find('tbody')
+                					.append($('<tr><td><select name="recipe" id="recipe" class="dropdown"><option value="{{recipeID}}">{{recipeName}}</option></select></td><td><input type="number" class="textbox-short" id="quantity" value ="0" name="quantity" step="0.01" min ="0"></td></tr>'))
+        					});
 
-				<button class="button-submit popup" onclick="myFunction()">Confirm
+							$('#btnDelete').on('click', function(evt) {
+            					evt.preventDefault();
+            					$("#CO-table tbody tr:last").remove();
+        					});
+							
+    					});
+						</script>
+
+				{{!-- <button class="button-submit popup" onclick="myFunction()">Confirm
 					<span class="popuptext" id="myPopup">Successful Transaction!</span>
-				</button>
+				</button> 
 				<script>
 					// When the user clicks on <div>, open the popup
 					function myFunction() {
 				  	var popup = document.getElementById("myPopup");
-				  	popup.classList.toggle("show");
+				  	popup.classList.toggle("show"); 
+					
 					}
 				</script>
-			</div>
+				
+						{{!-- <script>
+    					$(document).ready(function(recipeID) {
+        					$('#'+recipeID).on('click', function(evt) {
+            					evt.preventDefault();
+            					$("#CO-table").find('tbody')
+                					.append($('<tr><td><i class="fa-solid fa-trash-can"></i>{{name}}</td><td><i class="fa-solid fa-circle-plus"></i>{{quantity}}<i class="fa-solid fa-circle-minus"></i></i></td><td>{{price}}</td></tr>'))
+        					});			
+    					});
+						</script> --}}
+
+			</div> 
 		</div>
 	</body>
 </html>
