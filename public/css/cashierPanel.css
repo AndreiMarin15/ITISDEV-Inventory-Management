@@ -20,7 +20,7 @@
 .menu-container{
     display:flex;
     flex-direction: column;
-    min-width:50vw;
+    min-width:30vw;
     min-height:100vh;
     background-color: var(--clr-peach);
 }
@@ -110,7 +110,7 @@
     align-items:center;
     text-align:center;
     padding-top:5vh;
-    min-width:28vw;
+    min-width:35vw;
     min-height:95vh;
     background-color: var(--clr-white);
     gap:20px;
@@ -183,6 +183,9 @@
 
 .checkout-box{
     background-color:var(--clr-gray-100);
+    border: 2px solid var(--clr-green);
+    border-radius: 10px;
+    padding-bottom: 10px;
 }
 
 /* Popup container */

@@ -196,14 +196,15 @@ body {
   cursor: pointer;
   text-align: center;
 }
-.button-red {
-  border: 1px solid var(--clr-red);
+
+.button-green-small {
+  border: 1px solid var(--clr-green);
   border-radius: 5px;
-  background-color: var(--clr-red);
+  background-color: var(--clr-green);
   font-family: var(--font-type2);
   font-size: 14px;
   width: 10vw;
-  height: 6vh;
+  height: auto; /*4vh*/
   color: var(--clr-white);
   padding: 10px;
   box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
@@ -212,6 +213,12 @@ body {
 }
 
 .button-green:hover {
+  border-radius: 5px;
+  background-color: white;
+  color: #1a7968;
+}
+
+.button-green-small:hover {
   border-radius: 5px;
   background-color: white;
   color: #1a7968;
