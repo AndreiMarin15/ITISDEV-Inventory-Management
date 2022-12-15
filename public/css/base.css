@@ -239,18 +239,13 @@ body {
 }
 
 .textbox-long {
-  border: 1px solid var(--clr-green);
+  padding: 7px 5px;
   border-radius: 5px;
-  background-color: var(--clr-white);
-  font-family: var(--font-type2);
-  font-size: 14px;
-  width: 15vw;
-  height: 1vh;
-  color: black;
-  padding: 10px;
-  box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
-  cursor: pointer;
-  text-align: left;
+  border: 1px solid var(--clr-green);
+  width: 17vw;
+  height: 2vh;
+  font-weight: bold;
+  color: var(--clr-green);
 }
 
 .textbox-short {
