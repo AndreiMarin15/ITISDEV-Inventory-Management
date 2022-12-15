@@ -408,8 +408,8 @@ const controller = {
 		});
 	},
 
-  getReportsInvManagerFiltered: async (req, res) => {
-    let report = [];
+	getReportsInvManagerFiltered: async (req, res) => {
+		let report = [];
 		await db.findMany(Category, {}, {}, (categories) => {
 			db.findMany(User, { userID: { $ne: "admin" } }, {}, (users) => {
 				db.findMany(Spoilage, {}, {}, (spoilage) => {
@@ -441,89 +441,89 @@ const controller = {
 							};
 							report.push(missingPush);
 						});
-            
-            if(req.body.filter == 1){
-              if(req.body.sort == 1){      
-                report.sort((a, b) => {
-                  let da = new Date(a.caseDate),
-                    db = new Date(b.caseDate);
-                  // Date Descending
-                  return db - da;
-                });
-                let date = new Date(Date.now());
-                let month = date.getMonth() + 1;
-                let day = date.getDate();
-                let year = date.getFullYear();
 
-                let fullDate = month + "-" + day + "-" + year;
+						if (req.body.filter == 1) {
+							if (req.body.sort == 1) {
+								report.sort((a, b) => {
+									let da = new Date(a.caseDate),
+										db = new Date(b.caseDate);
+									// Date Descending
+									return db - da;
+								});
+								let date = new Date(Date.now());
+								let month = date.getMonth() + 1;
+								let day = date.getDate();
+								let year = date.getFullYear();
 
-                res.render("invManager_reportsPage", {
-                  Report: report,
-                  dateToday: fullDate,
-                });
-              }else if (req.body.sort == 2){
-                report.sort((a, b) => {
-                  let da = new Date(a.caseDate),
-                    db = new Date(b.caseDate);
-                  // Date Ascending
-                  return da - db;
-                });
-                  let date = new Date(Date.now());
-                  let month = date.getMonth() + 1;
-                  let day = date.getDate();
-                  let year = date.getFullYear();
+								let fullDate = month + "-" + day + "-" + year;
 
-                  let fullDate = month + "-" + day + "-" + year;
+								res.render("invManager_reportsPage", {
+									Report: report,
+									dateToday: fullDate,
+								});
+							} else if (req.body.sort == 2) {
+								report.sort((a, b) => {
+									let da = new Date(a.caseDate),
+										db = new Date(b.caseDate);
+									// Date Ascending
+									return da - db;
+								});
+								let date = new Date(Date.now());
+								let month = date.getMonth() + 1;
+								let day = date.getDate();
+								let year = date.getFullYear();
 
-                  res.render("invManager_reportsPage", {
-                    Report: report,
-                    dateToday: fullDate,
-                  });
-                }
-              }else{
-                if(req.body.sort == 1){
-                  report.sort((a, b) => {
-                    let ra = a.employeeName,
-                        rb = b.employeeName;
-                    //employee name ascending
-                    return ra.localeCompare(rb);
-                  });
-                  let date = new Date(Date.now());
-                  let month = date.getMonth() + 1;
-                  let day = date.getDate();
-                  let year = date.getFullYear();
+								let fullDate = month + "-" + day + "-" + year;
 
-                  let fullDate = month + "-" + day + "-" + year;
+								res.render("invManager_reportsPage", {
+									Report: report,
+									dateToday: fullDate,
+								});
+							}
+						} else {
+							if (req.body.sort == 1) {
+								report.sort((a, b) => {
+									let ra = a.employeeName,
+										rb = b.employeeName;
+									//employee name ascending
+									return ra.localeCompare(rb);
+								});
+								let date = new Date(Date.now());
+								let month = date.getMonth() + 1;
+								let day = date.getDate();
+								let year = date.getFullYear();
 
-                  res.render("invManager_reportsPage", {
-                    Report: report,
-                    dateToday: fullDate,
-                  });
-                } else if (req.body.sort == 2){
-                  report.sort((a, b) => {
-                    let ra = a.employeeName,
-                        rb = b.employeeName;
-                    //employee name descending
-                    return rb.localeCompare(ra);
-                  });
-                  let date = new Date(Date.now());
-                  let month = date.getMonth() + 1;
-                  let day = date.getDate();
-                  let year = date.getFullYear();
+								let fullDate = month + "-" + day + "-" + year;
 
-                  let fullDate = month + "-" + day + "-" + year;
+								res.render("invManager_reportsPage", {
+									Report: report,
+									dateToday: fullDate,
+								});
+							} else if (req.body.sort == 2) {
+								report.sort((a, b) => {
+									let ra = a.employeeName,
+										rb = b.employeeName;
+									//employee name descending
+									return rb.localeCompare(ra);
+								});
+								let date = new Date(Date.now());
+								let month = date.getMonth() + 1;
+								let day = date.getDate();
+								let year = date.getFullYear();
 
-                  res.render("invManager_reportsPage", {
-                    Report: report,
-                    dateToday: fullDate,
-                  });
-                }
-              }
-            });
+								let fullDate = month + "-" + day + "-" + year;
+
+								res.render("invManager_reportsPage", {
+									Report: report,
+									dateToday: fullDate,
+								});
+							}
+						}
 					});
 				});
 			});
-  },
+		});
+	},
 
 	addIngredient: async (req, res) => {
 		await db.findOne(MenuGroup, { menuGroupID: req.params.menugroupID }, {}, (menugroup) => {
@@ -1384,8 +1384,8 @@ const controller = {
 		});
 	},
 
-  getEmployeeFiltered: async (req,res) => {
-    db.findMany(User, { $or: [{ userType: 1 }, { userType: 2 }] }, {}, (users) => {
+	getEmployeeFiltered: async (req, res) => {
+		db.findMany(User, { $or: [{ userType: 1 }, { userType: 2 }] }, {}, (users) => {
 			db.findMany(UserType, { $or: [{ userID: 1 }, { userID: 2 }] }, {}, (userType) => {
 				let employee = [];
 
@@ -1399,71 +1399,70 @@ const controller = {
 
 					employee.push(use);
 				});
-        if (req.body.filter == 1){
-          if(req.body.sort == 1){
-            employee.sort((a, b) => {
-              // by employee ascending
-              let ca = a.userID,
-                cb = b.userID;
+				if (req.body.filter == 1) {
+					if (req.body.sort == 1) {
+						employee.sort((a, b) => {
+							// by employee ascending
+							let ca = a.userID,
+								cb = b.userID;
 
-              return ca.localeCompare(cb);
-            });
-            res.render("owner_employeeList", { employee: employee });
-          } else if (req.body.sort == 2){
-              employee.sort((a, b) => {
-              // by employee descending
-              let ca = a.userID,
-                cb = b.userID;
+							return ca.localeCompare(cb);
+						});
+						res.render("owner_employeeList", { employee: employee });
+					} else if (req.body.sort == 2) {
+						employee.sort((a, b) => {
+							// by employee descending
+							let ca = a.userID,
+								cb = b.userID;
 
-              return cb.localeCompare(ca);
-            });
-            res.render("owner_employeeList", { employee: employee });
-          } 
-        } else if (req.body.filter == 2){
-            if(req.body.sort == 1){
-              employee.sort((a, b) => {
-                // by Full Name ascending
-                let ca = a.firstName + a.lastName,
-                  cb = b.firstName + b.lastName;
+							return cb.localeCompare(ca);
+						});
+						res.render("owner_employeeList", { employee: employee });
+					}
+				} else if (req.body.filter == 2) {
+					if (req.body.sort == 1) {
+						employee.sort((a, b) => {
+							// by Full Name ascending
+							let ca = a.firstName + a.lastName,
+								cb = b.firstName + b.lastName;
 
-                return ca.localeCompare(cb);
-              });
-              res.render("owner_employeeList", { employee: employee });
-            } else if (req.body.sort == 2){
-                employee.sort((a, b) => {
-                // by Full Name descending
-                let ca = a.firstName + a.lastName,
-                cb = b.firstName + b.lastName;
+							return ca.localeCompare(cb);
+						});
+						res.render("owner_employeeList", { employee: employee });
+					} else if (req.body.sort == 2) {
+						employee.sort((a, b) => {
+							// by Full Name descending
+							let ca = a.firstName + a.lastName,
+								cb = b.firstName + b.lastName;
 
-                return cb.localeCompare(ca);
-              });
-              res.render("owner_employeeList", { employee: employee });
-            } 
-        } else {
-            if(req.body.sort == 1){
-              employee.sort((a, b) => {
-                // by Position ascending
-                let ca = a.position
-                  cb = b.position
+							return cb.localeCompare(ca);
+						});
+						res.render("owner_employeeList", { employee: employee });
+					}
+				} else {
+					if (req.body.sort == 1) {
+						employee.sort((a, b) => {
+							// by Position ascending
+							let ca = a.position;
+							cb = b.position;
 
-                return ca.localeCompare(cb);
-              });
-              res.render("owner_employeeList", { employee: employee });
-            } else if (req.body.sort == 2){
-                employee.sort((a, b) => {
-                // by Posotion descending
-                let ca = a.position
-                cb = b.position
+							return ca.localeCompare(cb);
+						});
+						res.render("owner_employeeList", { employee: employee });
+					} else if (req.body.sort == 2) {
+						employee.sort((a, b) => {
+							// by Posotion descending
+							let ca = a.position;
+							cb = b.position;
 
-                return cb.localeCompare(ca);
-              });
-              res.render("owner_employeeList", { employee: employee });
-            } 
-        }
-				
+							return cb.localeCompare(ca);
+						});
+						res.render("owner_employeeList", { employee: employee });
+					}
+				}
 			});
 		});
-  },
+	},
 
 	deleteUser: async (req, res) => {
 		console.log(req.params.userID);
@@ -1540,26 +1539,41 @@ const controller = {
 
 	getOwnerMenu: async (req, res) => {
 		await db.findMany(MenuGroup, {}, {}, (menugroups) => {
-			let menugrp = [];
-			menugroups.forEach((menu) => {
-				let grp = {
-					MenuGroupID: menu.menuGroupID,
-					MenuGroupName: menu.menuGroupName,
-				};
-
-				menugrp.push(grp);
+			let menuIDs = [];
+			menugroups.forEach((grup) => {
+				menuIDs.push(grup.menuGroupID);
 			});
-			let date = new Date(Date.now());
-			let month = date.getMonth() + 1;
-			let day = date.getDate();
-			let year = date.getFullYear();
-			console.log(menugrp);
+			db.findMany(Recipe, { menuGroupID: { $in: menuIDs } }, {}, (recipes) => {
+				let menugrp = [];
+				menugroups.forEach((menu) => {
+					let rec = [];
+					recipes.forEach((recipe) => {
+						if (menu.menuGroupID == recipe.menuGroupID) {
+							rec.push(recipe);
+						}
+					});
 
-			res.render("owner_menuList", {
-				dateToday: month + "-" + day + "-" + year,
-				menugrps: menugrp,
+					let grp = {
+						MenuGroupID: menu.menuGroupID,
+						MenuGroupName: menu.menuGroupName,
+						Recipe: rec,
+					};
+
+					menugrp.push(grp);
+				});
+				let date = new Date(Date.now());
+				let month = date.getMonth() + 1;
+				let day = date.getDate();
+				let year = date.getFullYear();
+				console.log(menugrp);
+
+				res.render("owner_menuList", {
+					dateToday: month + "-" + day + "-" + year,
+					menugrps: menugrp,
+				});
 			});
 		});
+			
 	},
 
 	addMenuFolder: (req, res) => {
@@ -1763,8 +1777,8 @@ const controller = {
 		});
 	},
 
-  getInventoryReportsFiltered: async (req, res) => {
-    let report = [];
+	getInventoryReportsFiltered: async (req, res) => {
+		let report = [];
 		await db.findMany(Category, {}, {}, (categories) => {
 			db.findMany(User, { userID: { $ne: "admin" } }, {}, (users) => {
 				db.findMany(Spoilage, {}, {}, (spoilage) => {
@@ -1796,89 +1810,89 @@ const controller = {
 							};
 							report.push(missingPush);
 						});
-            
-            if(req.body.filter == 1){
-              if(req.body.sort == 1){      
-                report.sort((a, b) => {
-                  let da = new Date(a.caseDate),
-                    db = new Date(b.caseDate);
-                  // Date Descending
-                  return db - da;
-                });
-                let date = new Date(Date.now());
-                let month = date.getMonth() + 1;
-                let day = date.getDate();
-                let year = date.getFullYear();
 
-                let fullDate = month + "-" + day + "-" + year;
+						if (req.body.filter == 1) {
+							if (req.body.sort == 1) {
+								report.sort((a, b) => {
+									let da = new Date(a.caseDate),
+										db = new Date(b.caseDate);
+									// Date Descending
+									return db - da;
+								});
+								let date = new Date(Date.now());
+								let month = date.getMonth() + 1;
+								let day = date.getDate();
+								let year = date.getFullYear();
 
-                res.render("owner_reportsPage", {
-                  Report: report,
-                  dateToday: fullDate,
-                });
-              }else if (req.body.sort == 2){
-                report.sort((a, b) => {
-                  let da = new Date(a.caseDate),
-                    db = new Date(b.caseDate);
-                  // Date Ascending
-                  return da - db;
-                });
-                  let date = new Date(Date.now());
-                  let month = date.getMonth() + 1;
-                  let day = date.getDate();
-                  let year = date.getFullYear();
+								let fullDate = month + "-" + day + "-" + year;
 
-                  let fullDate = month + "-" + day + "-" + year;
+								res.render("owner_reportsPage", {
+									Report: report,
+									dateToday: fullDate,
+								});
+							} else if (req.body.sort == 2) {
+								report.sort((a, b) => {
+									let da = new Date(a.caseDate),
+										db = new Date(b.caseDate);
+									// Date Ascending
+									return da - db;
+								});
+								let date = new Date(Date.now());
+								let month = date.getMonth() + 1;
+								let day = date.getDate();
+								let year = date.getFullYear();
 
-                  res.render("owner_reportsPage", {
-                    Report: report,
-                    dateToday: fullDate,
-                  });
-                }
-              }else{
-                if(req.body.sort == 1){
-                  report.sort((a, b) => {
-                    let ra = a.employeeName,
-                        rb = b.employeeName;
-                    //employee name ascending
-                    return ra.localeCompare(rb);
-                  });
-                  let date = new Date(Date.now());
-                  let month = date.getMonth() + 1;
-                  let day = date.getDate();
-                  let year = date.getFullYear();
+								let fullDate = month + "-" + day + "-" + year;
 
-                  let fullDate = month + "-" + day + "-" + year;
+								res.render("owner_reportsPage", {
+									Report: report,
+									dateToday: fullDate,
+								});
+							}
+						} else {
+							if (req.body.sort == 1) {
+								report.sort((a, b) => {
+									let ra = a.employeeName,
+										rb = b.employeeName;
+									//employee name ascending
+									return ra.localeCompare(rb);
+								});
+								let date = new Date(Date.now());
+								let month = date.getMonth() + 1;
+								let day = date.getDate();
+								let year = date.getFullYear();
 
-                  res.render("owner_reportsPage", {
-                    Report: report,
-                    dateToday: fullDate,
-                  });
-                } else if (req.body.sort == 2){
-                  report.sort((a, b) => {
-                    let ra = a.employeeName,
-                        rb = b.employeeName;
-                    //employee name descending
-                    return rb.localeCompare(ra);
-                  });
-                  let date = new Date(Date.now());
-                  let month = date.getMonth() + 1;
-                  let day = date.getDate();
-                  let year = date.getFullYear();
+								let fullDate = month + "-" + day + "-" + year;
 
-                  let fullDate = month + "-" + day + "-" + year;
+								res.render("owner_reportsPage", {
+									Report: report,
+									dateToday: fullDate,
+								});
+							} else if (req.body.sort == 2) {
+								report.sort((a, b) => {
+									let ra = a.employeeName,
+										rb = b.employeeName;
+									//employee name descending
+									return rb.localeCompare(ra);
+								});
+								let date = new Date(Date.now());
+								let month = date.getMonth() + 1;
+								let day = date.getDate();
+								let year = date.getFullYear();
 
-                  res.render("owner_reportsPage", {
-                    Report: report,
-                    dateToday: fullDate,
-                  });
-                }
-              }
-            });
+								let fullDate = month + "-" + day + "-" + year;
+
+								res.render("owner_reportsPage", {
+									Report: report,
+									dateToday: fullDate,
+								});
+							}
+						}
 					});
 				});
 			});
-  },
+		});
+	},
 
 	addIngredient: async (req, res) => {
 		await db.findOne(MenuGroup, { menuGroupID: req.params.menugroupID }, {}, (menugroup) => {
