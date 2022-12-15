@@ -326,9 +326,14 @@ const controller = {
 	// cashier
 
 	getPOS: (req, res) => {
-		db.findMany(MenuGroup, {}, {}, (menugroups) => {});
+		db.findMany(MenuGroup, {}, {}, (menugroups) => {
+			db.findOne(MenuGroup, { menuGroupID: req.params.menugroupID }, {}, (active) => {
+				db.findMany(Recipe, { menuGroupID: active.menuGroupID, enabled: true }, {}, (recipes) => {
 
-		res.render("cashier_POS");
+					res.render("cashier_POS", { menugroup: menugroups, Recipe: recipes });
+				});
+			});
+		});
 	},
 
 	// inventory manager
@@ -1594,8 +1599,6 @@ const controller = {
 				});
 			}
 		});
-
-	
 	},
 
 	viewIngredients: async (req, res) => {

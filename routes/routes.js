@@ -60,7 +60,7 @@ app.post("/inventoryListFiltered", controller.getFiltered);
 app.post("/reportsPageInvManagerFiltered", controller.getReportsInvManagerFiltered);
 
 // cashier
-app.get("/viewPOS", controller.getPOS);
+app.get("/viewPOS/:menugroupID", controller.getPOS);
 
 //Testing for viewDish
 // app.get("/viewDish", controller.viewDish);

@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<title>Cashier | POS</title>
-		<link rel="stylesheet" href="css/base.css">
-		<link rel="stylesheet" href="css/cashierPanel.css">
+		<link rel="stylesheet" href="/css/base.css">
+		<link rel="stylesheet" href="/css/cashierPanel.css">
 		<script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
@@ -15,7 +15,10 @@
 				<div class="category-box">
 						{{#each menugroup}}
 						<div>
-							<button class="category-item"><span class="category-text">{{menuGroupName}}</span></button>
+							<form action="/viewPOS/{{menuGroupID}}" method="get">
+							<input type="submit" value="{{menuGroupName}}" class="category-item">
+							</form>
+							
 						</div>
 						{{/each}}
 
@@ -29,7 +32,7 @@
 				<div class="menu-box">
 						{{#each Recipe}}
 						<div>
-							<button class="menuitem"><span class="menu-text">{{recipeName}}</span><br><span class="price-text">P100</span></button>
+							<button class="menuitem"><span class="menu-text">{{recipeName}}</span><br><span class="price-text">{{price}}</span></button>
 						</div>
 						{{/each}}
 				</div>
