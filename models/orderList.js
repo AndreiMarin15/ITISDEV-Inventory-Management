@@ -15,7 +15,6 @@ const OrderListSchema = new mongoose.Schema({
 	quantity: {
 		type: Number,
 	},
-
 });
 
 const OrderList = mongoose.model("OrderList", OrderListSchema);

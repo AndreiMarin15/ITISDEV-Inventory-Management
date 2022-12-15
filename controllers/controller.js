@@ -432,12 +432,12 @@ const controller = {
 													categories.find((categ) => categ.categoryID == ingredient.categoryID).runningTotal -
 													toSubtract;
 
-													db.updateOne(
-														Category,
-														{ categoryID: ingredient.categoryID },
-														{ runningTotal: subtracted },
-														(updated) => {}
-													);
+												db.updateOne(
+													Category,
+													{ categoryID: ingredient.categoryID },
+													{ runningTotal: subtracted },
+													(updated) => {}
+												);
 											});
 										});
 									});
@@ -481,12 +481,12 @@ const controller = {
 													categories.find((categ) => categ.categoryID == ingredient.categoryID).runningTotal -
 													toSubtract;
 
-													db.updateOne(
-														Category,
-														{ categoryID: ingredient.categoryID },
-														{ runningTotal: subtracted },
-														(updated) => {}
-													);
+												db.updateOne(
+													Category,
+													{ categoryID: ingredient.categoryID },
+													{ runningTotal: subtracted },
+													(updated) => {}
+												);
 											});
 										});
 									});
@@ -516,12 +516,12 @@ const controller = {
 													categories.find((categ) => categ.categoryID == ingredient.categoryID).runningTotal -
 													toSubtract;
 
-													db.updateOne(
-														Category,
-														{ categoryID: ingredient.categoryID },
-														{ runningTotal: subtracted },
-														(updated) => {}
-													);
+												db.updateOne(
+													Category,
+													{ categoryID: ingredient.categoryID },
+													{ runningTotal: subtracted },
+													(updated) => {}
+												);
 											});
 										});
 									});
@@ -1291,144 +1291,20 @@ const controller = {
 	},
 	// categoryName: categories.find(categ => categ.categoryID === ingredient.categoryID ).categoryName
 	submitMissing: async (req, res) => {
-		if(req.body.categoryIDs.length > 1){
+		if (req.body.categoryIDs.length > 1) {
 			let categoryIDs = req.body.categoryIDs.map(Number);
-		let ingredientIDs = req.body.ingredientIDs.map(Number);
-		let physicalCounts = req.body.physical;
-		let ingredientCount = [];
-		let i;
-
-		for (i = 0; i < physicalCounts.length; i++) {
-			let toPush = {
-				categoryID: categoryIDs[i],
-				ingredientID: ingredientIDs[i],
-				physicalCount: parseFloat(physicalCounts[i]),
-			};
-
-			ingredientCount.push(toPush);
-		}
-		db.findMany(Ingredients, { ingredientID: { $in: ingredientIDs } }, {}, (ingredients) => {
-			let toHBS = [];
-			let withNetweight = [];
-			ingredientCount.forEach((count) => {
-				// add netweight ng mga same category
-
-				let netweights = {
-					categoryID: count.categoryID,
-					ingredientID: count.ingredientID,
-					netweight:
-						ingredients.find((ingred) => ingred.ingredientID == count.ingredientID).netWeight * count.physicalCount,
-				};
-
-				withNetweight.push(netweights);
-			});
-
-			db.findMany(Category, { categoryID: { $in: categoryIDs } }, {}, (categories) => {
-				let toPass = [];
-				categories.forEach((category) => {
-					let toPush = {
-						categoryID: category.categoryID,
-						categoryName: category.categoryName,
-						runningTotal: category.runningTotal,
-						physicalCount: 0.0,
-						amount: 0.0,
-					};
-
-					for (let i = 0; i < withNetweight.length; i++) {
-						if (category.categoryID == withNetweight[i].categoryID) {
-							toPush.physicalCount = toPush.physicalCount + withNetweight[i].netweight;
-							toPush.amount = Math.abs(toPush.runningTotal - toPush.physicalCount);
-						}
-					}
-					toPass.push(toPush);
-					// maxID = Math.max.apply(null, recipes.map((rec) => {
-					//        return rec.recipeID;
-					//        }));
-					if (category.runningTotal > toPush.physicalCount) {
-						db.findMany(Missing, {}, {}, (missings) => {
-							if (missings.length == 0) {
-								let date = new Date(Date.now());
-								let toInsert = {
-									caseID: "1",
-									categoryID: category.categoryID,
-									employeeNo: req.session.userID,
-									amount: toPush.amount,
-									unitID: category.unitID,
-									caseDate: date,
-								};
-								console.log(toInsert);
-								db.insertOne(Missing, toInsert, (inserted) => {
-									console.log(inserted);
-									db.updateOne(
-										Category,
-										{ categoryID: category.categoryID },
-										{ runningTotal: toPush.physicalCount },
-										(updated) => {
-											console.log(updated);
-										}
-									);
-								});
-							} else {
-								let date = new Date(Date.now());
-								let maxID = Math.max.apply(
-									null,
-									missings.map((miss) => {
-										return miss.caseID;
-									})
-								);
-								let toInsert = {
-									caseID: (maxID + 1).toString(),
-									categoryID: category.categoryID,
-									employeeNo: req.session.userID,
-									amount: toPush.amount,
-									unitID: category.unitID,
-									caseDate: date,
-								};
-								console.log(toInsert);
-								db.insertOne(Missing, toInsert, (inserted) => {
-									console.log(inserted);
-									db.updateOne(
-										Category,
-										{ categoryID: category.categoryID },
-										{ runningTotal: toPush.physicalCount },
-										(updated) => {
-											console.log(updated);
-										}
-									);
-								});
-							}
-						});
-					} else {
-						db.updateOne(
-							Category,
-							{ categoryID: category.categoryID },
-							{ runningTotal: toPush.physicalCount },
-							(updated) => {
-								console.log(updated + "no insert");
-							}
-						);
-					}
-				});
-				// change running total of the category with the manual count running total
-				// record discrepancy in missing
-
-				res.render("invManager_missingResult", { Missing: toPass });
-			});
-		});
-		} else {
-			let categoryIDs = req.body.categoryIDs;
-			let ingredientIDs = req.body.ingredientIDs;
+			let ingredientIDs = req.body.ingredientIDs.map(Number);
 			let physicalCounts = req.body.physical;
 			let ingredientCount = [];
 			let i;
-	
+
 			for (i = 0; i < physicalCounts.length; i++) {
 				let toPush = {
 					categoryID: categoryIDs[i],
 					ingredientID: ingredientIDs[i],
 					physicalCount: parseFloat(physicalCounts[i]),
 				};
-	
+
 				ingredientCount.push(toPush);
 			}
 			db.findMany(Ingredients, { ingredientID: { $in: ingredientIDs } }, {}, (ingredients) => {
@@ -1436,17 +1312,17 @@ const controller = {
 				let withNetweight = [];
 				ingredientCount.forEach((count) => {
 					// add netweight ng mga same category
-	
+
 					let netweights = {
 						categoryID: count.categoryID,
 						ingredientID: count.ingredientID,
 						netweight:
 							ingredients.find((ingred) => ingred.ingredientID == count.ingredientID).netWeight * count.physicalCount,
 					};
-	
+
 					withNetweight.push(netweights);
 				});
-	
+
 				db.findMany(Category, { categoryID: { $in: categoryIDs } }, {}, (categories) => {
 					let toPass = [];
 					categories.forEach((category) => {
@@ -1457,7 +1333,7 @@ const controller = {
 							physicalCount: 0.0,
 							amount: 0.0,
 						};
-	
+
 						for (let i = 0; i < withNetweight.length; i++) {
 							if (category.categoryID == withNetweight[i].categoryID) {
 								toPush.physicalCount = toPush.physicalCount + withNetweight[i].netweight;
@@ -1535,12 +1411,135 @@ const controller = {
 					});
 					// change running total of the category with the manual count running total
 					// record discrepancy in missing
-	
+
+					res.render("invManager_missingResult", { Missing: toPass });
+				});
+			});
+		} else {
+			let categoryIDs = req.body.categoryIDs;
+			let ingredientIDs = req.body.ingredientIDs;
+			let physicalCounts = req.body.physical;
+			let ingredientCount = [];
+			let i;
+
+			for (i = 0; i < physicalCounts.length; i++) {
+				let toPush = {
+					categoryID: categoryIDs[i],
+					ingredientID: ingredientIDs[i],
+					physicalCount: parseFloat(physicalCounts[i]),
+				};
+
+				ingredientCount.push(toPush);
+			}
+			db.findMany(Ingredients, { ingredientID: { $in: ingredientIDs } }, {}, (ingredients) => {
+				let toHBS = [];
+				let withNetweight = [];
+				ingredientCount.forEach((count) => {
+					// add netweight ng mga same category
+
+					let netweights = {
+						categoryID: count.categoryID,
+						ingredientID: count.ingredientID,
+						netweight:
+							ingredients.find((ingred) => ingred.ingredientID == count.ingredientID).netWeight * count.physicalCount,
+					};
+
+					withNetweight.push(netweights);
+				});
+
+				db.findMany(Category, { categoryID: { $in: categoryIDs } }, {}, (categories) => {
+					let toPass = [];
+					categories.forEach((category) => {
+						let toPush = {
+							categoryID: category.categoryID,
+							categoryName: category.categoryName,
+							runningTotal: category.runningTotal,
+							physicalCount: 0.0,
+							amount: 0.0,
+						};
+
+						for (let i = 0; i < withNetweight.length; i++) {
+							if (category.categoryID == withNetweight[i].categoryID) {
+								toPush.physicalCount = toPush.physicalCount + withNetweight[i].netweight;
+								toPush.amount = Math.abs(toPush.runningTotal - toPush.physicalCount);
+							}
+						}
+						toPass.push(toPush);
+						// maxID = Math.max.apply(null, recipes.map((rec) => {
+						//        return rec.recipeID;
+						//        }));
+						if (category.runningTotal > toPush.physicalCount) {
+							db.findMany(Missing, {}, {}, (missings) => {
+								if (missings.length == 0) {
+									let date = new Date(Date.now());
+									let toInsert = {
+										caseID: "1",
+										categoryID: category.categoryID,
+										employeeNo: req.session.userID,
+										amount: toPush.amount,
+										unitID: category.unitID,
+										caseDate: date,
+									};
+									console.log(toInsert);
+									db.insertOne(Missing, toInsert, (inserted) => {
+										console.log(inserted);
+										db.updateOne(
+											Category,
+											{ categoryID: category.categoryID },
+											{ runningTotal: toPush.physicalCount },
+											(updated) => {
+												console.log(updated);
+											}
+										);
+									});
+								} else {
+									let date = new Date(Date.now());
+									let maxID = Math.max.apply(
+										null,
+										missings.map((miss) => {
+											return miss.caseID;
+										})
+									);
+									let toInsert = {
+										caseID: (maxID + 1).toString(),
+										categoryID: category.categoryID,
+										employeeNo: req.session.userID,
+										amount: toPush.amount,
+										unitID: category.unitID,
+										caseDate: date,
+									};
+									console.log(toInsert);
+									db.insertOne(Missing, toInsert, (inserted) => {
+										console.log(inserted);
+										db.updateOne(
+											Category,
+											{ categoryID: category.categoryID },
+											{ runningTotal: toPush.physicalCount },
+											(updated) => {
+												console.log(updated);
+											}
+										);
+									});
+								}
+							});
+						} else {
+							db.updateOne(
+								Category,
+								{ categoryID: category.categoryID },
+								{ runningTotal: toPush.physicalCount },
+								(updated) => {
+									console.log(updated + "no insert");
+								}
+							);
+						}
+					});
+					// change running total of the category with the manual count running total
+					// record discrepancy in missing
+
 					res.render("invManager_missingResult", { Missing: toPass });
 				});
 			});
 		}
-		
 	},
 
 	// owner
@@ -1847,13 +1846,41 @@ const controller = {
 	},
 
 	getTransactionTrail: function (req, res) {
-		let date = new Date(Date.now());
-		let month = date.getMonth() + 1;
-		let day = date.getDate();
-		let year = date.getFullYear();
+		db.findMany(OrderList, {}, {}, (orderlists) => {
+			db.findMany(Recipe, {}, {}, (recipes) => {
+				db.findMany(MenuGroup, {}, {}, (menugroups) => {
+					let toPass = [];
+					recipes.forEach((recipe) => {
+						let toPush = {
+							recipeName: recipe.recipeName,
+							menuGroupName: menugroups.find((menugrp) => menugrp.menuGroupID == recipe.menuGroupID).menuGroupName,
+							totalQuantitySold: 0,
+							totalPrice: 0,
+						};
 
-		let fullDate = month + "-" + day + "-" + year;
-		res.render("owner_transTrail", { dateToday: fullDate });
+						orderlists.forEach((orderlist) => {
+							if (recipe.recipeID == orderlist.recipeID) {
+								toPush.totalQuantitySold = toPush.totalQuantitySold + 1;
+								toPush.totalPrice = toPush.totalPrice + recipe.price;
+							}
+						});
+						toPass.push(toPush);
+						//	<td>{{recipeName}}</td>
+						//	<td>{{menuGroupName}}</td>
+						//	<td>{{totalQuantitySold}}</td>
+						//	<td>{{totalPrice}}</td>
+					});
+
+					let date = new Date(Date.now());
+					let month = date.getMonth() + 1;
+					let day = date.getDate();
+					let year = date.getFullYear();
+
+					let fullDate = month + "-" + day + "-" + year;
+					res.render("owner_transTrail", { dateToday: fullDate, orderList: toPass });
+				});
+			});
+		});
 	},
 
 	getOwnerMenu: async (req, res) => {
