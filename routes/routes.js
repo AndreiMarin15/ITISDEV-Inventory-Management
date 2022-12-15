@@ -6,6 +6,7 @@ app.get("/", (req, res) => {
 	res.redirect("/login");
 });
 
+
 app.post("/showTesting", controller.testing);
 
 app.get("/login", controller.getIndex);
@@ -38,6 +39,7 @@ app.post("/submitDish/:menugroupID", controller.submitDish);
 app.post("/ownerInventoryListFiltered", controller.getOwnerFiltered);
 app.post("/employeeListFiltered", controller.getEmployeeFiltered);
 app.post("/ownerReportsFiltered", controller.getInventoryReportsFiltered);
+app.get("/viewRecipe/:recipeID", controller.viewIngredients);
 
 // inventory manager
 app.get("/inventoryList", controller.getInventoryList);
@@ -55,8 +57,7 @@ app.post("/additionalPurchase", controller.recordPurchase);
 app.get("/reportsPageinvManager", controller.getReportsPageInvManager);
 app.post("/submitSpoilage", controller.submitSpoilage);
 app.post("/inventoryListFiltered", controller.getFiltered);
-app.post("/reportsPageInvManagerFiltered",controller.getReportsInvManagerFiltered);
-
+app.post("/reportsPageInvManagerFiltered", controller.getReportsInvManagerFiltered);
 
 // cashier
 app.get("/viewPOS", controller.getPOS);

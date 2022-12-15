@@ -49,12 +49,16 @@
                             <tbody colspan="2">
 							{{#each Recipe}}
                                 <tr>
+                                    <form action="/viewRecipe/{{recipeID}}" method="get">
                                     <td> 
                                         <input type="checkbox" value="{{recipeID}}">
                                         <span class="checkmark"></span>
                                         {{recipeName}}
                                     </td>
-                                    <td><button class="view"> View </button></td>
+                                    
+                                        <input type="submit" value="View">
+                                    </form>
+                                    
                                 </tr>
 							{{/each}}
                                 <tr>

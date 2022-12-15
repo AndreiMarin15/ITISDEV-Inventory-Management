@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<title>Owner | Menu Ingredients</title>
-		<link rel="stylesheet" href="css/base.css">
-		<link rel="stylesheet" href="css/ingredients.css">
+		<link rel="stylesheet" href="/css/base.css">
+		<link rel="stylesheet" href="/css/ingredients.css">
 		<script src="https://kit.fontawesome.com/e5cabd2361.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
@@ -12,11 +12,11 @@
 
 		<div class="content-container">
 			<div class="ingredients-container">
-				<h1>Ingredients of {{Recipe.recipeName}}</h1>
+				<h1>Ingredients of {{RecipeName}}</h1>
 
 				<!-- TABLE OF TRANSACTIONS -->
 				<div class = "table-container">
-				    <table>
+				    <table class="table-color">
 
 					    <thead>
 					    <tr>
@@ -25,18 +25,20 @@
 						    <th>Unit</th>
 					    </tr>
 					    </thead>
-						{{#each IngredientList}}
+						<tbody>
+						{{#each ingList}}
 					    <tr>
 						    <td>{{categoryName}}</td>
 						    <td>{{amount}}</td>
-						    <td>{{unitID}}</td>
+						    <td>{{unitName}}</td>
 					    </tr>
 						{{/each}}
+						</tbody>
 				    </table>
 
                     <!-- START Add Ingredient Button-->
                 <div>
-                    <a href="/addIngredient" class="inv-submit">Add Ingredient</a>
+                    <a href="/ownerMenu" class="inv-submit">Back</a>
                 </div>
                     <!-- END Add Ingredient Button-->
                 </div>

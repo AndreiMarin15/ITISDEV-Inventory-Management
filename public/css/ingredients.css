@@ -8,6 +8,7 @@
     align-items:left;
     justify-content:left;
     text-align:left;
+    gap:25px;
 }
 
 h1 {
@@ -29,13 +30,14 @@ table {
     border-collapse: collapse;
     background-color: white;
     table-layout:fixed;
+
 }
 
 
 th, td {
     text-align:center;
     padding: 0.8em 1.5em;
-    color: white;
+    color: var(--clr-green);
     border-bottom: 1px solid #ddd;
     outline: 0.5px solid #1a7968;
     table-layout:fixed;
@@ -43,6 +45,7 @@ th, td {
 
 th {
     background-color: #1a7968;
+    color:white;
 }
 
 .add-button {
