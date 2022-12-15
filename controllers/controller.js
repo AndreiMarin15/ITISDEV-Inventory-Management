@@ -21,16 +21,16 @@ const controller = {
 	getIndex: function (req, res) {
 		if (req.session.userID == null) {
 			db.findOne(User, { userType: 0 }, {}, (result) => {
-				console.log("res = " + result);
+				
 				if (!result) {
-					console.log("no result");
+			
 					let adminType = {
 						userID: 0,
 						userTypeDesc: "admin",
 					};
 
 					db.insertOne(UserType, adminType, (result) => {
-						console.log(result);
+			
 
 						let invManagerType = {
 							userID: 1,
@@ -38,7 +38,7 @@ const controller = {
 						};
 
 						db.insertOne(UserType, invManagerType, (result) => {
-							console.log(result);
+			
 
 							let cashierType = {
 								userID: 2,
@@ -46,16 +46,16 @@ const controller = {
 							};
 
 							db.insertOne(UserType, cashierType, (result) => {
-								console.log(result);
+					
 
 								let initialPassword = "00000000";
-								console.log(initialPassword);
+					
 								bcrypt.hash(initialPassword, 10, (err, hash) => {
-									console.log(hash);
+							
 									let adminUser = {
 										userID: "admin",
-										firstName: "N/A",
-										lastName: "N/A",
+										firstName: "Alain",
+										lastName: "Encarnacion",
 										password: hash,
 										userType: 0,
 									};
@@ -86,9 +86,9 @@ const controller = {
 
 		db.findOne(User, { userID: toLogin.userID }, {}, (user) => {
 			if (user) {
-				console.log("1 " + user);
+			 
 				bcrypt.compare(toLogin.password, user.password).then((verify) => {
-					console.log("2 " + user);
+				 
 					if (verify) {
 						req.session.id = user._id;
 						req.session.userID = user.userID;
@@ -98,7 +98,7 @@ const controller = {
 						req.session.password = user.password;
 
 						req.session.save();
-						console.log(req.session.userType);
+					 
 						res.redirect("/home");
 					} else {
 						res.send(`<script>alert("Invalid user credentials."); window.location.href = "/login"; </script>`);
@@ -118,7 +118,7 @@ const controller = {
 	},
 
 	home: function (req, res) {
-		console.log(req.session);
+	 
 
 		if (req.session.userType === 0) {
 			db.findMany(User, { $or: [{ userType: 1 }, { userType: 2 }] }, {}, (users) => {
@@ -126,6 +126,7 @@ const controller = {
 					db.findMany(Category, {}, {}, (categories) => {
 						db.findMany(FoodGroup, {}, {}, (foodgroups) => {
 							db.findMany(Unit, {}, {}, (units) => {
+
 								let employee = [];
 
 								users.forEach((user) => {
@@ -325,7 +326,7 @@ const controller = {
 		db.findMany(MenuGroup, {}, {}, (menugroups) => {
 			db.findOne(MenuGroup, { menuGroupID: req.params.menugroupID }, {}, (active) => {
 				db.findMany(Recipe, { menuGroupID: active.menuGroupID, enabled: true }, {}, (recipes) => {
-					console.log(recipes);
+					 
 					res.render("cashier_POS", { menugroup: menugroups, Recipe: recipes });
 				});
 			});
@@ -354,8 +355,7 @@ const controller = {
 		let quantity = req.body.quantity;
 
 		let orders = [];
-		console.log("recipes " + recipes);
-		console.log("quantity " + quantity);
+		 
 
 		for (let i = 0; i < recipes.length; i++) {
 			let toPush = {
@@ -749,7 +749,7 @@ const controller = {
 	getInventoryList: (req, res) => {
 		db.findMany(Category, {}, {}, (categories) => {
 			db.findMany(FoodGroup, {}, {}, (foodgroups) => {
-				console.log(foodgroups);
+				 
 				db.findMany(Unit, {}, {}, (units) => {
 					let toPass = [];
 					categories.forEach((category) => {
@@ -759,7 +759,7 @@ const controller = {
 							runningTotal: category.runningTotal.toFixed(2),
 							unitName: units[category.unitID - 1].unitName,
 						};
-						console.log(toPush);
+					 
 						toPass.push(toPush);
 					});
 
@@ -789,7 +789,7 @@ const controller = {
 	getFiltered: async (req, res) => {
 		db.findMany(Category, {}, {}, (categories) => {
 			db.findMany(FoodGroup, {}, {}, (foodgroups) => {
-				console.log(foodgroups);
+				 
 				db.findMany(Unit, {}, {}, (units) => {
 					let toPass = [];
 					categories.forEach((category) => {
@@ -799,7 +799,7 @@ const controller = {
 							runningTotal: category.runningTotal.toFixed(2),
 							unitName: units[category.unitID - 1].unitName,
 						};
-						console.log(toPush);
+					 
 						toPass.push(toPush);
 					});
 
@@ -896,15 +896,14 @@ const controller = {
 		try {
 			await db.findMany(FoodGroup, {}, {}, (groups) => {
 				let foodGroup = [];
-				console.log(groups);
+				 
 				groups.forEach((group) => {
 					let food = {
 						foodGroupID: group.foodGroupID,
 						foodGroupName: group.foodGroupName,
 					};
 
-					console.log(food);
-
+				 
 					foodGroup.push(food);
 				});
 
@@ -1015,7 +1014,7 @@ const controller = {
 				};
 
 				db.insertOne(Category, newCategory, (result) => {
-					console.log(result);
+				 
 					res.redirect("/firstPurchase");
 				});
 			} else {
@@ -1034,7 +1033,7 @@ const controller = {
 					unitID: req.body.netunit,
 				};
 				db.insertOne(Category, newCategory, (result) => {
-					console.log(result);
+				 
 					res.redirect("/firstPurchase");
 				});
 			}
@@ -1055,7 +1054,7 @@ const controller = {
 
 					db.findOne(Category, { categoryID: newIngredient.categoryID }, {}, (category) => {
 						db.insertOne(Ingredients, newIngredient, (result) => {
-							console.log(result);
+						 
 							res.redirect("/recordPurchase");
 						});
 					});
@@ -1078,7 +1077,7 @@ const controller = {
 
 					db.findOne(Category, { categoryID: newIngredient.categoryID }, {}, (category) => {
 						db.insertOne(Ingredients, newIngredient, (result) => {
-							console.log(result);
+							 
 							res.redirect("/recordPurchase");
 						});
 					});
@@ -1112,7 +1111,7 @@ const controller = {
 							new Date(Date.now()).getDate()
 						);
 
-						console.log("date today: " + date);
+ 
 						if (transactions.length == 0) {
 							let transaction = {
 								transactionID: 1,
@@ -1122,7 +1121,7 @@ const controller = {
 							};
 
 							db.insertOne(Transactions, transaction, (trans) => {
-								console.log(trans);
+								 
 								res.send(`<script>alert("Transaction Recorded."); window.location.href = "/recordPurchase"; </script>`);
 							});
 						} else {
@@ -1140,7 +1139,7 @@ const controller = {
 							};
 
 							db.insertOne(Transactions, transaction, (trans) => {
-								console.log(trans);
+							 
 								res.send(`<script>alert("Transaction Recorded."); window.location.href = "/recordPurchase"; </script>`);
 							});
 						}
@@ -1184,7 +1183,7 @@ const controller = {
 					};
 					if (category.runningTotal - parseFloat(req.body.quantity) >= 0) {
 						db.insertOne(Spoilage, spoil, (spo) => {
-							console.log(spo);
+						 
 
 							db.updateOne(
 								Category,
@@ -1222,7 +1221,7 @@ const controller = {
 					};
 					if (category.runningTotal - parseFloat(req.body.quantity) >= 0) {
 						db.insertOne(Spoilage, spoil, (spo) => {
-							console.log(spo);
+						 
 
 							db.updateOne(
 								Category,
@@ -1356,9 +1355,9 @@ const controller = {
 										unitID: category.unitID,
 										caseDate: date,
 									};
-									console.log(toInsert);
+								 
 									db.insertOne(Missing, toInsert, (inserted) => {
-										console.log(inserted);
+										 
 										db.updateOne(
 											Category,
 											{ categoryID: category.categoryID },
@@ -1384,9 +1383,9 @@ const controller = {
 										unitID: category.unitID,
 										caseDate: date,
 									};
-									console.log(toInsert);
+								 
 									db.insertOne(Missing, toInsert, (inserted) => {
-										console.log(inserted);
+									 
 										db.updateOne(
 											Category,
 											{ categoryID: category.categoryID },
@@ -1404,7 +1403,7 @@ const controller = {
 								{ categoryID: category.categoryID },
 								{ runningTotal: toPush.physicalCount },
 								(updated) => {
-									console.log(updated + "no insert");
+									 
 								}
 							);
 						}
@@ -1480,7 +1479,7 @@ const controller = {
 										unitID: category.unitID,
 										caseDate: date,
 									};
-									console.log(toInsert);
+								 
 									db.insertOne(Missing, toInsert, (inserted) => {
 										console.log(inserted);
 										db.updateOne(
@@ -1488,7 +1487,7 @@ const controller = {
 											{ categoryID: category.categoryID },
 											{ runningTotal: toPush.physicalCount },
 											(updated) => {
-												console.log(updated);
+											 
 											}
 										);
 									});
@@ -1508,9 +1507,9 @@ const controller = {
 										unitID: category.unitID,
 										caseDate: date,
 									};
-									console.log(toInsert);
+								 
 									db.insertOne(Missing, toInsert, (inserted) => {
-										console.log(inserted);
+									 
 										db.updateOne(
 											Category,
 											{ categoryID: category.categoryID },
@@ -1528,7 +1527,7 @@ const controller = {
 								{ categoryID: category.categoryID },
 								{ runningTotal: toPush.physicalCount },
 								(updated) => {
-									console.log(updated + "no insert");
+								 
 								}
 							);
 						}
@@ -1550,7 +1549,7 @@ const controller = {
 	getOwnerInventoryList: (req, res) => {
 		db.findMany(Category, {}, {}, (categories) => {
 			db.findMany(FoodGroup, {}, {}, (foodgroups) => {
-				console.log(foodgroups);
+				 
 				db.findMany(Unit, {}, {}, (units) => {
 					let toPass = [];
 					categories.forEach((category) => {
@@ -1560,7 +1559,7 @@ const controller = {
 							runningTotal: category.runningTotal.toFixed(2),
 							unitName: units[category.unitID - 1].unitName,
 						};
-						console.log(toPush);
+				 
 						toPass.push(toPush);
 					});
 					let date = new Date(Date.now());
@@ -1578,7 +1577,7 @@ const controller = {
 	getOwnerFiltered: async (req, res) => {
 		db.findMany(Category, {}, {}, (categories) => {
 			db.findMany(FoodGroup, {}, {}, (foodgroups) => {
-				console.log(foodgroups);
+			 
 				db.findMany(Unit, {}, {}, (units) => {
 					let toPass = [];
 					categories.forEach((category) => {
@@ -1588,7 +1587,7 @@ const controller = {
 							runningTotal: category.runningTotal.toFixed(2),
 							unitName: units[category.unitID - 1].unitName,
 						};
-						console.log(toPush);
+					 
 						toPass.push(toPush);
 					});
 
@@ -1783,7 +1782,7 @@ const controller = {
 	},
 
 	deleteUser: async (req, res) => {
-		console.log(req.params.userID);
+ 
 		await db.delOne(User, { userID: req.params.userID }, (user) => {
 			console.log("deleted" + user);
 
@@ -1795,25 +1794,25 @@ const controller = {
 		// User.find({ userID: { $not: "admin" } })
 
 		User.find({ userID: { $ne: "admin" } }).then((users) => {
-			console.log(users);
+		 
 			if (users) {
-				console.log("if");
+			 
 				let maxID = 00001;
 				users.forEach((user) => {
 					let id = parseInt(user.userID);
 
 					if (maxID < id) {
 						maxID = id;
-						console.log(maxID);
+				 
 					}
 				});
-				console.log("before: " + maxID);
+	 
 
 				let newID = "0000" + (maxID + 1).toString();
-				console.log(newID);
+		 
 				res.render("createUser", { empID: newID });
 			} else {
-				console.log("else");
+			 
 				res.render("createUser", { empID: "00001" });
 			}
 		});
@@ -1835,10 +1834,10 @@ const controller = {
 				userType: userType,
 			};
 
-			console.log(newUser);
+	 
 
 			db.insertOne(User, newUser, (user) => {
-				console.log("new user " + user);
+			 
 
 				res.redirect("/home");
 			});
@@ -1904,7 +1903,7 @@ const controller = {
 								};
 
 								rec.push(toPush);
-								console.log("pushed " + toPush.recipeID);
+							 
 							} else {
 								let toPush = {
 									// recipe id recipe name enabled
@@ -1913,7 +1912,7 @@ const controller = {
 									Status: "Disabled",
 								};
 								rec.push(toPush);
-								console.log("pushed " + toPush.recipeID);
+							 
 							}
 						}
 					});
@@ -1930,7 +1929,7 @@ const controller = {
 				let month = date.getMonth() + 1;
 				let day = date.getDate();
 				let year = date.getFullYear();
-				console.log(menugrp);
+			 
 
 				res.render("owner_menuList", {
 					dateToday: month + "-" + day + "-" + year,
@@ -1942,7 +1941,7 @@ const controller = {
 
 	toggleIngredients: async (req, res) => {
 		db.findOne(Recipe, { recipeID: req.params.recipeID }, {}, (recipe) => {
-			console.log(recipe);
+	 
 			if (recipe.enabled == true) {
 				db.updateOne(Recipe, { recipeID: recipe.recipeID }, { enabled: false }, (updated) => {
 					res.redirect("/ownerMenu");
@@ -1972,8 +1971,7 @@ const controller = {
 
 							ingList.push(toPush);
 						});
-						console.log(ingList);
-						console.log(recipe.enabled);
+					 
 
 						if (recipe.enabled == true) {
 							res.render("owner_ingredients", {
@@ -2002,7 +2000,7 @@ const controller = {
 
 	addFolder: async (req, res) => {
 		let folderName = req.body.foldername;
-		console.log(req.body.foldername);
+	 
 		await db.findMany(MenuGroup, {}, {}, (menugroups) => {
 			if (menugroups.length > 0) {
 				let id = 1;
@@ -2012,7 +2010,7 @@ const controller = {
 						id = menugroup.menuGroupID + 1;
 					}
 
-					console.log(id);
+				 
 				});
 
 				let group = {
@@ -2047,7 +2045,7 @@ const controller = {
 	// newMenuItem: (req, res) => {},
 
 	addMenuItem: async (req, res) => {
-		console.log(req.params.menugroupID);
+	 
 		await db.findOne(MenuGroup, { menuGroupID: req.params.menugroupID }, {}, (menugroup) => {
 			db.findMany(Category, {}, {}, (categories) => {
 				db.findMany(Unit, {}, {}, (units) => {
@@ -2130,11 +2128,11 @@ const controller = {
 										unitID: categories.find((cat) => cat.categoryID == list.categoryID).unitID,
 									};
 									maxID++;
-									console.log("MAX ID " + maxID);
+								 
 									toIngredient.push(toPush);
 								}
 							});
-							console.log(toIngredient);
+							 
 							db.insertMany(IngredientList, toIngredient, (inserted) => {
 								res.redirect("/ownerMenu");
 							});
@@ -2185,11 +2183,11 @@ const controller = {
 										unitID: categories.find((cat) => cat.categoryID == list.categoryID).unitID,
 									};
 									maxID++;
-									console.log("MAX ID " + maxID);
+								 
 									toIngredient.push(toPush);
 								}
 							});
-							console.log(toIngredient);
+						 
 							db.insertMany(IngredientList, toIngredient, (inserted) => {
 								res.redirect("/ownerMenu");
 							});
@@ -2410,118 +2408,12 @@ const controller = {
 		});
 	},
 
-	testing: async (req, res) => {
-		console.log(req.body.categoryname);
-		console.log(req.body.myname);
-		res.redirect("/testing");
-	},
+ 
 
-	getTesting: (req, res) => {
-		res.render("testingPage");
-	},
+  
 
-	//Testing HBS IF IT WORKS
-	/*
-    createUser: (req, res) => {
-        res.render("createUser");
-    },
-
-    //cashier
-    POS: (req, res) => {
-        res.render("cashier_POS");
-    },
-
-    getcashierDashboard: (req, res) => {
-        res.render("cashier_dashboard");
-    },
-
-    //invManager
-    getinvManagerDashboard: (req, res) => {
-        res.render("invManager_dashboard");
-    },
-
-    addToInventory: (req, res) => {
-        res.render("invManager_addtoInventory");
-    },
-
-    createInventory: (req, res) => {
-        res.render("invManager_createInventory");
-    },
-
-    inventoryList: (req, res) => {
-        res.render("invManager_inventoryList");
-    },
-
-    missing: (req, res) => {
-        res.render("invManager_missing");
-    },
-
-    missingResult: (req, res) => {
-        res.render("invManager_missingResult");
-    },
-
-    spoilage: (req, res) => {
-        res.render("invManager_spoilage");
-    },
-
-    transactionList: (req, res) => {
-        res.render("invManager_transactionList");
-    },
-
-    createCategory: (req, res) => {
-        res.render("invManager_createCategory");
-    },
-
-    //owner
-    addIngredient: (req, res) => {
-        res.render("owner_addIngredient");
-    },
-
-    getownerDashboard: (req, res) => {
-        res.render("owner_dashboard");
-    },
-
-    ingredients: (req, res) => {
-        res.render("owner_ingredients");
-    },
-
-    mealCategory: (req, res) => {
-        res.render("owner_mealCategory");
-    },
-
-    menuList: (req, res) => {
-        res.render("owner_menuList");
-    },
-
-    newMenuItem: (req, res) => {
-        res.render("owner_newMenuItem");
-    },
-
-    reportsPage: (req, res) => {
-        res.render("owner_reportsPage");
-    },
-
-    todaysMenu: (req, res) => {
-        res.render("owner_todaysMenu");
-    },
-
-    transTrail: (req, res) => {
-        res.render("owner_transTrail");
-    },
-
-    invoice: (req, res) => {
-        res.render("owner_invoice");
-    },
-    createFolder: (req, res) => {
-        res.render("owner_createFolder");
-    }, */
+	
 };
 
-//testing for yana
-
-//testing for viewDish
-// viewDish: (req, res) => {
-//   res.render("owner_viewDish");
-// },
 
 module.exports = controller;
