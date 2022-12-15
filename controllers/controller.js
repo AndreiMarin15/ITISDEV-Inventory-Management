@@ -1573,7 +1573,32 @@ const controller = {
 				});
 			});
 		});
-			
+	},
+
+	viewIngredients: async (req, res) => {
+		db.findOne(Recipe, { recipeID: req.params.recipeID }, {}, (recipe) => {
+			db.findMany(IngredientList, { recipeID: req.params.recipeID }, {}, (ingredientlist) => {
+				db.findMany(Category, {}, {}, (categories) => {
+					db.findMany(Unit, {}, {}, (units) => {
+						let ingList = [];
+
+						ingredientlist.forEach((ing) => {
+							let toPush = {
+								// category amount unit
+								categoryName: categories.find((categ) => categ.categoryID == ing.categoryID).categoryName,
+								amount: ing.amount,
+								unitName: units.find((uni) => uni.unitID == ing.unitID).unitName,
+							};
+
+							ingList.push(toPush);
+						});
+						console.log(ingList);
+
+						res.render("owner_ingredients", { RecipeName: recipe.recipeName, ingList: ingList });
+					});
+				});
+			});
+		});
 	},
 
 	addMenuFolder: (req, res) => {
