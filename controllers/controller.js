@@ -176,6 +176,7 @@ const controller = {
 									let toPushStock = {
 										categoryName: category.categoryName,
 										runningTotal: category.runningTotal,
+										unitName: units.find((unt) => unt.unitID == category.unitID).unitName,
 									};
 
 									toCategory.push(toPushCateg);
@@ -250,6 +251,7 @@ const controller = {
 								let toPushStock = {
 									categoryName: category.categoryName,
 									runningTotal: category.runningTotal,
+									unitName: units.find((unt) => unt.unitID == category.unitID).unitName,
 								};
 
 								toCategory.push(toPushCateg);
