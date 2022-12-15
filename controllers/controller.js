@@ -455,7 +455,7 @@ const controller = {
 					);
 
 					let toInsert = {
-						POSIDno: maxID,
+						POSIDno: maxID + 1,
 						dateOfOrder: new Date(Date.now()),
 						idPersonInCharge: req.session.userID,
 					};
