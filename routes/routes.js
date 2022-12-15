@@ -39,7 +39,7 @@ app.post("/ownerInventoryListFiltered", controller.getOwnerFiltered);
 app.post("/employeeListFiltered", controller.getEmployeeFiltered);
 app.post("/ownerReportsFiltered", controller.getInventoryReportsFiltered);
 app.get("/viewRecipe/:recipeID", controller.viewIngredients);
-app.post("/toggleIngredients", controller.toggleIngredients);
+app.post("/toggleStatus/:recipeID", controller.toggleIngredients);
 
 // inventory manager
 app.get("/inventoryList", controller.getInventoryList);

@@ -1543,7 +1543,9 @@ const controller = {
 									recipeName: recipe.recipeName,
 									Status: "Enabled",
 								};
+
 								rec.push(toPush);
+								console.log("pushed " + toPush.recipeID);
 							} else {
 								let toPush = {
 									// recipe id recipe name enabled
@@ -1552,6 +1554,7 @@ const controller = {
 									Status: "Disabled",
 								};
 								rec.push(toPush);
+								console.log("pushed " + toPush.recipeID);
 							}
 						}
 					});
@@ -1579,10 +1582,20 @@ const controller = {
 	},
 
 	toggleIngredients: async (req, res) => {
-		toggled = req.body.toggle;
-		console.log(toggle);
+		db.findOne(Recipe, { recipeID: req.params.recipeID }, {}, (recipe) => {
+			console.log(recipe);
+			if (recipe.enabled == true) {
+				db.updateOne(Recipe, { recipeID: recipe.recipeID }, { enabled: false }, (updated) => {
+					res.redirect("/ownerMenu");
+				});
+			} else {
+				db.updateOne(Recipe, { recipeID: recipe.recipeID }, { enabled: true }, (updated) => {
+					res.redirect("/ownerMenu");
+				});
+			}
+		});
 
-		res.redirect("/ownerMenu");
+	
 	},
 
 	viewIngredients: async (req, res) => {
@@ -1603,8 +1616,23 @@ const controller = {
 							ingList.push(toPush);
 						});
 						console.log(ingList);
+						console.log(recipe.enabled);
 
-						res.render("owner_ingredients", { RecipeName: recipe.recipeName, ingList: ingList });
+						if (recipe.enabled == true) {
+							res.render("owner_ingredients", {
+								RecipeName: recipe.recipeName,
+								ingList: ingList,
+								Status: "Enabled",
+								recipeID: recipe.recipeID,
+							});
+						} else {
+							res.render("owner_ingredients", {
+								RecipeName: recipe.recipeName,
+								ingList: ingList,
+								Status: "Disabled",
+								recipeID: recipe.recipeID,
+							});
+						}
 					});
 				});
 			});
