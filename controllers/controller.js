@@ -2298,7 +2298,27 @@ const controller = {
 						});
 
 						if (req.body.filter == 1) {
-							if (req.body.sort == 1) {
+							if(req.body.type == 1){
+								if (req.body.sort == 1) {
+		
+									report.sort((a, b) => {
+										let da = new Date(a.caseDate),
+											db = new Date(b.caseDate);
+										// Date Ascending
+										return da - db;
+									});
+									let date = new Date(Date.now());
+									let month = date.getMonth() + 1;
+									let day = date.getDate();
+									let year = date.getFullYear();
+
+									let fullDate = month + "-" + day + "-" + year;
+
+									res.render("owner_reportsPage", {
+										Report: report,
+										dateToday: fullDate,
+									});
+								} else if (req.body.sort == 2) {
 								report.sort((a, b) => {
 									let da = new Date(a.caseDate),
 										db = new Date(b.caseDate);
@@ -2316,12 +2336,19 @@ const controller = {
 									Report: report,
 									dateToday: fullDate,
 								});
-							} else if (req.body.sort == 2) {
+							}
+						} else if (req.body.type == 2){
+							if (req.body.sort == 1) {
+		
 								report.sort((a, b) => {
 									let da = new Date(a.caseDate),
-										db = new Date(b.caseDate);
+										db = new Date(b.caseDate),
+										ta = a.reportType,
+										tb = b.reportType;
+										
+
 									// Date Ascending
-									return da - db;
+									return da - db && ta.localeCompare(tb);
 								});
 								let date = new Date(Date.now());
 								let month = date.getMonth() + 1;
@@ -2334,14 +2361,84 @@ const controller = {
 									Report: report,
 									dateToday: fullDate,
 								});
-							}
+							} else if (req.body.sort == 2) {
+							report.sort((a, b) => {
+								let da = new Date(a.caseDate),
+									db = new Date(b.caseDate),
+									ta = a.reportType,
+									tb = b.reportType;
+								// Date Descending
+								return db - da && tb.localeCompare(ta);
+							});
+							let date = new Date(Date.now());
+							let month = date.getMonth() + 1;
+							let day = date.getDate();
+							let year = date.getFullYear();
+
+							let fullDate = month + "-" + day + "-" + year;
+
+							res.render("owner_reportsPage", {
+								Report: report,
+								dateToday: fullDate,
+							});
+						}
+
+						}else if (req.body.type == 3){
+							if (req.body.sort == 1) {
+		
+								report.sort((a, b) => {
+									let da = new Date(a.caseDate),
+										db = new Date(b.caseDate),
+										ta = a.reportType,
+										tb = b.reportType;
+									// Date Ascending
+									return da - db && tb.localeCompare(ta);
+								});
+								let date = new Date(Date.now());
+								let month = date.getMonth() + 1;
+								let day = date.getDate();
+								let year = date.getFullYear();
+
+								let fullDate = month + "-" + day + "-" + year;
+
+								res.render("owner_reportsPage", {
+									Report: report,
+									dateToday: fullDate,
+								});
+							} else if (req.body.sort == 2) {
+							report.sort((a, b) => {
+								let da = new Date(a.caseDate),
+									db = new Date(b.caseDate),
+									ta = a.reportType,
+									tb = b.reportType;
+								// Date Descending
+								return db - da && ta.localeCompare(tb);
+							});
+							let date = new Date(Date.now());
+							let month = date.getMonth() + 1;
+							let day = date.getDate();
+							let year = date.getFullYear();
+
+							let fullDate = month + "-" + day + "-" + year;
+
+							res.render("owner_reportsPage", {
+								Report: report,
+								dateToday: fullDate,
+							});
+						}
+
+						}
+
 						} else {
+							if(req.body.type == 1){
 							if (req.body.sort == 1) {
 								report.sort((a, b) => {
 									let ra = a.employeeName,
-										rb = b.employeeName;
+										rb = b.employeeName,
+										ta = a.reportType,
+										tb = b.reportType;
 									//employee name ascending
-									return ra.localeCompare(rb);
+									return ra.localeCompare(rb) && ta.localeCompare(tb);
 								});
 								let date = new Date(Date.now());
 								let month = date.getMonth() + 1;
@@ -2356,8 +2453,9 @@ const controller = {
 								});
 							} else if (req.body.sort == 2) {
 								report.sort((a, b) => {
-									let ra = a.employeeName,
-										rb = b.employeeName;
+									let ra = a.employeeName + a.reportType,
+										rb = b.employeeName + b.reportType;
+										
 									//employee name descending
 									return rb.localeCompare(ra);
 								});
@@ -2372,6 +2470,95 @@ const controller = {
 									Report: report,
 									dateToday: fullDate,
 								});
+							}
+							} else if (req.body.type == 2){
+								if(req.body.type == 1){
+									if (req.body.sort == 1) {
+										report.sort((a, b) => {
+											let ra = a.employeeName,
+												rb = b.employeeName,
+												ta = a.reportType,
+												tb = b.reportType;
+											//employee name ascending
+											return ra.localeCompare(rb) && ta.localeCompare(tb);
+										});
+										let date = new Date(Date.now());
+										let month = date.getMonth() + 1;
+										let day = date.getDate();
+										let year = date.getFullYear();
+		
+										let fullDate = month + "-" + day + "-" + year;
+		
+										res.render("owner_reportsPage", {
+											Report: report,
+											dateToday: fullDate,
+										});
+									} else if (req.body.sort == 2) {
+										report.sort((a, b) => {
+											let ra = a.employeeName,
+												rb = b.employeeName,
+												ta = a.reportType,
+												tb = b.reportType;
+											//employee name descending
+											return rb.localeCompare(ra) && tb.localeCompare(ta);
+										});
+										let date = new Date(Date.now());
+										let month = date.getMonth() + 1;
+										let day = date.getDate();
+										let year = date.getFullYear();
+		
+										let fullDate = month + "-" + day + "-" + year;
+		
+										res.render("owner_reportsPage", {
+											Report: report,
+											dateToday: fullDate,
+										});
+									}
+									}
+							} else if(req.body.type == 3){
+								if(req.body.type == 1){
+									if (req.body.sort == 1) {
+										report.sort((a, b) => {
+											let ra = a.employeeName,
+												rb = b.employeeName,
+												ta = a.reportType,
+												tb = b.reportType;
+											//employee name ascending
+											return ra.localeCompare(rb) && tb.localeCompare(ta);
+										});
+										let date = new Date(Date.now());
+										let month = date.getMonth() + 1;
+										let day = date.getDate();
+										let year = date.getFullYear();
+		
+										let fullDate = month + "-" + day + "-" + year;
+		
+										res.render("owner_reportsPage", {
+											Report: report,
+											dateToday: fullDate,
+										});
+									} else if (req.body.sort == 2) {
+										report.sort((a, b) => {
+											let ra = a.employeeName,
+												rb = b.employeeName,
+												ta = a.reportType,
+												tb = b.reportType;
+											//employee name descending
+											return rb.localeCompare(ra) && ta.localeCompare(tb);
+										});
+										let date = new Date(Date.now());
+										let month = date.getMonth() + 1;
+										let day = date.getDate();
+										let year = date.getFullYear();
+		
+										let fullDate = month + "-" + day + "-" + year;
+		
+										res.render("owner_reportsPage", {
+											Report: report,
+											dateToday: fullDate,
+										});
+									}
+									}
 							}
 						}
 					});
