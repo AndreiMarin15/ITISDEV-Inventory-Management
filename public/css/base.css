@@ -421,3 +421,40 @@ h1 {
   flex-direction:column;
   gap: 10px;
 }
+
+.search-filters{
+  display:flex;
+  flex-direction:row;
+  max-width: 90%;
+
+}
+
+.filters{
+  display:flex;
+  flex-direction:row;
+  margin-left: auto;
+  gap: 25px;
+}
+
+.button-green-filter{
+  border: 1px solid var(--clr-green);
+  border-radius: 5px;
+  background-color: var(--clr-green);
+  font-family: var(--font-type2);
+  font-size: 14px;
+  width: 6vw;
+  height: 4vh;
+  color: var(--clr-white);
+  padding: 10px;
+  box-shadow: 0 2px 10px rgb(62, 174, 254, 0.2);
+  cursor: pointer;
+  text-align: center;
+}
+
+.button-green-filter:hover {
+  color: var(--clr-green);
+  background-color: white;
+  border: 1px solid var(--clr-green);
+  padding: 10px;
+  text-align: center;
+}

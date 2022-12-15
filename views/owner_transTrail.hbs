@@ -25,25 +25,26 @@
                         <input type="text" placeholder="Search" name="search">
                         <button type="submit"><i class="fa fa-search search-icon"></i></button>
                     </div>
-                    <div class="filters">
-                        <div>
-                            <label for="filters">Filter By:</label>
-                            <select id="filter" class="dropdown" name="filter">
-                                <option value="RecipeName">Recipe Name</option>
-                                <option value="MenuGroup">Menu Group</option>
-                                <option value="Quantity">Quantity</option>
-                                <option value="TotalRevenue">Total Revenue</option>
-                            </select>
+					
+					<form action="" method="post" class="filters">
+                    	<div>
+                        	<label for="filters">Filter By:</label>
+                        	<select id="filter" class="dropdown" name="filter">
+                            	<option value="RecipeName">Recipe Name</option>
+                            	<option value="MenuGroup">Menu Group</option>
+                            	<option value="Quantity">Quantity</option>
+                            	<option value="TotalRevenue">Total Revenue</option>
+                        	</select>
                         </div>
 						<div>
-                        <label for="filters">Sort By:</label>
-                        <select id="sort" class="dropdown" name="sort">
-                            <option value="Ascending">Ascending</option>
-                            <option value="Descending">Descending</option>
-                        </select>
+                        	<label for="filters">Sort By:</label>
+                        	<select id="sort" class="dropdown" name="sort">
+                            	<option value="Ascending">Ascending</option>
+                            	<option value="Descending">Descending</option>
+                        	</select>
                     	</div>
-						<button type="submit"><i class="fa-solid fa-filter"></i> filter and sort</button>
-                    </div>
+						<input type="submit" value="filter and sort" class="button-green-filter popup">
+                    </form>
                 </div>
 
 				<!-- DROPDOWN TO BE ADDED-->
