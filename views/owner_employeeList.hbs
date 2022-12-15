@@ -49,14 +49,12 @@
                         <col style="width: 10%" />
                         <col style="width: 15%" />
                         <col style="width: 15%" />
-                        <col style="width: 10%" />
 
                         <thead>
                             <tr>
                                 <th>Employee ID</th>
                                 <th>Full Name</th>
                                 <th>Position</th>
-                                <th></th>
                             </tr>
                         </thead>
                         {{#each employee}}
@@ -64,8 +62,6 @@
                             <td>{{userID}}</td>
                             <td>{{firstName}} {{lastName}}</td>
                             <td>{{position}}</td>
-                            
-                            <td><a href="/deleteUser/{{userID}}" class="button-view">Delete</a></td>
                         </tr>
                         {{/each}}
                     </table>
