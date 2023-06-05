@@ -1846,6 +1846,10 @@ const controller = {
 		});
 	},
 
+	printHello: function(req, res) {
+		console.log("HELLO")
+	},
+
 	getTransactionTrail: function (req, res) {
 		let date = new Date(Date.now());
 		let month = date.getMonth() + 1;
